@@ -1,3 +1,22 @@
 {
-  "itemGroup.minefactoryrenewed": "Minefactory Renewed"
+  "itemGroup.minefactoryrenewed": "Minefactory Renewed",
+
+  "_comment1": "Machine Upgrades",
+  "item.minefactoryrenewed.iron_upgrade": "Iron Radius Upgrade",
+  "item.minefactoryrenewed.copper_upgrade": "Copper Radius Upgrade",
+  "item.minefactoryrenewed.gold_upgrade": "Gold Radius Upgrade",
+  "item.minefactoryrenewed.obsidian_upgrade": "Obsidian Radius Upgrade",
+  "item.minefactoryrenewed.quartz_upgrade": "Quartz Radius Upgrade",
+  "item.minefactoryrenewed.diamond_upgrade": "Diamond Radius Upgrade",
+  "item.minefactoryrenewed.emerald_upgrade": "Emerald Radius Upgrade",
+  "item.minefactoryrenewed.netherite_upgrade": "Netherite Radius Upgrade",
+
+  "_comment2": "Rubber Items",
+  "item.minefactoryrenewed.raw_rubber": "Raw Rubber",
+  "item.minefactoryrenewed.rubber": "Rubber",
+  "item.minefactoryrenewed.raw_plastic": "Raw Plastic",
+  "item.minefactoryrenewed.plastic_sheets": "Plastic Sheets",
+
+  "_comment3": "Translatable Text",
+  "tooltip.machine.upgrade": "Radius Increase"
 }

@@ -61,7 +61,7 @@ public abstract class MachineBlock extends BaseEntityBlock {
         super.appendHoverText(stack, level, tooltip, flag);
 
         if (this.getRegistryName() != null) {
-            Component text = new TranslatableComponent("machine.tooltip." + this.getRegistryName().getPath())
+            Component text = new TranslatableComponent("tooltip.machine." + this.getRegistryName().getPath())
                     .setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY));
             tooltip.add(text);
         }
