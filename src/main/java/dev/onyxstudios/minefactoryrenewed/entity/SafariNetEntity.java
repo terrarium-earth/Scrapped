@@ -67,7 +67,7 @@ public class SafariNetEntity extends ThrowableItemProjectile {
 
     private void dropSafariNet(ItemStack stack) {
         ItemEntity itemEntity = new ItemEntity(level, getX(), getY(), getZ(), stack.copy());
-        itemEntity.setPickUpDelay(40);
+        itemEntity.setPickUpDelay(20);
         level.addFreshEntity(itemEntity);
     }
 
