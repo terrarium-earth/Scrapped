@@ -5,6 +5,7 @@ val modName: String by project
 val modid: String by project
 val modGroup: String by project
 val modVersion: String by project
+val mappingsVersion: String by project
 val minecraftVersion: String by project
 val forgeVersion: String by project
 val jeiVersion: String by project
@@ -28,7 +29,7 @@ configure<JavaPluginExtension> {
 }
 
 configure<UserDevExtension> {
-    mappings("official", minecraftVersion)
+    mappings("parchment", mappingsVersion)
 
     runs {
         create("client") {
