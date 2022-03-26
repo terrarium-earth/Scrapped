@@ -21,10 +21,13 @@
   "item.minefactoryrenewed.safari_net_single": "Safari Net (Single Use)",
   "item.minefactoryrenewed.safari_net_launcher": "Safari Net Launcher",
 
-  "_comment3": "Entities",
+  "_comment3": "Blocks",
+  "block.minefactoryrenewed.conveyor_belt": "Conveyor Belt",
+
+  "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",
 
-  "_comment4": "Translatable Text",
+  "_comment5": "Translatable Text",
   "tooltip.machine.upgrade": "Radius Increase: %s",
   "tooltip.safari_net.no_entity": "No entity captured",
   "tooltip.safari_net.captured_entity": "Captured Entity: %s",
