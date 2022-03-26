@@ -28,6 +28,8 @@ import java.util.List;
 
 public class SafariNetItem extends Item {
 
+    public static final String ENTITY_KEY = "trappedEntity";
+    public static final String ENTITY_ID_KEY = "trappedEntityId";
     private final boolean singleUse;
 
     public SafariNetItem(boolean singleUse) {
@@ -39,29 +41,14 @@ public class SafariNetItem extends Item {
     public InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();
         ItemStack stack = context.getItemInHand();
-        CompoundTag tag = stack.getOrCreateTag();
         BlockPos pos = context.getClickedPos();
+        if (level.isClientSide()) return InteractionResult.sidedSuccess(true);
 
-        if (tag.contains("trappedEntity")) {
-            if (level.isClientSide()) return InteractionResult.sidedSuccess(true);
-            ResourceLocation entityTypeId = new ResourceLocation(tag.getString("trappedEntityId"));
-            EntityType<?> entityType = ForgeRegistries.ENTITIES.getValue(entityTypeId);
-            CompoundTag entityTag = tag.getCompound("trappedEntity");
-
-            Entity entity;
-            if (entityType != null && (entity = entityType.create(level)) != null) {
-                entity.load(entityTag);
-                entity.setPos(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5);
-                level.addFreshEntity(entity);
-            }
-
-            tag.remove("trappedEntity");
-            tag.remove("trappedEntityId");
-            stack.setTag(tag);
-
-            if (((SafariNetItem) stack.getItem()).isSingleUse()) {
+        if (tryReleaseEntity(level, pos, stack)) {
+            if (((SafariNetItem) stack.getItem()).isSingleUse())
                 stack.shrink(1);
-            }
+
+            return InteractionResult.SUCCESS;
         }
 
         return super.useOn(context);
@@ -71,27 +58,63 @@ public class SafariNetItem extends Item {
         Player player = event.getPlayer();
         Entity entity = event.getTarget();
 
-        if (!entity.getLevel().isClientSide() && entity instanceof LivingEntity livingEntity && livingEntity.canChangeDimensions()) {
-            ItemStack heldItem = player.getMainHandItem();
+        if (tryCaptureEntity(entity, player.getMainHandItem())) {
+            event.setCancellationResult(InteractionResult.SUCCESS);
+            event.setCanceled(true);
+        }
+    }
 
-            if (!heldItem.isEmpty() && heldItem.getItem() instanceof SafariNetItem) {
-                CompoundTag tag = heldItem.getOrCreateTag();
+    public static boolean hasEntity(ItemStack stack) {
+        CompoundTag tag = stack.getOrCreateTag();
+        return tag.contains(ENTITY_KEY) && tag.contains(ENTITY_ID_KEY);
+    }
 
-                if (!tag.contains("trappedEntity")) {
-                    ResourceLocation registryName = livingEntity.getType().getRegistryName();
-                    if (registryName == null) return;
+    public static boolean tryReleaseEntity(Level level, BlockPos pos, ItemStack stack) {
+        CompoundTag tag = stack.getOrCreateTag();
 
-                    CompoundTag entityTag = new CompoundTag();
-                    livingEntity.saveWithoutId(entityTag);
-                    tag.put("trappedEntity", entityTag);
-                    tag.putString("trappedEntityId", registryName.toString());
-                    heldItem.setTag(tag);
-                    livingEntity.remove(Entity.RemovalReason.DISCARDED);
-                    event.setCancellationResult(InteractionResult.SUCCESS);
-                    event.setCanceled(true);
-                }
+        if (hasEntity(stack)) {
+            ResourceLocation entityTypeId = new ResourceLocation(tag.getString(ENTITY_ID_KEY));
+            EntityType<?> entityType = ForgeRegistries.ENTITIES.getValue(entityTypeId);
+            CompoundTag entityTag = tag.getCompound(ENTITY_KEY);
+
+            Entity entity;
+            if (entityType != null && (entity = entityType.create(level)) != null) {
+                entity.load(entityTag);
+                entity.setPos(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5);
+                level.addFreshEntity(entity);
+            }
+
+            tag.remove(ENTITY_KEY);
+            tag.remove(ENTITY_ID_KEY);
+            stack.setTag(tag);
+            return true;
+        }
+
+        return false;
+    }
+
+    public static boolean tryCaptureEntity(Entity entity, ItemStack stack) {
+        if (!entity.getLevel().isClientSide() && entity instanceof LivingEntity livingEntity &&
+                !(livingEntity instanceof Player) && livingEntity.canChangeDimensions()) {
+            if (stack.isEmpty() && !(stack.getItem() instanceof SafariNetItem)) return false;
+            CompoundTag tag = stack.getOrCreateTag();
+
+            if (!hasEntity(stack)) {
+                ResourceLocation registryName = livingEntity.getType().getRegistryName();
+                if (registryName == null) return false;
+
+                CompoundTag entityTag = new CompoundTag();
+                livingEntity.saveWithoutId(entityTag);
+                tag.put(ENTITY_KEY, entityTag);
+                tag.putString(ENTITY_ID_KEY, registryName.toString());
+                stack.setTag(tag);
+
+                livingEntity.remove(Entity.RemovalReason.DISCARDED);
+                return true;
             }
         }
+
+        return false;
     }
 
     @Override
@@ -100,8 +123,8 @@ public class SafariNetItem extends Item {
         CompoundTag tag = stack.getOrCreateTag();
 
         TranslatableComponent text = new TranslatableComponent("tooltip.safari_net.no_entity");
-        if (tag.contains("trappedEntityId")) {
-            ResourceLocation entityTypeId = new ResourceLocation(tag.getString("trappedEntityId"));
+        if (tag.contains(ENTITY_ID_KEY)) {
+            ResourceLocation entityTypeId = new ResourceLocation(tag.getString(ENTITY_ID_KEY));
             String nameStr = I18n.get("entity." + entityTypeId.getNamespace() + "." + entityTypeId.getPath());
             Component entityName = new TextComponent(nameStr).setStyle(Style.EMPTY.applyFormat(ChatFormatting.GOLD));
 

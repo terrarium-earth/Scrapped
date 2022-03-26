@@ -19,9 +19,17 @@
 
   "item.minefactoryrenewed.safari_net": "Safari Net",
   "item.minefactoryrenewed.safari_net_single": "Safari Net (Single Use)",
+  "item.minefactoryrenewed.safari_net_launcher": "Safari Net Launcher",
 
-  "_comment3": "Translatable Text",
+  "_comment3": "Entities",
+  "entity.minefactoryrenewed.safari_net": "Safari Net",
+
+  "_comment4": "Translatable Text",
   "tooltip.machine.upgrade": "Radius Increase: %s",
   "tooltip.safari_net.no_entity": "No entity captured",
-  "tooltip.safari_net.captured_entity": "Captured Entity: %s"
+  "tooltip.safari_net.captured_entity": "Captured Entity: %s",
+  "tooltip.safari_net_launcher.mode": "Launcher Mode: %s",
+  "tooltip.safari_net_launcher.capture": "Capture",
+  "tooltip.safari_net_launcher.release": "Release",
+  "tooltip.safari_net_launcher.no_safari_net": "No Safari Net found!"
 }

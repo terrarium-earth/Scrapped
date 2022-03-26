@@ -1,7 +1,9 @@
 package dev.onyxstudios.minefactoryrenewed;
 
+import dev.onyxstudios.minefactoryrenewed.client.ModClient;
 import dev.onyxstudios.minefactoryrenewed.item.SafariNetItem;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlocks;
+import dev.onyxstudios.minefactoryrenewed.registry.ModEntities;
 import dev.onyxstudios.minefactoryrenewed.registry.ModItems;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -37,11 +39,13 @@ public class MinefactoryRenewed {
         ModItems.ITEMS.register(eventBus);
         ModBlocks.ITEMS.register(eventBus);
         ModBlocks.BLOCKS.register(eventBus);
+        ModEntities.ENTITIES.register(eventBus);
     }
 
     private void init(FMLCommonSetupEvent event) {
     }
 
     private void initClient(FMLClientSetupEvent event) {
+        ModClient.init();
     }
 }
