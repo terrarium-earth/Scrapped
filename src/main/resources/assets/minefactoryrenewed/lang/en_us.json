@@ -17,6 +17,9 @@
   "item.minefactoryrenewed.raw_plastic": "Raw Plastic",
   "item.minefactoryrenewed.plastic_sheets": "Plastic Sheets",
 
+  "item.minefactoryrenewed.safari_net": "Safari Net",
+  "item.minefactoryrenewed.safari_net_single": "Safari Net (Single Use)",
+
   "_comment3": "Translatable Text",
   "tooltip.machine.upgrade": "Radius Increase"
 }

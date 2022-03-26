@@ -2,6 +2,7 @@ package dev.onyxstudios.minefactoryrenewed.registry;
 
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
 import dev.onyxstudios.minefactoryrenewed.item.MachineUpgradeItem;
+import dev.onyxstudios.minefactoryrenewed.item.SafariNetItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -27,4 +28,7 @@ public class ModItems {
     public static final RegistryObject<Item> RUBBER = ITEMS.register("rubber", () -> new Item(PROPERTIES));
     public static final RegistryObject<Item> RAW_PLASTIC = ITEMS.register("raw_plastic", () -> new Item(PROPERTIES));
     public static final RegistryObject<Item> PLASTIC_SHEETS = ITEMS.register("plastic_sheets", () -> new Item(PROPERTIES));
+
+    public static final RegistryObject<Item> SAFARI_NET = ITEMS.register("safari_net", () -> new SafariNetItem(false));
+    public static final RegistryObject<Item> SAFARI_NET_SINGLE = ITEMS.register("safari_net_single", () -> new SafariNetItem(true));
 }
