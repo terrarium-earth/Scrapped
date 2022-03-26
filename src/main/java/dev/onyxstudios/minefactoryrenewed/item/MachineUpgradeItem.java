@@ -30,9 +30,8 @@ public class MachineUpgradeItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced) {
         super.appendHoverText(stack, level, tooltip, isAdvanced);
-        Component amount = new TextComponent(String.valueOf(radiusIncrease)).setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_GRAY));
-        Component hoverText = new TranslatableComponent("tooltip.machine.upgrade").append(": ")
-                .append(amount).setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY));
+        Component hoverText = new TranslatableComponent("tooltip.machine.upgrade", String.valueOf(radiusIncrease))
+                .setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY));
 
         tooltip.add(hoverText);
     }
