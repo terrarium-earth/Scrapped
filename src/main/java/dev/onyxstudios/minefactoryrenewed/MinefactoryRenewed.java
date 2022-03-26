@@ -1,10 +1,12 @@
 package dev.onyxstudios.minefactoryrenewed;
 
+import dev.onyxstudios.minefactoryrenewed.item.SafariNetItem;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlocks;
 import dev.onyxstudios.minefactoryrenewed.registry.ModItems;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -31,6 +33,7 @@ public class MinefactoryRenewed {
         eventBus.addListener(this::init);
         eventBus.addListener(this::initClient);
 
+        MinecraftForge.EVENT_BUS.addListener(SafariNetItem::entityInteract);
         ModItems.ITEMS.register(eventBus);
         ModBlocks.ITEMS.register(eventBus);
         ModBlocks.BLOCKS.register(eventBus);

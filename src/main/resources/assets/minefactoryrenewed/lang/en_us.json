@@ -21,5 +21,7 @@
   "item.minefactoryrenewed.safari_net_single": "Safari Net (Single Use)",
 
   "_comment3": "Translatable Text",
-  "tooltip.machine.upgrade": "Radius Increase: %s"
+  "tooltip.machine.upgrade": "Radius Increase: %s",
+  "tooltip.safari_net.no_entity": "No entity captured",
+  "tooltip.safari_net.captured_entity": "Captured Entity: %s"
 }
