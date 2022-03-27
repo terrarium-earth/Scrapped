@@ -1,6 +1,6 @@
 package dev.onyxstudios.minefactoryrenewed.block.machine;
 
-import dev.onyxstudios.minefactoryrenewed.blockentity.InventoryBlockEntity;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.util.InventoryUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -49,7 +49,7 @@ public abstract class MachineBlock extends BaseEntityBlock {
 
     @Override
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
-        if (!state.is(newState.getBlock()) && level.getBlockEntity(pos) instanceof InventoryBlockEntity blockEntity) {
+        if (!state.is(newState.getBlock()) && level.getBlockEntity(pos) instanceof MachineBlockEntity blockEntity) {
             InventoryUtils.dropInventoryItems(level, pos, blockEntity.getInventory());
         }
 

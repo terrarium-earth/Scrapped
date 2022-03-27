@@ -1,6 +1,6 @@
 package dev.onyxstudios.minefactoryrenewed.blockentity.container;
 
-import dev.onyxstudios.minefactoryrenewed.blockentity.BaseBlockEntity;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -10,9 +10,9 @@ import org.jetbrains.annotations.Nullable;
 
 public abstract class MachineContainer extends AbstractContainerMenu {
 
-    private final BaseBlockEntity blockEntity;
+    private final MachineBlockEntity blockEntity;
 
-    protected MachineContainer(@Nullable MenuType<?> menuType, int id, Inventory inventory, BaseBlockEntity blockEntity) {
+    protected MachineContainer(@Nullable MenuType<?> menuType, int id, Inventory inventory, MachineBlockEntity blockEntity) {
         super(menuType, id);
         this.blockEntity = blockEntity;
 
@@ -33,7 +33,7 @@ public abstract class MachineContainer extends AbstractContainerMenu {
         return true;
     }
 
-    public BaseBlockEntity getBlockEntity() {
+    public MachineBlockEntity getBlockEntity() {
         return blockEntity;
     }
 }
