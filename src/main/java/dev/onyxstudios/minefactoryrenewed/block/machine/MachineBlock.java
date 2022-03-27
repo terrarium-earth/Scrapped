@@ -34,6 +34,8 @@ public abstract class MachineBlock extends BaseEntityBlock {
         super(properties);
     }
 
+    public abstract BlockEntityType<? extends MachineBlockEntity> getBlockEntityType();
+
     @Nullable
     @Override
     public abstract BlockEntity newBlockEntity(BlockPos pos, BlockState state);

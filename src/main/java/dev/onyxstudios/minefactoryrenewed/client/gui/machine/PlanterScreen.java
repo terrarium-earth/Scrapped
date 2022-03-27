@@ -24,13 +24,13 @@ public class PlanterScreen extends MachineScreen<PlanterContainer> {
 
     @Override
     public void renderGui(PoseStack poseStack, int x, int y) {
-        renderBarTooltip(poseStack, 30, 100, workBarX, workBarY, x, y, "Wk");
-        renderBarTooltip(poseStack, 3, 5, idleBarX, idleBarY, x, y, "Ticks");
+        renderBarTooltip(poseStack, menu.getBlockEntity().getWorkTime(), menu.getBlockEntity().getMaxWorkTime(), workBarX, workBarY, x, y, "Wk");
+        renderBarTooltip(poseStack, menu.getBlockEntity().getIdleTime(), menu.getBlockEntity().getMaxIdleTime(), idleBarX, idleBarY, x, y, "Ticks");
     }
 
     @Override
     public void renderGuiLast(PoseStack poseStack, int x, int y) {
-        renderWork(poseStack, 10, 40);
-        renderIdle(poseStack, 3, 5);
+        renderWork(poseStack, menu.getBlockEntity().getWorkTime(), menu.getBlockEntity().getMaxWorkTime());
+        renderIdle(poseStack, menu.getBlockEntity().getIdleTime(), menu.getBlockEntity().getMaxIdleTime());
     }
 }

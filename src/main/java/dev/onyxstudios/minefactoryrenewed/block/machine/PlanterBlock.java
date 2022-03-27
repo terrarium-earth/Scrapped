@@ -1,11 +1,10 @@
 package dev.onyxstudios.minefactoryrenewed.block.machine;
 
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.PlanterBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -19,8 +18,8 @@ public class PlanterBlock extends MachineBlock {
     }
 
     @Override
-    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide() ? null : createTickerHelper(blockEntityType, ModBlockEntities.PLANTER_BLOCK_ENTITY.get(), PlanterBlockEntity::tick);
+    public BlockEntityType<? extends MachineBlockEntity> getBlockEntityType() {
+        return ModBlockEntities.PLANTER_BLOCK_ENTITY.get();
     }
 
     @Override

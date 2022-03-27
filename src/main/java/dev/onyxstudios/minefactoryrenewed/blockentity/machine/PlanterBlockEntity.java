@@ -10,7 +10,8 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
@@ -31,7 +32,7 @@ public class PlanterBlockEntity extends MachineBlockEntity implements MenuProvid
     };
 
     public PlanterBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.PLANTER_BLOCK_ENTITY.get(), pos, state, 10000, 17);
+        super(ModBlockEntities.PLANTER_BLOCK_ENTITY.get(), pos, state, 1, 5, 10000, 17);
     }
 
     @Override
@@ -47,7 +48,21 @@ public class PlanterBlockEntity extends MachineBlockEntity implements MenuProvid
             filterInventory.deserializeNBT(tag.getCompound("filterInventory"));
     }
 
-    public static void tick(Level level, BlockPos pos, BlockState state, PlanterBlockEntity blockEntity) {
+    @Override
+    public void tick() {
+        getEnergy().receiveEnergy(1, false);
+        setChanged();
+        level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
+    }
+
+    @Override
+    public boolean runMachine() {
+        BlockState state = level.getBlockState(getBlockPos().above());
+        if (state.isAir()) {
+            level.setBlock(getBlockPos().above(), Blocks.STONE.defaultBlockState(), Block.UPDATE_ALL);
+        }
+
+        return false;
     }
 
     @Override
