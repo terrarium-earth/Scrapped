@@ -26,7 +26,7 @@ public class PlanterContainer extends MachineContainer {
         //Filter Slots
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                this.addSlot(new FilterSlot(planter.getInventory(), 17 + (i * 3 + j), 8 + j * 18, 30 + i * 18));
+                this.addSlot(new FilterSlot(planter.getFilterInventory(), i * 3 + j, 8 + j * 18, 30 + i * 18));
             }
         }
     }
