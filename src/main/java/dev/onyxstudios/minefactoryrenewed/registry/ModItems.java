@@ -12,7 +12,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModItems {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MinefactoryRenewed.MODID);
-    private static final Item.Properties PROPERTIES = new Item.Properties().tab(MinefactoryRenewed.TAB);
+    public static final Item.Properties PROPERTIES = new Item.Properties().tab(MinefactoryRenewed.TAB);
 
     //Upgrades
     public static final RegistryObject<Item> IRON_UPGRADE = ITEMS.register("iron_upgrade", () -> new MachineUpgradeItem(1));
