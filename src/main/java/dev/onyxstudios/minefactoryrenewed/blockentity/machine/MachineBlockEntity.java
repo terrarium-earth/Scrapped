@@ -1,10 +1,13 @@
 package dev.onyxstudios.minefactoryrenewed.blockentity.machine;
 
 import dev.onyxstudios.minefactoryrenewed.api.energy.MFREnergyStorage;
+import dev.onyxstudios.minefactoryrenewed.api.machine.MachineArea;
 import dev.onyxstudios.minefactoryrenewed.blockentity.BaseBlockEntity;
+import dev.onyxstudios.minefactoryrenewed.item.MachineUpgradeItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -26,6 +29,8 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
     private final ItemStackHandler inventory;
     private final LazyOptional<IItemHandler> inventoryHandler;
 
+    private MachineArea machineArea;
+
     private final int maxWorkTime;
     private final int maxIdleTime;
 
@@ -34,32 +39,43 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
     private int idleTime;
 
     public MachineBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state, int workTime, int idleTime, int capacity) {
-        super(type, pos, state);
-        energy = new MFREnergyStorage(capacity);
-        energyHandler = LazyOptional.of(() -> energy);
-
-        inventory = null;
-        inventoryHandler = LazyOptional.empty();
-
-        this.maxWorkTime = workTime;
-        this.maxIdleTime = idleTime;
+        this(type, pos, state, workTime, idleTime, capacity, 0);
     }
 
     public MachineBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state, int workTime, int idleTime, int capacity, int slots) {
         super(type, pos, state);
         energy = new MFREnergyStorage(capacity);
         energyHandler = LazyOptional.of(() -> energy);
-        inventory = new ItemStackHandler(slots) {
-            @Override
-            protected void onContentsChanged(int slot) {
-                super.onContentsChanged(slot);
-                MachineBlockEntity.this.setChanged();
-            }
-        };
-        inventoryHandler = LazyOptional.of(() -> inventory);
+        if (slots > 0) {
+            inventory = new ItemStackHandler(slots + 1) {
+                @Override
+                protected void onContentsChanged(int slot) {
+                    super.onContentsChanged(slot);
+                    //Upgrade slot
+                    if (slot == 0) {
+                        MachineBlockEntity.this.updateRange();
+                    }
 
-        this.maxWorkTime = workTime;
-        this.maxIdleTime = idleTime;
+                    MachineBlockEntity.this.setChanged();
+                }
+
+                @Override
+                public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+                    return slot == 0 ? stack.getItem() instanceof MachineUpgradeItem : super.isItemValid(slot, stack);
+                }
+            };
+            inventoryHandler = LazyOptional.of(() -> inventory);
+        } else {
+            inventory = null;
+            inventoryHandler = LazyOptional.empty();
+        }
+
+        maxWorkTime = workTime;
+        maxIdleTime = idleTime;
+
+        machineArea = new MachineArea(pos, Direction.UP, 1);
+        machineArea.setOriginOffset(0, 1, 0);
+        machineArea.calculateArea();
     }
 
     public abstract boolean run();
@@ -102,7 +118,7 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
                 idleTime = 0;
                 isIdle = false;
             }
-            
+
             setChanged();
         } else {
             workTime++;
@@ -115,6 +131,26 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
 
             setChanged();
         }
+
+        level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
+    }
+
+    public void setIdle() {
+        if (level == null) return;
+
+        isIdle = true;
+        setChanged();
+        level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
+    }
+
+    private void updateRange() {
+        ItemStack stack = inventory.getStackInSlot(0);
+        int radius = 0;
+        if (!stack.isEmpty()) {
+            radius = ((MachineUpgradeItem) stack.getItem()).getRadiusIncrease();
+        }
+
+        machineArea.setUpgradeRadius(radius);
     }
 
     @Override
@@ -128,20 +164,16 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
         return super.getCapability(cap, side);
     }
 
-    public void setIdle() {
-        if (level == null) return;
-
-        isIdle = true;
-        setChanged();
-        level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
-    }
-
     public ItemStackHandler getInventory() {
         return inventory;
     }
 
     public MFREnergyStorage getEnergy() {
         return energy;
+    }
+
+    public MachineArea getMachineArea() {
+        return machineArea;
     }
 
     public int getIdleTime() {
