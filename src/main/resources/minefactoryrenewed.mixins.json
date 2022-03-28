@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "minefactoryrenewed.refmap.json",
   "mixins": [
+    "BushBlockAccessor"
   ],
   "client": [
   ],

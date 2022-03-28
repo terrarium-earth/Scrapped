@@ -28,6 +28,11 @@ configure<JavaPluginExtension> {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
+mixin {
+    add(sourceSets["main"], "minefactoryrenewed.refmap.json")
+    config("minefactoryrenewed.mixins.json")
+}
+
 configure<UserDevExtension> {
     mappings("parchment", mappingsVersion)
 
@@ -85,6 +90,7 @@ repositories {
 dependencies {
     add("minecraft", "net.minecraftforge:forge:$minecraftVersion-$forgeVersion")
     implementation(fg.deobf("mezz.jei:jei-$minecraftVersion:$jeiVersion"))
+    annotationProcessor("org.spongepowered:mixin:0.8.5:processor")
 }
 
 sourceSets {
@@ -103,7 +109,8 @@ tasks.named<Jar>("jar") {
             "Specification-Version" to "1",
             "Implementation-Title" to modName,
             "Implementation-Version" to modVersion,
-            "Implementation-Vendor" to modVendor
+            "Implementation-Vendor" to modVendor,
+            "MixinConfigs" to "minefactoryrenewed.mixins.json"
         )
     }
 
