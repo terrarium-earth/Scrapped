@@ -77,6 +77,6 @@ public abstract class MachineBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return super.getTicker(level, state, blockEntityType);
+        return level.isClientSide() ? null : createTickerHelper(blockEntityType, getBlockEntityType(), MachineBlockEntity::tick);
     }
 }
