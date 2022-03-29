@@ -78,7 +78,6 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, MachineBlockEntity blockEntity) {
-        //blockEntity.getEnergy().receiveEnergy(1000, false);
         blockEntity.tickInternal();
     }
 
