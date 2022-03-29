@@ -2,12 +2,10 @@ package dev.onyxstudios.minefactoryrenewed.registry;
 
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
 import dev.onyxstudios.minefactoryrenewed.block.ConveyorBeltBlock;
-import dev.onyxstudios.minefactoryrenewed.block.machine.PlanterBlock;
-import dev.onyxstudios.minefactoryrenewed.blockentity.machine.PlanterBlockEntity;
+import dev.onyxstudios.minefactoryrenewed.block.machine.plants.PlanterBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;

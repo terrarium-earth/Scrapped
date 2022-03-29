@@ -1,5 +1,6 @@
-package dev.onyxstudios.minefactoryrenewed.block.machine;
+package dev.onyxstudios.minefactoryrenewed.block.machine.plants;
 
+import dev.onyxstudios.minefactoryrenewed.block.machine.MachineBlock;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.PlanterBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;

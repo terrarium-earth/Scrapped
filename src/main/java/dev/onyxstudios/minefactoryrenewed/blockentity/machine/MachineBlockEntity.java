@@ -29,7 +29,7 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
     private ItemStackHandler inventory;
     private LazyOptional<IItemHandler> inventoryHandler;
 
-    private final MachineArea machineArea;
+    private MachineArea machineArea;
     private int energyCost = 0;
 
     private int maxWorkTime;
@@ -41,8 +41,6 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
 
     public MachineBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        this.machineArea = new MachineArea(pos, Direction.UP, 1);
-        this.machineArea.calculateArea();
     }
 
     public abstract boolean run();
@@ -128,6 +126,11 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
         }
 
         machineArea.setUpgradeRadius(radius);
+    }
+
+    public void createMachineArea(BlockPos pos, Direction facing) {
+        this.machineArea = new MachineArea(pos, facing, 1);
+        this.machineArea.calculateArea();
     }
 
     public void createEnergy(int capacity, int energyCost) {

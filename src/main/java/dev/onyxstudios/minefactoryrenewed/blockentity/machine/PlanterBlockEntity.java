@@ -4,6 +4,7 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.container.PlanterContainer
 import dev.onyxstudios.minefactoryrenewed.data.PlantableManager;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -41,6 +42,7 @@ public class PlanterBlockEntity extends MachineBlockEntity implements MenuProvid
         this.setMaxWorkTime(5);
         this.setMaxIdleTime(5);
 
+        this.createMachineArea(pos, Direction.UP);
         getMachineArea().setOriginOffset(0, 2, 0);
     }
 

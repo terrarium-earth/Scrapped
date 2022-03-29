@@ -8,6 +8,8 @@ import net.minecraftforge.items.ItemStackHandler;
 public class InventoryUtils {
 
     public static void dropInventoryItems(Level level, BlockPos pos, ItemStackHandler inventory) {
+        if (inventory == null) return;
+
         for (int i = 0; i < inventory.getSlots(); i++) {
             Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(i));
         }
