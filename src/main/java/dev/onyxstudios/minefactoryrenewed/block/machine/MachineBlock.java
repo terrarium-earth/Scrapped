@@ -1,6 +1,8 @@
 package dev.onyxstudios.minefactoryrenewed.block.machine;
 
+import dev.onyxstudios.minefactoryrenewed.api.machine.IWrenchableMachine;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
+import dev.onyxstudios.minefactoryrenewed.registry.ModItems;
 import dev.onyxstudios.minefactoryrenewed.util.InventoryUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -8,6 +10,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
@@ -28,7 +31,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public abstract class MachineBlock extends BaseEntityBlock {
+public abstract class MachineBlock extends BaseEntityBlock implements IWrenchableMachine {
 
     public MachineBlock(Properties properties) {
         super(properties);
@@ -41,8 +44,16 @@ public abstract class MachineBlock extends BaseEntityBlock {
     public abstract BlockEntity newBlockEntity(BlockPos pos, BlockState state);
 
     @Override
+    public void onWrenched(Level level, Player player, BlockPos pos) {
+        level.destroyBlock(pos, false, player);
+        Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(this));
+    }
+
+    @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (!level.isClientSide() && level.getBlockEntity(pos) instanceof MenuProvider menuProvider) {
+        boolean holdingWrench = player.getMainHandItem().getItem() == ModItems.WRENCH.get();
+
+        if (!level.isClientSide() && !holdingWrench && level.getBlockEntity(pos) instanceof MenuProvider menuProvider) {
             NetworkHooks.openGui((ServerPlayer) player, menuProvider, pos);
         }
 
@@ -51,8 +62,8 @@ public abstract class MachineBlock extends BaseEntityBlock {
 
     @Override
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
-        if (!state.is(newState.getBlock()) && level.getBlockEntity(pos) instanceof MachineBlockEntity blockEntity) {
-            InventoryUtils.dropInventoryItems(level, pos, blockEntity.getInventory());
+        if (!state.is(newState.getBlock()) && level.getBlockEntity(pos) instanceof MachineBlockEntity machine) {
+            InventoryUtils.dropInventoryItems(level, pos, machine.getInventory());
         }
 
         super.onRemove(state, level, pos, newState, isMoving);

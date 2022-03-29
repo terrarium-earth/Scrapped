@@ -4,6 +4,7 @@ import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
 import dev.onyxstudios.minefactoryrenewed.item.MachineUpgradeItem;
 import dev.onyxstudios.minefactoryrenewed.item.SafariNetItem;
 import dev.onyxstudios.minefactoryrenewed.item.SafariNetLauncherItem;
+import dev.onyxstudios.minefactoryrenewed.item.WrenchItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -33,4 +34,6 @@ public class ModItems {
     public static final RegistryObject<Item> SAFARI_NET = ITEMS.register("safari_net", () -> new SafariNetItem(false));
     public static final RegistryObject<Item> SAFARI_NET_SINGLE = ITEMS.register("safari_net_single", () -> new SafariNetItem(true));
     public static final RegistryObject<Item> SAFARI_NET_LAUNCHER = ITEMS.register("safari_net_launcher", SafariNetLauncherItem::new);
+
+    public static final RegistryObject<Item> WRENCH = ITEMS.register("wrench", WrenchItem::new);
 }

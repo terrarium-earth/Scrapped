@@ -1,6 +1,7 @@
-package dev.onyxstudios.minefactoryrenewed.blockentity.machine;
+package dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming;
 
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.PlanterContainer;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.data.PlantableManager;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;

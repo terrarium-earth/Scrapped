@@ -1,6 +1,6 @@
 package dev.onyxstudios.minefactoryrenewed.blockentity.container;
 
-import dev.onyxstudios.minefactoryrenewed.blockentity.machine.PlanterBlockEntity;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.PlanterBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.item.MachineUpgradeItem;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
 import net.minecraft.world.entity.player.Inventory;
