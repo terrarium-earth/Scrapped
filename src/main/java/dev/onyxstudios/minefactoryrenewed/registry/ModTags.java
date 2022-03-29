@@ -8,8 +8,6 @@ import net.minecraft.world.item.Item;
 
 public class ModTags {
 
-    public static final TagKey<Item> PLANTABLE = createModTag("plantable");
-
     public static TagKey<Item> createModTag(String name) {
         return ItemTags.create(new ResourceLocation(MinefactoryRenewed.MODID, name));
     }

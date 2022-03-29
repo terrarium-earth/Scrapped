@@ -1,0 +1,8 @@
+{
+  "item": "minecraft:dark_oak_sapling",
+  "soilTypes": [
+    "minecraft:dirt",
+    "minecraft:grass_block",
+    "minecraft:podzol"
+  ]
+}

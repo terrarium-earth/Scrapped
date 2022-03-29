@@ -1,4 +1,4 @@
-package dev.onyxstudios.minefactoryrenewed.data;
+package dev.onyxstudios.minefactoryrenewed.data.generator;
 
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
 import dev.onyxstudios.minefactoryrenewed.registry.ModItems;

@@ -23,59 +23,26 @@ import org.jetbrains.annotations.Nullable;
 
 public abstract class MachineBlockEntity extends BaseBlockEntity {
 
-    private final MFREnergyStorage energy;
-    private final LazyOptional<MFREnergyStorage> energyHandler;
+    private MFREnergyStorage energy;
+    private LazyOptional<MFREnergyStorage> energyHandler;
 
-    private final ItemStackHandler inventory;
-    private final LazyOptional<IItemHandler> inventoryHandler;
+    private ItemStackHandler inventory;
+    private LazyOptional<IItemHandler> inventoryHandler;
 
-    private MachineArea machineArea;
+    private final MachineArea machineArea;
+    private int energyCost = 0;
 
-    private final int maxWorkTime;
-    private final int maxIdleTime;
+    private int maxWorkTime;
+    private int maxIdleTime;
 
     private boolean isIdle = false;
     private int workTime;
     private int idleTime;
 
-    public MachineBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state, int workTime, int idleTime, int capacity) {
-        this(type, pos, state, workTime, idleTime, capacity, 0);
-    }
-
-    public MachineBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state, int workTime, int idleTime, int capacity, int slots) {
+    public MachineBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        energy = new MFREnergyStorage(capacity);
-        energyHandler = LazyOptional.of(() -> energy);
-        if (slots > 0) {
-            inventory = new ItemStackHandler(slots + 1) {
-                @Override
-                protected void onContentsChanged(int slot) {
-                    super.onContentsChanged(slot);
-                    //Upgrade slot
-                    if (slot == 0) {
-                        MachineBlockEntity.this.updateRange();
-                    }
-
-                    MachineBlockEntity.this.setChanged();
-                }
-
-                @Override
-                public boolean isItemValid(int slot, @NotNull ItemStack stack) {
-                    return slot == 0 ? stack.getItem() instanceof MachineUpgradeItem : super.isItemValid(slot, stack);
-                }
-            };
-            inventoryHandler = LazyOptional.of(() -> inventory);
-        } else {
-            inventory = null;
-            inventoryHandler = LazyOptional.empty();
-        }
-
-        maxWorkTime = workTime;
-        maxIdleTime = idleTime;
-
-        machineArea = new MachineArea(pos, Direction.UP, 1);
-        machineArea.setOriginOffset(0, 1, 0);
-        machineArea.calculateArea();
+        this.machineArea = new MachineArea(pos, Direction.UP, 1);
+        this.machineArea.calculateArea();
     }
 
     public abstract boolean run();
@@ -83,13 +50,16 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
     @Override
     public void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
-        tag.put("energy", energy.serializeNBT());
+        if (energy != null)
+            tag.put("energy", energy.serializeNBT());
+
         if (inventory != null)
             tag.put("inventory", inventory.serializeNBT());
 
         tag.putBoolean("isIdle", isIdle);
         tag.putInt("workTime", workTime);
         tag.putInt("idleTime", idleTime);
+        tag.putInt("energyCost", energyCost);
     }
 
     @Override
@@ -104,13 +74,18 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
         isIdle = tag.getBoolean("isIdle");
         workTime = tag.getInt("workTime");
         idleTime = tag.getInt("idleTime");
+        energyCost = tag.getInt("energyCost");
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, MachineBlockEntity blockEntity) {
+        //blockEntity.getEnergy().receiveEnergy(1000, false);
         blockEntity.tickInternal();
     }
 
     private void tickInternal() {
+        if (energy != null && energy.getEnergyStored() < energyCost)
+            return;
+
         if (isIdle) {
             idleTime++;
 
@@ -125,8 +100,11 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
             if (workTime >= maxWorkTime) {
                 workTime = 0;
 
-                if (!run())
+                if (run() && energy != null) {
+                    energy.extractEnergy(energyCost, false);
+                } else {
                     setIdle();
+                }
             }
 
             setChanged();
@@ -153,15 +131,49 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
         machineArea.setUpgradeRadius(radius);
     }
 
-    @Override
-    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if (cap == CapabilityEnergy.ENERGY)
-            return energyHandler.cast();
+    public void createEnergy(int capacity, int energyCost) {
+        energy = new MFREnergyStorage(capacity);
+        energyHandler = LazyOptional.of(() -> energy);
+        this.energyCost = energyCost;
+        this.setChanged();
+    }
 
-        if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && inventory != null)
-            return inventoryHandler.cast();
+    public void createInventory(int slots) {
+        //Add one for upgrade slot which is always index = 0
+        inventory = new ItemStackHandler(slots + 1) {
+            @Override
+            protected void onContentsChanged(int slot) {
+                super.onContentsChanged(slot);
+                //Upgrade slot
+                if (slot == 0) {
+                    MachineBlockEntity.this.updateRange();
+                }
 
-        return super.getCapability(cap, side);
+                MachineBlockEntity.this.setChanged();
+            }
+
+            @Override
+            public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+                return slot == 0 ? stack.getItem() instanceof MachineUpgradeItem : super.isItemValid(slot, stack);
+            }
+        };
+        inventoryHandler = LazyOptional.of(() -> inventory);
+        this.setChanged();
+    }
+
+    public void setEnergyCost(int energyCost) {
+        this.energyCost = energyCost;
+        setChanged();
+    }
+
+    public void setMaxWorkTime(int maxWorkTime) {
+        this.maxWorkTime = maxWorkTime;
+        this.setChanged();
+    }
+
+    public void setMaxIdleTime(int maxIdleTime) {
+        this.maxIdleTime = maxIdleTime;
+        this.setChanged();
     }
 
     public ItemStackHandler getInventory() {
@@ -190,5 +202,16 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
 
     public int getMaxWorkTime() {
         return maxWorkTime;
+    }
+
+    @Override
+    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
+        if (cap == CapabilityEnergy.ENERGY && energy != null)
+            return energyHandler.cast();
+
+        if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && inventory != null)
+            return inventoryHandler.cast();
+
+        return super.getCapability(cap, side);
     }
 }

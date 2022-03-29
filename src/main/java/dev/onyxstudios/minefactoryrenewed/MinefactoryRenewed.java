@@ -1,6 +1,7 @@
 package dev.onyxstudios.minefactoryrenewed;
 
 import dev.onyxstudios.minefactoryrenewed.client.ModClient;
+import dev.onyxstudios.minefactoryrenewed.data.PlantableManager;
 import dev.onyxstudios.minefactoryrenewed.item.SafariNetItem;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlocks;
@@ -37,6 +38,8 @@ public class MinefactoryRenewed {
         eventBus.addListener(this::initClient);
 
         MinecraftForge.EVENT_BUS.addListener(SafariNetItem::entityInteract);
+        MinecraftForge.EVENT_BUS.addListener(PlantableManager::reloadListenerEvent);
+
         ModItems.ITEMS.register(eventBus);
         ModEntities.ENTITIES.register(eventBus);
 

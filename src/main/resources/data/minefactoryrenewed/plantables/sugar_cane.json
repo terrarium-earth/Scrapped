@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:sugar_cane",
+  "soilTypes": [
+    "minecraft:sand",
+    "minecraft:red_sand",
+    "minecraft:dirt",
+    "minecraft:grass_block"
+  ]
+}

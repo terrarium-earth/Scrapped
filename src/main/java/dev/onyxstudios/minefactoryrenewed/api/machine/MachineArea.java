@@ -16,8 +16,9 @@ public class MachineArea {
     private Direction facing;
 
     private final int radius;
-    private final int verticalRange;
+    private int verticalRange;
     private int upgradeRadius;
+    private int currentBlock = 0;
 
     public MachineArea(BlockPos pos, Direction facing, int radius) {
         this(pos, facing, radius, 0);
@@ -37,6 +38,7 @@ public class MachineArea {
 
     public void calculateArea() {
         area.clear();
+        currentBlock = 0;
 
         int finalRadius = radius + upgradeRadius;
         BlockPos offset = origin.offset(originOffset);
@@ -60,6 +62,7 @@ public class MachineArea {
 
     public void setOriginOffset(int x, int y, int z) {
         this.setOriginOffset(new BlockPos(x, y, z));
+        this.calculateArea();
     }
 
     public void setOriginOffset(BlockPos originOffset) {
@@ -71,12 +74,29 @@ public class MachineArea {
         this.calculateArea();
     }
 
+    public void setVerticalRange(int verticalRange) {
+        this.verticalRange = verticalRange;
+    }
+
     public void setFacing(Direction facing) {
         this.facing = facing;
         this.calculateArea();
     }
 
+    public BlockPos getNextBlock() {
+        BlockPos pos = area.get(currentBlock);
+        currentBlock++;
+        if (currentBlock >= area.size())
+            currentBlock = 0;
+
+        return pos;
+    }
+
     public List<BlockPos> getArea() {
         return area;
+    }
+
+    public int getRadius() {
+        return radius + upgradeRadius;
     }
 }
