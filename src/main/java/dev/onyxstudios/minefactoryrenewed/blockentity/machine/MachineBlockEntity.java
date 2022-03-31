@@ -15,6 +15,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
@@ -28,6 +31,9 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
 
     private ItemStackHandler inventory;
     private LazyOptional<IItemHandler> inventoryHandler;
+
+    private FluidTank tank;
+    private LazyOptional<FluidTank> tankHandler;
 
     private MachineArea machineArea;
     private int energyCost = 0;
@@ -54,6 +60,12 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
         if (inventory != null)
             tag.put("inventory", inventory.serializeNBT());
 
+        if (tank != null)
+            tag.put("fluid", tank.writeToNBT(new CompoundTag()));
+
+        if (machineArea != null)
+            tag.put("machineArea", machineArea.save());
+
         tag.putBoolean("isIdle", isIdle);
         tag.putInt("workTime", workTime);
         tag.putInt("idleTime", idleTime);
@@ -69,6 +81,12 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
         if (tag.contains("inventory"))
             inventory.deserializeNBT(tag.getCompound("inventory"));
 
+        if (tag.contains("fluid"))
+            tank.readFromNBT(tag.getCompound("fluid"));
+
+        if (tag.contains("machineArea"))
+            machineArea.load(tag.getCompound("machineArea"));
+
         isIdle = tag.getBoolean("isIdle");
         workTime = tag.getInt("workTime");
         idleTime = tag.getInt("idleTime");
@@ -76,11 +94,12 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, MachineBlockEntity blockEntity) {
+        blockEntity.getEnergy().receiveEnergy(100, false);
         blockEntity.tickInternal();
     }
 
     private void tickInternal() {
-        if (energy != null && energy.getEnergyStored() < energyCost)
+        if (!canRun())
             return;
 
         if (isIdle) {
@@ -97,9 +116,7 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
             if (workTime >= maxWorkTime) {
                 workTime = 0;
 
-                if (run() && energy != null) {
-                    energy.extractEnergy(energyCost, false);
-                } else {
+                if (!run()) {
                     setIdle();
                 }
             }
@@ -108,6 +125,15 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
         }
 
         level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
+    }
+
+    public void useEnergy() {
+        if (energy != null)
+            energy.extractEnergy(energyCost, false);
+    }
+
+    public boolean canRun() {
+        return energy == null || energy.getEnergyStored() >= energyCost;
     }
 
     public void setIdle() {
@@ -163,9 +189,22 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
         this.setChanged();
     }
 
+    public void createFluid(int capacity, FluidStack filter) {
+        tank = new FluidTank(capacity, filter::isFluidEqual);
+        tankHandler = LazyOptional.of(() -> tank);
+        this.setChanged();
+    }
+
+    public void createFluid(int capacity) {
+        tank = new FluidTank(capacity);
+        tankHandler = LazyOptional.of(() -> tank);
+        this.setChanged();
+    }
+
+
     public void setEnergyCost(int energyCost) {
         this.energyCost = energyCost;
-        setChanged();
+        this.setChanged();
     }
 
     public void setMaxWorkTime(int maxWorkTime) {
@@ -184,6 +223,10 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
 
     public MFREnergyStorage getEnergy() {
         return energy;
+    }
+
+    public FluidTank getTank() {
+        return tank;
     }
 
     public MachineArea getMachineArea() {
@@ -213,6 +256,9 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
 
         if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && inventory != null)
             return inventoryHandler.cast();
+
+        if (cap == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY && tank != null)
+            return tankHandler.cast();
 
         return super.getCapability(cap, side);
     }

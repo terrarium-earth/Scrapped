@@ -52,8 +52,10 @@ public abstract class MachineBlock extends BaseEntityBlock implements IWrenchabl
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         boolean holdingWrench = player.getMainHandItem().getItem() == ModItems.WRENCH.get();
+        if (holdingWrench)
+            return super.use(state, level, pos, player, hand, hit);
 
-        if (!level.isClientSide() && !holdingWrench && level.getBlockEntity(pos) instanceof MenuProvider menuProvider) {
+        if (!level.isClientSide() && level.getBlockEntity(pos) instanceof MenuProvider menuProvider) {
             NetworkHooks.openGui((ServerPlayer) player, menuProvider, pos);
         }
 

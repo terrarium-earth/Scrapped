@@ -21,10 +21,13 @@
   "item.minefactoryrenewed.safari_net_single": "Safari Net (Single Use)",
   "item.minefactoryrenewed.safari_net_launcher": "Safari Net Launcher",
   "item.minefactoryrenewed.wrench": "Utility Wrench",
+  "item.minefactoryrenewed.sludge_bucket": "Sludge Bucket",
 
   "_comment3": "Blocks",
   "block.minefactoryrenewed.conveyor_belt": "Conveyor Belt",
   "block.minefactoryrenewed.planter": "Planter",
+  "block.minefactoryrenewed.farmer": "Farmer",
+  "block.minefactoryrenewed.sludge": "Sludge",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",
@@ -36,5 +39,8 @@
   "tooltip.safari_net_launcher.mode": "Launcher Mode: %s",
   "tooltip.safari_net_launcher.capture": "Capture",
   "tooltip.safari_net_launcher.release": "Release",
-  "tooltip.safari_net_launcher.no_safari_net": "No Safari Net found!"
+  "tooltip.safari_net_launcher.no_safari_net": "No Safari Net found!",
+  "gui.button.harvester.shear_leaves": "Shear Leaves: %s",
+  "gui.button.harvester.small_shrooms": "Small Shrooms: %s",
+  "gui.button.harvester.jungle_wood": "Jungle Wood: %s"
 }

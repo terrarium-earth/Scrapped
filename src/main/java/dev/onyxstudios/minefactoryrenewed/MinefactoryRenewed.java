@@ -3,6 +3,7 @@ package dev.onyxstudios.minefactoryrenewed;
 import dev.onyxstudios.minefactoryrenewed.client.ModClient;
 import dev.onyxstudios.minefactoryrenewed.data.PlantableManager;
 import dev.onyxstudios.minefactoryrenewed.item.SafariNetItem;
+import dev.onyxstudios.minefactoryrenewed.network.ModPackets;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlocks;
 import dev.onyxstudios.minefactoryrenewed.registry.ModEntities;
@@ -45,11 +46,13 @@ public class MinefactoryRenewed {
 
         ModBlocks.ITEMS.register(eventBus);
         ModBlocks.BLOCKS.register(eventBus);
+        ModBlocks.FLUIDS.register(eventBus);
         ModBlockEntities.BLOCK_ENTITIES.register(eventBus);
         ModBlockEntities.CONTAINERS.register(eventBus);
     }
 
     private void init(FMLCommonSetupEvent event) {
+        ModPackets.init();
     }
 
     private void initClient(FMLClientSetupEvent event) {

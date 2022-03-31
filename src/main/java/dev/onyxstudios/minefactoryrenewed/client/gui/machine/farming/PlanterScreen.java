@@ -1,8 +1,9 @@
-package dev.onyxstudios.minefactoryrenewed.client.gui.machine;
+package dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
-import dev.onyxstudios.minefactoryrenewed.blockentity.container.PlanterContainer;
+import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.PlanterContainer;
+import dev.onyxstudios.minefactoryrenewed.client.gui.machine.MachineScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -13,13 +14,6 @@ public class PlanterScreen extends MachineScreen<PlanterContainer> {
 
     public PlanterScreen(PlanterContainer menu, Inventory inventory, Component title) {
         super(menu, inventory, title, PLANTER_GUI);
-        this.imageHeight = 179;
-    }
-
-    @Override
-    protected void init() {
-        super.init();
-        this.inventoryLabelY += 13;
     }
 
     @Override

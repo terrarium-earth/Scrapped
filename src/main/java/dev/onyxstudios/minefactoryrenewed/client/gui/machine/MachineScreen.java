@@ -2,17 +2,21 @@ package dev.onyxstudios.minefactoryrenewed.client.gui.machine;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import dev.onyxstudios.minefactoryrenewed.blockentity.BaseBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.MachineContainer;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
+import net.minecraftforge.fluids.capability.templates.FluidTank;
 
 public abstract class MachineScreen<T extends MachineContainer> extends AbstractContainerScreen<T> {
 
@@ -32,12 +36,24 @@ public abstract class MachineScreen<T extends MachineContainer> extends Abstract
     protected int idleBarU = 197;
     protected int idleBarV = 4;
 
+    protected int fluidBarX = 129;
+    protected int fluidBarY = 69;
+    protected int fluidBarWidth = 12;
+    protected int fluidBarHeight = 48;
+
     protected int barWidth = 6;
     protected int barHeight = 48;
 
     public MachineScreen(T menu, Inventory inventory, Component title, ResourceLocation guiLocation) {
         super(menu, inventory, title);
         this.guiLocation = guiLocation;
+        this.imageHeight = 179;
+        this.inventoryLabelY = imageHeight - 94;
+    }
+
+    @Override
+    public void resize(Minecraft minecraft, int width, int height) {
+        super.resize(minecraft, width, height);
     }
 
     @Override
@@ -46,10 +62,30 @@ public abstract class MachineScreen<T extends MachineContainer> extends Abstract
         super.render(poseStack, mouseX, mouseY, partialTick);
         this.renderTooltip(poseStack, mouseX, mouseY);
 
-        menu.getBlockEntity().getCapability(CapabilityEnergy.ENERGY).ifPresent(storage ->
-                renderBarTooltip(poseStack, storage.getEnergyStored(), storage.getMaxEnergyStored(),
-                        powerBarX, powerBarY, mouseX, mouseY, "FE")
+        MachineBlockEntity machine = menu.getBlockEntity();
+        machine.getCapability(CapabilityEnergy.ENERGY).ifPresent(storage ->
+                renderBarTooltip(
+                        poseStack,
+                        storage.getEnergyStored(),
+                        storage.getMaxEnergyStored(),
+                        powerBarX, powerBarY,
+                        mouseX, mouseY,
+                        "FE"
+                )
         );
+
+        if (machine.getTank() != null) {
+            renderBarTooltip(
+                    poseStack,
+                    machine.getTank().getFluidAmount(),
+                    machine.getTank().getCapacity(),
+                    fluidBarX, fluidBarY,
+                    fluidBarWidth, fluidBarHeight,
+                    mouseX, mouseY,
+                    "MB"
+            );
+        }
+
         renderGui(poseStack, mouseX, mouseY);
     }
 
@@ -61,6 +97,7 @@ public abstract class MachineScreen<T extends MachineContainer> extends Abstract
         blit(poseStack, getGuiLeft(), getGuiTop(), 0, 0, getXSize(), getYSize());
 
         renderEnergy(poseStack, menu.getBlockEntity());
+        renderFluid(poseStack, menu.getBlockEntity());
         renderGuiLast(poseStack, mouseX, mouseY);
     }
 
@@ -68,10 +105,17 @@ public abstract class MachineScreen<T extends MachineContainer> extends Abstract
 
     public abstract void renderGuiLast(PoseStack poseStack, int x, int y);
 
-    public void renderEnergy(PoseStack poseStack, BaseBlockEntity blockEntity) {
+    public void renderEnergy(PoseStack poseStack, MachineBlockEntity blockEntity) {
         LazyOptional<IEnergyStorage> energy = blockEntity.getCapability(CapabilityEnergy.ENERGY);
         energy.ifPresent(storage ->
                 renderBar(poseStack, storage.getEnergyStored(), storage.getMaxEnergyStored(), powerBarX, powerBarY, powerBarU, powerBarV));
+    }
+
+    public void renderFluid(PoseStack poseStack, MachineBlockEntity blockEntity) {
+        FluidTank tank = blockEntity.getTank();
+        if (tank != null && tank.getFluidAmount() > 0) {
+            renderFluid(poseStack, tank);
+        }
     }
 
     public void renderWork(PoseStack poseStack, int workAmount, int maxWorkAmount) {
@@ -83,18 +127,34 @@ public abstract class MachineScreen<T extends MachineContainer> extends Abstract
     }
 
     public void renderBar(PoseStack poseStack, int amount, int maxAmount, int x, int y, int u, int v) {
-        int i = barHeight;
-        int j = 0;
-        if (amount > 0)
-            j = amount * i / maxAmount;
-
-        blit(poseStack, getGuiLeft() + x, getGuiTop() + y - j, u, (v + barHeight) - j, barWidth, j);
+        int i = amount > 0 ? amount * barHeight / maxAmount : 0;
+        blit(poseStack, getGuiLeft() + x, getGuiTop() + y - i, u, (v + barHeight) - i, barWidth, i);
     }
 
-    public void renderBarTooltip(PoseStack poseStack, int amount, int maxAmount, int x, int y, int mouseX, int mouseY, String tag) {
-        if (this.isHovering(x - 1, y - barHeight, barWidth, barHeight, mouseX, mouseY)) {
+    public void renderBarTooltip(PoseStack poseStack, int amount, int maxAmount,
+                                 int x, int y, int mouseX, int mouseY, String tag) {
+        renderBarTooltip(poseStack, amount, maxAmount, x, y, barWidth, barHeight, mouseX, mouseY, tag);
+    }
+
+    public void renderBarTooltip(PoseStack poseStack, int amount, int maxAmount,
+                                 int x, int y, int width, int height, int mouseX, int mouseY, String tag) {
+        if (this.isHovering(x - 1, y - height, width, height, mouseX, mouseY)) {
             Component text = new TextComponent(amount + " / " + maxAmount + " " + tag);
             renderTooltip(poseStack, text, mouseX, mouseY);
         }
+    }
+
+    private void renderFluid(PoseStack poseStack, FluidTank tank) {
+        int i = tank.getFluidAmount() * fluidBarHeight / tank.getCapacity();
+        TextureAtlasSprite sprite = getMinecraft().getTextureAtlas(InventoryMenu.BLOCK_ATLAS)
+                .apply(tank.getFluid().getFluid().getAttributes().getStillTexture());
+
+        int x = getGuiLeft() + fluidBarX;
+        int y = getGuiTop() + fluidBarY - i;
+
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
+        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+        RenderSystem.setShaderTexture(0, InventoryMenu.BLOCK_ATLAS);
+        blit(poseStack, x, y, 0, fluidBarWidth, i, sprite);
     }
 }

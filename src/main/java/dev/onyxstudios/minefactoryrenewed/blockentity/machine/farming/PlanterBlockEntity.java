@@ -1,6 +1,6 @@
 package dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming;
 
-import dev.onyxstudios.minefactoryrenewed.blockentity.container.PlanterContainer;
+import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.PlanterContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.data.PlantableManager;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
@@ -79,6 +79,7 @@ public class PlanterBlockEntity extends MachineBlockEntity implements MenuProvid
 
             level.setBlock(workPos, ((BlockItem) seeds).getBlock().defaultBlockState(), Block.UPDATE_CLIENTS);
             getInventory().extractItem(i, 1, false);
+            useEnergy();
             return true;
         }
 

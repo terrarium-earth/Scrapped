@@ -5,7 +5,9 @@ import dev.onyxstudios.minefactoryrenewed.item.MachineUpgradeItem;
 import dev.onyxstudios.minefactoryrenewed.item.SafariNetItem;
 import dev.onyxstudios.minefactoryrenewed.item.SafariNetLauncherItem;
 import dev.onyxstudios.minefactoryrenewed.item.WrenchItem;
+import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -14,6 +16,8 @@ public class ModItems {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MinefactoryRenewed.MODID);
     public static final Item.Properties PROPERTIES = new Item.Properties().tab(MinefactoryRenewed.TAB);
+    private static final Item.Properties BUCKET_PROPS = new Item.Properties().craftRemainder(Items.BUCKET)
+            .stacksTo(1).tab(MinefactoryRenewed.TAB);
 
     //Upgrades
     public static final RegistryObject<Item> IRON_UPGRADE = ITEMS.register("iron_upgrade", () -> new MachineUpgradeItem(1));
@@ -36,4 +40,6 @@ public class ModItems {
     public static final RegistryObject<Item> SAFARI_NET_LAUNCHER = ITEMS.register("safari_net_launcher", SafariNetLauncherItem::new);
 
     public static final RegistryObject<Item> WRENCH = ITEMS.register("wrench", WrenchItem::new);
+    public static final RegistryObject<Item> SLUDGE_BUCKET = ITEMS.register("sludge_bucket", () ->
+            new BucketItem(ModBlocks.SLUDGE, BUCKET_PROPS));
 }

@@ -1,5 +1,6 @@
-package dev.onyxstudios.minefactoryrenewed.blockentity.container;
+package dev.onyxstudios.minefactoryrenewed.blockentity.container.farming;
 
+import dev.onyxstudios.minefactoryrenewed.blockentity.container.MachineContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.PlanterBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.item.MachineUpgradeItem;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
@@ -14,7 +15,6 @@ public class PlanterContainer extends MachineContainer {
 
     public PlanterContainer(int id, Inventory inventory, PlanterBlockEntity planter) {
         super(ModBlockEntities.PLANTER_CONTAINER.get(), id, inventory, planter);
-        this.addSlot(new RangeUpgradeSlot(planter.getInventory(), 0, 152, 75));
 
         //Input Slots
         for (int i = 0; i < 4; i++) {
@@ -32,15 +32,12 @@ public class PlanterContainer extends MachineContainer {
     }
 
     @Override
-    public boolean stillValid(Player player) {
-        return true;
-    }
-
-    @Override
     public ItemStack quickMoveStack(Player player, int index) {
         Slot slot = this.slots.get(index);
 
         ItemStack itemStack = slot.getItem().copy();
+        //TODO: Rewrite, check if slots are from player inv, etc
+        boolean playerInv = slot.container == player.getInventory();
         if (slot.hasItem()) {
             if (itemStack.getItem() instanceof MachineUpgradeItem) {
                 if (index == 36) {

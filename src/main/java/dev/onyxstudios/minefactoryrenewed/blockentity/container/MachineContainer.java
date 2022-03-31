@@ -15,6 +15,8 @@ public abstract class MachineContainer extends AbstractContainerMenu {
     protected MachineContainer(@Nullable MenuType<?> menuType, int id, Inventory inventory, MachineBlockEntity blockEntity) {
         super(menuType, id);
         this.blockEntity = blockEntity;
+        if (blockEntity.getInventory() != null)
+            this.addSlot(new RangeUpgradeSlot(blockEntity.getInventory(), 0, 152, 75));
 
         //Player Slots
         for (int i = 0; i < 3; ++i) {

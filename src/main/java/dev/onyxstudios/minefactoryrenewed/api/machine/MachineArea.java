@@ -2,6 +2,7 @@ package dev.onyxstudios.minefactoryrenewed.api.machine;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,26 @@ public class MachineArea {
         this.upgradeRadius = upgradeRadius;
     }
 
+    public CompoundTag save() {
+        CompoundTag tag = new CompoundTag();
+        tag.putInt("facing", facing.ordinal());
+        tag.putInt("verticalRadius", verticalRange);
+        tag.putInt("upgradeRadius", upgradeRadius);
+
+        return tag;
+    }
+
+    public void load(CompoundTag tag) {
+        Direction direction = Direction.values()[tag.getInt("facing")];
+        if (direction != facing) {
+            facing = direction;
+            calculateArea();
+        }
+
+        verticalRange = tag.getInt("verticalRange");
+        upgradeRadius = tag.getInt("upgradeRadius");
+    }
+
     public void calculateArea() {
         area.clear();
         currentBlock = 0;
@@ -54,7 +75,8 @@ public class MachineArea {
             Direction right = facing.getClockWise();
 
             firstCorner = frontPos.relative(left, finalRadius);
-            secondCorner = frontPos.relative(right, finalRadius).relative(facing, finalRadius).above(verticalRange);
+            //Allow for proper radius in front
+            secondCorner = frontPos.relative(right, finalRadius).relative(facing, (radius + 1) + (upgradeRadius * 2)).above(verticalRange);
         }
 
         BlockPos.betweenClosedStream(firstCorner, secondCorner).map(BlockPos::immutable).collect(Collectors.toCollection(() -> area));
