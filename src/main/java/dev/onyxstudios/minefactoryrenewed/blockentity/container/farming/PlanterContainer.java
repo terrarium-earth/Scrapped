@@ -2,11 +2,10 @@ package dev.onyxstudios.minefactoryrenewed.blockentity.container.farming;
 
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.MachineContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.PlanterBlockEntity;
-import dev.onyxstudios.minefactoryrenewed.item.MachineUpgradeItem;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
+import dev.onyxstudios.minefactoryrenewed.util.InventoryUtils;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
@@ -33,41 +32,7 @@ public class PlanterContainer extends MachineContainer {
 
     @Override
     public ItemStack quickMoveStack(Player player, int index) {
-        Slot slot = this.slots.get(index);
-
-        ItemStack itemStack = slot.getItem().copy();
-        //TODO: Rewrite, check if slots are from player inv, etc
-        boolean playerInv = slot.container == player.getInventory();
-        if (slot.hasItem()) {
-            if (itemStack.getItem() instanceof MachineUpgradeItem) {
-                if (index == 36) {
-                    if (!moveItemStackTo(slot.getItem(), 0, 35, true))
-                        return ItemStack.EMPTY;
-                } else {
-                    if (!moveItemStackTo(slot.getItem(), 36, 37, true))
-                        return ItemStack.EMPTY;
-                }
-            } else if (index >= 53 && index <= 61) {
-                if (!moveItemStackTo(slot.getItem(), 3, 39, false))
-                    return ItemStack.EMPTY;
-            } else if (index >= 0 && index <= 35) {
-                if (!moveItemStackTo(slot.getItem(), 37, 52, true))
-                    return ItemStack.EMPTY;
-            } else if (index >= 37 && index <= 52) {
-                if (!moveItemStackTo(slot.getItem(), 0, 35, true))
-                    return ItemStack.EMPTY;
-            }
-
-            if (itemStack.isEmpty()) {
-                slot.set(ItemStack.EMPTY);
-            } else {
-                slot.setChanged();
-            }
-
-            slot.onTake(player, itemStack);
-        }
-
-        return itemStack;
+        return InventoryUtils.handleShiftClick(this, player, index);
     }
 
     private static class FilterSlot extends SlotItemHandler {
