@@ -166,6 +166,7 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
         this.setChanged();
     }
 
+    //TODO: Replace this, add boolean for upgradeSlot
     public void createInventory(int slots) {
         //Add one for upgrade slot which is always index = 0
         inventory = new ItemStackHandler(slots + 1) {

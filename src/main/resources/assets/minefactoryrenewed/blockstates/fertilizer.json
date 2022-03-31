@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "minefactoryrenewed:block/fertilizer" },
+    "facing=south": { "model": "minefactoryrenewed:block/fertilizer", "y": 180},
+    "facing=west":  { "model": "minefactoryrenewed:block/fertilizer", "y": 270 },
+    "facing=east":  { "model": "minefactoryrenewed:block/fertilizer", "y": 90 }
+  }
+}

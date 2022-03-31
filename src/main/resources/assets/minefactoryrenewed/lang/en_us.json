@@ -22,11 +22,13 @@
   "item.minefactoryrenewed.safari_net_launcher": "Safari Net Launcher",
   "item.minefactoryrenewed.wrench": "Utility Wrench",
   "item.minefactoryrenewed.sludge_bucket": "Sludge Bucket",
+  "item.minefactoryrenewed.industrial_fertilizer": "Industrial Fertilizer",
 
   "_comment3": "Blocks",
   "block.minefactoryrenewed.conveyor_belt": "Conveyor Belt",
   "block.minefactoryrenewed.planter": "Planter",
   "block.minefactoryrenewed.farmer": "Farmer",
+  "block.minefactoryrenewed.fertilizer": "Fertilizer",
   "block.minefactoryrenewed.sludge": "Sludge",
 
   "_comment4": "Entities",

@@ -15,9 +15,9 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModItems {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MinefactoryRenewed.MODID);
+
     public static final Item.Properties PROPERTIES = new Item.Properties().tab(MinefactoryRenewed.TAB);
-    private static final Item.Properties BUCKET_PROPS = new Item.Properties().craftRemainder(Items.BUCKET)
-            .stacksTo(1).tab(MinefactoryRenewed.TAB);
+    private static final Item.Properties BUCKET_PROPS = new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(MinefactoryRenewed.TAB);
 
     //Upgrades
     public static final RegistryObject<Item> IRON_UPGRADE = ITEMS.register("iron_upgrade", () -> new MachineUpgradeItem(1));
@@ -40,6 +40,6 @@ public class ModItems {
     public static final RegistryObject<Item> SAFARI_NET_LAUNCHER = ITEMS.register("safari_net_launcher", SafariNetLauncherItem::new);
 
     public static final RegistryObject<Item> WRENCH = ITEMS.register("wrench", WrenchItem::new);
-    public static final RegistryObject<Item> SLUDGE_BUCKET = ITEMS.register("sludge_bucket", () ->
-            new BucketItem(ModBlocks.SLUDGE, BUCKET_PROPS));
+    public static final RegistryObject<Item> SLUDGE_BUCKET = ITEMS.register("sludge_bucket", () -> new BucketItem(ModBlocks.SLUDGE, BUCKET_PROPS));
+    public static final RegistryObject<Item> INDUSTRIAL_FERTILIZER = ITEMS.register("industrial_fertilizer", () -> new Item(PROPERTIES));
 }

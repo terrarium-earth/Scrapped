@@ -63,7 +63,7 @@ public class PlanterBlockEntity extends MachineBlockEntity implements MenuProvid
     @Override
     public boolean run() {
         BlockPos workPos = getMachineArea().getNextBlock();
-        if (level != null && !level.isEmptyBlock(workPos))
+        if (level == null || !level.isEmptyBlock(workPos))
             return false;
 
         int slot = getFilterSlot(workPos);
