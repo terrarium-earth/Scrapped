@@ -98,6 +98,7 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, MachineBlockEntity blockEntity) {
+        //TODO Remove, only for testing with no generators...
         blockEntity.getEnergy().receiveEnergy(100, false);
         blockEntity.tickInternal();
     }
