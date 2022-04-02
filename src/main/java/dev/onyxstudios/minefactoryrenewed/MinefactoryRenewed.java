@@ -28,7 +28,7 @@ public class MinefactoryRenewed {
     public static CreativeModeTab TAB = new CreativeModeTab(MODID) {
         @Override
         public ItemStack makeIcon() {
-            return Items.FURNACE.getDefaultInstance();
+            return ModItems.IRON_UPGRADE.get().getDefaultInstance();
         }
     };
 
