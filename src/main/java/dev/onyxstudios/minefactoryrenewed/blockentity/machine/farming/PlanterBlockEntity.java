@@ -2,7 +2,7 @@ package dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming;
 
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.PlanterContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
-import dev.onyxstudios.minefactoryrenewed.data.PlantableManager;
+import dev.onyxstudios.minefactoryrenewed.data.PlantManager;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -73,9 +73,9 @@ public class PlanterBlockEntity extends MachineBlockEntity implements MenuProvid
             ItemStack stack = getInventory().getStackInSlot(i);
             Item seeds = stack.getItem();
 
-            if (!PlantableManager.getInstance().isPlant(stack) ||
+            if (!PlantManager.getInstance().isPlant(stack) ||
                     (!filterStack.isEmpty() && filterStack.getItem() != seeds) ||
-                    !PlantableManager.getInstance().canPlantSeeds(level, seeds, workPos)) continue;
+                    !PlantManager.getInstance().canPlantSeeds(level, seeds, workPos)) continue;
 
             level.setBlock(workPos, ((BlockItem) seeds).getBlock().defaultBlockState(), Block.UPDATE_CLIENTS);
             getInventory().extractItem(i, 1, false);

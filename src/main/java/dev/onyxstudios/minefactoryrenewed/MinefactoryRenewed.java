@@ -1,17 +1,16 @@
 package dev.onyxstudios.minefactoryrenewed;
 
 import dev.onyxstudios.minefactoryrenewed.client.ModClient;
-import dev.onyxstudios.minefactoryrenewed.data.PlantableManager;
+import dev.onyxstudios.minefactoryrenewed.data.PickableReloadListener;
+import dev.onyxstudios.minefactoryrenewed.data.PlantableReloadListener;
 import dev.onyxstudios.minefactoryrenewed.item.SafariNetItem;
 import dev.onyxstudios.minefactoryrenewed.network.ModPackets;
-import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
-import dev.onyxstudios.minefactoryrenewed.registry.ModBlocks;
-import dev.onyxstudios.minefactoryrenewed.registry.ModEntities;
-import dev.onyxstudios.minefactoryrenewed.registry.ModItems;
+import dev.onyxstudios.minefactoryrenewed.registry.*;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -39,7 +38,7 @@ public class MinefactoryRenewed {
         eventBus.addListener(this::initClient);
 
         MinecraftForge.EVENT_BUS.addListener(SafariNetItem::entityInteract);
-        MinecraftForge.EVENT_BUS.addListener(PlantableManager::reloadListenerEvent);
+        MinecraftForge.EVENT_BUS.addListener(this::reloadListenerEvent);
 
         ModItems.ITEMS.register(eventBus);
         ModEntities.ENTITIES.register(eventBus);
@@ -49,13 +48,21 @@ public class MinefactoryRenewed {
         ModBlocks.FLUIDS.register(eventBus);
         ModBlockEntities.BLOCK_ENTITIES.register(eventBus);
         ModBlockEntities.CONTAINERS.register(eventBus);
+
+        ModRecipes.RECIPES.register(eventBus);
     }
 
     private void init(FMLCommonSetupEvent event) {
         ModPackets.init();
+        event.enqueueWork(ModRecipes::init);
     }
 
     private void initClient(FMLClientSetupEvent event) {
         ModClient.init();
+    }
+
+    private void reloadListenerEvent(AddReloadListenerEvent event) {
+        event.addListener(new PlantableReloadListener());
+        event.addListener(new PickableReloadListener());
     }
 }

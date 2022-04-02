@@ -2,6 +2,7 @@ package dev.onyxstudios.minefactoryrenewed.client;
 
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.FarmerScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.FertilizerScreen;
+import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.FruitPickerScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.PlanterScreen;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
 import dev.onyxstudios.minefactoryrenewed.registry.ModEntities;
@@ -20,6 +21,7 @@ public class ModClient {
         MenuScreens.register(ModBlockEntities.PLANTER_CONTAINER.get(), PlanterScreen::new);
         MenuScreens.register(ModBlockEntities.FARMER_CONTAINER.get(), FarmerScreen::new);
         MenuScreens.register(ModBlockEntities.FERTILIZER_CONTAINER.get(), FertilizerScreen::new);
+        MenuScreens.register(ModBlockEntities.FRUIT_PICKER_CONTAINER.get(), FruitPickerScreen::new);
     }
 
     private static void initEntities() {

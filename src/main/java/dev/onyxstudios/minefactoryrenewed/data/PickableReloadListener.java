@@ -5,7 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.mojang.serialization.JsonOps;
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
-import dev.onyxstudios.minefactoryrenewed.api.machine.Plantable;
+import dev.onyxstudios.minefactoryrenewed.api.machine.Pickable;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
@@ -13,28 +13,28 @@ import net.minecraft.util.profiling.ProfilerFiller;
 
 import java.util.Map;
 
-public class PlantableReloadListener extends SimpleJsonResourceReloadListener {
+public class PickableReloadListener extends SimpleJsonResourceReloadListener {
 
     private static final Gson GSON = new GsonBuilder().create();
-    private static final String FOLDER_ID = "plantables";
+    private static final String FOLDER_ID = "pickables";
 
-    public PlantableReloadListener() {
+    public PickableReloadListener() {
         super(GSON, FOLDER_ID);
     }
 
     @Override
     public void apply(Map<ResourceLocation, JsonElement> elements, ResourceManager manager, ProfilerFiller filter) {
-        PlantManager.getInstance().clear();
+        PickableManager.getInstance().clear();
 
         for (Map.Entry<ResourceLocation, JsonElement> entry : elements.entrySet()) {
             ResourceLocation id = entry.getKey();
 
             if (!id.getNamespace().equals(MinefactoryRenewed.MODID)) continue;
-            Plantable plantable = Plantable.CODEC.parse(JsonOps.INSTANCE, entry.getValue().getAsJsonObject())
+            Pickable pickable = Pickable.CODEC.parse(JsonOps.INSTANCE, entry.getValue().getAsJsonObject())
                     .getOrThrow(false, s ->
-                            MinefactoryRenewed.LOGGER.error("Unable to load plantable data for {}, \n{}", id.toString(), s));
+                            MinefactoryRenewed.LOGGER.error("Unable to load pickable data for {}, \n{}", id.toString(), s));
 
-            PlantManager.getInstance().addEntry(plantable);
+            PickableManager.getInstance().addEntry(pickable);
         }
     }
 }

@@ -22,7 +22,6 @@ public class FertilizerBlockEntity extends MachineBlockEntity implements MenuPro
 
     public FertilizerBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.FERTILIZER_BLOCK_ENTITY.get(), pos, state);
-
         this.createInventory(9);
         this.createEnergy(32000, 960);
         this.setMaxWorkTime(2);
@@ -44,6 +43,7 @@ public class FertilizerBlockEntity extends MachineBlockEntity implements MenuPro
             if (slot >= 0 && bonemealableBlock.isValidBonemealTarget(level, workPos, state, false)) {
                 bonemealableBlock.performBonemeal((ServerLevel) level, level.getRandom(), workPos, state);
                 getInventory().extractItem(slot, 1, false);
+                useEnergy();
                 return true;
             }
         }

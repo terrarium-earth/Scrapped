@@ -9,15 +9,14 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.event.AddReloadListenerEvent;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class PlantableManager {
+public class PlantManager {
 
-    private static final PlantableManager INSTANCE = new PlantableManager();
+    private static final PlantManager INSTANCE = new PlantManager();
     private final Map<Item, Plantable> plantables = new HashMap<>();
 
     public boolean canPlantSeeds(Level level, Item plant, BlockPos pos) {
@@ -68,11 +67,7 @@ public class PlantableManager {
         plantables.clear();
     }
 
-    public static void reloadListenerEvent(AddReloadListenerEvent event) {
-        event.addListener(new PlantableReloadListener());
-    }
-
-    public static PlantableManager getInstance() {
+    public static PlantManager getInstance() {
         return INSTANCE;
     }
 }

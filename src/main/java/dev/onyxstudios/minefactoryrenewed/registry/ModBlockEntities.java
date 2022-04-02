@@ -3,9 +3,11 @@ package dev.onyxstudios.minefactoryrenewed.registry;
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FarmerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FertilizerContainer;
+import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FruitPickerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.PlanterContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FarmerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FertilizerBlockEntity;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FruitPickerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.PlanterBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.inventory.MenuType;
@@ -37,6 +39,14 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(FertilizerBlockEntity::new, ModBlocks.FERTILIZER.get())
                             .build(null));
 
+    public static final RegistryObject<BlockEntityType<FruitPickerBlockEntity>> FRUIT_PICKER_BLOCK_ENTITY =
+            BLOCK_ENTITIES.register("fruit_picker_block_entity", () ->
+                    BlockEntityType.Builder.of(FruitPickerBlockEntity::new, ModBlocks.FRUIT_PICKER.get())
+                            .build(null));
+
+    /**
+     * Containers
+     */
     public static final RegistryObject<MenuType<PlanterContainer>> PLANTER_CONTAINER =
             CONTAINERS.register("planter_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
                         BlockPos pos = data.readBlockPos();
@@ -58,6 +68,14 @@ public class ModBlockEntities {
                         BlockPos pos = data.readBlockPos();
                         FertilizerBlockEntity fertilizer = (FertilizerBlockEntity) inv.player.level.getBlockEntity(pos);
                         return new FertilizerContainer(windowId, inv, fertilizer);
+                    })
+            );
+
+    public static final RegistryObject<MenuType<FruitPickerContainer>> FRUIT_PICKER_CONTAINER =
+            CONTAINERS.register("fruit_picker_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                        BlockPos pos = data.readBlockPos();
+                        FruitPickerBlockEntity fruitPicker = (FruitPickerBlockEntity) inv.player.level.getBlockEntity(pos);
+                        return new FruitPickerContainer(windowId, inv, fruitPicker);
                     })
             );
 }
