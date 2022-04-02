@@ -1,6 +1,6 @@
 package dev.onyxstudios.minefactoryrenewed.data;
 
-import dev.onyxstudios.minefactoryrenewed.api.machine.Plantable;
+import dev.onyxstudios.minefactoryrenewed.api.item.Plantable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;

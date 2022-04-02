@@ -1,6 +1,6 @@
 package dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming;
 
-import dev.onyxstudios.minefactoryrenewed.api.machine.Pickable;
+import dev.onyxstudios.minefactoryrenewed.api.item.Pickable;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FruitPickerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.data.PickableManager;

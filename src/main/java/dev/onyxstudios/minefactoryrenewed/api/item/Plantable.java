@@ -1,4 +1,4 @@
-package dev.onyxstudios.minefactoryrenewed.api.machine;
+package dev.onyxstudios.minefactoryrenewed.api.item;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

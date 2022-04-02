@@ -1,10 +1,9 @@
 package dev.onyxstudios.minefactoryrenewed.data;
 
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
-import dev.onyxstudios.minefactoryrenewed.api.machine.Pickable;
+import dev.onyxstudios.minefactoryrenewed.api.item.Pickable;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 
 import java.util.HashMap;
