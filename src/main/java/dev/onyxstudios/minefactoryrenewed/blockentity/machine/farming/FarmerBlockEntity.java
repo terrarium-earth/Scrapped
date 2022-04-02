@@ -170,11 +170,7 @@ public class FarmerBlockEntity extends MachineBlockEntity implements MenuProvide
         serverLevel.destroyBlock(pos, false);
 
         getTank().fill(new FluidStack(ModBlocks.SLUDGE.get(), SLUDGE_AMOUNT), IFluidHandler.FluidAction.EXECUTE);
-        drops.forEach(stack -> {
-            ItemEntity itemEntity = new ItemEntity(serverLevel, getBlockPos().getX(), getBlockPos().getY() + 1,
-                    getBlockPos().getZ(), stack.copy());
-            serverLevel.addFreshEntity(itemEntity);
-        });
+        insertOrDropItems(drops);
     }
 
     @Override

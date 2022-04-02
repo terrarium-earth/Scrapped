@@ -1,6 +1,7 @@
 package dev.onyxstudios.minefactoryrenewed.util;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.Containers;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -8,11 +9,18 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.List;
 
 public class InventoryUtils {
+
+    //Cache direction array
+    private static final Direction[] VALUES = Direction.values();
 
     public static void dropInventoryItems(Level level, BlockPos pos, ItemStackHandler inventory) {
         if (inventory == null) return;
@@ -22,6 +30,35 @@ public class InventoryUtils {
         }
     }
 
+    public static ItemStack tryInsertItem(Level level, IItemHandler inventory, ItemStack stack) {
+        if (inventory == null) return stack;
+
+        ItemStack result;
+        for (int i = 0; i < inventory.getSlots(); i++) {
+            ItemStack invStack = inventory.getStackInSlot(i);
+            if (invStack.isEmpty() || invStack.getItem() == stack.getItem()) {
+                result = inventory.insertItem(i, stack, false);
+
+                if (result.isEmpty())
+                    return result;
+            }
+        }
+
+        return stack;
+    }
+
+    public static LazyOptional<IItemHandler> getNearbyInventory(Level level, BlockPos pos) {
+        for (Direction direction : VALUES) {
+            BlockPos offsetPos = pos.relative(direction);
+            BlockEntity blockEntity = level.getBlockEntity(offsetPos);
+
+            if (blockEntity != null) {
+                return blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY);
+            }
+        }
+
+        return LazyOptional.empty();
+    }
 
     public static ItemStack handleShiftClick(AbstractContainerMenu container, Player player, int slotIndex) {
         List<Slot> slots = container.slots;

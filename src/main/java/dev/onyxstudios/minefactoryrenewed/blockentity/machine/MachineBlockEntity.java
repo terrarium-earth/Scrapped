@@ -4,9 +4,11 @@ import dev.onyxstudios.minefactoryrenewed.api.energy.MFREnergyStorage;
 import dev.onyxstudios.minefactoryrenewed.api.machine.MachineArea;
 import dev.onyxstudios.minefactoryrenewed.blockentity.BaseBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.item.MachineUpgradeItem;
+import dev.onyxstudios.minefactoryrenewed.util.InventoryUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -23,6 +25,8 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public abstract class MachineBlockEntity extends BaseBlockEntity {
 
@@ -202,6 +206,27 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
         this.setChanged();
     }
 
+    protected void insertOrDropItems(List<ItemStack> drops) {
+        LazyOptional<IItemHandler> optional = InventoryUtils.getNearbyInventory(level, getBlockPos());
+
+        if (!optional.isPresent()) {
+            drops.forEach(this::dropItem);
+            return;
+        }
+
+        optional.ifPresent(inventory -> drops.forEach(stack -> {
+            ItemStack remaining = InventoryUtils.tryInsertItem(level, inventory, stack);
+
+            if (!remaining.isEmpty())
+                dropItem(remaining);
+        }));
+    }
+
+    private void dropItem(ItemStack stack) {
+        ItemEntity itemEntity = new ItemEntity(level, getBlockPos().getX() + 0.5,
+                getBlockPos().getY() + 1.25, getBlockPos().getZ() + 0.5, stack);
+        level.addFreshEntity(itemEntity);
+    }
 
     public void setEnergyCost(int energyCost) {
         this.energyCost = energyCost;

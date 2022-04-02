@@ -11,7 +11,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.MenuProvider;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -50,9 +49,9 @@ public class FruitPickerBlockEntity extends MachineBlockEntity implements MenuPr
         ServerLevel serverLevel = (ServerLevel) level;
         BlockState state = level.getBlockState(pos);
 
-        if (PickableManager.getInstance().isPickable(state.getBlock()) &&
-                state.getBlock() instanceof BonemealableBlock block) {
-            if (block.isValidBonemealTarget(level, pos, state, false)) return false;
+        if (PickableManager.getInstance().isPickable(state.getBlock())) {
+            if (state.getBlock() instanceof BonemealableBlock block &&
+                    block.isValidBonemealTarget(level, pos, state, false)) return false;
 
             Pickable pickable = PickableManager.getInstance().getPickable(state.getBlock());
             BlockState newState = Blocks.AIR.defaultBlockState();
@@ -83,11 +82,7 @@ public class FruitPickerBlockEntity extends MachineBlockEntity implements MenuPr
                 .withOptionalParameter(LootContextParams.TOOL, Items.AIR.getDefaultInstance());
         List<ItemStack> drops = state.getDrops(builder);
 
-        drops.forEach(stack -> {
-            ItemEntity itemEntity = new ItemEntity(serverLevel, getBlockPos().getX() + 0.5,
-                    getBlockPos().getY() + 1, getBlockPos().getZ() + 0.5, stack.copy());
-            serverLevel.addFreshEntity(itemEntity);
-        });
+        insertOrDropItems(drops);
     }
 
     @Override
