@@ -13,7 +13,7 @@ import net.minecraft.world.level.material.Fluid;
 public class ModTags {
 
     public static TagKey<Fluid> SLUDGE = createModFluidTag("sludge");
-    public static TagKey<Block> HARVESTABLES = createModBlockTag("harvestables");
+    public static TagKey<Fluid> MEAT = createModFluidTag("meat");
 
     public static TagKey<Item> createModItemTag(String name) {
         return ItemTags.create(new ResourceLocation(MinefactoryRenewed.MODID, name));

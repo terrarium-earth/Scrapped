@@ -3,6 +3,7 @@ package dev.onyxstudios.minefactoryrenewed.registry;
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
 import dev.onyxstudios.minefactoryrenewed.block.ConveyorBeltBlock;
 import dev.onyxstudios.minefactoryrenewed.block.fluid.BaseFluidBlock;
+import dev.onyxstudios.minefactoryrenewed.block.fluid.MeatFluid;
 import dev.onyxstudios.minefactoryrenewed.block.fluid.SludgeFluid;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FarmerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FertilizerBlock;
@@ -24,7 +25,7 @@ public class ModBlocks {
     public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, MinefactoryRenewed.MODID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MinefactoryRenewed.MODID);
 
-    private static final BlockBehaviour.Properties SLUDGE_FLUID_PROPS = BlockBehaviour.Properties.of(Material.WATER)
+    private static final BlockBehaviour.Properties BASE_FLUID_PROPS = BlockBehaviour.Properties.of(Material.WATER)
             .randomTicks().noDrops();
 
     public static final RegistryObject<Block> CONVEYOR_BELT = BLOCKS.register("conveyor_belt", ConveyorBeltBlock::new);
@@ -50,5 +51,10 @@ public class ModBlocks {
     public static final RegistryObject<SludgeFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);
     public static final RegistryObject<SludgeFluid> SLUDGE_FLOWING = FLUIDS.register("sludge_flowing", SludgeFluid.Flowing::new);
     public static final RegistryObject<BaseFluidBlock> SLUDGE_BLOCK = BLOCKS.register("sludge", () ->
-            new BaseFluidBlock(SLUDGE::get, SLUDGE_FLUID_PROPS));
+            new BaseFluidBlock(SLUDGE::get, BASE_FLUID_PROPS));
+
+    public static final RegistryObject<MeatFluid> MEAT = FLUIDS.register("meat", MeatFluid.Source::new);
+    public static final RegistryObject<MeatFluid> MEAT_FLOWING = FLUIDS.register("meat_flowing", MeatFluid.Flowing::new);
+    public static final RegistryObject<BaseFluidBlock> MEAT_FLUID_BLOCK = BLOCKS.register("meat", () ->
+            new BaseFluidBlock(MEAT::get, BASE_FLUID_PROPS));
 }

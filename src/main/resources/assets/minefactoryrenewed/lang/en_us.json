@@ -22,6 +22,7 @@
   "item.minefactoryrenewed.safari_net_launcher": "Safari Net Launcher",
   "item.minefactoryrenewed.wrench": "Utility Wrench",
   "item.minefactoryrenewed.sludge_bucket": "Sludge Bucket",
+  "item.minefactoryrenewed.meat_bucket": "Meat Bucket",
   "item.minefactoryrenewed.industrial_fertilizer": "Industrial Fertilizer",
 
   "_comment3": "Blocks",
@@ -31,6 +32,7 @@
   "block.minefactoryrenewed.fertilizer": "Fertilizer",
   "block.minefactoryrenewed.fruit_picker": "Fruit Picker",
   "block.minefactoryrenewed.sludge": "Sludge",
+  "block.minefactoryrenewed.meat": "Meat",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",

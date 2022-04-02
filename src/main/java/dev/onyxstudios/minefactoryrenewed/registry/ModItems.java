@@ -41,5 +41,6 @@ public class ModItems {
 
     public static final RegistryObject<Item> WRENCH = ITEMS.register("wrench", WrenchItem::new);
     public static final RegistryObject<Item> SLUDGE_BUCKET = ITEMS.register("sludge_bucket", () -> new BucketItem(ModBlocks.SLUDGE, BUCKET_PROPS));
+    public static final RegistryObject<Item> MEAT_BUCKET = ITEMS.register("meat_bucket", () -> new BucketItem(ModBlocks.MEAT, BUCKET_PROPS));
     public static final RegistryObject<Item> INDUSTRIAL_FERTILIZER = ITEMS.register("industrial_fertilizer", () -> new Item(PROPERTIES));
 }
