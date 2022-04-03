@@ -2,6 +2,7 @@ package dev.onyxstudios.minefactoryrenewed.registry;
 
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
 import dev.onyxstudios.minefactoryrenewed.block.ConveyorBeltBlock;
+import dev.onyxstudios.minefactoryrenewed.block.MeatBlock;
 import dev.onyxstudios.minefactoryrenewed.block.fluid.BaseFluidBlock;
 import dev.onyxstudios.minefactoryrenewed.block.fluid.MeatFluid;
 import dev.onyxstudios.minefactoryrenewed.block.fluid.SludgeFluid;
@@ -41,12 +42,20 @@ public class ModBlocks {
             new BlockItem(FARMER.get(), ModItems.PROPERTIES));
 
     public static final RegistryObject<Block> FERTILIZER = BLOCKS.register("fertilizer", FertilizerBlock::new);
-    public static final RegistryObject<BlockItem> FERTILIZER_BLOCK = ITEMS.register("fertilizer", () ->
+    public static final RegistryObject<BlockItem> FERTILIZER_ITEM = ITEMS.register("fertilizer", () ->
             new BlockItem(FERTILIZER.get(), ModItems.PROPERTIES));
 
     public static final RegistryObject<Block> FRUIT_PICKER = BLOCKS.register("fruit_picker", FruitPickerBlock::new);
     public static final RegistryObject<BlockItem> FRUIT_PICKER_ITEM = ITEMS.register("fruit_picker", () ->
             new BlockItem(FRUIT_PICKER.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> RAW_MEAT_BLOCK = BLOCKS.register("raw_meat_block", MeatBlock::new);
+    public static final RegistryObject<BlockItem> RAW_MEAT_BLOCK_ITEM = ITEMS.register("raw_meat_block", () ->
+            new BlockItem(RAW_MEAT_BLOCK.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> COOKED_MEAT_BLOCK = BLOCKS.register("cooked_meat_block", MeatBlock::new);
+    public static final RegistryObject<BlockItem> COOKED_MEAT_BLOCK_ITEM = ITEMS.register("cooked_meat_block", () ->
+            new BlockItem(COOKED_MEAT_BLOCK.get(), ModItems.PROPERTIES));
 
     public static final RegistryObject<SludgeFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);
     public static final RegistryObject<SludgeFluid> SLUDGE_FLOWING = FLUIDS.register("sludge_flowing", SludgeFluid.Flowing::new);

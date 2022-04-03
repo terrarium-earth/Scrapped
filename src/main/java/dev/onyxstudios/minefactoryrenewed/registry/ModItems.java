@@ -1,10 +1,7 @@
 package dev.onyxstudios.minefactoryrenewed.registry;
 
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
-import dev.onyxstudios.minefactoryrenewed.item.MachineUpgradeItem;
-import dev.onyxstudios.minefactoryrenewed.item.SafariNetItem;
-import dev.onyxstudios.minefactoryrenewed.item.SafariNetLauncherItem;
-import dev.onyxstudios.minefactoryrenewed.item.WrenchItem;
+import dev.onyxstudios.minefactoryrenewed.item.*;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -43,4 +40,8 @@ public class ModItems {
     public static final RegistryObject<Item> SLUDGE_BUCKET = ITEMS.register("sludge_bucket", () -> new BucketItem(ModBlocks.SLUDGE, BUCKET_PROPS));
     public static final RegistryObject<Item> MEAT_BUCKET = ITEMS.register("meat_bucket", () -> new BucketItem(ModBlocks.MEAT, BUCKET_PROPS));
     public static final RegistryObject<Item> INDUSTRIAL_FERTILIZER = ITEMS.register("industrial_fertilizer", () -> new Item(PROPERTIES));
+
+    public static final RegistryObject<Item> RAW_MEAT_INGOT = ITEMS.register("raw_meat_ingot", () -> new MeatIngotItem(4, 0.2f));
+    public static final RegistryObject<Item> RAW_MEAT_NUGGET = ITEMS.register("raw_meat_nugget", () -> new MeatIngotItem(1, 0.1f));
+    public static final RegistryObject<Item> COOKED_MEAT_INGOT = ITEMS.register("cooked_meat_ingot", () -> new MeatIngotItem(10, 1));
 }
