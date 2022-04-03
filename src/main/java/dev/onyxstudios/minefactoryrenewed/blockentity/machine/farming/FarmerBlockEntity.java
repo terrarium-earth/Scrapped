@@ -13,7 +13,6 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.MenuProvider;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -114,8 +113,8 @@ public class FarmerBlockEntity extends MachineBlockEntity implements MenuProvide
             }
 
             run = true;
-        } else if ((state.getBlock() instanceof MushroomBlock && smallShrooms) ||
-                state.getBlock() instanceof HugeMushroomBlock) {
+        } else if (((state.getBlock() instanceof MushroomBlock || state.getBlock() instanceof FungusBlock)
+                && smallShrooms) || state.getBlock() instanceof HugeMushroomBlock) {
             run = true;
         } else if (state.getBlock() instanceof IForgeShearable) {
             dropItems = shearLeaves;
