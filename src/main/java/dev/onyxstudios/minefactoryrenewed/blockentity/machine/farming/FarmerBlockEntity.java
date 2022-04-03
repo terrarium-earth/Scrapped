@@ -103,6 +103,7 @@ public class FarmerBlockEntity extends MachineBlockEntity implements MenuProvide
             return false;
 
         boolean run = false;
+        boolean dropItems = true;
 
         if (state.is(BlockTags.LOGS)) {
             if (state.is(Blocks.JUNGLE_LOG) && !jungleWood) return false;
@@ -116,7 +117,14 @@ public class FarmerBlockEntity extends MachineBlockEntity implements MenuProvide
         } else if ((state.getBlock() instanceof MushroomBlock && smallShrooms) ||
                 state.getBlock() instanceof HugeMushroomBlock) {
             run = true;
-        } else if (state.getBlock() instanceof IForgeShearable && shearLeaves) {
+        } else if (state.getBlock() instanceof IForgeShearable) {
+            dropItems = shearLeaves;
+            if (!fromTree) {
+                currentTreeParts.clear();
+                findTreeParts(serverLevel, workPos, null);
+                currentTreeParts.sort(Comparator.comparingInt(Vec3i::getY));
+            }
+
             run = true;
         } else if (state.getBlock() instanceof IPlantable) {
             if (state.is(Blocks.CACTUS) || state.is(Blocks.SUGAR_CANE)) {
@@ -132,7 +140,7 @@ public class FarmerBlockEntity extends MachineBlockEntity implements MenuProvide
         }
 
         if (run) {
-            harvestBlock(serverLevel, state, workPos);
+            harvestBlock(serverLevel, state, workPos, dropItems);
             return true;
         }
 
@@ -159,7 +167,7 @@ public class FarmerBlockEntity extends MachineBlockEntity implements MenuProvide
         }
     }
 
-    private void harvestBlock(ServerLevel serverLevel, BlockState state, BlockPos pos) {
+    private void harvestBlock(ServerLevel serverLevel, BlockState state, BlockPos pos, boolean dropItems) {
         LootContext.Builder builder = new LootContext.Builder(serverLevel)
                 .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
                 .withParameter(LootContextParams.BLOCK_STATE, state)
@@ -170,7 +178,8 @@ public class FarmerBlockEntity extends MachineBlockEntity implements MenuProvide
         serverLevel.destroyBlock(pos, false);
 
         getTank().fill(new FluidStack(ModBlocks.SLUDGE.get(), SLUDGE_AMOUNT), IFluidHandler.FluidAction.EXECUTE);
-        insertOrDropItems(drops);
+        if (dropItems)
+            insertOrDropItems(drops);
     }
 
     @Override
