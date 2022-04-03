@@ -31,7 +31,7 @@ public class FruitPickerBlockEntity extends MachineBlockEntity implements MenuPr
 
     public FruitPickerBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.FRUIT_PICKER_BLOCK_ENTITY.get(), pos, state);
-        this.createInventory(0);
+        this.createInventory();
         this.createEnergy(16000, 320);
         this.setMaxWorkTime(2);
         this.setMaxIdleTime(10);

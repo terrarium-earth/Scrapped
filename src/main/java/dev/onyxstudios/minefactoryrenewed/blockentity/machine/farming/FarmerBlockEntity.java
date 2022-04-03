@@ -49,7 +49,7 @@ public class FarmerBlockEntity extends MachineBlockEntity implements MenuProvide
 
     public FarmerBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.FARMER_BLOCK_ENTITY.get(), pos, state);
-        this.createInventory(0);
+        this.createInventory();
         this.createEnergy(16000, 240);
         this.createFluid(FluidAttributes.BUCKET_VOLUME * 10, new FluidStack(ModBlocks.SLUDGE.get(), 1000));
         this.setMaxWorkTime(2);
