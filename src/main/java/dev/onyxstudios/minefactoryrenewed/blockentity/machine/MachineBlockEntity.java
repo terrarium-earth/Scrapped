@@ -171,15 +171,22 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
         this.setChanged();
     }
 
-    //TODO: Replace this, add boolean for upgradeSlot
+    public void createInventory() {
+        this.createInventory(0, true);
+    }
+
     public void createInventory(int slots) {
-        //Add one for upgrade slot which is always index = 0
-        inventory = new ItemStackHandler(slots + 1) {
+        this.createInventory(slots, true);
+    }
+
+    //TODO: Replace this, add boolean for upgradeSlot
+    public void createInventory(int slots, boolean upgradeSlot) {
+        inventory = new ItemStackHandler(slots + (upgradeSlot ? 1 : 0)) {
             @Override
             protected void onContentsChanged(int slot) {
                 super.onContentsChanged(slot);
                 //Upgrade slot
-                if (slot == 0) {
+                if (slot == 0 && upgradeSlot) {
                     MachineBlockEntity.this.updateRange();
                 }
 
@@ -188,7 +195,8 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
 
             @Override
             public boolean isItemValid(int slot, @NotNull ItemStack stack) {
-                return slot == 0 ? stack.getItem() instanceof MachineUpgradeItem : super.isItemValid(slot, stack);
+                return slot == 0 && upgradeSlot ? stack.getItem() instanceof MachineUpgradeItem :
+                        super.isItemValid(slot, stack);
             }
         };
         inventoryHandler = LazyOptional.of(() -> inventory);
