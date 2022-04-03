@@ -50,6 +50,7 @@ public class MinefactoryRenewed {
         ModBlockEntities.CONTAINERS.register(eventBus);
 
         ModRecipes.RECIPES.register(eventBus);
+        eventBus.addListener(ModEntities::attributeEvent);
     }
 
     private void init(FMLCommonSetupEvent event) {

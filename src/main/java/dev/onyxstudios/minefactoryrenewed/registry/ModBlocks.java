@@ -3,9 +3,8 @@ package dev.onyxstudios.minefactoryrenewed.registry;
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
 import dev.onyxstudios.minefactoryrenewed.block.ConveyorBeltBlock;
 import dev.onyxstudios.minefactoryrenewed.block.MeatBlock;
-import dev.onyxstudios.minefactoryrenewed.block.fluid.BaseFluidBlock;
-import dev.onyxstudios.minefactoryrenewed.block.fluid.MeatFluid;
-import dev.onyxstudios.minefactoryrenewed.block.fluid.SludgeFluid;
+import dev.onyxstudios.minefactoryrenewed.block.PinkSlimeBlock;
+import dev.onyxstudios.minefactoryrenewed.block.fluid.*;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FarmerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FertilizerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FruitPickerBlock;
@@ -57,6 +56,10 @@ public class ModBlocks {
     public static final RegistryObject<BlockItem> COOKED_MEAT_BLOCK_ITEM = ITEMS.register("cooked_meat_block", () ->
             new BlockItem(COOKED_MEAT_BLOCK.get(), ModItems.PROPERTIES));
 
+    public static final RegistryObject<Block> PINK_SLIME_BLOCK = BLOCKS.register("pink_slime_block", PinkSlimeBlock::new);
+    public static final RegistryObject<BlockItem> PINK_SLIME_BLOCK_ITEM = ITEMS.register("pink_slime_block", () ->
+            new BlockItem(PINK_SLIME_BLOCK.get(), ModItems.PROPERTIES));
+
     public static final RegistryObject<SludgeFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);
     public static final RegistryObject<SludgeFluid> SLUDGE_FLOWING = FLUIDS.register("sludge_flowing", SludgeFluid.Flowing::new);
     public static final RegistryObject<BaseFluidBlock> SLUDGE_BLOCK = BLOCKS.register("sludge", () ->
@@ -66,4 +69,9 @@ public class ModBlocks {
     public static final RegistryObject<MeatFluid> MEAT_FLOWING = FLUIDS.register("meat_flowing", MeatFluid.Flowing::new);
     public static final RegistryObject<BaseFluidBlock> MEAT_FLUID_BLOCK = BLOCKS.register("meat", () ->
             new BaseFluidBlock(MEAT::get, BASE_FLUID_PROPS));
+
+    public static final RegistryObject<PinkSlimeFluid> PINK_SLIME = FLUIDS.register("pink_slime", PinkSlimeFluid.Source::new);
+    public static final RegistryObject<PinkSlimeFluid> PINK_SLIME_FLOWING = FLUIDS.register("pink_slime_flowing", PinkSlimeFluid.Flowing::new);
+    public static final RegistryObject<BaseFluidBlock> PINK_SLIME_FLUID_BLOCK = BLOCKS.register("pink_slime", () ->
+            new PinkSlimeFluidBlock(PINK_SLIME::get, BASE_FLUID_PROPS));
 }

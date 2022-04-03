@@ -14,6 +14,7 @@ public class ModTags {
 
     public static TagKey<Fluid> SLUDGE = createModFluidTag("sludge");
     public static TagKey<Fluid> MEAT = createModFluidTag("meat");
+    public static TagKey<Fluid> PINK_SLIME = createModFluidTag("pink_slime");
 
     public static TagKey<Item> createModItemTag(String name) {
         return ItemTags.create(new ResourceLocation(MinefactoryRenewed.MODID, name));

@@ -38,10 +38,14 @@ public class ModItems {
 
     public static final RegistryObject<Item> WRENCH = ITEMS.register("wrench", WrenchItem::new);
     public static final RegistryObject<Item> SLUDGE_BUCKET = ITEMS.register("sludge_bucket", () -> new BucketItem(ModBlocks.SLUDGE, BUCKET_PROPS));
-    public static final RegistryObject<Item> MEAT_BUCKET = ITEMS.register("meat_bucket", () -> new BucketItem(ModBlocks.MEAT, BUCKET_PROPS));
     public static final RegistryObject<Item> INDUSTRIAL_FERTILIZER = ITEMS.register("industrial_fertilizer", () -> new Item(PROPERTIES));
 
+    public static final RegistryObject<Item> MEAT_BUCKET = ITEMS.register("meat_bucket", () -> new BucketItem(ModBlocks.MEAT, BUCKET_PROPS));
     public static final RegistryObject<Item> RAW_MEAT_INGOT = ITEMS.register("raw_meat_ingot", () -> new MeatIngotItem(4, 0.2f));
     public static final RegistryObject<Item> RAW_MEAT_NUGGET = ITEMS.register("raw_meat_nugget", () -> new MeatIngotItem(1, 0.1f));
     public static final RegistryObject<Item> COOKED_MEAT_INGOT = ITEMS.register("cooked_meat_ingot", () -> new MeatIngotItem(10, 1));
+
+    public static final RegistryObject<Item> PINK_SLIME_BUCKET = ITEMS.register("pink_slime_bucket", () -> new BucketItem(ModBlocks.PINK_SLIME, BUCKET_PROPS));
+    public static final RegistryObject<Item> PINK_SLIME_BALL = ITEMS.register("pink_slime_ball", () -> new Item(PROPERTIES));
+    public static final RegistryObject<Item> PINK_SLIME_CRYSTAL = ITEMS.register("pink_slime_crystal", () -> new Item(PROPERTIES));
 }
