@@ -3,6 +3,7 @@ package dev.onyxstudios.minefactoryrenewed.api.machine;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.phys.AABB;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ public class MachineArea {
 
     private final List<BlockPos> area = new ArrayList<>();
     private BlockPos originOffset = new BlockPos(0, 0, 0);
+    private AABB aabb;
 
     private final BlockPos origin;
     private Direction facing;
@@ -80,6 +82,7 @@ public class MachineArea {
         }
 
         BlockPos.betweenClosedStream(firstCorner, secondCorner).map(BlockPos::immutable).collect(Collectors.toCollection(() -> area));
+        aabb = new AABB(firstCorner, secondCorner).inflate(1);
     }
 
     public void setOriginOffset(int x, int y, int z) {
@@ -116,6 +119,10 @@ public class MachineArea {
 
     public List<BlockPos> getArea() {
         return area;
+    }
+
+    public AABB getAabb() {
+        return aabb;
     }
 
     public int getRadius() {

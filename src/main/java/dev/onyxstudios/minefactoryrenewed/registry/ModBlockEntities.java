@@ -5,10 +5,12 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FarmerCo
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FertilizerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FruitPickerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.PlanterContainer;
+import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.SlaughterhouseContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FarmerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FertilizerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FruitPickerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.PlanterBlockEntity;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.mobs.SlaughterhouseBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -44,6 +46,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(FruitPickerBlockEntity::new, ModBlocks.FRUIT_PICKER.get())
                             .build(null));
 
+    public static final RegistryObject<BlockEntityType<SlaughterhouseBlockEntity>> SLAUGHTERHOUSE_BLOCK_ENTITY =
+            BLOCK_ENTITIES.register("slaughterhouse_block_entity", () ->
+                    BlockEntityType.Builder.of(SlaughterhouseBlockEntity::new, ModBlocks.SLAUGHTERHOUSE.get())
+                            .build(null));
+
     /**
      * Containers
      */
@@ -76,6 +83,15 @@ public class ModBlockEntities {
                         BlockPos pos = data.readBlockPos();
                         FruitPickerBlockEntity fruitPicker = (FruitPickerBlockEntity) inv.player.level.getBlockEntity(pos);
                         return new FruitPickerContainer(windowId, inv, fruitPicker);
+                    })
+            );
+
+    public static final RegistryObject<MenuType<SlaughterhouseContainer>> SLAUGHTERHOUSE_CONTAINER =
+            CONTAINERS.register("slaughterhouse_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                        BlockPos pos = data.readBlockPos();
+                        SlaughterhouseBlockEntity slaughterhouse =
+                                (SlaughterhouseBlockEntity) inv.player.level.getBlockEntity(pos);
+                        return new SlaughterhouseContainer(windowId, inv, slaughterhouse);
                     })
             );
 }

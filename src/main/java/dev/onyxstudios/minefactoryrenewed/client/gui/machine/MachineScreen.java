@@ -144,17 +144,21 @@ public abstract class MachineScreen<T extends MachineContainer> extends Abstract
         }
     }
 
-    private void renderFluid(PoseStack poseStack, FluidTank tank) {
-        int i = tank.getFluidAmount() * fluidBarHeight / tank.getCapacity();
+    public void renderFluid(PoseStack poseStack, FluidTank tank) {
+        renderFluid(poseStack, tank, fluidBarX, fluidBarY, fluidBarWidth, fluidBarHeight);
+    }
+
+    public void renderFluid(PoseStack poseStack, FluidTank tank, int barX, int barY, int width, int height) {
+        int i = tank.getFluidAmount() * height / tank.getCapacity();
         TextureAtlasSprite sprite = getMinecraft().getTextureAtlas(InventoryMenu.BLOCK_ATLAS)
                 .apply(tank.getFluid().getFluid().getAttributes().getStillTexture());
 
-        int x = getGuiLeft() + fluidBarX;
-        int y = getGuiTop() + fluidBarY - i;
+        int x = getGuiLeft() + barX;
+        int y = getGuiTop() + barY - i;
 
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, InventoryMenu.BLOCK_ATLAS);
-        blit(poseStack, x, y, 0, fluidBarWidth, i, sprite);
+        blit(poseStack, x, y, 0, width, i, sprite);
     }
 }

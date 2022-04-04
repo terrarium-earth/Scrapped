@@ -43,9 +43,11 @@
   "block.minefactoryrenewed.raw_meat_block": "Raw Meat Block",
   "block.minefactoryrenewed.cooked_meat_block": "Cooked Meat Block",
   "block.minefactoryrenewed.pink_slime_block": "Pink Slime Block",
+  "block.minefactoryrenewed.slaughterhouse": "Slaughterhouse",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",
+  "entity.minefactoryrenewed.pink_slime": "Pink Slime",
 
   "_comment5": "Translatable Text",
   "tooltip.machine.upgrade": "Radius Increase: %s",
