@@ -79,4 +79,9 @@ public class ModBlocks {
     public static final RegistryObject<PinkSlimeFluid> PINK_SLIME_FLOWING = FLUIDS.register("pink_slime_flowing", PinkSlimeFluid.Flowing::new);
     public static final RegistryObject<BaseFluidBlock> PINK_SLIME_FLUID_BLOCK = BLOCKS.register("pink_slime", () ->
             new PinkSlimeFluidBlock(PINK_SLIME::get, BASE_FLUID_PROPS));
+
+    public static final RegistryObject<EssenceFluid> ESSENCE = FLUIDS.register("essence", EssenceFluid.Source::new);
+    public static final RegistryObject<EssenceFluid> ESSENCE_FLOWING = FLUIDS.register("essence_flowing", EssenceFluid.Flowing::new);
+    public static final RegistryObject<BaseFluidBlock> ESSENCE_FLUID_BLOCK = BLOCKS.register("essence", () ->
+            new BaseFluidBlock(ESSENCE::get, BASE_FLUID_PROPS));
 }
