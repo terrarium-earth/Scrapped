@@ -9,7 +9,6 @@ import dev.onyxstudios.minefactoryrenewed.network.ModPackets;
 import dev.onyxstudios.minefactoryrenewed.registry.*;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -38,8 +37,8 @@ public class MinefactoryRenewed {
         eventBus.addListener(this::init);
         eventBus.addListener(this::initClient);
 
-        MinecraftForge.EVENT_BUS.addListener(SafariNetItem::entityInteract);
         MinecraftForge.EVENT_BUS.addListener(this::reloadListenerEvent);
+        MinecraftForge.EVENT_BUS.addListener(SafariNetItem::entityInteract);
         MinecraftForge.EVENT_BUS.addListener(SlaughterhouseBlockEntity::livingDrops);
 
         ModItems.ITEMS.register(eventBus);
