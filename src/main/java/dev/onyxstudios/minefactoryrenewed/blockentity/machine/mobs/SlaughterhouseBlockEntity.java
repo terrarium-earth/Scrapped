@@ -28,19 +28,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.function.Predicate;
 
 public class SlaughterhouseBlockEntity extends MachineBlockEntity implements MenuProvider {
 
     private static final int SLIME_AMOUNT = 25;
     private static final int MEAT_AMOUNT = 50;
     public static final DamageSource SLAUGHTERHOUSE = new DamageSource("slaughterhouse").bypassArmor().setMagic();
-    private static final Predicate<Entity> ENTITY_PREDICATE = (entity) -> (entity.isAlive() &&
-            entity instanceof LivingEntity &&
-            !(entity instanceof Player) &&
-            !((LivingEntity) entity).isBaby() &&
-            entity.canChangeDimensions()
-    );
 
     private final FluidTank pinkSlimeTank = new FluidTank(8000, new FluidStack(ModBlocks.PINK_SLIME.get(), 1000)::isFluidEqual);
     private final LazyOptional<FluidTank> slimeTankHandler = LazyOptional.of(() -> pinkSlimeTank);
