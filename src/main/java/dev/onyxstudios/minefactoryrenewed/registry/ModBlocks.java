@@ -10,6 +10,7 @@ import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FertilizerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FruitPickerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.PlanterBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.mobs.GrinderBlock;
+import dev.onyxstudios.minefactoryrenewed.block.machine.mobs.MeatPackerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.mobs.SlaughterhouseBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -70,6 +71,11 @@ public class ModBlocks {
     public static final RegistryObject<BlockItem> GRINDER_ITEM = ITEMS.register("grinder", () ->
             new BlockItem(GRINDER.get(), ModItems.PROPERTIES));
 
+    public static final RegistryObject<Block> MEAT_PACKER = BLOCKS.register("meat_packer", MeatPackerBlock::new);
+    public static final RegistryObject<BlockItem> MEAT_PACKER_ITEM = ITEMS.register("meat_packer", () ->
+            new BlockItem(MEAT_PACKER.get(), ModItems.PROPERTIES));
+
+    //Fluids
     public static final RegistryObject<SludgeFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);
     public static final RegistryObject<SludgeFluid> SLUDGE_FLOWING = FLUIDS.register("sludge_flowing", SludgeFluid.Flowing::new);
     public static final RegistryObject<BaseFluidBlock> SLUDGE_BLOCK = BLOCKS.register("sludge", () ->

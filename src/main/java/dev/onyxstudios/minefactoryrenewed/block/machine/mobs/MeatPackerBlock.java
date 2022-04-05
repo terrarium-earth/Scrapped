@@ -1,8 +1,8 @@
 package dev.onyxstudios.minefactoryrenewed.block.machine.mobs;
 
-import dev.onyxstudios.minefactoryrenewed.block.machine.RotatableMachineBlock;
+import dev.onyxstudios.minefactoryrenewed.block.machine.MachineBlock;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
-import dev.onyxstudios.minefactoryrenewed.blockentity.machine.mobs.GrinderBlockEntity;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.mobs.MeatPackerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
@@ -22,9 +22,9 @@ import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import org.jetbrains.annotations.Nullable;
 
-public class GrinderBlock extends RotatableMachineBlock {
+public class MeatPackerBlock extends MachineBlock {
 
-    public GrinderBlock() {
+    public MeatPackerBlock() {
         super(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f));
     }
 
@@ -32,8 +32,8 @@ public class GrinderBlock extends RotatableMachineBlock {
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack stack = player.getItemInHand(hand);
         LazyOptional<IFluidHandlerItem> handler = FluidUtil.getFluidHandler(stack);
-        if (handler.isPresent() && level.getBlockEntity(pos) instanceof GrinderBlockEntity grinder) {
-            FluidUtil.interactWithFluidHandler(player, hand, grinder.getTank());
+        if (handler.isPresent() && level.getBlockEntity(pos) instanceof MeatPackerBlockEntity meatPacker) {
+            FluidUtil.interactWithFluidHandler(player, hand, meatPacker.getTank());
             level.sendBlockUpdated(pos, state, level.getBlockState(pos), Block.UPDATE_ALL);
             return InteractionResult.SUCCESS;
         }
@@ -43,11 +43,11 @@ public class GrinderBlock extends RotatableMachineBlock {
 
     @Override
     public BlockEntityType<? extends MachineBlockEntity> getBlockEntityType() {
-        return ModBlockEntities.GRINDER_BLOCK_ENTITY.get();
+        return ModBlockEntities.MEAT_PACKER_BLOCK_ENTITY.get();
     }
 
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new GrinderBlockEntity(pos, state);
+        return new MeatPackerBlockEntity(pos, state);
     }
 }

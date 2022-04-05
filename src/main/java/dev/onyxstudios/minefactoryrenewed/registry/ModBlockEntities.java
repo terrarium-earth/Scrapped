@@ -6,12 +6,14 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.Fertiliz
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FruitPickerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.PlanterContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.GrinderContainer;
+import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.MeatPackerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.SlaughterhouseContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FarmerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FertilizerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FruitPickerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.PlanterBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.mobs.GrinderBlockEntity;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.mobs.MeatPackerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.mobs.SlaughterhouseBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.inventory.MenuType;
@@ -56,6 +58,11 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<GrinderBlockEntity>> GRINDER_BLOCK_ENTITY =
             BLOCK_ENTITIES.register("grinder_block_entity", () ->
                     BlockEntityType.Builder.of(GrinderBlockEntity::new, ModBlocks.GRINDER.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<MeatPackerBlockEntity>> MEAT_PACKER_BLOCK_ENTITY =
+            BLOCK_ENTITIES.register("meat_packer_block_entity", () ->
+                    BlockEntityType.Builder.of(MeatPackerBlockEntity::new, ModBlocks.MEAT_PACKER.get())
                             .build(null));
 
     /**
@@ -107,6 +114,14 @@ public class ModBlockEntities {
                         BlockPos pos = data.readBlockPos();
                         GrinderBlockEntity grinder = (GrinderBlockEntity) inv.player.level.getBlockEntity(pos);
                         return new GrinderContainer(windowId, inv, grinder);
+                    })
+            );
+
+    public static final RegistryObject<MenuType<MeatPackerContainer>> MEAT_PACKER_CONTAINER =
+            CONTAINERS.register("meat_packer_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                        BlockPos pos = data.readBlockPos();
+                        MeatPackerBlockEntity meatPacker = (MeatPackerBlockEntity) inv.player.level.getBlockEntity(pos);
+                        return new MeatPackerContainer(windowId, inv, meatPacker);
                     })
             );
 }

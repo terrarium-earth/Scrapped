@@ -39,7 +39,7 @@ public class MinefactoryRenewed {
 
         MinecraftForge.EVENT_BUS.addListener(this::reloadListenerEvent);
         MinecraftForge.EVENT_BUS.addListener(SafariNetItem::entityInteract);
-        MinecraftForge.EVENT_BUS.addListener(MachineBlockEntity::livingDrops);
+        MinecraftForge.EVENT_BUS.addListener(MachineBlockEntity::livingDropsEvent);
 
         ModItems.ITEMS.register(eventBus);
         ModEntities.ENTITIES.register(eventBus);

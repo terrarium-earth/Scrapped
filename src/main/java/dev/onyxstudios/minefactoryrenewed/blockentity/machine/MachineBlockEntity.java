@@ -117,7 +117,7 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
         blockEntity.tickInternal();
     }
 
-    public static void livingDrops(LivingDropsEvent event) {
+    public static void livingDropsEvent(LivingDropsEvent event) {
         if (event.getSource() == NO_DROPS)
             event.setCanceled(true);
     }
