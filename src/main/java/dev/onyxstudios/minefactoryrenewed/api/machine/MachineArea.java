@@ -46,7 +46,7 @@ public class MachineArea {
     public CompoundTag save() {
         CompoundTag tag = new CompoundTag();
         tag.putInt("facing", facing.ordinal());
-        tag.putInt("verticalRadius", verticalRange);
+        tag.putInt("verticalRange", verticalRange);
         tag.putInt("upgradeRadius", upgradeRadius);
         tag.put("firstCorner", NbtUtils.writeBlockPos(firstCorner));
         tag.put("secondCorner", NbtUtils.writeBlockPos(secondCorner));

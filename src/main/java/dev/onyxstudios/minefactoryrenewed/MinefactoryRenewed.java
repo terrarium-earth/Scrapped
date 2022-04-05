@@ -1,6 +1,6 @@
 package dev.onyxstudios.minefactoryrenewed;
 
-import dev.onyxstudios.minefactoryrenewed.blockentity.machine.mobs.SlaughterhouseBlockEntity;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.client.ModClient;
 import dev.onyxstudios.minefactoryrenewed.data.PickableReloadListener;
 import dev.onyxstudios.minefactoryrenewed.data.PlantableReloadListener;
@@ -39,7 +39,7 @@ public class MinefactoryRenewed {
 
         MinecraftForge.EVENT_BUS.addListener(this::reloadListenerEvent);
         MinecraftForge.EVENT_BUS.addListener(SafariNetItem::entityInteract);
-        MinecraftForge.EVENT_BUS.addListener(SlaughterhouseBlockEntity::livingDrops);
+        MinecraftForge.EVENT_BUS.addListener(MachineBlockEntity::livingDrops);
 
         ModItems.ITEMS.register(eventBus);
         ModEntities.ENTITIES.register(eventBus);

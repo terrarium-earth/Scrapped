@@ -8,6 +8,7 @@ import dev.onyxstudios.minefactoryrenewed.util.InventoryUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -20,6 +21,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
@@ -34,6 +36,7 @@ import java.util.function.Predicate;
 
 public abstract class MachineBlockEntity extends BaseBlockEntity {
 
+    public static final DamageSource NO_DROPS = new DamageSource("nodrops").bypassArmor().setMagic();
     protected static final Predicate<Entity> ENTITY_PREDICATE = (entity) -> (entity.isAlive() &&
             entity instanceof LivingEntity &&
             !(entity instanceof Player) &&
@@ -112,6 +115,11 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
         //TODO Remove, only for testing with no generators...
         blockEntity.getEnergy().receiveEnergy(100, false);
         blockEntity.tickInternal();
+    }
+
+    public static void livingDrops(LivingDropsEvent event) {
+        if (event.getSource() == NO_DROPS)
+            event.setCanceled(true);
     }
 
     private void tickInternal() {

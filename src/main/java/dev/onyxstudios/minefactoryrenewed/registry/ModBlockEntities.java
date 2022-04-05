@@ -5,11 +5,13 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FarmerCo
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FertilizerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FruitPickerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.PlanterContainer;
+import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.GrinderContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.SlaughterhouseContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FarmerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FertilizerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FruitPickerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.PlanterBlockEntity;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.mobs.GrinderBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.mobs.SlaughterhouseBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.inventory.MenuType;
@@ -49,6 +51,11 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<SlaughterhouseBlockEntity>> SLAUGHTERHOUSE_BLOCK_ENTITY =
             BLOCK_ENTITIES.register("slaughterhouse_block_entity", () ->
                     BlockEntityType.Builder.of(SlaughterhouseBlockEntity::new, ModBlocks.SLAUGHTERHOUSE.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<GrinderBlockEntity>> GRINDER_BLOCK_ENTITY =
+            BLOCK_ENTITIES.register("grinder_block_entity", () ->
+                    BlockEntityType.Builder.of(GrinderBlockEntity::new, ModBlocks.GRINDER.get())
                             .build(null));
 
     /**
@@ -92,6 +99,14 @@ public class ModBlockEntities {
                         SlaughterhouseBlockEntity slaughterhouse =
                                 (SlaughterhouseBlockEntity) inv.player.level.getBlockEntity(pos);
                         return new SlaughterhouseContainer(windowId, inv, slaughterhouse);
+                    })
+            );
+
+    public static final RegistryObject<MenuType<GrinderContainer>> GRINDER_CONTAINER =
+            CONTAINERS.register("grinder_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                        BlockPos pos = data.readBlockPos();
+                        GrinderBlockEntity grinder = (GrinderBlockEntity) inv.player.level.getBlockEntity(pos);
+                        return new GrinderContainer(windowId, inv, grinder);
                     })
             );
 }

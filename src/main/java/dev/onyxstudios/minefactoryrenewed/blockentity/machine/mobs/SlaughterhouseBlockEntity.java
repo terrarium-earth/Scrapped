@@ -10,7 +10,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.MenuProvider;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Inventory;
@@ -19,7 +18,6 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
@@ -33,14 +31,12 @@ public class SlaughterhouseBlockEntity extends MachineBlockEntity implements Men
 
     private static final int SLIME_AMOUNT = 25;
     private static final int MEAT_AMOUNT = 50;
-    public static final DamageSource SLAUGHTERHOUSE = new DamageSource("slaughterhouse").bypassArmor().setMagic();
 
     private final FluidTank pinkSlimeTank = new FluidTank(8000, new FluidStack(ModBlocks.PINK_SLIME.get(), 1000)::isFluidEqual);
     private final LazyOptional<FluidTank> slimeTankHandler = LazyOptional.of(() -> pinkSlimeTank);
 
     public SlaughterhouseBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.SLAUGHTERHOUSE_BLOCK_ENTITY.get(), pos, state);
-        this.createInventory();
         this.createEnergy(16000, 1000);
         this.createFluid(10000, new FluidStack(ModBlocks.MEAT.get(), 1000));
         this.setMaxWorkTime(4);
@@ -69,7 +65,7 @@ public class SlaughterhouseBlockEntity extends MachineBlockEntity implements Men
         List<Entity> entities = level.getEntities((Entity) null, getMachineArea().getAabb(), ENTITY_PREDICATE);
         if (!entities.isEmpty()) {
             LivingEntity entity = (LivingEntity) entities.get(0);
-            entity.hurt(SLAUGHTERHOUSE, 100);
+            entity.hurt(NO_DROPS, 100);
             if (level.getRandom().nextFloat() < 0.15) {
                 pinkSlimeTank.fill(new FluidStack(ModBlocks.PINK_SLIME.get(), SLIME_AMOUNT), IFluidHandler.FluidAction.EXECUTE);
             }
@@ -80,11 +76,6 @@ public class SlaughterhouseBlockEntity extends MachineBlockEntity implements Men
         }
 
         return false;
-    }
-
-    public static void livingDrops(LivingDropsEvent event) {
-        if (event.getSource() == SLAUGHTERHOUSE)
-            event.setCanceled(true);
     }
 
     public FluidTank getPinkSlimeTank() {
