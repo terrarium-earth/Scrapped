@@ -19,4 +19,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = "minefactoryrenewed"
+rootProject.name = "Minefactory Renewed"
