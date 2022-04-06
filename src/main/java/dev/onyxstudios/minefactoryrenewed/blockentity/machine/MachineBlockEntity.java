@@ -163,7 +163,8 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
     }
 
     public boolean canRun() {
-        return energy == null || energy.getEnergyStored() >= energyCost;
+        return (level != null && !level.hasNeighborSignal(getBlockPos())) &&
+                (energy == null || energy.getEnergyStored() >= energyCost);
     }
 
     public void setIdle() {
