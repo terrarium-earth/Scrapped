@@ -90,6 +90,8 @@ public abstract class MachineBlock extends BaseEntityBlock implements IWrenchabl
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide() ? null : createTickerHelper(blockEntityType, getBlockEntityType(), MachineBlockEntity::tick);
+        return level.isClientSide() ?
+                createTickerHelper(blockEntityType, getBlockEntityType(), MachineBlockEntity::tickClient) :
+                createTickerHelper(blockEntityType, getBlockEntityType(), MachineBlockEntity::tick);
     }
 }

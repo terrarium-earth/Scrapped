@@ -98,6 +98,8 @@ public abstract class MachineScreen<T extends MachineContainer> extends Abstract
 
         renderEnergy(poseStack, menu.getBlockEntity());
         renderFluid(poseStack, menu.getBlockEntity());
+
+        RenderSystem.setShaderTexture(0, this.guiLocation);
         renderGuiLast(poseStack, mouseX, mouseY);
     }
 

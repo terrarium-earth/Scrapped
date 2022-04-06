@@ -1,5 +1,6 @@
 package dev.onyxstudios.minefactoryrenewed.client.gui.machine.mobs;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.SlaughterhouseContainer;

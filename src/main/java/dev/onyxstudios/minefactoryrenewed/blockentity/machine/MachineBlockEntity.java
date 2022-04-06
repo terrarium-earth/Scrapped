@@ -117,6 +117,10 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
         blockEntity.tickInternal();
     }
 
+    public static void tickClient(Level level, BlockPos pos, BlockState state, MachineBlockEntity blockEntity) {
+        tick(level, pos, state, blockEntity);
+    }
+
     public static void livingDropsEvent(LivingDropsEvent event) {
         if (event.getSource() == NO_DROPS)
             event.setCanceled(true);
@@ -140,20 +144,22 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
             if (workTime >= maxWorkTime) {
                 workTime = 0;
 
-                if (!run()) {
+                if (!level.isClientSide() && !run()) {
                     setIdle();
                 }
+
+                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
             }
 
             setChanged();
         }
-
-        level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
     }
 
     public void useEnergy() {
-        if (energy != null)
+        if (energy != null) {
             energy.extractEnergy(energyCost, false);
+            level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
+        }
     }
 
     public boolean canRun() {
@@ -176,11 +182,13 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
         }
 
         machineArea.setUpgradeRadius(radius);
+        this.setChanged();
     }
 
     public void createMachineArea(BlockPos pos, Direction facing) {
         this.machineArea = new MachineArea(pos, facing, 1);
         this.machineArea.calculateArea();
+        this.setChanged();
     }
 
     public void createEnergy(int capacity, int energyCost) {
@@ -198,7 +206,6 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
         this.createInventory(slots, true);
     }
 
-    //TODO: Replace this, add boolean for upgradeSlot
     public void createInventory(int slots, boolean upgradeSlot) {
         inventory = new ItemStackHandler(slots + (upgradeSlot ? 1 : 0)) {
             @Override
