@@ -55,7 +55,7 @@ public class FarmerBlockEntity extends MachineBlockEntity implements MenuProvide
         this.setMaxIdleTime(5);
 
         this.createMachineArea(pos, Direction.NORTH);
-        this.getMachineArea().setVerticalRange(6);
+        this.getMachineArea().setVerticalRange(3);
     }
 
     @Override
