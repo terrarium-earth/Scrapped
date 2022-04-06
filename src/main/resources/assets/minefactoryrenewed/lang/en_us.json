@@ -48,6 +48,7 @@
   "block.minefactoryrenewed.slaughterhouse": "Slaughterhouse",
   "block.minefactoryrenewed.grinder": "Grinder",
   "block.minefactoryrenewed.meat_packer": "Meat Packer",
+  "block.minefactoryrenewed.mob_counter": "Mob Counter",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",

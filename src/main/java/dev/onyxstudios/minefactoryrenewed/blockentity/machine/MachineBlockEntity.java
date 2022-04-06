@@ -56,6 +56,8 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
     private MachineArea machineArea;
     private int energyCost = 0;
 
+    private final boolean shouldTick;
+
     private int maxWorkTime;
     private int maxIdleTime;
 
@@ -64,7 +66,12 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
     private int idleTime;
 
     public MachineBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+        this(type, pos, state, true);
+    }
+
+    public MachineBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state, boolean tick) {
         super(type, pos, state);
+        this.shouldTick = tick;
     }
 
     public abstract boolean run();
@@ -163,7 +170,7 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
     }
 
     public boolean canRun() {
-        return (level != null && !level.hasNeighborSignal(getBlockPos())) &&
+        return (level != null && !level.hasNeighborSignal(getBlockPos()) && shouldTick) &&
                 (energy == null || energy.getEnergyStored() >= energyCost);
     }
 

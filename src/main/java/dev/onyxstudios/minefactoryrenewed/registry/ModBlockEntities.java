@@ -14,6 +14,7 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FruitPicke
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.PlanterBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.mobs.GrinderBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.mobs.MeatPackerBlockEntity;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.mobs.MobCounterBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.mobs.SlaughterhouseBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.inventory.MenuType;
@@ -63,6 +64,11 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<MeatPackerBlockEntity>> MEAT_PACKER_BLOCK_ENTITY =
             BLOCK_ENTITIES.register("meat_packer_block_entity", () ->
                     BlockEntityType.Builder.of(MeatPackerBlockEntity::new, ModBlocks.MEAT_PACKER.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<MobCounterBlockEntity>> MOB_COUNTER_BLOCK_ENTITY =
+            BLOCK_ENTITIES.register("mob_counter_block_entity", () ->
+                    BlockEntityType.Builder.of(MobCounterBlockEntity::new, ModBlocks.MOB_COUNTER.get())
                             .build(null));
 
     /**

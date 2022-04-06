@@ -11,6 +11,7 @@ import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FruitPickerBlock
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.PlanterBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.mobs.GrinderBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.mobs.MeatPackerBlock;
+import dev.onyxstudios.minefactoryrenewed.block.machine.mobs.MobCounterBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.mobs.SlaughterhouseBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -74,6 +75,10 @@ public class ModBlocks {
     public static final RegistryObject<Block> MEAT_PACKER = BLOCKS.register("meat_packer", MeatPackerBlock::new);
     public static final RegistryObject<BlockItem> MEAT_PACKER_ITEM = ITEMS.register("meat_packer", () ->
             new BlockItem(MEAT_PACKER.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> MOB_COUNTER = BLOCKS.register("mob_counter", MobCounterBlock::new);
+    public static final RegistryObject<BlockItem> MOB_COUNTER_ITEM = ITEMS.register("mob_counter", () ->
+            new BlockItem(MOB_COUNTER.get(), ModItems.PROPERTIES));
 
     //Fluids
     public static final RegistryObject<SludgeFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);
