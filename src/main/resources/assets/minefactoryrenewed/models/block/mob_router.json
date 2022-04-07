@@ -1,0 +1,19 @@
+{
+  "parent": "block/cube",
+  "display": {
+    "firstperson_righthand": {
+      "rotation": [ 0, 135, 0 ],
+      "translation": [ 0, 0, 0 ],
+      "scale": [ 0.40, 0.40, 0.40 ]
+    }
+  },
+  "textures": {
+    "particle": "minefactoryrenewed:block/mob_router_front",
+    "down": "minefactoryrenewed:block/machine_bottom",
+    "up": "minefactoryrenewed:block/machine_top",
+    "north": "minefactoryrenewed:block/mob_router_front",
+    "east": "minefactoryrenewed:block/machine_side",
+    "south": "minefactoryrenewed:block/mob_router_back",
+    "west": "minefactoryrenewed:block/machine_side"
+  }
+}

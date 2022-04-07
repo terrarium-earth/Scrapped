@@ -10,6 +10,7 @@ import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.FruitPicker
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.PlanterScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.mobs.GrinderScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.mobs.MeatPackerScreen;
+import dev.onyxstudios.minefactoryrenewed.client.gui.machine.mobs.MobRouterScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.mobs.SlaughterhouseScreen;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlocks;
@@ -51,6 +52,7 @@ public class ModClient {
         MenuScreens.register(ModBlockEntities.SLAUGHTERHOUSE_CONTAINER.get(), SlaughterhouseScreen::new);
         MenuScreens.register(ModBlockEntities.GRINDER_CONTAINER.get(), GrinderScreen::new);
         MenuScreens.register(ModBlockEntities.MEAT_PACKER_CONTAINER.get(), MeatPackerScreen::new);
+        MenuScreens.register(ModBlockEntities.MOB_ROUTER_CONTAINER.get(), MobRouterScreen::new);
     }
 
     private static void initEntities() {

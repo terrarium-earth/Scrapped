@@ -7,15 +7,13 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FruitPic
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.PlanterContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.GrinderContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.MeatPackerContainer;
+import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.MobRouterContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.SlaughterhouseContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FarmerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FertilizerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FruitPickerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.PlanterBlockEntity;
-import dev.onyxstudios.minefactoryrenewed.blockentity.machine.mobs.GrinderBlockEntity;
-import dev.onyxstudios.minefactoryrenewed.blockentity.machine.mobs.MeatPackerBlockEntity;
-import dev.onyxstudios.minefactoryrenewed.blockentity.machine.mobs.MobCounterBlockEntity;
-import dev.onyxstudios.minefactoryrenewed.blockentity.machine.mobs.SlaughterhouseBlockEntity;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.mobs.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -69,6 +67,11 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<MobCounterBlockEntity>> MOB_COUNTER_BLOCK_ENTITY =
             BLOCK_ENTITIES.register("mob_counter_block_entity", () ->
                     BlockEntityType.Builder.of(MobCounterBlockEntity::new, ModBlocks.MOB_COUNTER.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<MobRouterBlockEntity>> MOB_ROUTER_BLOCK_ENTITY =
+            BLOCK_ENTITIES.register("mob_router_block_entity", () ->
+                    BlockEntityType.Builder.of(MobRouterBlockEntity::new, ModBlocks.MOB_ROUTER.get())
                             .build(null));
 
     /**
@@ -128,6 +131,14 @@ public class ModBlockEntities {
                         BlockPos pos = data.readBlockPos();
                         MeatPackerBlockEntity meatPacker = (MeatPackerBlockEntity) inv.player.level.getBlockEntity(pos);
                         return new MeatPackerContainer(windowId, inv, meatPacker);
+                    })
+            );
+
+    public static final RegistryObject<MenuType<MobRouterContainer>> MOB_ROUTER_CONTAINER =
+            CONTAINERS.register("mob_router_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                        BlockPos pos = data.readBlockPos();
+                        MobRouterBlockEntity mobRouter = (MobRouterBlockEntity) inv.player.level.getBlockEntity(pos);
+                        return new MobRouterContainer(windowId, inv, mobRouter);
                     })
             );
 }

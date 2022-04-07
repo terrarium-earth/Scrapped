@@ -6,20 +6,13 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
-import java.util.function.Predicate;
 
 public class MobCounterBlockEntity extends MachineBlockEntity {
-
-    protected static final Predicate<Entity> ALL_ENTITY_PREDICATE = (entity) -> (entity.isAlive() &&
-            entity instanceof LivingEntity &&
-            entity.canChangeDimensions()
-    );
 
     private int currentCount;
 

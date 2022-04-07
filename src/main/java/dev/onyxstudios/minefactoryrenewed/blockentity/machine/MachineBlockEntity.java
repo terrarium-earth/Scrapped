@@ -43,6 +43,10 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
             !((LivingEntity) entity).isBaby() &&
             entity.canChangeDimensions()
     );
+    protected static final Predicate<Entity> ALL_ENTITY_PREDICATE = (entity) -> (entity.isAlive() &&
+            entity instanceof LivingEntity &&
+            entity.canChangeDimensions()
+    );
 
     private MFREnergyStorage energy;
     private LazyOptional<MFREnergyStorage> energyHandler;
@@ -215,7 +219,7 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
     }
 
     public void createInventory(int slots, boolean upgradeSlot) {
-        inventory = new ItemStackHandler(slots + (upgradeSlot ? 1 : 0)) {
+        ItemStackHandler itemStackHandler = new ItemStackHandler(slots + (upgradeSlot ? 1 : 0)) {
             @Override
             protected void onContentsChanged(int slot) {
                 super.onContentsChanged(slot);
@@ -233,7 +237,12 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
                         super.isItemValid(slot, stack);
             }
         };
-        inventoryHandler = LazyOptional.of(() -> inventory);
+        this.createInventory(itemStackHandler);
+    }
+
+    public void createInventory(ItemStackHandler inventory) {
+        this.inventory = inventory;
+        this.inventoryHandler = LazyOptional.of(() -> inventory);
         this.setChanged();
     }
 

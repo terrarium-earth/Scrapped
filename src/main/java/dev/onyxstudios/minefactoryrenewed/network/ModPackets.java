@@ -16,6 +16,9 @@ public class ModPackets {
     );
 
     public static void init() {
-        INSTANCE.registerMessage(0, HarvesterButtonMessage.class, HarvesterButtonMessage::encode, HarvesterButtonMessage::decode, HarvesterButtonMessage::handleMessage);
+        INSTANCE.registerMessage(0, HarvesterButtonMessage.class, HarvesterButtonMessage::encode,
+                HarvesterButtonMessage::decode, HarvesterButtonMessage::handleMessage);
+        INSTANCE.registerMessage(1, RouterButtonMessage.class, RouterButtonMessage::encode,
+                RouterButtonMessage::decode, RouterButtonMessage::handleMessage);
     }
 }

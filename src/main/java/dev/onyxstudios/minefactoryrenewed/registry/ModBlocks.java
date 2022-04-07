@@ -9,10 +9,7 @@ import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FarmerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FertilizerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FruitPickerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.PlanterBlock;
-import dev.onyxstudios.minefactoryrenewed.block.machine.mobs.GrinderBlock;
-import dev.onyxstudios.minefactoryrenewed.block.machine.mobs.MeatPackerBlock;
-import dev.onyxstudios.minefactoryrenewed.block.machine.mobs.MobCounterBlock;
-import dev.onyxstudios.minefactoryrenewed.block.machine.mobs.SlaughterhouseBlock;
+import dev.onyxstudios.minefactoryrenewed.block.machine.mobs.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -79,6 +76,10 @@ public class ModBlocks {
     public static final RegistryObject<Block> MOB_COUNTER = BLOCKS.register("mob_counter", MobCounterBlock::new);
     public static final RegistryObject<BlockItem> MOB_COUNTER_ITEM = ITEMS.register("mob_counter", () ->
             new BlockItem(MOB_COUNTER.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> MOB_ROUTER = BLOCKS.register("mob_router", MobRouterBlock::new);
+    public static final RegistryObject<BlockItem> MOB_ROUTER_ITEM = ITEMS.register("mob_router", () ->
+            new BlockItem(MOB_ROUTER.get(), ModItems.PROPERTIES));
 
     //Fluids
     public static final RegistryObject<SludgeFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);
