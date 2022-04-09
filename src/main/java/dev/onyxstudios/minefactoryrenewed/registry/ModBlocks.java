@@ -5,6 +5,7 @@ import dev.onyxstudios.minefactoryrenewed.block.ConveyorBeltBlock;
 import dev.onyxstudios.minefactoryrenewed.block.MeatBlock;
 import dev.onyxstudios.minefactoryrenewed.block.PinkSlimeBlock;
 import dev.onyxstudios.minefactoryrenewed.block.fluid.*;
+import dev.onyxstudios.minefactoryrenewed.block.machine.animals.FisherBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FarmerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FertilizerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FruitPickerBlock;
@@ -84,6 +85,10 @@ public class ModBlocks {
     public static final RegistryObject<Block> AUTO_SPAWNER = BLOCKS.register("auto_spawner", AutoSpawnerBlock::new);
     public static final RegistryObject<BlockItem> AUTO_SPAWNER_ITEM = ITEMS.register("auto_spawner", () ->
             new BlockItem(AUTO_SPAWNER.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> FISHER = BLOCKS.register("fisher", FisherBlock::new);
+    public static final RegistryObject<BlockItem> FISHER_ITEM = ITEMS.register("fisher", () ->
+            new BlockItem(FISHER.get(), ModItems.PROPERTIES));
 
     //Fluids
     public static final RegistryObject<SludgeFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);

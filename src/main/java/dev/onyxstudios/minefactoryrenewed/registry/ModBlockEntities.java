@@ -1,11 +1,13 @@
 package dev.onyxstudios.minefactoryrenewed.registry;
 
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
+import dev.onyxstudios.minefactoryrenewed.blockentity.container.animals.FisherContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FarmerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FertilizerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FruitPickerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.PlanterContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.*;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.animals.FisherBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FarmerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FertilizerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FruitPickerBlockEntity;
@@ -74,6 +76,11 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<AutoSpawnerBlockEntity>> AUTO_SPAWNER_BLOCK_ENTITY =
             BLOCK_ENTITIES.register("auto_spawner_block_entity", () ->
                     BlockEntityType.Builder.of(AutoSpawnerBlockEntity::new, ModBlocks.AUTO_SPAWNER.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<FisherBlockEntity>> FISHER =
+            BLOCK_ENTITIES.register("fisher_block_entity", () ->
+                    BlockEntityType.Builder.of(FisherBlockEntity::new, ModBlocks.FISHER.get())
                             .build(null));
 
     /**
@@ -149,6 +156,14 @@ public class ModBlockEntities {
                         BlockPos pos = data.readBlockPos();
                         AutoSpawnerBlockEntity autoSpawner = (AutoSpawnerBlockEntity) inv.player.level.getBlockEntity(pos);
                         return new AutoSpawnerContainer(windowId, inv, autoSpawner);
+                    })
+            );
+
+    public static final RegistryObject<MenuType<FisherContainer>> FISHER_CONTAINER =
+            CONTAINERS.register("fisher_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                        BlockPos pos = data.readBlockPos();
+                        FisherBlockEntity fisher = (FisherBlockEntity) inv.player.level.getBlockEntity(pos);
+                        return new FisherContainer(windowId, inv, fisher);
                     })
             );
 }
