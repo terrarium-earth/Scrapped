@@ -31,6 +31,9 @@ import java.util.List;
 public class MobRouterBlockEntity extends MachineBlockEntity implements MenuProvider {
 
     private LivingEntity filterEntity;
+    private EntityType<?> entityType;
+    private CompoundTag entityTag;
+
     private boolean whitelist = true;
     private boolean allowBabies = false;
 
@@ -62,6 +65,13 @@ public class MobRouterBlockEntity extends MachineBlockEntity implements MenuProv
         super.saveAdditional(tag);
         tag.putBoolean("whitelist", whitelist);
         tag.putBoolean("allowBabies", allowBabies);
+
+        if (entityType != null && entityType.getRegistryName() != null) {
+            tag.putString("entityType", entityType.getRegistryName().toString());
+
+            if (entityTag != null)
+                tag.put("entityTag", entityTag);
+        }
     }
 
     @Override
@@ -69,11 +79,19 @@ public class MobRouterBlockEntity extends MachineBlockEntity implements MenuProv
         super.load(tag);
         whitelist = tag.getBoolean("whitelist");
         allowBabies = tag.getBoolean("allowBabies");
+
+        if (tag.contains("entityType")) {
+            ResourceLocation id = new ResourceLocation(tag.getString("entityType"));
+            this.entityType = ForgeRegistries.ENTITIES.getValue(id);
+            if (tag.contains("entityTag"))
+                this.entityTag = tag.getCompound("entityTag");
+        }
     }
 
     @Override
     public boolean run() {
-        if (level == null) return false;
+        if (level == null ||
+                (filterEntity == null && entityType != null && !createEntity(entityType, entityTag))) return false;
         List<Entity> entities = level.getEntities((Entity) null, getMachineArea().getAabb(), ALL_ENTITY_PREDICATE);
         if (!entities.isEmpty()) {
             Direction direction = getBlockState().getValue(HorizontalDirectionalBlock.FACING);
@@ -104,9 +122,24 @@ public class MobRouterBlockEntity extends MachineBlockEntity implements MenuProv
         return false;
     }
 
+    private boolean createEntity(EntityType<?> entityType, CompoundTag tag) {
+        if (level != null && entityType != null) {
+            filterEntity = (LivingEntity) entityType.create(level);
+
+            if (filterEntity != null && tag != null)
+                filterEntity.load(tag);
+
+            return true;
+        }
+
+        return false;
+    }
+
     private void updateSafariNet() {
         ItemStack stack = getInventory().getStackInSlot(0);
         filterEntity = null;
+        entityType = null;
+        entityTag = null;
 
         if (stack.isEmpty() || level == null)
             return;
@@ -124,6 +157,8 @@ public class MobRouterBlockEntity extends MachineBlockEntity implements MenuProv
                 if (entity != null) {
                     entity.load(entityTag);
                     this.filterEntity = entity;
+                    this.entityTag = entityTag;
+                    this.entityType = entityType;
                 }
             }
         }
