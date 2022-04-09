@@ -20,5 +20,7 @@ public class ModPackets {
                 HarvesterButtonMessage::decode, HarvesterButtonMessage::handleMessage);
         INSTANCE.registerMessage(1, RouterButtonMessage.class, RouterButtonMessage::encode,
                 RouterButtonMessage::decode, RouterButtonMessage::handleMessage);
+        INSTANCE.registerMessage(2, SpawnerButtonMessage.class, SpawnerButtonMessage::encode,
+                SpawnerButtonMessage::decode, SpawnerButtonMessage::handleMessage);
     }
 }

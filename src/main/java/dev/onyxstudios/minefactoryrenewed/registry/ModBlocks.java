@@ -81,6 +81,10 @@ public class ModBlocks {
     public static final RegistryObject<BlockItem> MOB_ROUTER_ITEM = ITEMS.register("mob_router", () ->
             new BlockItem(MOB_ROUTER.get(), ModItems.PROPERTIES));
 
+    public static final RegistryObject<Block> AUTO_SPAWNER = BLOCKS.register("auto_spawner", AutoSpawnerBlock::new);
+    public static final RegistryObject<BlockItem> AUTO_SPAWNER_ITEM = ITEMS.register("auto_spawner", () ->
+            new BlockItem(AUTO_SPAWNER.get(), ModItems.PROPERTIES));
+
     //Fluids
     public static final RegistryObject<SludgeFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);
     public static final RegistryObject<SludgeFluid> SLUDGE_FLOWING = FLUIDS.register("sludge_flowing", SludgeFluid.Flowing::new);

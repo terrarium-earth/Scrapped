@@ -50,6 +50,7 @@
   "block.minefactoryrenewed.meat_packer": "Meat Packer",
   "block.minefactoryrenewed.mob_counter": "Mob Counter",
   "block.minefactoryrenewed.mob_router": "Mob Router",
+  "block.minefactoryrenewed.auto_spawner": "Auto Spawner",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",
@@ -68,5 +69,6 @@
   "gui.button.harvester.jungle_wood": "Jungle Wood: %s",
   "gui.button.mob_router.whitelist": "Whitelist",
   "gui.button.mob_router.blacklist": "Blacklist",
-  "gui.button.mob_router.allow_babies": "Allow Babies: %s"
+  "gui.button.mob_router.allow_babies": "Allow Babies: %s",
+  "gui.button.auto_spawner.spawn_exact": "Spawn Exact: %s"
 }

@@ -5,10 +5,7 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FarmerCo
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FertilizerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FruitPickerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.PlanterContainer;
-import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.GrinderContainer;
-import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.MeatPackerContainer;
-import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.MobRouterContainer;
-import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.SlaughterhouseContainer;
+import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.*;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FarmerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FertilizerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FruitPickerBlockEntity;
@@ -72,6 +69,11 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<MobRouterBlockEntity>> MOB_ROUTER_BLOCK_ENTITY =
             BLOCK_ENTITIES.register("mob_router_block_entity", () ->
                     BlockEntityType.Builder.of(MobRouterBlockEntity::new, ModBlocks.MOB_ROUTER.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<AutoSpawnerBlockEntity>> AUTO_SPAWNER_BLOCK_ENTITY =
+            BLOCK_ENTITIES.register("auto_spawner_block_entity", () ->
+                    BlockEntityType.Builder.of(AutoSpawnerBlockEntity::new, ModBlocks.AUTO_SPAWNER.get())
                             .build(null));
 
     /**
@@ -139,6 +141,14 @@ public class ModBlockEntities {
                         BlockPos pos = data.readBlockPos();
                         MobRouterBlockEntity mobRouter = (MobRouterBlockEntity) inv.player.level.getBlockEntity(pos);
                         return new MobRouterContainer(windowId, inv, mobRouter);
+                    })
+            );
+
+    public static final RegistryObject<MenuType<AutoSpawnerContainer>> AUTO_SPAWNER_CONTAINER =
+            CONTAINERS.register("auto_spawner_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                        BlockPos pos = data.readBlockPos();
+                        AutoSpawnerBlockEntity autoSpawner = (AutoSpawnerBlockEntity) inv.player.level.getBlockEntity(pos);
+                        return new AutoSpawnerContainer(windowId, inv, autoSpawner);
                     })
             );
 }

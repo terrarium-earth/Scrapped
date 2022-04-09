@@ -8,10 +8,7 @@ import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.FarmerScree
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.FertilizerScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.FruitPickerScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.PlanterScreen;
-import dev.onyxstudios.minefactoryrenewed.client.gui.machine.mobs.GrinderScreen;
-import dev.onyxstudios.minefactoryrenewed.client.gui.machine.mobs.MeatPackerScreen;
-import dev.onyxstudios.minefactoryrenewed.client.gui.machine.mobs.MobRouterScreen;
-import dev.onyxstudios.minefactoryrenewed.client.gui.machine.mobs.SlaughterhouseScreen;
+import dev.onyxstudios.minefactoryrenewed.client.gui.machine.mobs.*;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlocks;
 import dev.onyxstudios.minefactoryrenewed.registry.ModEntities;
@@ -53,6 +50,7 @@ public class ModClient {
         MenuScreens.register(ModBlockEntities.GRINDER_CONTAINER.get(), GrinderScreen::new);
         MenuScreens.register(ModBlockEntities.MEAT_PACKER_CONTAINER.get(), MeatPackerScreen::new);
         MenuScreens.register(ModBlockEntities.MOB_ROUTER_CONTAINER.get(), MobRouterScreen::new);
+        MenuScreens.register(ModBlockEntities.AUTO_SPAWNER_CONTAINER.get(), AutoSpawnerScreen::new);
     }
 
     private static void initEntities() {

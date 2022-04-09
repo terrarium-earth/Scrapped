@@ -138,7 +138,7 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
     }
 
     private void tickInternal() {
-        if (!canRun())
+        if (level == null || !canRun() || !hasEnoughPower())
             return;
 
         if (isIdle) {
@@ -167,15 +167,26 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
     }
 
     public void useEnergy() {
-        if (energy != null) {
-            energy.extractEnergy(energyCost, false);
+        useEnergy(energyCost);
+    }
+
+    public void useEnergy(int cost) {
+        if (level != null && energy != null) {
+            energy.extractEnergy(cost, false);
             level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
         }
     }
 
     public boolean canRun() {
-        return (level != null && !level.hasNeighborSignal(getBlockPos()) && shouldTick) &&
-                (energy == null || energy.getEnergyStored() >= energyCost);
+        return level != null && !level.hasNeighborSignal(getBlockPos()) && shouldTick;
+    }
+
+    public boolean hasEnoughPower() {
+        return hasEnoughPower(energyCost);
+    }
+
+    public boolean hasEnoughPower(int cost) {
+        return (energy == null || energy.getEnergyStored() >= cost);
     }
 
     public void setIdle() {
@@ -325,6 +336,10 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
 
     public int getMaxWorkTime() {
         return maxWorkTime;
+    }
+
+    public int getEnergyCost() {
+        return energyCost;
     }
 
     @Override
