@@ -36,7 +36,6 @@ public class MobRouterBlockEntity extends MachineBlockEntity implements MenuProv
 
     public MobRouterBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.MOB_ROUTER_BLOCK_ENTITY.get(), pos, state);
-        this.createInventory(1, false);
         this.createInventory(new ItemStackHandler(1) {
             @Override
             protected void onContentsChanged(int slot) {
