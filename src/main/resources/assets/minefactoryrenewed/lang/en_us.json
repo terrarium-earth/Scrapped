@@ -66,6 +66,7 @@
   "block.minefactoryrenewed.sewer": "Sewer",
   "block.minefactoryrenewed.veterinary": "Veterinary Station",
   "block.minefactoryrenewed.block_placer": "Block Placer",
+  "block.minefactoryrenewed.block_breaker": "Block Breaker",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",

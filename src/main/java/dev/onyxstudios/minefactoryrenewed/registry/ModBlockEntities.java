@@ -9,6 +9,7 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FruitPic
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.PlanterContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.*;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.animals.*;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.blocks.BlockBreakerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.blocks.BlockPlacerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FarmerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FertilizerBlockEntity;
@@ -113,6 +114,11 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<BlockPlacerBlockEntity>> BLOCK_PLACER =
             BLOCK_ENTITIES.register("block_placer_block_entity", () ->
                     BlockEntityType.Builder.of(BlockPlacerBlockEntity::new, ModBlocks.BLOCK_PLACER.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<BlockBreakerBlockEntity>> BLOCK_BREAKER =
+            BLOCK_ENTITIES.register("block_breaker_block_entity", () ->
+                    BlockEntityType.Builder.of(BlockBreakerBlockEntity::new, ModBlocks.BLOCK_BREAKER.get())
                             .build(null));
 
     /**
