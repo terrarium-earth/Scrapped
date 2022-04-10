@@ -54,6 +54,7 @@
   "block.minefactoryrenewed.fisher": "Fisher",
   "block.minefactoryrenewed.rancher": "Rancher",
   "block.minefactoryrenewed.breeder": "Breeder",
+  "block.minefactoryrenewed.chronotyper": "Chronotyper",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",
@@ -73,5 +74,7 @@
   "gui.button.mob_router.whitelist": "Whitelist",
   "gui.button.mob_router.blacklist": "Blacklist",
   "gui.button.mob_router.allow_babies": "Allow Babies: %s",
-  "gui.button.auto_spawner.spawn_exact": "Spawn Exact: %s"
+  "gui.button.auto_spawner.spawn_exact": "Spawn Exact: %s",
+  "gui.button.chronotyper.moving_babies": "Moving: Babies",
+  "gui.button.chronotyper.moving_adults": "Moving: Adults"
 }

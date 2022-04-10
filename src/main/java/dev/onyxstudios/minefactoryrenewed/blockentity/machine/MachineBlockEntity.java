@@ -11,6 +11,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -45,6 +46,10 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
     );
     protected static final Predicate<Entity> ALL_ENTITY_PREDICATE = (entity) -> (entity.isAlive() &&
             entity instanceof LivingEntity &&
+            entity.canChangeDimensions()
+    );
+    protected static final Predicate<Entity> ANIMAL_PREDICATE = (entity) -> (entity.isAlive() &&
+            entity instanceof Animal &&
             entity.canChangeDimensions()
     );
 
