@@ -114,6 +114,7 @@ public class MobRouterBlockEntity extends MachineBlockEntity implements MenuProv
 
                 if (canTransport) {
                     entity.setPos(destination.getX() + 0.5, destination.getY(), destination.getZ() + 0.5);
+                    useEnergy();
                     return true;
                 }
             }
