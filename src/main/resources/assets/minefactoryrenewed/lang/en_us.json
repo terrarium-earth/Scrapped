@@ -53,6 +53,7 @@
   "block.minefactoryrenewed.auto_spawner": "Auto Spawner",
   "block.minefactoryrenewed.fisher": "Fisher",
   "block.minefactoryrenewed.rancher": "Rancher",
+  "block.minefactoryrenewed.breeder": "Breeder",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",

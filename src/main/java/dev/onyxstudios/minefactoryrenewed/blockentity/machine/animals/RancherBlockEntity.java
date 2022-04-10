@@ -79,7 +79,7 @@ public class RancherBlockEntity extends MachineBlockEntity implements MenuProvid
 
     @Override
     public Component getDisplayName() {
-        return new TranslatableComponent("block.minefactoryrenewed.farmer");
+        return new TranslatableComponent("block.minefactoryrenewed.rancher");
     }
 
     @Nullable
