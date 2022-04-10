@@ -32,6 +32,12 @@
   "item.minefactoryrenewed.pink_slime_crystal": "Pink Slime Crystal",
   "item.minefactoryrenewed.essence_bucket": "Essence Bucket",
   "item.minefactoryrenewed.sewage_bucket": "Sewage Bucket",
+  "item.minefactoryrenewed.empty_syringe": "Empty Syringe",
+  "item.minefactoryrenewed.de_zombification_syringe": "De-Zombification Syringe",
+  "item.minefactoryrenewed.slime_embiggening_syringe": "Slime Embiggening Syringe",
+  "item.minefactoryrenewed.growth_syringe": "Growth Syringe",
+  "item.minefactoryrenewed.health_syringe": "Health Syringe",
+  "item.minefactoryrenewed.zombie_syringe": "Zombie Syringe",
 
   "_comment3": "Blocks",
   "block.minefactoryrenewed.conveyor_belt": "Conveyor Belt",
@@ -58,6 +64,7 @@
   "block.minefactoryrenewed.breeder": "Breeder",
   "block.minefactoryrenewed.chronotyper": "Chronotyper",
   "block.minefactoryrenewed.sewer": "Sewer",
+  "block.minefactoryrenewed.veterinary": "Veterinary Station",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",

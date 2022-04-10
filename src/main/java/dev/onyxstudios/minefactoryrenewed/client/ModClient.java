@@ -57,6 +57,7 @@ public class ModClient {
         MenuScreens.register(ModBlockEntities.BREEDER_CONTAINER.get(), BreederScreen::new);
         MenuScreens.register(ModBlockEntities.CHRONOTYPER_CONTAINER.get(), ChronotyperScreen::new);
         MenuScreens.register(ModBlockEntities.SEWER_CONTAINER.get(), SewerScreen::new);
+        MenuScreens.register(ModBlockEntities.VETERINARY_CONTAINER.get(), VeterinaryScreen::new);
     }
 
     private static void initEntities() {

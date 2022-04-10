@@ -106,6 +106,10 @@ public class ModBlocks {
     public static final RegistryObject<BlockItem> SEWER_ITEM = ITEMS.register("sewer", () ->
             new BlockItem(SEWER.get(), ModItems.PROPERTIES));
 
+    public static final RegistryObject<Block> VETERINARY = BLOCKS.register("veterinary", VeterinaryBlock::new);
+    public static final RegistryObject<BlockItem> VETERINARY_ITEM = ITEMS.register("veterinary", () ->
+            new BlockItem(VETERINARY.get(), ModItems.PROPERTIES));
+
     //Fluids
     public static final RegistryObject<SludgeFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);
     public static final RegistryObject<SludgeFluid> SLUDGE_FLOWING = FLUIDS.register("sludge_flowing", SludgeFluid.Flowing::new);

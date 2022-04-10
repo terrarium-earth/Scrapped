@@ -103,6 +103,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(SewerBlockEntity::new, ModBlocks.SEWER.get())
                             .build(null));
 
+    public static final RegistryObject<BlockEntityType<VeterinaryBlockEntity>> VETERINARY =
+            BLOCK_ENTITIES.register("veterinary_block_entity", () ->
+                    BlockEntityType.Builder.of(VeterinaryBlockEntity::new, ModBlocks.VETERINARY.get())
+                            .build(null));
+
     /**
      * Containers
      */
@@ -216,6 +221,14 @@ public class ModBlockEntities {
                         BlockPos pos = data.readBlockPos();
                         SewerBlockEntity sewer = (SewerBlockEntity) inv.player.level.getBlockEntity(pos);
                         return new SewerContainer(windowId, inv, sewer);
+                    })
+            );
+
+    public static final RegistryObject<MenuType<VeterinaryContainer>> VETERINARY_CONTAINER =
+            CONTAINERS.register("veterinary_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                        BlockPos pos = data.readBlockPos();
+                        VeterinaryBlockEntity veterinary = (VeterinaryBlockEntity) inv.player.level.getBlockEntity(pos);
+                        return new VeterinaryContainer(windowId, inv, veterinary);
                     })
             );
 }

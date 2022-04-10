@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "minefactoryrenewed:block/veterinary" },
+    "facing=south": { "model": "minefactoryrenewed:block/veterinary", "y": 180},
+    "facing=west":  { "model": "minefactoryrenewed:block/veterinary", "y": 270 },
+    "facing=east":  { "model": "minefactoryrenewed:block/veterinary", "y": 90 }
+  }
+}
