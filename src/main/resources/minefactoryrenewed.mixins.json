@@ -5,6 +5,8 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "minefactoryrenewed.refmap.json",
   "mixins": [
+    "common.SlimeAccessor",
+    "common.ZombieVillagerAccessor"
   ],
   "client": [
     "client.BlockEntityRenderDispatcherMixin"

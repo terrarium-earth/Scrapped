@@ -58,7 +58,8 @@ public class SafariNetItem extends Item {
         Player player = event.getPlayer();
         Entity entity = event.getTarget();
 
-        if (tryCaptureEntity(entity, player.getMainHandItem())) {
+        if (player.getMainHandItem().getItem() instanceof SafariNetItem &&
+                tryCaptureEntity(entity, player.getMainHandItem())) {
             event.setCancellationResult(InteractionResult.SUCCESS);
             event.setCanceled(true);
         }

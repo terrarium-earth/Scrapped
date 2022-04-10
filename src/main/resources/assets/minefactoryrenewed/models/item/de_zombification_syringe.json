@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "minefactoryrenewed:item/de_zombification_syringe"
+  }
+}

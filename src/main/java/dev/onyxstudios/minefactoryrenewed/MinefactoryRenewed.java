@@ -5,6 +5,7 @@ import dev.onyxstudios.minefactoryrenewed.client.ModClient;
 import dev.onyxstudios.minefactoryrenewed.data.PickableReloadListener;
 import dev.onyxstudios.minefactoryrenewed.data.PlantableReloadListener;
 import dev.onyxstudios.minefactoryrenewed.item.SafariNetItem;
+import dev.onyxstudios.minefactoryrenewed.item.syringe.SyringeItem;
 import dev.onyxstudios.minefactoryrenewed.network.ModPackets;
 import dev.onyxstudios.minefactoryrenewed.registry.*;
 import net.minecraft.world.item.CreativeModeTab;
@@ -39,6 +40,7 @@ public class MinefactoryRenewed {
 
         MinecraftForge.EVENT_BUS.addListener(this::reloadListenerEvent);
         MinecraftForge.EVENT_BUS.addListener(SafariNetItem::entityInteract);
+        MinecraftForge.EVENT_BUS.addListener(SyringeItem::entityInteract);
         MinecraftForge.EVENT_BUS.addListener(MachineBlockEntity::livingDropsEvent);
 
         ModItems.ITEMS.register(eventBus);

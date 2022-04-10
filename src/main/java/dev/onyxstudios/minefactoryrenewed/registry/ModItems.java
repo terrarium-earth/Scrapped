@@ -2,6 +2,7 @@ package dev.onyxstudios.minefactoryrenewed.registry;
 
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
 import dev.onyxstudios.minefactoryrenewed.item.*;
+import dev.onyxstudios.minefactoryrenewed.item.syringe.*;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -51,4 +52,15 @@ public class ModItems {
 
     public static final RegistryObject<Item> ESSENCE_BUCKET = ITEMS.register("essence_bucket", () -> new BucketItem(ModBlocks.ESSENCE, BUCKET_PROPS));
     public static final RegistryObject<Item> SEWAGE_BUCKET = ITEMS.register("sewage_bucket", () -> new BucketItem(ModBlocks.SEWAGE, BUCKET_PROPS));
+
+    //Syringes
+    public static final RegistryObject<Item> EMPTY_SYRINGE = ITEMS.register("empty_syringe", () ->
+            new Item(new Item.Properties().tab(MinefactoryRenewed.TAB).stacksTo(1)));
+    public static final RegistryObject<Item> DE_ZOMBIFICATION_SYRINGE =
+            ITEMS.register("de_zombification_syringe", DeZombieSyringe::new);
+    public static final RegistryObject<Item> SLIME_EMBIGGENING_SYRINGE =
+            ITEMS.register("slime_embiggening_syringe", SlimeSyringe::new);
+    public static final RegistryObject<Item> GROWTH_SYRINGE = ITEMS.register("growth_syringe", GrowthSyringe::new);
+    public static final RegistryObject<Item> HEALTH_SYRINGE = ITEMS.register("health_syringe", HealthSyringe::new);
+    public static final RegistryObject<Item> ZOMBIE_SYRINGE = ITEMS.register("zombie_syringe", ZombieSyringe::new);
 }
