@@ -2,12 +2,14 @@ package dev.onyxstudios.minefactoryrenewed.registry;
 
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.animals.FisherContainer;
+import dev.onyxstudios.minefactoryrenewed.blockentity.container.animals.RancherContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FarmerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FertilizerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FruitPickerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.PlanterContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.*;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.animals.FisherBlockEntity;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.animals.RancherBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FarmerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FertilizerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FruitPickerBlockEntity;
@@ -81,6 +83,11 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<FisherBlockEntity>> FISHER =
             BLOCK_ENTITIES.register("fisher_block_entity", () ->
                     BlockEntityType.Builder.of(FisherBlockEntity::new, ModBlocks.FISHER.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<RancherBlockEntity>> RANCHER =
+            BLOCK_ENTITIES.register("rancher_block_entity", () ->
+                    BlockEntityType.Builder.of(RancherBlockEntity::new, ModBlocks.RANCHER.get())
                             .build(null));
 
     /**
@@ -164,6 +171,14 @@ public class ModBlockEntities {
                         BlockPos pos = data.readBlockPos();
                         FisherBlockEntity fisher = (FisherBlockEntity) inv.player.level.getBlockEntity(pos);
                         return new FisherContainer(windowId, inv, fisher);
+                    })
+            );
+
+    public static final RegistryObject<MenuType<RancherContainer>> RANCHER_CONTAINER =
+            CONTAINERS.register("rancher_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                        BlockPos pos = data.readBlockPos();
+                        RancherBlockEntity rancher = (RancherBlockEntity) inv.player.level.getBlockEntity(pos);
+                        return new RancherContainer(windowId, inv, rancher);
                     })
             );
 }

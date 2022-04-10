@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
 import dev.onyxstudios.minefactoryrenewed.client.entity.PinkSlimeRenderer;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.animals.FisherScreen;
+import dev.onyxstudios.minefactoryrenewed.client.gui.machine.animals.RancherScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.FarmerScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.FertilizerScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.FruitPickerScreen;
@@ -53,6 +54,7 @@ public class ModClient {
         MenuScreens.register(ModBlockEntities.MOB_ROUTER_CONTAINER.get(), MobRouterScreen::new);
         MenuScreens.register(ModBlockEntities.AUTO_SPAWNER_CONTAINER.get(), AutoSpawnerScreen::new);
         MenuScreens.register(ModBlockEntities.FISHER_CONTAINER.get(), FisherScreen::new);
+        MenuScreens.register(ModBlockEntities.RANCHER_CONTAINER.get(), RancherScreen::new);
     }
 
     private static void initEntities() {

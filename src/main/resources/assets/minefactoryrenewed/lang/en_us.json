@@ -52,6 +52,7 @@
   "block.minefactoryrenewed.mob_router": "Mob Router",
   "block.minefactoryrenewed.auto_spawner": "Auto Spawner",
   "block.minefactoryrenewed.fisher": "Fisher",
+  "block.minefactoryrenewed.rancher": "Rancher",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",
