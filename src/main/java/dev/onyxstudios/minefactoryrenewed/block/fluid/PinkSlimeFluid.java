@@ -51,6 +51,11 @@ public abstract class PinkSlimeFluid extends WaterFluid {
         return fluid == ModBlocks.PINK_SLIME.get() || fluid == ModBlocks.PINK_SLIME_FLOWING.get();
     }
 
+    @Override
+    protected boolean canConvertToSource() {
+        return false;
+    }
+
     public static class Flowing extends PinkSlimeFluid {
 
         @Override

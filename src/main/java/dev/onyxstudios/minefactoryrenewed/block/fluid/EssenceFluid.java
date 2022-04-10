@@ -51,6 +51,11 @@ public abstract class EssenceFluid extends WaterFluid {
         return fluid == ModBlocks.ESSENCE.get() || fluid == ModBlocks.ESSENCE_FLOWING.get();
     }
 
+    @Override
+    protected boolean canConvertToSource() {
+        return false;
+    }
+
     public static class Flowing extends EssenceFluid {
 
         @Override

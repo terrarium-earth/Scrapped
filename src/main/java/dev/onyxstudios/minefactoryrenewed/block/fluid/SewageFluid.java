@@ -37,6 +37,11 @@ public abstract class SewageFluid extends WaterFluid {
     }
 
     @Override
+    protected boolean canConvertToSource() {
+        return false;
+    }
+
+    @Override
     protected FluidAttributes createAttributes() {
         return FluidAttributes.builder(
                         new ResourceLocation(MinefactoryRenewed.MODID, "block/sewage_still"),

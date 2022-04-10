@@ -51,6 +51,11 @@ public abstract class SludgeFluid extends WaterFluid {
         return fluid == ModBlocks.SLUDGE.get() || fluid == ModBlocks.SLUDGE_FLOWING.get();
     }
 
+    @Override
+    protected boolean canConvertToSource() {
+        return false;
+    }
+
     public static class Flowing extends SludgeFluid {
 
         @Override

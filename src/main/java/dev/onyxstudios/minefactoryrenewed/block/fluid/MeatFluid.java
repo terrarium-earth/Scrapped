@@ -51,6 +51,11 @@ public abstract class MeatFluid extends WaterFluid {
         return fluid == ModBlocks.MEAT.get() || fluid == ModBlocks.MEAT_FLOWING.get();
     }
 
+    @Override
+    protected boolean canConvertToSource() {
+        return false;
+    }
+
     public static class Flowing extends MeatFluid {
 
         @Override
