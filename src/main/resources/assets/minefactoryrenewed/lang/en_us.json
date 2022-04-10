@@ -65,6 +65,7 @@
   "block.minefactoryrenewed.chronotyper": "Chronotyper",
   "block.minefactoryrenewed.sewer": "Sewer",
   "block.minefactoryrenewed.veterinary": "Veterinary Station",
+  "block.minefactoryrenewed.block_placer": "Block Placer",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",

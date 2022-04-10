@@ -6,6 +6,7 @@ import dev.onyxstudios.minefactoryrenewed.block.MeatBlock;
 import dev.onyxstudios.minefactoryrenewed.block.PinkSlimeBlock;
 import dev.onyxstudios.minefactoryrenewed.block.fluid.*;
 import dev.onyxstudios.minefactoryrenewed.block.machine.animals.*;
+import dev.onyxstudios.minefactoryrenewed.block.machine.blocks.BlockPlacerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FarmerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FertilizerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FruitPickerBlock;
@@ -109,6 +110,10 @@ public class ModBlocks {
     public static final RegistryObject<Block> VETERINARY = BLOCKS.register("veterinary", VeterinaryBlock::new);
     public static final RegistryObject<BlockItem> VETERINARY_ITEM = ITEMS.register("veterinary", () ->
             new BlockItem(VETERINARY.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> BLOCK_PLACER = BLOCKS.register("block_placer", BlockPlacerBlock::new);
+    public static final RegistryObject<BlockItem> BLOCK_PLACER_ITEM = ITEMS.register("block_placer", () ->
+            new BlockItem(BLOCK_PLACER.get(), ModItems.PROPERTIES));
 
     //Fluids
     public static final RegistryObject<SludgeFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);

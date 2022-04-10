@@ -2,12 +2,14 @@ package dev.onyxstudios.minefactoryrenewed.registry;
 
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.animals.*;
+import dev.onyxstudios.minefactoryrenewed.blockentity.container.blocks.BlockPlacerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FarmerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FertilizerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FruitPickerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.PlanterContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.*;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.animals.*;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.blocks.BlockPlacerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FarmerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FertilizerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FruitPickerBlockEntity;
@@ -106,6 +108,11 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<VeterinaryBlockEntity>> VETERINARY =
             BLOCK_ENTITIES.register("veterinary_block_entity", () ->
                     BlockEntityType.Builder.of(VeterinaryBlockEntity::new, ModBlocks.VETERINARY.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<BlockPlacerBlockEntity>> BLOCK_PLACER =
+            BLOCK_ENTITIES.register("block_placer_block_entity", () ->
+                    BlockEntityType.Builder.of(BlockPlacerBlockEntity::new, ModBlocks.BLOCK_PLACER.get())
                             .build(null));
 
     /**
@@ -229,6 +236,14 @@ public class ModBlockEntities {
                         BlockPos pos = data.readBlockPos();
                         VeterinaryBlockEntity veterinary = (VeterinaryBlockEntity) inv.player.level.getBlockEntity(pos);
                         return new VeterinaryContainer(windowId, inv, veterinary);
+                    })
+            );
+
+    public static final RegistryObject<MenuType<BlockPlacerContainer>> BLOCK_PLACER_CONTAINER =
+            CONTAINERS.register("block_placer_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                        BlockPos pos = data.readBlockPos();
+                        BlockPlacerBlockEntity block_placer = (BlockPlacerBlockEntity) inv.player.level.getBlockEntity(pos);
+                        return new BlockPlacerContainer(windowId, inv, block_placer);
                     })
             );
 }
