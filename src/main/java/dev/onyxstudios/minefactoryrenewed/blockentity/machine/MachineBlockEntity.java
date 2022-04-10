@@ -219,8 +219,13 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
     }
 
     public void createMachineArea(BlockPos pos, Direction facing, int radius) {
-        this.machineArea = new MachineArea(pos, facing, radius);
-        this.machineArea.calculateArea();
+        MachineArea machineArea = new MachineArea(pos, facing, radius);
+        machineArea.calculateArea();
+        createMachineArea(machineArea);
+    }
+
+    public void createMachineArea(MachineArea machineArea) {
+        this.machineArea = machineArea;
         this.setChanged();
     }
 

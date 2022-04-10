@@ -27,6 +27,8 @@ public class MachineArea {
     private int upgradeRadius;
     private int currentBlock = 0;
 
+    private boolean isOneBlock = false;
+
     public MachineArea(BlockPos pos, Direction facing, int radius) {
         this(pos, facing, radius, 0);
     }
@@ -95,7 +97,8 @@ public class MachineArea {
 
             first = frontPos.relative(left, finalRadius);
             //Allow for proper radius in front
-            second = frontPos.relative(right, finalRadius).relative(facing, (radius + 1) + (upgradeRadius * 2)).above(verticalRange);
+            second = isOneBlock ? frontPos :
+                    frontPos.relative(right, finalRadius).relative(facing, (radius + 1) + (upgradeRadius * 2)).above(verticalRange);
             secondCorner = second.relative(right).relative(facing).above(1);
         }
 
@@ -137,6 +140,10 @@ public class MachineArea {
         return pos;
     }
 
+    public void setOneBlock(boolean oneBlock) {
+        this.isOneBlock = oneBlock;
+    }
+
     public List<BlockPos> getArea() {
         return area;
     }
@@ -155,5 +162,9 @@ public class MachineArea {
 
     public int getRadius() {
         return radius + upgradeRadius;
+    }
+
+    public boolean isOneBlock() {
+        return isOneBlock;
     }
 }

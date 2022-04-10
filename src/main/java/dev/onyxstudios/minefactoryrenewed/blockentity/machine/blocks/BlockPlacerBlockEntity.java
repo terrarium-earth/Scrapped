@@ -1,5 +1,6 @@
 package dev.onyxstudios.minefactoryrenewed.blockentity.machine.blocks;
 
+import dev.onyxstudios.minefactoryrenewed.api.machine.MachineArea;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.blocks.BlockPlacerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
@@ -27,6 +28,7 @@ public class BlockPlacerBlockEntity extends MachineBlockEntity implements MenuPr
         this.setMaxIdleTime(20);
 
         this.createMachineArea(pos, Direction.NORTH, 0);
+        this.getMachineArea().setOneBlock(true);
     }
 
     @Override
