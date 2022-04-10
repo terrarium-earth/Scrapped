@@ -129,7 +129,8 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
 
     public static void tick(Level level, BlockPos pos, BlockState state, MachineBlockEntity blockEntity) {
         //TODO Remove, only for testing with no generators...
-        blockEntity.getEnergy().receiveEnergy(100, false);
+        if (blockEntity.getEnergy() != null)
+            blockEntity.getEnergy().receiveEnergy(100, false);
         blockEntity.tickInternal();
     }
 
@@ -202,7 +203,7 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
         level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
     }
 
-    private void updateRange() {
+    protected void updateRange() {
         ItemStack stack = inventory.getStackInSlot(0);
         int radius = 0;
         if (!stack.isEmpty()) {
@@ -214,7 +215,11 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
     }
 
     public void createMachineArea(BlockPos pos, Direction facing) {
-        this.machineArea = new MachineArea(pos, facing, 1);
+        this.createMachineArea(pos, facing, 1);
+    }
+
+    public void createMachineArea(BlockPos pos, Direction facing, int radius) {
+        this.machineArea = new MachineArea(pos, facing, radius);
         this.machineArea.calculateArea();
         this.setChanged();
     }

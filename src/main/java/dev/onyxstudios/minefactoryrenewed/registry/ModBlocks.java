@@ -5,10 +5,7 @@ import dev.onyxstudios.minefactoryrenewed.block.ConveyorBeltBlock;
 import dev.onyxstudios.minefactoryrenewed.block.MeatBlock;
 import dev.onyxstudios.minefactoryrenewed.block.PinkSlimeBlock;
 import dev.onyxstudios.minefactoryrenewed.block.fluid.*;
-import dev.onyxstudios.minefactoryrenewed.block.machine.animals.BreederBlock;
-import dev.onyxstudios.minefactoryrenewed.block.machine.animals.ChronotyperBlock;
-import dev.onyxstudios.minefactoryrenewed.block.machine.animals.FisherBlock;
-import dev.onyxstudios.minefactoryrenewed.block.machine.animals.RancherBlock;
+import dev.onyxstudios.minefactoryrenewed.block.machine.animals.*;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FarmerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FertilizerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FruitPickerBlock;
@@ -104,6 +101,10 @@ public class ModBlocks {
     public static final RegistryObject<Block> CHRONOTYPER = BLOCKS.register("chronotyper", ChronotyperBlock::new);
     public static final RegistryObject<BlockItem> CHRONOTYPER_ITEM = ITEMS.register("chronotyper", () ->
             new BlockItem(CHRONOTYPER.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> SEWER = BLOCKS.register("sewer", SewerBlock::new);
+    public static final RegistryObject<BlockItem> SEWER_ITEM = ITEMS.register("sewer", () ->
+            new BlockItem(SEWER.get(), ModItems.PROPERTIES));
 
     //Fluids
     public static final RegistryObject<SludgeFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);

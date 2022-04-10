@@ -1,19 +1,13 @@
 package dev.onyxstudios.minefactoryrenewed.registry;
 
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
-import dev.onyxstudios.minefactoryrenewed.blockentity.container.animals.BreederContainer;
-import dev.onyxstudios.minefactoryrenewed.blockentity.container.animals.ChronotyperContainer;
-import dev.onyxstudios.minefactoryrenewed.blockentity.container.animals.FisherContainer;
-import dev.onyxstudios.minefactoryrenewed.blockentity.container.animals.RancherContainer;
+import dev.onyxstudios.minefactoryrenewed.blockentity.container.animals.*;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FarmerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FertilizerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FruitPickerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.PlanterContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.*;
-import dev.onyxstudios.minefactoryrenewed.blockentity.machine.animals.BreederBlockEntity;
-import dev.onyxstudios.minefactoryrenewed.blockentity.machine.animals.ChronotyperBlockEntity;
-import dev.onyxstudios.minefactoryrenewed.blockentity.machine.animals.FisherBlockEntity;
-import dev.onyxstudios.minefactoryrenewed.blockentity.machine.animals.RancherBlockEntity;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.animals.*;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FarmerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FertilizerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FruitPickerBlockEntity;
@@ -102,6 +96,11 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<ChronotyperBlockEntity>> CHRONOTYPER =
             BLOCK_ENTITIES.register("chronotyper_block_entity", () ->
                     BlockEntityType.Builder.of(ChronotyperBlockEntity::new, ModBlocks.CHRONOTYPER.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<SewerBlockEntity>> SEWER =
+            BLOCK_ENTITIES.register("sewer_block_entity", () ->
+                    BlockEntityType.Builder.of(SewerBlockEntity::new, ModBlocks.SEWER.get())
                             .build(null));
 
     /**
@@ -209,6 +208,14 @@ public class ModBlockEntities {
                         BlockPos pos = data.readBlockPos();
                         ChronotyperBlockEntity chronotyper = (ChronotyperBlockEntity) inv.player.level.getBlockEntity(pos);
                         return new ChronotyperContainer(windowId, inv, chronotyper);
+                    })
+            );
+
+    public static final RegistryObject<MenuType<SewerContainer>> SEWER_CONTAINER =
+            CONTAINERS.register("sewer_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                        BlockPos pos = data.readBlockPos();
+                        SewerBlockEntity sewer = (SewerBlockEntity) inv.player.level.getBlockEntity(pos);
+                        return new SewerContainer(windowId, inv, sewer);
                     })
             );
 }

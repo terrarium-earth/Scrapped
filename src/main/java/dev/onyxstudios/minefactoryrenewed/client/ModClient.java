@@ -4,10 +4,7 @@ import com.mojang.blaze3d.shaders.Uniform;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
 import dev.onyxstudios.minefactoryrenewed.client.entity.PinkSlimeRenderer;
-import dev.onyxstudios.minefactoryrenewed.client.gui.machine.animals.BreederScreen;
-import dev.onyxstudios.minefactoryrenewed.client.gui.machine.animals.ChronotyperScreen;
-import dev.onyxstudios.minefactoryrenewed.client.gui.machine.animals.FisherScreen;
-import dev.onyxstudios.minefactoryrenewed.client.gui.machine.animals.RancherScreen;
+import dev.onyxstudios.minefactoryrenewed.client.gui.machine.animals.*;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.FarmerScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.FertilizerScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.FruitPickerScreen;
@@ -59,6 +56,7 @@ public class ModClient {
         MenuScreens.register(ModBlockEntities.RANCHER_CONTAINER.get(), RancherScreen::new);
         MenuScreens.register(ModBlockEntities.BREEDER_CONTAINER.get(), BreederScreen::new);
         MenuScreens.register(ModBlockEntities.CHRONOTYPER_CONTAINER.get(), ChronotyperScreen::new);
+        MenuScreens.register(ModBlockEntities.SEWER_CONTAINER.get(), SewerScreen::new);
     }
 
     private static void initEntities() {
