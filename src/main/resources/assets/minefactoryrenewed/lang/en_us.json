@@ -31,6 +31,7 @@
   "item.minefactoryrenewed.pink_slime_ball": "Pink Slime Ball",
   "item.minefactoryrenewed.pink_slime_crystal": "Pink Slime Crystal",
   "item.minefactoryrenewed.essence_bucket": "Essence Bucket",
+  "item.minefactoryrenewed.sewage_bucket": "Sewage Bucket",
 
   "_comment3": "Blocks",
   "block.minefactoryrenewed.conveyor_belt": "Conveyor Belt",
@@ -42,6 +43,7 @@
   "block.minefactoryrenewed.meat": "Meat",
   "block.minefactoryrenewed.essence": "Essence",
   "block.minefactoryrenewed.pink_slime": "Pink Slime",
+  "block.minefactoryrenewed.sewage": "Sewage",
   "block.minefactoryrenewed.raw_meat_block": "Raw Meat Block",
   "block.minefactoryrenewed.cooked_meat_block": "Cooked Meat Block",
   "block.minefactoryrenewed.pink_slime_block": "Pink Slime Block",

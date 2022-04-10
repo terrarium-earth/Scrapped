@@ -50,4 +50,5 @@ public class ModItems {
     public static final RegistryObject<Item> PINK_SLIME_CRYSTAL = ITEMS.register("pink_slime_crystal", () -> new Item(PROPERTIES));
 
     public static final RegistryObject<Item> ESSENCE_BUCKET = ITEMS.register("essence_bucket", () -> new BucketItem(ModBlocks.ESSENCE, BUCKET_PROPS));
+    public static final RegistryObject<Item> SEWAGE_BUCKET = ITEMS.register("sewage_bucket", () -> new BucketItem(ModBlocks.SEWAGE, BUCKET_PROPS));
 }

@@ -33,6 +33,10 @@ public class BaseFluidBlock extends LiquidBlock {
             event.setRed(227 / 255.0f);
             event.setGreen(134 / 255.0f);
             event.setBlue(138 / 255.0f);
+        }else if (fluidState.is(ModTags.SEWAGE)) {
+            event.setRed(120 / 255.0f);
+            event.setGreen(80 / 255.0f);
+            event.setBlue(52 / 255.0f);
         }
     }
 }
