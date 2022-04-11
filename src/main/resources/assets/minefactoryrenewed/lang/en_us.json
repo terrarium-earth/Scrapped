@@ -67,6 +67,7 @@
   "block.minefactoryrenewed.veterinary": "Veterinary Station",
   "block.minefactoryrenewed.block_placer": "Block Placer",
   "block.minefactoryrenewed.block_breaker": "Block Breaker",
+  "block.minefactoryrenewed.block_smasher": "Block Smasher",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",

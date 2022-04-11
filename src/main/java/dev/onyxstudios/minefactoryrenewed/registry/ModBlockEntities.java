@@ -3,6 +3,7 @@ package dev.onyxstudios.minefactoryrenewed.registry;
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.animals.*;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.blocks.BlockPlacerContainer;
+import dev.onyxstudios.minefactoryrenewed.blockentity.container.blocks.BlockSmasherContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FarmerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FertilizerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FruitPickerContainer;
@@ -11,6 +12,7 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.*;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.animals.*;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.blocks.BlockBreakerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.blocks.BlockPlacerBlockEntity;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.blocks.BlockSmasherBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FarmerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FertilizerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FruitPickerBlockEntity;
@@ -119,6 +121,11 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<BlockBreakerBlockEntity>> BLOCK_BREAKER =
             BLOCK_ENTITIES.register("block_breaker_block_entity", () ->
                     BlockEntityType.Builder.of(BlockBreakerBlockEntity::new, ModBlocks.BLOCK_BREAKER.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<BlockSmasherBlockEntity>> BLOCK_SMASHER =
+            BLOCK_ENTITIES.register("block_smasher_block_entity", () ->
+                    BlockEntityType.Builder.of(BlockSmasherBlockEntity::new, ModBlocks.BLOCK_SMASHER.get())
                             .build(null));
 
     /**
@@ -248,8 +255,16 @@ public class ModBlockEntities {
     public static final RegistryObject<MenuType<BlockPlacerContainer>> BLOCK_PLACER_CONTAINER =
             CONTAINERS.register("block_placer_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
                         BlockPos pos = data.readBlockPos();
-                        BlockPlacerBlockEntity block_placer = (BlockPlacerBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new BlockPlacerContainer(windowId, inv, block_placer);
+                        BlockPlacerBlockEntity blockPlacer = (BlockPlacerBlockEntity) inv.player.level.getBlockEntity(pos);
+                        return new BlockPlacerContainer(windowId, inv, blockPlacer);
+                    })
+            );
+
+    public static final RegistryObject<MenuType<BlockSmasherContainer>> BLOCK_SMASHER_CONTAINER =
+            CONTAINERS.register("block_smasher_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                        BlockPos pos = data.readBlockPos();
+                        BlockSmasherBlockEntity blockSmasher = (BlockSmasherBlockEntity) inv.player.level.getBlockEntity(pos);
+                        return new BlockSmasherContainer(windowId, inv, blockSmasher);
                     })
             );
 }

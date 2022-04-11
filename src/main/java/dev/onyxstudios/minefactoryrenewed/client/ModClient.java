@@ -6,6 +6,7 @@ import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
 import dev.onyxstudios.minefactoryrenewed.client.entity.PinkSlimeRenderer;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.animals.*;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.blocks.BlockPlacerScreen;
+import dev.onyxstudios.minefactoryrenewed.client.gui.machine.blocks.BlockSmasherScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.FarmerScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.FertilizerScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.FruitPickerScreen;
@@ -60,6 +61,7 @@ public class ModClient {
         MenuScreens.register(ModBlockEntities.SEWER_CONTAINER.get(), SewerScreen::new);
         MenuScreens.register(ModBlockEntities.VETERINARY_CONTAINER.get(), VeterinaryScreen::new);
         MenuScreens.register(ModBlockEntities.BLOCK_PLACER_CONTAINER.get(), BlockPlacerScreen::new);
+        MenuScreens.register(ModBlockEntities.BLOCK_SMASHER_CONTAINER.get(), BlockSmasherScreen::new);
     }
 
     private static void initEntities() {

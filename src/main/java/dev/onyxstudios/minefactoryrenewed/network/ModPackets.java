@@ -24,5 +24,7 @@ public class ModPackets {
                 SpawnerButtonMessage::decode, SpawnerButtonMessage::handleMessage);
         INSTANCE.registerMessage(3, ChronotyperButtonMessage.class, ChronotyperButtonMessage::encode,
                 ChronotyperButtonMessage::decode, ChronotyperButtonMessage::handleMessage);
+        INSTANCE.registerMessage(4, SmasherButtonMessage.class, SmasherButtonMessage::encode,
+                SmasherButtonMessage::decode, SmasherButtonMessage::handleMessage);
     }
 }
