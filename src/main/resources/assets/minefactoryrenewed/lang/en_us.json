@@ -68,6 +68,7 @@
   "block.minefactoryrenewed.block_placer": "Block Placer",
   "block.minefactoryrenewed.block_breaker": "Block Breaker",
   "block.minefactoryrenewed.block_smasher": "Block Smasher",
+  "block.minefactoryrenewed.deep_storage": "Deep Storage Unit",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",

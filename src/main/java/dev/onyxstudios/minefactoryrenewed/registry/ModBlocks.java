@@ -9,6 +9,7 @@ import dev.onyxstudios.minefactoryrenewed.block.machine.animals.*;
 import dev.onyxstudios.minefactoryrenewed.block.machine.blocks.BlockBreakerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.blocks.BlockPlacerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.blocks.BlockSmasherBlock;
+import dev.onyxstudios.minefactoryrenewed.block.machine.blocks.DeepStorageBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FarmerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FertilizerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FruitPickerBlock;
@@ -124,6 +125,10 @@ public class ModBlocks {
     public static final RegistryObject<Block> BLOCK_SMASHER = BLOCKS.register("block_smasher", BlockSmasherBlock::new);
     public static final RegistryObject<BlockItem> BLOCK_SMASHER_ITEM = ITEMS.register("block_smasher", () ->
             new BlockItem(BLOCK_SMASHER.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> DEEP_STORAGE = BLOCKS.register("deep_storage", DeepStorageBlock::new);
+    public static final RegistryObject<BlockItem> DEEP_STORAGE_ITEM = ITEMS.register("deep_storage", () ->
+            new BlockItem(DEEP_STORAGE.get(), ModItems.PROPERTIES));
 
     //Fluids
     public static final RegistryObject<SludgeFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);

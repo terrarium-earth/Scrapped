@@ -4,6 +4,7 @@ import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.animals.*;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.blocks.BlockPlacerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.blocks.BlockSmasherContainer;
+import dev.onyxstudios.minefactoryrenewed.blockentity.container.blocks.DeepStorageContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FarmerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FertilizerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FruitPickerContainer;
@@ -13,6 +14,7 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.machine.animals.*;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.blocks.BlockBreakerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.blocks.BlockPlacerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.blocks.BlockSmasherBlockEntity;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.blocks.DeepStorageBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FarmerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FertilizerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FruitPickerBlockEntity;
@@ -126,6 +128,11 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<BlockSmasherBlockEntity>> BLOCK_SMASHER =
             BLOCK_ENTITIES.register("block_smasher_block_entity", () ->
                     BlockEntityType.Builder.of(BlockSmasherBlockEntity::new, ModBlocks.BLOCK_SMASHER.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<DeepStorageBlockEntity>> DEEP_STORAGE =
+            BLOCK_ENTITIES.register("deep_storage_block_entity", () ->
+                    BlockEntityType.Builder.of(DeepStorageBlockEntity::new, ModBlocks.DEEP_STORAGE.get())
                             .build(null));
 
     /**
@@ -265,6 +272,14 @@ public class ModBlockEntities {
                         BlockPos pos = data.readBlockPos();
                         BlockSmasherBlockEntity blockSmasher = (BlockSmasherBlockEntity) inv.player.level.getBlockEntity(pos);
                         return new BlockSmasherContainer(windowId, inv, blockSmasher);
+                    })
+            );
+
+    public static final RegistryObject<MenuType<DeepStorageContainer>> DEEP_STORAGE_CONTAINER =
+            CONTAINERS.register("deep_storage_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                        BlockPos pos = data.readBlockPos();
+                        DeepStorageBlockEntity deepStorage = (DeepStorageBlockEntity) inv.player.level.getBlockEntity(pos);
+                        return new DeepStorageContainer(windowId, inv, deepStorage);
                     })
             );
 }
