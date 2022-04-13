@@ -12,6 +12,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.EnchantedBookItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -45,15 +46,19 @@ public class AutoDisenchanterBlockEntity extends MachineBlockEntity implements M
             Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(toolStack);
 
             if (!enchantments.isEmpty()) {
+                ItemStack resultBook = new ItemStack(Items.ENCHANTED_BOOK);
+                ItemStack resultTool = toolStack;
+                if (toolStack.is(Items.ENCHANTED_BOOK))
+                    resultTool = enchantments.size() > 1 ? new ItemStack(Items.ENCHANTED_BOOK) : new ItemStack(Items.BOOK);
+
                 Enchantment enchantment = enchantments.keySet().stream().findFirst().get();
-                ItemStack enchantedBook = new ItemStack(Items.ENCHANTED_BOOK);
-                EnchantedBookItem.addEnchantment(enchantedBook,
-                        new EnchantmentInstance(enchantment, enchantments.get(enchantment)));
+                EnchantedBookItem.addEnchantment(resultBook, new EnchantmentInstance(enchantment, enchantments.get(enchantment)));
                 enchantments.remove(enchantment);
 
+                EnchantmentHelper.setEnchantments(enchantments, resultTool);
                 getInventory().extractItem(0, 1, false);
-                getInventory().setStackInSlot(2, enchantedBook);
-                EnchantmentHelper.setEnchantments(enchantments, getInventory().getStackInSlot(1));
+                getInventory().setStackInSlot(1, resultTool);
+                getInventory().setStackInSlot(2, resultBook);
 
                 getTank().drain(ESSENCE_COST, IFluidHandler.FluidAction.EXECUTE);
                 useEnergy();
