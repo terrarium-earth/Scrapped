@@ -69,6 +69,7 @@
   "block.minefactoryrenewed.block_breaker": "Block Breaker",
   "block.minefactoryrenewed.block_smasher": "Block Smasher",
   "block.minefactoryrenewed.deep_storage": "Deep Storage Unit",
+  "block.minefactoryrenewed.auto_disenchanter": "Auto-Disenchanter",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",
