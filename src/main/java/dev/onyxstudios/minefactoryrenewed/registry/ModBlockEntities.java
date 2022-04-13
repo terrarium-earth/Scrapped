@@ -6,6 +6,7 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.container.blocks.BlockPlac
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.blocks.BlockSmasherContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.blocks.DeepStorageContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.enchantment.AutoDisenchanterContainer;
+import dev.onyxstudios.minefactoryrenewed.blockentity.container.enchantment.AutoEnchanterContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FarmerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FertilizerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FruitPickerContainer;
@@ -17,6 +18,7 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.machine.blocks.BlockPlacer
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.blocks.BlockSmasherBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.blocks.DeepStorageBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.enchantment.AutoDisenchanterBlockEntity;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.enchantment.AutoEnchanterBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FarmerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FertilizerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FruitPickerBlockEntity;
@@ -140,6 +142,11 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<AutoDisenchanterBlockEntity>> AUTO_DISENCHANTER =
             BLOCK_ENTITIES.register("auto_disenchanter_block_entity", () ->
                     BlockEntityType.Builder.of(AutoDisenchanterBlockEntity::new, ModBlocks.AUTO_DISENCHANTER.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<AutoEnchanterBlockEntity>> AUTO_ENCHANTER =
+            BLOCK_ENTITIES.register("auto_enchanter_block_entity", () ->
+                    BlockEntityType.Builder.of(AutoEnchanterBlockEntity::new, ModBlocks.AUTO_ENCHANTER.get())
                             .build(null));
 
     /**
@@ -295,6 +302,14 @@ public class ModBlockEntities {
                         BlockPos pos = data.readBlockPos();
                         AutoDisenchanterBlockEntity autoDisenchanter = (AutoDisenchanterBlockEntity) inv.player.level.getBlockEntity(pos);
                         return new AutoDisenchanterContainer(windowId, inv, autoDisenchanter);
+                    })
+            );
+
+    public static final RegistryObject<MenuType<AutoEnchanterContainer>> AUTO_ENCHANTER_CONTAINER =
+            CONTAINERS.register("auto_enchanter_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                        BlockPos pos = data.readBlockPos();
+                        AutoEnchanterBlockEntity autoEnchanter = (AutoEnchanterBlockEntity) inv.player.level.getBlockEntity(pos);
+                        return new AutoEnchanterContainer(windowId, inv, autoEnchanter);
                     })
             );
 }

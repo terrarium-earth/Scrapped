@@ -26,5 +26,7 @@ public class ModPackets {
                 ChronotyperButtonMessage::decode, ChronotyperButtonMessage::handleMessage);
         INSTANCE.registerMessage(4, SmasherButtonMessage.class, SmasherButtonMessage::encode,
                 SmasherButtonMessage::decode, SmasherButtonMessage::handleMessage);
+        INSTANCE.registerMessage(5, EnchanterButtonMessage.class, EnchanterButtonMessage::encode,
+                EnchanterButtonMessage::decode, EnchanterButtonMessage::handleMessage);
     }
 }

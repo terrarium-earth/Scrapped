@@ -11,6 +11,7 @@ import dev.onyxstudios.minefactoryrenewed.block.machine.blocks.BlockPlacerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.blocks.BlockSmasherBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.blocks.DeepStorageBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.enchantment.AutoDisenchanterBlock;
+import dev.onyxstudios.minefactoryrenewed.block.machine.enchantment.AutoEnchanterBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FarmerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FertilizerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FruitPickerBlock;
@@ -134,6 +135,10 @@ public class ModBlocks {
     public static final RegistryObject<Block> AUTO_DISENCHANTER = BLOCKS.register("auto_disenchanter", AutoDisenchanterBlock::new);
     public static final RegistryObject<Item> AUTO_DISENCHANTER_ITEM = ITEMS.register("auto_disenchanter", () ->
             new BlockItem(AUTO_DISENCHANTER.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> AUTO_ENCHANTER = BLOCKS.register("auto_enchanter", AutoEnchanterBlock::new);
+    public static final RegistryObject<Item> AUTO_ENCHANTER_ITEM = ITEMS.register("auto_enchanter", () ->
+            new BlockItem(AUTO_ENCHANTER.get(), ModItems.PROPERTIES));
 
     //Fluids
     public static final RegistryObject<SludgeFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);
