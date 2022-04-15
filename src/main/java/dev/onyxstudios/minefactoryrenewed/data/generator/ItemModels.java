@@ -28,6 +28,12 @@ public class ItemModels extends ItemModelProvider {
                 withExistingParent(registryName.toString(), ITEM_GENERATED)
                         .texture("layer0", registryName.getNamespace() + ":item/" + registryName.getPath());
             }
+
+            if (registryName.getPath().endsWith("_focus")) {
+                withExistingParent(registryName.toString(), ITEM_GENERATED)
+                        .texture("layer0", registryName.getNamespace() + ":item/laser_focus")
+                        .texture("layer1", registryName.getNamespace() + ":item/laser_focus_gem" );
+            }
         }
     }
 }

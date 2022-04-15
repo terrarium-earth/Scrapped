@@ -4,6 +4,7 @@ import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
 import dev.onyxstudios.minefactoryrenewed.item.*;
 import dev.onyxstudios.minefactoryrenewed.item.syringe.*;
 import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.registries.DeferredRegister;
@@ -63,4 +64,38 @@ public class ModItems {
     public static final RegistryObject<Item> GROWTH_SYRINGE = ITEMS.register("growth_syringe", GrowthSyringe::new);
     public static final RegistryObject<Item> HEALTH_SYRINGE = ITEMS.register("health_syringe", HealthSyringe::new);
     public static final RegistryObject<Item> ZOMBIE_SYRINGE = ITEMS.register("zombie_syringe", ZombieSyringe::new);
+
+    //Laser Focus
+    public static final RegistryObject<Item> WHITE_FOCUS = ITEMS.register("white_focus", () ->
+            new FocusItem(ModTags.WHITE_FOCUS, DyeColor.WHITE));
+    public static final RegistryObject<Item> YELLOW_FOCUS = ITEMS.register("yellow_focus", () ->
+            new FocusItem(ModTags.YELLOW_FOCUS, DyeColor.YELLOW));
+    public static final RegistryObject<Item> BLACK_FOCUS = ITEMS.register("black_focus", () ->
+            new FocusItem(ModTags.BLACK_FOCUS, DyeColor.BLACK));
+    public static final RegistryObject<Item> BLUE_FOCUS = ITEMS.register("blue_focus", () ->
+            new FocusItem(ModTags.BLUE_FOCUS, DyeColor.BLUE));
+    public static final RegistryObject<Item> BROWN_FOCUS = ITEMS.register("brown_focus", () ->
+            new FocusItem(ModTags.BROWN_FOCUS, DyeColor.BROWN));
+    public static final RegistryObject<Item> CYAN_FOCUS = ITEMS.register("cyan_focus", () ->
+            new FocusItem(ModTags.CYAN_FOCUS, DyeColor.CYAN));
+    public static final RegistryObject<Item> GRAY_FOCUS = ITEMS.register("gray_focus", () ->
+            new FocusItem(ModTags.GRAY_FOCUS, DyeColor.GRAY));
+    public static final RegistryObject<Item> GREEN_FOCUS = ITEMS.register("green_focus", () ->
+            new FocusItem(ModTags.GREEN_FOCUS, DyeColor.GREEN));
+    public static final RegistryObject<Item> LIGHT_BLUE_FOCUS = ITEMS.register("light_blue_focus", () ->
+            new FocusItem(ModTags.LIGHT_BLUE_FOCUS, DyeColor.LIGHT_BLUE));
+    public static final RegistryObject<Item> LIGHT_GRAY_FOCUS = ITEMS.register("light_gray_focus", () ->
+            new FocusItem(ModTags.LIGHT_GRAY_FOCUS, DyeColor.LIGHT_GRAY));
+    public static final RegistryObject<Item> LIME_FOCUS = ITEMS.register("lime_focus", () ->
+            new FocusItem(ModTags.LIME_FOCUS, DyeColor.LIME));
+    public static final RegistryObject<Item> MAGENTA_FOCUS = ITEMS.register("magenta_focus", () ->
+            new FocusItem(ModTags.MAGENTA_FOCUS, DyeColor.MAGENTA));
+    public static final RegistryObject<Item> ORANGE_FOCUS = ITEMS.register("orange_focus", () ->
+            new FocusItem(ModTags.ORANGE_FOCUS, DyeColor.ORANGE));
+    public static final RegistryObject<Item> PINK_FOCUS = ITEMS.register("pink_focus", () ->
+            new FocusItem(ModTags.PINK_FOCUS, DyeColor.PINK));
+    public static final RegistryObject<Item> PURPLE_FOCUS = ITEMS.register("purple_focus", () ->
+            new FocusItem(ModTags.PURPLE_FOCUS, DyeColor.PURPLE));
+    public static final RegistryObject<Item> RED_FOCUS = ITEMS.register("red_focus", () ->
+            new FocusItem(ModTags.RED_FOCUS, DyeColor.RED));
 }

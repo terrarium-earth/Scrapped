@@ -62,7 +62,7 @@ public class MinefactoryRenewed {
     }
 
     private void initClient(FMLClientSetupEvent event) {
-        ModClient.init();
+        ModClient.init(event);
     }
 
     private void reloadListenerEvent(AddReloadListenerEvent event) {

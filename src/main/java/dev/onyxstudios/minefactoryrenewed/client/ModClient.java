@@ -16,9 +16,12 @@ import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.FertilizerS
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.FruitPickerScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.PlanterScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.mobs.*;
+import dev.onyxstudios.minefactoryrenewed.item.FocusItem;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlocks;
 import dev.onyxstudios.minefactoryrenewed.registry.ModEntities;
+import dev.onyxstudios.minefactoryrenewed.registry.ModItems;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -26,9 +29,12 @@ import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.client.event.RegisterShadersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.io.IOException;
 
@@ -38,10 +44,11 @@ public class ModClient {
     public static ShaderInstance RAINBOW_SHADER;
     public static Uniform TIME;
 
-    public static void init() {
+    public static void init(FMLClientSetupEvent event) {
         initLayers();
         initScreens();
         initEntities();
+        initColors(event);
     }
 
     private static void initLayers() {
@@ -75,6 +82,18 @@ public class ModClient {
     private static void initEntities() {
         EntityRenderers.register(ModEntities.SAFARI_NET.get(), ThrownItemRenderer::new);
         EntityRenderers.register(ModEntities.PINK_SLIME.get(), PinkSlimeRenderer::new);
+    }
+
+    private static void initColors(FMLClientSetupEvent event) {
+        event.enqueueWork(() -> {
+            Minecraft minecraft = Minecraft.getInstance();
+            for (RegistryObject<Item> entry : ModItems.ITEMS.getEntries()) {
+                if (entry.get() instanceof FocusItem focusItem) {
+                    minecraft.getItemColors().register((stack, tintIndex) ->
+                            tintIndex == 1 ? focusItem.getColor().getFireworkColor() : 0xFFFFFF, focusItem);
+                }
+            }
+        });
     }
 
     @SubscribeEvent
