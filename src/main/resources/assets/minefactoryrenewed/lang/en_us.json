@@ -71,6 +71,7 @@
   "block.minefactoryrenewed.deep_storage": "Deep Storage Unit",
   "block.minefactoryrenewed.auto_disenchanter": "Auto-Disenchanter",
   "block.minefactoryrenewed.auto_enchanter": "Auto-Enchanter",
+  "block.minefactoryrenewed.auto_anvil": "Auto-Anvil",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",

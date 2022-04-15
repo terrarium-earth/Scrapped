@@ -8,6 +8,7 @@ import dev.onyxstudios.minefactoryrenewed.client.gui.machine.animals.*;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.blocks.BlockPlacerScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.blocks.BlockSmasherScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.blocks.DeepStorageScreen;
+import dev.onyxstudios.minefactoryrenewed.client.gui.machine.enchantment.AutoAnvilScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.enchantment.AutoDisenchanterScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.enchantment.AutoEnchanterScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.FarmerScreen;
@@ -68,6 +69,7 @@ public class ModClient {
         MenuScreens.register(ModBlockEntities.DEEP_STORAGE_CONTAINER.get(), DeepStorageScreen::new);
         MenuScreens.register(ModBlockEntities.AUTO_DISENCHANTER_CONTAINER.get(), AutoDisenchanterScreen::new);
         MenuScreens.register(ModBlockEntities.AUTO_ENCHANTER_CONTAINER.get(), AutoEnchanterScreen::new);
+        MenuScreens.register(ModBlockEntities.AUTO_ANVIL_CONTAINER.get(), AutoAnvilScreen::new);
     }
 
     private static void initEntities() {

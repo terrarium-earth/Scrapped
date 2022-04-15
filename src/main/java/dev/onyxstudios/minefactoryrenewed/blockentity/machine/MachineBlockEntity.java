@@ -158,6 +158,7 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
             setChanged();
         } else {
             workTime++;
+            tickWork();
             if (workTime >= maxWorkTime) {
                 workTime = 0;
 
@@ -170,6 +171,9 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
 
             setChanged();
         }
+    }
+
+    protected void tickWork() {
     }
 
     public void useEnergy() {
