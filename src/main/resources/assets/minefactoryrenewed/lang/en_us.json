@@ -88,6 +88,8 @@
   "block.minefactoryrenewed.auto_disenchanter": "Auto-Disenchanter",
   "block.minefactoryrenewed.auto_enchanter": "Auto-Enchanter",
   "block.minefactoryrenewed.auto_anvil": "Auto-Anvil",
+  "block.minefactoryrenewed.laser_drill": "Laser Drill",
+  "block.minefactoryrenewed.laser_charger": "Laser Drill Precharger",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",

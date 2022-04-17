@@ -13,6 +13,8 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.Fertiliz
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FruitPickerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.PlanterContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.*;
+import dev.onyxstudios.minefactoryrenewed.blockentity.container.processing.LaserChargerContainer;
+import dev.onyxstudios.minefactoryrenewed.blockentity.container.processing.LaserDrillContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.animals.*;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.blocks.BlockBreakerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.blocks.BlockPlacerBlockEntity;
@@ -26,6 +28,8 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.Fertilizer
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FruitPickerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.PlanterBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.mobs.*;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.processing.LaserChargerBlockEntity;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.processing.LaserDrillBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -154,6 +158,16 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<AutoAnvilBlockEntity>> AUTO_ANVIL =
             BLOCK_ENTITIES.register("auto_anvil_block_entity", () ->
                     BlockEntityType.Builder.of(AutoAnvilBlockEntity::new, ModBlocks.AUTO_ANVIL.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<LaserDrillBlockEntity>> LASER_DRILL =
+            BLOCK_ENTITIES.register("laser_drill_block_entity", () ->
+                    BlockEntityType.Builder.of(LaserDrillBlockEntity::new, ModBlocks.LASER_DRILL.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<LaserChargerBlockEntity>> LASER_CHARGER =
+            BLOCK_ENTITIES.register("laser_charger_block_entity", () ->
+                    BlockEntityType.Builder.of(LaserChargerBlockEntity::new, ModBlocks.LASER_CHARGER.get())
                             .build(null));
 
     /**
@@ -325,6 +339,22 @@ public class ModBlockEntities {
                         BlockPos pos = data.readBlockPos();
                         AutoAnvilBlockEntity autoAnvil = (AutoAnvilBlockEntity) inv.player.level.getBlockEntity(pos);
                         return new AutoAnvilContainer(windowId, inv, autoAnvil);
+                    })
+            );
+
+    public static final RegistryObject<MenuType<LaserDrillContainer>> LASER_DRILL_CONTAINER =
+            CONTAINERS.register("laser_drill_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                        BlockPos pos = data.readBlockPos();
+                        LaserDrillBlockEntity laserDrill = (LaserDrillBlockEntity) inv.player.level.getBlockEntity(pos);
+                        return new LaserDrillContainer(windowId, inv, laserDrill);
+                    })
+            );
+
+    public static final RegistryObject<MenuType<LaserChargerContainer>> LASER_CHARGER_CONTAINER =
+            CONTAINERS.register("laser_charger_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                        BlockPos pos = data.readBlockPos();
+                        LaserChargerBlockEntity laserCharger = (LaserChargerBlockEntity) inv.player.level.getBlockEntity(pos);
+                        return new LaserChargerContainer(windowId, inv, laserCharger);
                     })
             );
 }

@@ -3,6 +3,8 @@ package dev.onyxstudios.minefactoryrenewed.client;
 import com.mojang.blaze3d.shaders.Uniform;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
+import dev.onyxstudios.minefactoryrenewed.client.blockentity.LaserChargerRenderer;
+import dev.onyxstudios.minefactoryrenewed.client.blockentity.LaserDrillRenderer;
 import dev.onyxstudios.minefactoryrenewed.client.entity.PinkSlimeRenderer;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.animals.*;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.blocks.BlockPlacerScreen;
@@ -16,6 +18,8 @@ import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.FertilizerS
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.FruitPickerScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.PlanterScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.mobs.*;
+import dev.onyxstudios.minefactoryrenewed.client.gui.machine.processing.LaserChargerScreen;
+import dev.onyxstudios.minefactoryrenewed.client.gui.machine.processing.LaserDrillScreen;
 import dev.onyxstudios.minefactoryrenewed.item.FocusItem;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlocks;
@@ -26,6 +30,7 @@ import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ShaderInstance;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.resources.ResourceLocation;
@@ -48,6 +53,7 @@ public class ModClient {
         initLayers();
         initScreens();
         initEntities();
+        initBlockEntities();
         initColors(event);
     }
 
@@ -77,11 +83,18 @@ public class ModClient {
         MenuScreens.register(ModBlockEntities.AUTO_DISENCHANTER_CONTAINER.get(), AutoDisenchanterScreen::new);
         MenuScreens.register(ModBlockEntities.AUTO_ENCHANTER_CONTAINER.get(), AutoEnchanterScreen::new);
         MenuScreens.register(ModBlockEntities.AUTO_ANVIL_CONTAINER.get(), AutoAnvilScreen::new);
+        MenuScreens.register(ModBlockEntities.LASER_DRILL_CONTAINER.get(), LaserDrillScreen::new);
+        MenuScreens.register(ModBlockEntities.LASER_CHARGER_CONTAINER.get(), LaserChargerScreen::new);
     }
 
     private static void initEntities() {
         EntityRenderers.register(ModEntities.SAFARI_NET.get(), ThrownItemRenderer::new);
         EntityRenderers.register(ModEntities.PINK_SLIME.get(), PinkSlimeRenderer::new);
+    }
+
+    private static void initBlockEntities() {
+        BlockEntityRenderers.register(ModBlockEntities.LASER_CHARGER.get(), ctx -> new LaserChargerRenderer());
+        BlockEntityRenderers.register(ModBlockEntities.LASER_DRILL.get(), ctx -> new LaserDrillRenderer());
     }
 
     private static void initColors(FMLClientSetupEvent event) {

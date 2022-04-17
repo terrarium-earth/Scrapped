@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "minefactoryrenewed:block/machine_top",
+    "bottom": "minefactoryrenewed:block/machine_bottom",
+    "front": "minefactoryrenewed:block/laser_drill_side",
+    "side": "minefactoryrenewed:block/machine_side"
+  }
+}

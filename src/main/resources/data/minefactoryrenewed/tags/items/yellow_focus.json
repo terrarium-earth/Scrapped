@@ -1,5 +1,9 @@
 {
   "replace": false,
   "values": [
+    "minecraft:glowstone",
+    "minecraft:gold_ore",
+    "minecraft:deepslate_gold_ore",
+    "minecraft:nether_gold_ore"
   ]
 }

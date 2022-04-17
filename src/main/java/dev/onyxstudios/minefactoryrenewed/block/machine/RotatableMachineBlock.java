@@ -25,7 +25,7 @@ public abstract class RotatableMachineBlock extends MachineBlock implements IRot
 
     @Override
     public void onMachineRotated(Level level, BlockPos pos, Direction rotatedTo) {
-        if (level.getBlockEntity(pos) instanceof MachineBlockEntity machine) {
+        if (level.getBlockEntity(pos) instanceof MachineBlockEntity machine && machine.getMachineArea() != null) {
             machine.getMachineArea().setFacing(rotatedTo);
         }
     }

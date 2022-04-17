@@ -4,6 +4,7 @@ import dev.onyxstudios.minefactoryrenewed.api.energy.MFREnergyStorage;
 import dev.onyxstudios.minefactoryrenewed.api.machine.MachineArea;
 import dev.onyxstudios.minefactoryrenewed.blockentity.BaseBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.item.MachineUpgradeItem;
+import dev.onyxstudios.minefactoryrenewed.registry.ModBlocks;
 import dev.onyxstudios.minefactoryrenewed.util.InventoryUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -129,8 +130,9 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
 
     public static void tick(Level level, BlockPos pos, BlockState state, MachineBlockEntity blockEntity) {
         //TODO Remove, only for testing with no generators...
-        if (blockEntity.getEnergy() != null)
+        if (blockEntity.getEnergy() != null && !state.is(ModBlocks.LASER_DRILL.get()))
             blockEntity.getEnergy().receiveEnergy(100, false);
+        blockEntity.tick();
         blockEntity.tickInternal();
     }
 
@@ -173,6 +175,11 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
         }
     }
 
+    //Tick normally
+    protected void tick() {
+    }
+
+    //Tick while working
     protected void tickWork() {
     }
 
@@ -359,6 +366,10 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
 
     public int getEnergyCost() {
         return energyCost;
+    }
+
+    public boolean hasCustomRenderer() {
+        return false;
     }
 
     @Override

@@ -18,6 +18,8 @@ import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FertilizerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FruitPickerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.PlanterBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.mobs.*;
+import dev.onyxstudios.minefactoryrenewed.block.machine.processing.LaserChargerBlock;
+import dev.onyxstudios.minefactoryrenewed.block.machine.processing.LaserDrillBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -144,6 +146,14 @@ public class ModBlocks {
     public static final RegistryObject<Block> AUTO_ANVIL = BLOCKS.register("auto_anvil", AutoAnvilBlock::new);
     public static final RegistryObject<Item> AUTO_ANVIL_ITEM = ITEMS.register("auto_anvil", () ->
             new BlockItem(AUTO_ANVIL.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> LASER_DRILL = BLOCKS.register("laser_drill", LaserDrillBlock::new);
+    public static final RegistryObject<Item> LASER_DRILL_ITEM = ITEMS.register("laser_drill", () ->
+            new BlockItem(LASER_DRILL.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> LASER_CHARGER = BLOCKS.register("laser_charger", LaserChargerBlock::new);
+    public static final RegistryObject<Item> LASER_CHARGER_ITEM = ITEMS.register("laser_charger", () ->
+            new BlockItem(LASER_CHARGER.get(), ModItems.PROPERTIES));
 
     //Fluids
     public static final RegistryObject<SludgeFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);

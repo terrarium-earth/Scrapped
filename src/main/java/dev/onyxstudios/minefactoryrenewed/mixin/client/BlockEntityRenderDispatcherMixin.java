@@ -17,7 +17,9 @@ public class BlockEntityRenderDispatcherMixin {
 
     @Inject(method = "getRenderer", at = @At("HEAD"), cancellable = true)
     public <E extends BlockEntity> void getRenderer(E blockEntity, CallbackInfoReturnable<BlockEntityRenderer<E>> cir) {
-        if (blockEntity instanceof MachineBlockEntity machine && machine.getMachineArea() != null)
+        if (blockEntity instanceof MachineBlockEntity machine &&
+                machine.getMachineArea() != null &&
+                !machine.hasCustomRenderer())
             cir.setReturnValue((BlockEntityRenderer<E>) machineRenderer);
     }
 }

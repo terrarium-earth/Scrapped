@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "minefactoryrenewed:block/laser_charger" },
+    "facing=south": { "model": "minefactoryrenewed:block/laser_charger", "y": 180},
+    "facing=west":  { "model": "minefactoryrenewed:block/laser_charger", "y": 270 },
+    "facing=east":  { "model": "minefactoryrenewed:block/laser_charger", "y": 90 }
+  }
+}

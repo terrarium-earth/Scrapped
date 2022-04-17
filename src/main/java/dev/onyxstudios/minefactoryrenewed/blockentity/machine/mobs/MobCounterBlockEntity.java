@@ -39,7 +39,7 @@ public class MobCounterBlockEntity extends MachineBlockEntity {
         blockEntity.tick();
     }
 
-    private void tick() {
+    public void tick() {
         if (level == null) return;
 
         List<Entity> entities = level.getEntities((Entity) null, getMachineArea().getAabb(), ALL_ENTITY_PREDICATE);
