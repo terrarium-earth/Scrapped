@@ -43,7 +43,7 @@ public abstract class MeatFluid extends WaterFluid {
                         new ResourceLocation(MinefactoryRenewed.MODID, "block/meat_flow")
                 ).translationKey("block.minefactoryrenewed.meat")
                 .sound(SoundEvents.BUCKET_FILL, SoundEvents.BUCKET_EMPTY)
-                .density(200).viscosity(500).build(ModBlocks.MEAT.get());
+                .density(2000).viscosity(1000).build(ModBlocks.MEAT.get());
     }
 
     @Override

@@ -14,41 +14,41 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.WaterFluid;
 import net.minecraftforge.fluids.FluidAttributes;
 
-public abstract class PinkSlimeFluid extends WaterFluid {
+public abstract class SteamFluid extends WaterFluid {
 
     @Override
     public Fluid getFlowing() {
-        return ModBlocks.PINK_SLIME_FLOWING.get();
+        return ModBlocks.STEAM_FLOWING.get();
     }
 
     @Override
     public Fluid getSource() {
-        return ModBlocks.PINK_SLIME.get();
+        return ModBlocks.STEAM.get();
     }
 
     @Override
     public Item getBucket() {
-        return ModItems.PINK_SLIME_BUCKET.get();
+        return ModItems.STEAM_BUCKET.get();
     }
 
     @Override
     public BlockState createLegacyBlock(FluidState state) {
-        return ModBlocks.PINK_SLIME_FLUID_BLOCK.get().defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(state));
+        return ModBlocks.STEAM_FLUID_BLOCK.get().defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(state));
     }
 
     @Override
     protected FluidAttributes createAttributes() {
         return FluidAttributes.builder(
-                        new ResourceLocation(MinefactoryRenewed.MODID, "block/pink_slime_still"),
-                        new ResourceLocation(MinefactoryRenewed.MODID, "block/pink_slime_flow")
-                ).translationKey("block.minefactoryrenewed.pink_slime")
+                        new ResourceLocation(MinefactoryRenewed.MODID, "block/steam_still"),
+                        new ResourceLocation(MinefactoryRenewed.MODID, "block/steam_flow")
+                ).translationKey("block.minefactoryrenewed.steam")
                 .sound(SoundEvents.BUCKET_FILL, SoundEvents.BUCKET_EMPTY)
-                .density(1000).viscosity(1000).build(ModBlocks.PINK_SLIME.get());
+                .density(-1000).viscosity(0).gaseous().build(ModBlocks.STEAM.get());
     }
 
     @Override
     public boolean isSame(Fluid fluid) {
-        return fluid == ModBlocks.PINK_SLIME.get() || fluid == ModBlocks.PINK_SLIME_FLOWING.get();
+        return fluid == ModBlocks.STEAM.get() || fluid == ModBlocks.STEAM_FLOWING.get();
     }
 
     @Override
@@ -56,7 +56,7 @@ public abstract class PinkSlimeFluid extends WaterFluid {
         return false;
     }
 
-    public static class Flowing extends PinkSlimeFluid {
+    public static class Flowing extends SteamFluid {
 
         @Override
         protected void createFluidStateDefinition(StateDefinition.Builder<Fluid, FluidState> builder) {
@@ -75,7 +75,7 @@ public abstract class PinkSlimeFluid extends WaterFluid {
         }
     }
 
-    public static class Source extends PinkSlimeFluid {
+    public static class Source extends SteamFluid {
 
         @Override
         public int getAmount(FluidState state) {

@@ -25,18 +25,22 @@ public class BaseFluidBlock extends LiquidBlock {
             event.setRed(9 / 255.0f);
             event.setGreen(11 / 255.0f);
             event.setBlue(29 / 255.0f);
-        }else if (fluidState.is(ModTags.MEAT)) {
+        } else if (fluidState.is(ModTags.MEAT)) {
             event.setRed(227 / 255.0f);
             event.setGreen(163 / 255.0f);
             event.setBlue(130 / 255.0f);
-        }else if (fluidState.is(ModTags.PINK_SLIME)) {
+        } else if (fluidState.is(ModTags.PINK_SLIME)) {
             event.setRed(227 / 255.0f);
             event.setGreen(134 / 255.0f);
             event.setBlue(138 / 255.0f);
-        }else if (fluidState.is(ModTags.SEWAGE)) {
+        } else if (fluidState.is(ModTags.SEWAGE)) {
             event.setRed(120 / 255.0f);
             event.setGreen(80 / 255.0f);
             event.setBlue(52 / 255.0f);
+        } else if (fluidState.is(ModTags.STEAM)) {
+            event.setRed(0.9f);
+            event.setGreen(0.9f);
+            event.setBlue(0.9f);
         }
     }
 }

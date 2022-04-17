@@ -180,4 +180,9 @@ public class ModBlocks {
     public static final RegistryObject<SewageFluid> SEWAGE_FLOWING = FLUIDS.register("sewage_flowing", SewageFluid.Flowing::new);
     public static final RegistryObject<BaseFluidBlock> SEWAGE_FLUID_BLOCK = BLOCKS.register("sewage", () ->
             new BaseFluidBlock(SEWAGE::get, BASE_FLUID_PROPS));
+
+    public static final RegistryObject<SteamFluid> STEAM = FLUIDS.register("steam", SteamFluid.Source::new);
+    public static final RegistryObject<SteamFluid> STEAM_FLOWING = FLUIDS.register("steam_flowing", SteamFluid.Flowing::new);
+    public static final RegistryObject<BaseFluidBlock> STEAM_FLUID_BLOCK = BLOCKS.register("steam", () ->
+            new BaseFluidBlock(STEAM::get, BASE_FLUID_PROPS));
 }

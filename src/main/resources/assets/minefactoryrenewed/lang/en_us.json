@@ -54,6 +54,7 @@
   "item.minefactoryrenewed.pink_focus": "Laser Focus (Pink)",
   "item.minefactoryrenewed.purple_focus": "Laser Focus (Purple)",
   "item.minefactoryrenewed.red_focus": "Laser Focus (Red)",
+  "item.minefactoryrenewed.steam_bucket": "Steam Bucket",
 
   "_comment3": "Blocks",
   "block.minefactoryrenewed.conveyor_belt": "Conveyor Belt",
@@ -90,6 +91,7 @@
   "block.minefactoryrenewed.auto_anvil": "Auto-Anvil",
   "block.minefactoryrenewed.laser_drill": "Laser Drill",
   "block.minefactoryrenewed.laser_charger": "Laser Drill Precharger",
+  "block.minefactoryrenewed.steam": "Steam",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",
