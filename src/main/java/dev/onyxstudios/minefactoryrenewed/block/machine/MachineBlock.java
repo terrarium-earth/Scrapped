@@ -20,12 +20,16 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.fluids.FluidUtil;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
@@ -55,11 +59,30 @@ public abstract class MachineBlock extends BaseEntityBlock implements IWrenchabl
         if (holdingWrench)
             return super.use(state, level, pos, player, hand, hit);
 
+        if (interactFluid(level, pos, player, hand)) {
+            return InteractionResult.SUCCESS;
+        }
+
         if (!level.isClientSide() && level.getBlockEntity(pos) instanceof MenuProvider menuProvider) {
             NetworkHooks.openGui((ServerPlayer) player, menuProvider, pos);
         }
 
         return InteractionResult.sidedSuccess(level.isClientSide());
+    }
+
+
+    protected boolean interactFluid(Level level, BlockPos pos, Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+        LazyOptional<IFluidHandlerItem> handler = FluidUtil.getFluidHandler(stack);
+
+        if (handler.isPresent() && level.getBlockEntity(pos) instanceof MachineBlockEntity machine && machine.getTank() != null) {
+            if (FluidUtil.interactWithFluidHandler(player, hand, machine.getTank())) {
+                level.sendBlockUpdated(pos, level.getBlockState(pos), level.getBlockState(pos), Block.UPDATE_ALL);
+                return true;
+            }
+        }
+
+        return false;
     }
 
     @Override

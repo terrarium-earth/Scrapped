@@ -34,12 +34,11 @@ public class SlaughterhouseBlock extends RotatableMachineBlock {
 
         LazyOptional<IFluidHandlerItem> handler = FluidUtil.getFluidHandler(stack);
         if (handler.isPresent() && level.getBlockEntity(pos) instanceof SlaughterhouseBlockEntity slaughterhouse) {
-            if (!FluidUtil.interactWithFluidHandler(player, hand, slaughterhouse.getTank())) {
-                FluidUtil.interactWithFluidHandler(player, hand, slaughterhouse.getPinkSlimeTank());
+            if (FluidUtil.interactWithFluidHandler(player, hand, slaughterhouse.getTank()) ||
+                    FluidUtil.interactWithFluidHandler(player, hand, slaughterhouse.getPinkSlimeTank())) {
+                level.sendBlockUpdated(pos, state, level.getBlockState(pos), Block.UPDATE_ALL);
+                return InteractionResult.SUCCESS;
             }
-
-            level.sendBlockUpdated(pos, state, level.getBlockState(pos), Block.UPDATE_ALL);
-            return InteractionResult.SUCCESS;
         }
 
         return super.use(state, level, pos, player, hand, hit);
