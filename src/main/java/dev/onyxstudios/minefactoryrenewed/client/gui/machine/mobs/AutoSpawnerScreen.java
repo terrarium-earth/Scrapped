@@ -17,19 +17,16 @@ import net.minecraft.world.entity.player.Inventory;
 public class AutoSpawnerScreen extends MachineScreen<AutoSpawnerContainer> {
 
     private static final ResourceLocation AUTO_SPAWNER_GUI = new ResourceLocation(MinefactoryRenewed.MODID, "textures/gui/auto_spawner_gui.png");
-    private Button spawnExact;
 
     public AutoSpawnerScreen(AutoSpawnerContainer menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, AUTO_SPAWNER_GUI);
-        this.imageHeight = 166;
-        this.inventoryLabelY = imageHeight - 94;
+        super(menu, inventory, title, AUTO_SPAWNER_GUI, false);
     }
 
     @Override
     protected void init() {
         super.init();
         AutoSpawnerBlockEntity autoSpawner = (AutoSpawnerBlockEntity) menu.getBlockEntity();
-        this.spawnExact = this.addRenderableWidget(new Button(
+        this.addRenderableWidget(new Button(
                 getGuiLeft() + 29, getGuiTop() + 20, 95, 20,
                 new TranslatableComponent("gui.button.auto_spawner.spawn_exact",
                         (autoSpawner.spawnExact() ? "Yes" : "No")),

@@ -4,7 +4,6 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.MachineContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -45,15 +44,17 @@ public abstract class MachineScreen<T extends MachineContainer> extends Abstract
     protected int barHeight = 48;
 
     public MachineScreen(T menu, Inventory inventory, Component title, ResourceLocation guiLocation) {
-        super(menu, inventory, title);
-        this.guiLocation = guiLocation;
-        this.imageHeight = 179;
-        this.inventoryLabelY = imageHeight - 94;
+        this(menu, inventory, title, guiLocation, true);
     }
 
-    @Override
-    public void resize(Minecraft minecraft, int width, int height) {
-        super.resize(minecraft, width, height);
+    public MachineScreen(T menu, Inventory inventory, Component title, ResourceLocation guiLocation, boolean extend) {
+        super(menu, inventory, title);
+        this.guiLocation = guiLocation;
+
+        if (extend) {
+            this.imageHeight = 179;
+            this.inventoryLabelY = imageHeight - 94;
+        }
     }
 
     @Override

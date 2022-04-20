@@ -14,9 +14,7 @@ public class LaserChargerScreen extends MachineScreen<LaserChargerContainer> {
     private static final ResourceLocation LASER_CHARGER_GUI = new ResourceLocation(MinefactoryRenewed.MODID, "textures/gui/laser_charger_gui.png");
 
     public LaserChargerScreen(LaserChargerContainer menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, LASER_CHARGER_GUI);
-        this.imageHeight = 166;
-        this.inventoryLabelY = imageHeight - 94;
+        super(menu, inventory, title, LASER_CHARGER_GUI, false);
     }
 
     @Override

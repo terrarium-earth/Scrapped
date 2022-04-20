@@ -1,11 +1,13 @@
 package dev.onyxstudios.minefactoryrenewed.blockentity.container;
 
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
+import dev.onyxstudios.minefactoryrenewed.util.InventoryUtils;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class MachineContainer extends AbstractContainerMenu {
@@ -25,22 +27,35 @@ public abstract class MachineContainer extends AbstractContainerMenu {
             if (blockEntity.getInventory() != null)
                 this.addSlot(new RangeUpgradeSlot(blockEntity.getInventory(), 0, 152, 75));
 
-            //Player Slots
-            for (int i = 0; i < 3; ++i) {
-                for (int j = 0; j < 9; ++j) {
-                    this.addSlot(new Slot(inventory, j + i * 9 + 9, 8 + j * 18, 97 + i * 18));
-                }
-            }
+            addPlayerSlots(inventory);
+        }
+    }
 
-            for (int k = 0; k < 9; ++k) {
-                this.addSlot(new Slot(inventory, k, 8 + k * 18, 155));
+    protected void addPlayerSlots(Inventory inventory) {
+        this.addPlayerSlots(inventory, true);
+    }
+
+    protected void addPlayerSlots(Inventory inventory, boolean extended) {
+        //Player Slots
+        for (int i = 0; i < 3; ++i) {
+            for (int j = 0; j < 9; ++j) {
+                this.addSlot(new Slot(inventory, j + i * 9 + 9, 8 + j * 18, (extended ? 97 : 84) + i * 18));
             }
+        }
+
+        for (int k = 0; k < 9; ++k) {
+            this.addSlot(new Slot(inventory, k, 8 + k * 18, extended ? 155 : 142));
         }
     }
 
     @Override
     public boolean stillValid(Player player) {
         return true;
+    }
+
+    @Override
+    public ItemStack quickMoveStack(Player player, int index) {
+        return InventoryUtils.handleShiftClick(this, player, index);
     }
 
     public MachineBlockEntity getBlockEntity() {

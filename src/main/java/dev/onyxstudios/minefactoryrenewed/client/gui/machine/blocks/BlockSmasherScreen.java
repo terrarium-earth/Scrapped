@@ -17,20 +17,16 @@ import net.minecraft.world.entity.player.Inventory;
 public class BlockSmasherScreen extends MachineScreen<BlockSmasherContainer> {
 
     private static final ResourceLocation BLOCK_SMASHER_GUI = new ResourceLocation(MinefactoryRenewed.MODID, "textures/gui/block_smasher_gui.png");
-    private Button addButton;
-    private Button subtractButton;
 
     public BlockSmasherScreen(BlockSmasherContainer menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, BLOCK_SMASHER_GUI);
-        this.imageHeight = 166;
-        this.inventoryLabelY = imageHeight - 94;
+        super(menu, inventory, title, BLOCK_SMASHER_GUI, false);
     }
 
     @Override
     protected void init() {
         super.init();
         BlockSmasherBlockEntity smasher = (BlockSmasherBlockEntity) menu.getBlockEntity();
-        this.addButton = this.addRenderableWidget(new Button(
+        this.addRenderableWidget(new Button(
                 getGuiLeft() + 8, getGuiTop() + 22, 20, 20,
                 new TextComponent("+"),
                 button -> {
@@ -39,7 +35,7 @@ public class BlockSmasherScreen extends MachineScreen<BlockSmasherContainer> {
                 }
         ));
 
-        this.subtractButton = this.addRenderableWidget(new Button(
+        this.addRenderableWidget(new Button(
                 getGuiLeft() + 8, getGuiTop() + 44, 20, 20,
                 new TextComponent("-"),
                 button -> {

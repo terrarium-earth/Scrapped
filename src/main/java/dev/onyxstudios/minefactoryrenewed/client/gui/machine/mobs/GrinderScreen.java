@@ -14,9 +14,7 @@ public class GrinderScreen extends MachineScreen<GrinderContainer> {
     private static final ResourceLocation GRINDER_GUI = new ResourceLocation(MinefactoryRenewed.MODID, "textures/gui/grinder_gui.png");
 
     public GrinderScreen(GrinderContainer menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, GRINDER_GUI);
-        this.imageHeight = 166;
-        this.inventoryLabelY = imageHeight - 94;
+        super(menu, inventory, title, GRINDER_GUI, false);
     }
 
     @Override

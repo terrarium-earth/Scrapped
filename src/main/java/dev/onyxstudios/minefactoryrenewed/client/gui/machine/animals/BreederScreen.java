@@ -14,9 +14,7 @@ public class BreederScreen extends MachineScreen<BreederContainer> {
     private static final ResourceLocation BREEDER_GUI = new ResourceLocation(MinefactoryRenewed.MODID, "textures/gui/breeder_gui.png");
 
     public BreederScreen(BreederContainer menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, BREEDER_GUI);
-        this.imageHeight = 166;
-        this.inventoryLabelY = imageHeight - 94;
+        super(menu, inventory, title, BREEDER_GUI, false);
     }
 
     @Override

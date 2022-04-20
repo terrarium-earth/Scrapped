@@ -14,9 +14,7 @@ public class BlockPlacerScreen extends MachineScreen<BlockPlacerContainer> {
     private static final ResourceLocation BLOCK_PLACER_GUI = new ResourceLocation(MinefactoryRenewed.MODID, "textures/gui/block_placer_gui.png");
 
     public BlockPlacerScreen(BlockPlacerContainer menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, BLOCK_PLACER_GUI);
-        this.imageHeight = 166;
-        this.inventoryLabelY = imageHeight - 94;
+        super(menu, inventory, title, BLOCK_PLACER_GUI, false);
     }
 
     @Override

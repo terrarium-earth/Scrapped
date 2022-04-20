@@ -14,9 +14,7 @@ public class FisherScreen extends MachineScreen<FisherContainer> {
     private static final ResourceLocation FISHER_GUI = new ResourceLocation(MinefactoryRenewed.MODID, "textures/gui/fisher_gui.png");
 
     public FisherScreen(FisherContainer menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, FISHER_GUI);
-        this.imageHeight = 166;
-        this.inventoryLabelY = imageHeight - 94;
+        super(menu, inventory, title, FISHER_GUI, false);
     }
 
     @Override

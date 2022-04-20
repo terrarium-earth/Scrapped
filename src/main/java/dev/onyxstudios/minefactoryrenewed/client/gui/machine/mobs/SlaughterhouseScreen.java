@@ -1,6 +1,5 @@
 package dev.onyxstudios.minefactoryrenewed.client.gui.machine.mobs;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.SlaughterhouseContainer;
@@ -15,9 +14,7 @@ public class SlaughterhouseScreen extends MachineScreen<SlaughterhouseContainer>
     private static final ResourceLocation SLAUGHTERHOUSE_GUI = new ResourceLocation(MinefactoryRenewed.MODID, "textures/gui/slaughterhouse_gui.png");
 
     public SlaughterhouseScreen(SlaughterhouseContainer menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, SLAUGHTERHOUSE_GUI);
-        this.imageHeight = 166;
-        this.inventoryLabelY = imageHeight - 94;
+        super(menu, inventory, title, SLAUGHTERHOUSE_GUI, false);
     }
 
     @Override

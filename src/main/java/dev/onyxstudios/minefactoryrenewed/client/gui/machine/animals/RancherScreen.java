@@ -14,9 +14,7 @@ public class RancherScreen extends MachineScreen<RancherContainer> {
     private static final ResourceLocation RANCHER_GUI = new ResourceLocation(MinefactoryRenewed.MODID, "textures/gui/rancher_gui.png");
 
     public RancherScreen(RancherContainer menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, RANCHER_GUI);
-        this.imageHeight = 166;
-        this.inventoryLabelY = imageHeight - 94;
+        super(menu, inventory, title, RANCHER_GUI, false);
     }
 
     @Override

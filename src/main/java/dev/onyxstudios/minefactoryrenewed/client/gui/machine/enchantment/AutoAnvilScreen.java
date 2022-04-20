@@ -14,9 +14,7 @@ public class AutoAnvilScreen extends MachineScreen<AutoAnvilContainer> {
     private static final ResourceLocation AUTO_ANVIL_GUI = new ResourceLocation(MinefactoryRenewed.MODID, "textures/gui/auto_anvil_gui.png");
 
     public AutoAnvilScreen(AutoAnvilContainer menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, AUTO_ANVIL_GUI);
-        this.imageHeight = 166;
-        this.inventoryLabelY = imageHeight - 94;
+        super(menu, inventory, title, AUTO_ANVIL_GUI, false);
     }
 
     @Override

@@ -14,9 +14,7 @@ public class VeterinaryScreen extends MachineScreen<VeterinaryContainer> {
     private static final ResourceLocation VETERINARY_GUI = new ResourceLocation(MinefactoryRenewed.MODID, "textures/gui/veterinary_gui.png");
 
     public VeterinaryScreen(VeterinaryContainer menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, VETERINARY_GUI);
-        this.imageHeight = 166;
-        this.inventoryLabelY = imageHeight - 94;
+        super(menu, inventory, title, VETERINARY_GUI, false);
     }
 
     @Override

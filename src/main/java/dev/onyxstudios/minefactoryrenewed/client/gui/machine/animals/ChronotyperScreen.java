@@ -17,19 +17,16 @@ import net.minecraft.world.entity.player.Inventory;
 public class ChronotyperScreen extends MachineScreen<ChronotyperContainer> {
 
     private static final ResourceLocation CHRONOTYPER_GUI = new ResourceLocation(MinefactoryRenewed.MODID, "textures/gui/chronotyper_gui.png");
-    private Button movingBabies;
 
     public ChronotyperScreen(ChronotyperContainer menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, CHRONOTYPER_GUI);
-        this.imageHeight = 166;
-        this.inventoryLabelY = imageHeight - 94;
+        super(menu, inventory, title, CHRONOTYPER_GUI, false);
     }
 
     @Override
     protected void init() {
         super.init();
         ChronotyperBlockEntity chronotyper = (ChronotyperBlockEntity) menu.getBlockEntity();
-        this.movingBabies = this.addRenderableWidget(new Button(
+        this.addRenderableWidget(new Button(
                 getGuiLeft() + 8, getGuiTop() + 20, 132, 20,
                 new TranslatableComponent("gui.button.chronotyper." +
                         (chronotyper.isMovingBabies() ? "moving_babies" : "moving_adults")),

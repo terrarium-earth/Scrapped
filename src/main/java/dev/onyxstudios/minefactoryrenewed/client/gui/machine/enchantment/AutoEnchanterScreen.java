@@ -17,20 +17,16 @@ import net.minecraft.world.entity.player.Inventory;
 public class AutoEnchanterScreen extends MachineScreen<AutoEnchanterContainer> {
 
     private static final ResourceLocation ENCHANTER_GUI = new ResourceLocation(MinefactoryRenewed.MODID, "textures/gui/auto_enchanter_gui.png");
-    private Button addButton;
-    private Button subtractButton;
 
     public AutoEnchanterScreen(AutoEnchanterContainer menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, ENCHANTER_GUI);
-        this.imageHeight = 166;
-        this.inventoryLabelY = imageHeight - 94;
+        super(menu, inventory, title, ENCHANTER_GUI, false);
     }
 
     @Override
     protected void init() {
         super.init();
         AutoEnchanterBlockEntity autoEnchanter = (AutoEnchanterBlockEntity) menu.getBlockEntity();
-        this.addButton = this.addRenderableWidget(new Button(
+        this.addRenderableWidget(new Button(
                 getGuiLeft() + 8, getGuiTop() + 16, 20, 20,
                 new TextComponent("+"),
                 button -> {
@@ -39,7 +35,7 @@ public class AutoEnchanterScreen extends MachineScreen<AutoEnchanterContainer> {
                 }
         ));
 
-        this.subtractButton = this.addRenderableWidget(new Button(
+        this.addRenderableWidget(new Button(
                 getGuiLeft() + 8, getGuiTop() + 50, 20, 20,
                 new TextComponent("-"),
                 button -> {

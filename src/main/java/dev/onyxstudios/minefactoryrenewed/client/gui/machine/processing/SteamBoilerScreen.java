@@ -14,10 +14,7 @@ public class SteamBoilerScreen extends MachineScreen<SteamBoilerContainer> {
     private static final ResourceLocation STEAM_BOILER_GUI = new ResourceLocation(MinefactoryRenewed.MODID, "textures/gui/steam_boiler_gui.png");
 
     public SteamBoilerScreen(SteamBoilerContainer menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, STEAM_BOILER_GUI);
-        this.imageHeight = 166;
-        this.inventoryLabelY = imageHeight - 94;
-
+        super(menu, inventory, title, STEAM_BOILER_GUI, false);
         this.fluidBarX = 138;
         this.fluidBarY = 69;
     }

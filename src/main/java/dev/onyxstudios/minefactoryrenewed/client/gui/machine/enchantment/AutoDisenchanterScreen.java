@@ -14,9 +14,7 @@ public class AutoDisenchanterScreen extends MachineScreen<AutoDisenchanterContai
     private static final ResourceLocation DISENCHANTER_GUI = new ResourceLocation(MinefactoryRenewed.MODID, "textures/gui/auto_disenchanter_gui.png");
 
     public AutoDisenchanterScreen(AutoDisenchanterContainer menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, DISENCHANTER_GUI);
-        this.imageHeight = 166;
-        this.inventoryLabelY = imageHeight - 94;
+        super(menu, inventory, title, DISENCHANTER_GUI, false);
     }
 
     @Override

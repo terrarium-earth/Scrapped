@@ -20,6 +20,7 @@ public class DeepStorageContainer extends AbstractContainerMenu {
         this.addSlot(new SlotItemHandler(blockEntity.getInventory(), 0, 80, 16));
         this.addSlot(new SlotItemHandler(blockEntity.getInventory(), 1, 80, 58));
 
+        //Player Slots
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 9; j++) {
                 this.addSlot(new Slot(inventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));

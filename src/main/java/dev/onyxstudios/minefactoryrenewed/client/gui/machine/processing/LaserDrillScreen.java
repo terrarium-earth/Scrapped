@@ -14,10 +14,7 @@ public class LaserDrillScreen extends MachineScreen<LaserDrillContainer> {
     private static final ResourceLocation LASER_DRILL_GUI = new ResourceLocation(MinefactoryRenewed.MODID, "textures/gui/laser_drill_gui.png");
 
     public LaserDrillScreen(LaserDrillContainer menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, LASER_DRILL_GUI);
-        this.imageHeight = 166;
-        this.inventoryLabelY = imageHeight - 94;
-
+        super(menu, inventory, title, LASER_DRILL_GUI, false);
         this.powerBarX = workBarX;
         this.powerBarY = workBarY;
         this.workBarX = idleBarX;

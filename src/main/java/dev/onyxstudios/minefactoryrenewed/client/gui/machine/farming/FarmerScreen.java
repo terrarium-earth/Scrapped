@@ -17,9 +17,6 @@ import net.minecraft.world.entity.player.Inventory;
 public class FarmerScreen extends MachineScreen<FarmerContainer> {
 
     private static final ResourceLocation FARMER_GUI = new ResourceLocation(MinefactoryRenewed.MODID, "textures/gui/farmer_gui.png");
-    private Button shearButton;
-    private Button shroomsButton;
-    private Button jungleWoodButton;
 
     public FarmerScreen(FarmerContainer menu, Inventory inventory, Component title) {
         super(menu, inventory, title, FARMER_GUI);
@@ -29,7 +26,7 @@ public class FarmerScreen extends MachineScreen<FarmerContainer> {
     protected void init() {
         super.init();
         FarmerBlockEntity farmer = (FarmerBlockEntity) menu.getBlockEntity();
-        this.shearButton = this.addRenderableWidget(new Button(
+        this.addRenderableWidget(new Button(
                 getGuiLeft() + 8, getGuiTop() + 20, 117, 20,
                 new TranslatableComponent("gui.button.harvester.shear_leaves",
                         farmer.shearLeaves() ? "Yes" : "No"),
@@ -48,7 +45,7 @@ public class FarmerScreen extends MachineScreen<FarmerContainer> {
                 }
         ));
 
-        this.shroomsButton = this.addRenderableWidget(new Button(
+        this.addRenderableWidget(new Button(
                 getGuiLeft() + 8, getGuiTop() + 41, 117, 20,
                 new TranslatableComponent("gui.button.harvester.small_shrooms",
                         farmer.harvestSmallShrooms() ? "Yes" : "No"),
@@ -67,7 +64,7 @@ public class FarmerScreen extends MachineScreen<FarmerContainer> {
                 }
         ));
 
-        this.jungleWoodButton = this.addRenderableWidget(new Button(
+        this.addRenderableWidget(new Button(
                 getGuiLeft() + 8, getGuiTop() + 62, 117, 20,
                 new TranslatableComponent("gui.button.harvester.jungle_wood",
                         farmer.harvestJungleWood() ? "Yes" : "No"),

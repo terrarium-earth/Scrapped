@@ -17,20 +17,16 @@ import net.minecraft.world.entity.player.Inventory;
 public class MobRouterScreen extends MachineScreen<MobRouterContainer> {
 
     private static final ResourceLocation MOB_ROUTER_GUI = new ResourceLocation(MinefactoryRenewed.MODID, "textures/gui/mob_router_gui.png");
-    private Button whitelistButton;
-    private Button allowBabiesButton;
 
     public MobRouterScreen(MobRouterContainer menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, MOB_ROUTER_GUI);
-        this.imageHeight = 166;
-        this.inventoryLabelY = imageHeight - 94;
+        super(menu, inventory, title, MOB_ROUTER_GUI, false);
     }
 
     @Override
     protected void init() {
         super.init();
         MobRouterBlockEntity mobRouter = (MobRouterBlockEntity) menu.getBlockEntity();
-        this.whitelistButton = this.addRenderableWidget(new Button(
+        this.addRenderableWidget(new Button(
                 getGuiLeft() + 29, getGuiTop() + 20, 110, 20,
                 new TranslatableComponent("gui.button.mob_router." +
                         (mobRouter.whitelist() ? "whitelist" : "blacklist")),
@@ -44,7 +40,7 @@ public class MobRouterScreen extends MachineScreen<MobRouterContainer> {
                 }
         ));
 
-        this.allowBabiesButton = this.addRenderableWidget(new Button(
+        this.addRenderableWidget(new Button(
                 getGuiLeft() + 29, getGuiTop() + 41, 110, 20,
                 new TranslatableComponent("gui.button.mob_router.allow_babies",
                         mobRouter.allowBabies() ? "Yes" : "No"),

@@ -4,9 +4,7 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.container.MachineContainer
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FertilizerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
 import dev.onyxstudios.minefactoryrenewed.registry.ModItems;
-import dev.onyxstudios.minefactoryrenewed.util.InventoryUtils;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
@@ -22,11 +20,6 @@ public class FertilizerContainer extends MachineContainer {
                 this.addSlot(new FertilizerSlot(fertilizer.getInventory(), 1 + (i * 3 + j), 8 + j * 18, 21 + i * 18));
             }
         }
-    }
-
-    @Override
-    public ItemStack quickMoveStack(Player player, int index) {
-        return InventoryUtils.handleShiftClick(this, player, index);
     }
 
     private static class FertilizerSlot extends SlotItemHandler {

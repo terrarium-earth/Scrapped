@@ -14,9 +14,7 @@ public class MeatPackerScreen extends MachineScreen<MeatPackerContainer> {
     private static final ResourceLocation MEAT_PACKER_GUI = new ResourceLocation(MinefactoryRenewed.MODID, "textures/gui/meat_packer_gui.png");
 
     public MeatPackerScreen(MeatPackerContainer menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, MEAT_PACKER_GUI);
-        this.imageHeight = 166;
-        this.inventoryLabelY = imageHeight - 94;
+        super(menu, inventory, title, MEAT_PACKER_GUI, false);
     }
 
     @Override
