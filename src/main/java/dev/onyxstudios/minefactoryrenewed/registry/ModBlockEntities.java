@@ -15,6 +15,7 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.PlanterC
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.*;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.processing.LaserChargerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.processing.LaserDrillContainer;
+import dev.onyxstudios.minefactoryrenewed.blockentity.container.processing.SteamBoilerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.animals.*;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.blocks.BlockBreakerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.blocks.BlockPlacerBlockEntity;
@@ -30,6 +31,7 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.PlanterBlo
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.mobs.*;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.processing.LaserChargerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.processing.LaserDrillBlockEntity;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.processing.SteamBoilerBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -168,6 +170,11 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<LaserChargerBlockEntity>> LASER_CHARGER =
             BLOCK_ENTITIES.register("laser_charger_block_entity", () ->
                     BlockEntityType.Builder.of(LaserChargerBlockEntity::new, ModBlocks.LASER_CHARGER.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<SteamBoilerBlockEntity>> STEAM_BOILER =
+            BLOCK_ENTITIES.register("steam_boiler_block_entity", () ->
+                    BlockEntityType.Builder.of(SteamBoilerBlockEntity::new, ModBlocks.STEAM_BOILER.get())
                             .build(null));
 
     /**
@@ -355,6 +362,14 @@ public class ModBlockEntities {
                         BlockPos pos = data.readBlockPos();
                         LaserChargerBlockEntity laserCharger = (LaserChargerBlockEntity) inv.player.level.getBlockEntity(pos);
                         return new LaserChargerContainer(windowId, inv, laserCharger);
+                    })
+            );
+
+    public static final RegistryObject<MenuType<SteamBoilerContainer>> STEAM_BOILER_CONTAINER =
+            CONTAINERS.register("steam_boiler_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                        BlockPos pos = data.readBlockPos();
+                        SteamBoilerBlockEntity steamBoiler = (SteamBoilerBlockEntity) inv.player.level.getBlockEntity(pos);
+                        return new SteamBoilerContainer(windowId, inv, steamBoiler);
                     })
             );
 }

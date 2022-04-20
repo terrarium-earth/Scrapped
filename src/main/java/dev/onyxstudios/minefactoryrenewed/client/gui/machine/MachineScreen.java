@@ -154,13 +154,22 @@ public abstract class MachineScreen<T extends MachineContainer> extends Abstract
         int i = tank.getFluidAmount() * height / tank.getCapacity();
         TextureAtlasSprite sprite = getMinecraft().getTextureAtlas(InventoryMenu.BLOCK_ATLAS)
                 .apply(tank.getFluid().getFluid().getAttributes().getStillTexture());
+        int color = tank.getFluid().getFluid().getAttributes().getColor();
+        float red = (color >> 16 & 0xFF) / 255.0f;
+        float green = (color >> 8 & 0xFF) / 255.0f;
+        float blue = (color & 0xFF) / 255.0f;
+        float alpha = (color >> 24 & 0xFF) / 255.0f;
 
         int x = getGuiLeft() + barX;
         int y = getGuiTop() + barY - i;
 
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+        RenderSystem.setShaderColor(red, green, blue, alpha);
         RenderSystem.setShaderTexture(0, InventoryMenu.BLOCK_ATLAS);
         blit(poseStack, x, y, 0, width, i, sprite);
+
+        //Reset texture back to gui texture
+        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+        RenderSystem.setShaderTexture(0, this.guiLocation);
     }
 }

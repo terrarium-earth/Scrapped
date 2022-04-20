@@ -20,6 +20,7 @@ import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.PlanterScre
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.mobs.*;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.processing.LaserChargerScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.processing.LaserDrillScreen;
+import dev.onyxstudios.minefactoryrenewed.client.gui.machine.processing.SteamBoilerScreen;
 import dev.onyxstudios.minefactoryrenewed.item.FocusItem;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlocks;
@@ -85,6 +86,7 @@ public class ModClient {
         MenuScreens.register(ModBlockEntities.AUTO_ANVIL_CONTAINER.get(), AutoAnvilScreen::new);
         MenuScreens.register(ModBlockEntities.LASER_DRILL_CONTAINER.get(), LaserDrillScreen::new);
         MenuScreens.register(ModBlockEntities.LASER_CHARGER_CONTAINER.get(), LaserChargerScreen::new);
+        MenuScreens.register(ModBlockEntities.STEAM_BOILER_CONTAINER.get(), SteamBoilerScreen::new);
     }
 
     private static void initEntities() {
