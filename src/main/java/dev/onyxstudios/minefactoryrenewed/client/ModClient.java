@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
 import dev.onyxstudios.minefactoryrenewed.client.blockentity.LaserChargerRenderer;
 import dev.onyxstudios.minefactoryrenewed.client.blockentity.LaserDrillRenderer;
+import dev.onyxstudios.minefactoryrenewed.client.blockentity.SteamTurbineRenderer;
 import dev.onyxstudios.minefactoryrenewed.client.entity.PinkSlimeRenderer;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.animals.*;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.blocks.BlockPlacerScreen;
@@ -18,6 +19,7 @@ import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.FertilizerS
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.FruitPickerScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.PlanterScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.mobs.*;
+import dev.onyxstudios.minefactoryrenewed.client.gui.machine.power.SteamTurbineScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.processing.LaserChargerScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.processing.LaserDrillScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.processing.SteamBoilerScreen;
@@ -34,9 +36,13 @@ import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.client.event.ModelBakeEvent;
+import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.event.RegisterShadersEvent;
+import net.minecraftforge.client.model.ForgeModelBakery;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -46,6 +52,9 @@ import java.io.IOException;
 
 @Mod.EventBusSubscriber(modid = MinefactoryRenewed.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModClient {
+
+    private static final ResourceLocation BLADES_LOCATION = new ResourceLocation(MinefactoryRenewed.MODID, "block/steam_turbine_blades");
+    public static BakedModel BLADES_MODEL;
 
     public static ShaderInstance RAINBOW_SHADER;
     public static Uniform TIME;
@@ -60,6 +69,7 @@ public class ModClient {
 
     private static void initLayers() {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.PINK_SLIME_BLOCK.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.STEAM_TURBINE.get(), RenderType.translucent());
     }
 
     private static void initScreens() {
@@ -87,6 +97,7 @@ public class ModClient {
         MenuScreens.register(ModBlockEntities.LASER_DRILL_CONTAINER.get(), LaserDrillScreen::new);
         MenuScreens.register(ModBlockEntities.LASER_CHARGER_CONTAINER.get(), LaserChargerScreen::new);
         MenuScreens.register(ModBlockEntities.STEAM_BOILER_CONTAINER.get(), SteamBoilerScreen::new);
+        MenuScreens.register(ModBlockEntities.STEAM_TURBINE_CONTAINER.get(), SteamTurbineScreen::new);
     }
 
     private static void initEntities() {
@@ -97,6 +108,7 @@ public class ModClient {
     private static void initBlockEntities() {
         BlockEntityRenderers.register(ModBlockEntities.LASER_CHARGER.get(), ctx -> new LaserChargerRenderer());
         BlockEntityRenderers.register(ModBlockEntities.LASER_DRILL.get(), ctx -> new LaserDrillRenderer());
+        BlockEntityRenderers.register(ModBlockEntities.STEAM_TURBINE.get(), ctx -> new SteamTurbineRenderer());
     }
 
     private static void initColors(FMLClientSetupEvent event) {
@@ -119,5 +131,15 @@ public class ModClient {
                     RAINBOW_SHADER = shaderInstance;
                     TIME = shaderInstance.getUniform("Time");
                 });
+    }
+
+    @SubscribeEvent
+    public static void onModelRegistry(ModelRegistryEvent event) {
+        ForgeModelBakery.addSpecialModel(BLADES_LOCATION);
+    }
+
+    @SubscribeEvent
+    public static void onModelBake(ModelBakeEvent event) {
+        BLADES_MODEL = event.getModelManager().getModel(BLADES_LOCATION);
     }
 }

@@ -4,7 +4,6 @@ import dev.onyxstudios.minefactoryrenewed.api.energy.MFREnergyStorage;
 import dev.onyxstudios.minefactoryrenewed.api.machine.MachineArea;
 import dev.onyxstudios.minefactoryrenewed.blockentity.BaseBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.item.MachineUpgradeItem;
-import dev.onyxstudios.minefactoryrenewed.registry.ModBlocks;
 import dev.onyxstudios.minefactoryrenewed.util.InventoryUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -18,6 +17,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
@@ -26,6 +26,7 @@ import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
@@ -53,6 +54,9 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
             entity instanceof Animal &&
             entity.canChangeDimensions()
     );
+
+    //Cache directions array
+    protected static final Direction[] DIRECTIONS = Direction.values();
 
     private MFREnergyStorage energy;
     private LazyOptional<MFREnergyStorage> energyHandler;
@@ -130,8 +134,9 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
 
     public static void tick(Level level, BlockPos pos, BlockState state, MachineBlockEntity blockEntity) {
         //TODO Remove, only for testing with no generators...
-        if (blockEntity.getEnergy() != null && !state.is(ModBlocks.LASER_DRILL.get()))
-            blockEntity.getEnergy().receiveEnergy(100, false);
+        //if (blockEntity.getEnergy() != null && !state.is(ModBlocks.LASER_DRILL.get()) &&
+        //        !state.is(ModBlocks.STEAM_TURBINE.get()))
+        //    blockEntity.getEnergy().receiveEnergy(100, false);
         blockEntity.tick();
         blockEntity.tickInternal();
     }
@@ -214,6 +219,38 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
         level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
     }
 
+    public void transferEnergy(int maxTransfer) {
+        if (level == null) return;
+
+        for (Direction direction : DIRECTIONS) {
+            BlockPos offset = getBlockPos().relative(direction);
+            BlockEntity blockEntity = level.getBlockEntity(offset);
+            if (blockEntity == null) continue;
+
+            blockEntity.getCapability(CapabilityEnergy.ENERGY, direction.getOpposite()).ifPresent(energyStorage -> {
+                int maxExtract = getEnergy().extractEnergy(maxTransfer, true);
+                int extracted = energyStorage.receiveEnergy(maxExtract, false);
+                getEnergy().extractEnergy(extracted, false);
+            });
+        }
+    }
+
+    public void transferFluid(int maxTransfer, FluidTank tank) {
+        if (level == null) return;
+
+        for (Direction direction : DIRECTIONS) {
+            BlockPos offset = getBlockPos().relative(direction);
+            BlockEntity blockEntity = level.getBlockEntity(offset);
+            if (blockEntity == null) continue;
+
+            blockEntity.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, direction.getOpposite()).ifPresent(fluidHandler -> {
+                FluidStack maxExtract = tank.drain(maxTransfer, IFluidHandler.FluidAction.SIMULATE);
+                int extracted = fluidHandler.fill(maxExtract, IFluidHandler.FluidAction.EXECUTE);
+                tank.drain(extracted, IFluidHandler.FluidAction.EXECUTE);
+            });
+        }
+    }
+
     protected void updateRange() {
         ItemStack stack = inventory.getStackInSlot(0);
         int radius = 0;
@@ -241,7 +278,7 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
     }
 
     public void createEnergy(int capacity, int energyCost) {
-        energy = new MFREnergyStorage(capacity);
+        energy = new MFREnergyStorage(capacity, Integer.MAX_VALUE, Integer.MAX_VALUE);
         energyHandler = LazyOptional.of(() -> energy);
         this.energyCost = energyCost;
         this.setChanged();

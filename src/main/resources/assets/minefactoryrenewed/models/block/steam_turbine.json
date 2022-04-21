@@ -1,0 +1,150 @@
+{
+	"parent": "minecraft:block/cube_all",
+	"textures": {
+		"particle": "minefactoryrenewed:block/machine_side",
+		"1": "block/gray_stained_glass",
+		"2": "minefactoryrenewed:block/machine_bottom",
+		"3": "minefactoryrenewed:block/machine_side",
+		"4": "minefactoryrenewed:block/machine_top"
+	},
+	"elements": [
+		{
+			"name": "Ceiling",
+			"from": [0, 15, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 1], "texture": "#4"},
+				"east": {"uv": [0, 15, 16, 16], "texture": "#4"},
+				"south": {"uv": [0, 0, 16, 1], "texture": "#4"},
+				"west": {"uv": [0, 15, 16, 16], "texture": "#4"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#4"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#4"}
+			}
+		},
+		{
+			"name": "Floor",
+			"from": [0, 0, 0],
+			"to": [16, 1, 16],
+			"faces": {
+				"north": {"uv": [0, 15, 16, 16], "texture": "#2"},
+				"east": {"uv": [0, 0, 16, 1], "texture": "#2"},
+				"south": {"uv": [0, 0, 16, 1], "texture": "#2"},
+				"west": {"uv": [0, 15, 16, 16], "texture": "#2"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#2"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#2"}
+			}
+		},
+		{
+			"name": "Pillar1",
+			"from": [0, 1, 15],
+			"to": [1, 15, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 1, 14], "texture": "#3"},
+				"east": {"uv": [0, 0, 1, 14], "texture": "#3"},
+				"south": {"uv": [15, 0, 16, 14], "texture": "#3"},
+				"west": {"uv": [15, 0, 16, 14], "texture": "#3"},
+				"up": {"uv": [0, 0, 1, 1], "texture": "#3"},
+				"down": {"uv": [0, 0, 1, 1], "texture": "#3"}
+			}
+		},
+		{
+			"name": "Pillar4",
+			"from": [15, 1, 15],
+			"to": [16, 15, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 1, 14], "texture": "#3"},
+				"east": {"uv": [15, 0, 16, 14], "texture": "#3"},
+				"south": {"uv": [0, 0, 1, 14], "texture": "#3"},
+				"west": {"uv": [0, 0, 1, 14], "texture": "#3"},
+				"up": {"uv": [0, 0, 1, 1], "texture": "#3"},
+				"down": {"uv": [0, 0, 1, 1], "texture": "#3"}
+			}
+		},
+		{
+			"name": "Pillar3",
+			"from": [15, 1, 0],
+			"to": [16, 15, 1],
+			"faces": {
+				"north": {"uv": [0, 0, 1, 14], "texture": "#3"},
+				"east": {"uv": [0, 0, 1, 14], "texture": "#3"},
+				"south": {"uv": [0, 0, 1, 14], "texture": "#3"},
+				"west": {"uv": [0, 0, 1, 14], "texture": "#3"},
+				"up": {"uv": [0, 0, 1, 1], "texture": "#3"},
+				"down": {"uv": [0, 0, 1, 1], "texture": "#3"}
+			}
+		},
+		{
+			"name": "Pillar2",
+			"from": [0, 1, 0],
+			"to": [1, 15, 1],
+			"faces": {
+				"north": {"uv": [0, 0, 1, 14], "texture": "#3"},
+				"east": {"uv": [0, 0, 1, 14], "texture": "#3"},
+				"south": {"uv": [0, 0, 1, 14], "texture": "#3"},
+				"west": {"uv": [15, 0, 16, 14], "texture": "#3"},
+				"up": {"uv": [0, 0, 1, 1], "texture": "#3"},
+				"down": {"uv": [0, 0, 1, 1], "texture": "#3"}
+			}
+		},
+		{
+			"name": "Glass1",
+			"from": [0, 1, 1],
+			"to": [0, 15, 15],
+			"faces": {
+				"north": {"uv": [0, 0, 0, 14], "texture": "#1"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"south": {"uv": [0, 0, 0, 14], "texture": "#1"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"up": {"uv": [0, 0, 0, 14], "texture": "#1"},
+				"down": {"uv": [0, 0, 0, 14], "texture": "#1"}
+			}
+		},
+		{
+			"name": "Glass2",
+			"from": [1, 1, 0],
+			"to": [15, 15, 0],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"east": {"uv": [0, 0, 0, 14], "texture": "#1"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"west": {"uv": [0, 0, 0, 14], "texture": "#1"},
+				"up": {"uv": [0, 0, 14, 0], "texture": "#1"},
+				"down": {"uv": [0, 0, 14, 0], "texture": "#1"}
+			}
+		},
+		{
+			"name": "Glass3",
+			"from": [16, 1, 1],
+			"to": [16, 15, 15],
+			"faces": {
+				"north": {"uv": [0, 0, 0, 14], "texture": "#1"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"south": {"uv": [0, 0, 0, 14], "texture": "#1"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"up": {"uv": [0, 0, 0, 14], "texture": "#1"},
+				"down": {"uv": [0, 0, 0, 14], "texture": "#1"}
+			}
+		},
+		{
+			"name": "Glass4",
+			"from": [1, 1, 16],
+			"to": [15, 15, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"east": {"uv": [0, 0, 0, 14], "texture": "#1"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"west": {"uv": [0, 0, 0, 14], "texture": "#1"},
+				"up": {"uv": [0, 0, 14, 0], "texture": "#1"},
+				"down": {"uv": [0, 0, 14, 0], "texture": "#1"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "Base",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"children": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+		}
+	]
+}

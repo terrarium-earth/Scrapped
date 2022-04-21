@@ -113,6 +113,8 @@ public class SteamBoilerBlockEntity extends MachineBlockEntity implements MenuPr
         if (burnTime > 0) {
             burnTime--;
         }
+
+        transferFluid(100, getSteamTank());
     }
 
     @Override

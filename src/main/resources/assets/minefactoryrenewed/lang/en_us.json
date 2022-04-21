@@ -93,6 +93,7 @@
   "block.minefactoryrenewed.laser_charger": "Laser Drill Precharger",
   "block.minefactoryrenewed.steam": "Steam",
   "block.minefactoryrenewed.steam_boiler": "Steam Boiler",
+  "block.minefactoryrenewed.steam_turbine": "Steam Turbine",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",

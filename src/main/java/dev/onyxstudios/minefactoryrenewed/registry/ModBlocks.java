@@ -18,9 +18,10 @@ import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FertilizerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FruitPickerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.PlanterBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.mobs.*;
-import dev.onyxstudios.minefactoryrenewed.block.machine.processing.SteamBoilerBlock;
+import dev.onyxstudios.minefactoryrenewed.block.machine.power.SteamTurbineBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.processing.LaserChargerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.processing.LaserDrillBlock;
+import dev.onyxstudios.minefactoryrenewed.block.machine.processing.SteamBoilerBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -159,6 +160,10 @@ public class ModBlocks {
     public static final RegistryObject<Block> STEAM_BOILER = BLOCKS.register("steam_boiler", SteamBoilerBlock::new);
     public static final RegistryObject<Item> STEAM_BOILER_ITEM = ITEMS.register("steam_boiler", () ->
             new BlockItem(STEAM_BOILER.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> STEAM_TURBINE = BLOCKS.register("steam_turbine", SteamTurbineBlock::new);
+    public static final RegistryObject<Item> STEAM_TURBINE_ITEM = ITEMS.register("steam_turbine", () ->
+            new BlockItem(STEAM_TURBINE.get(), ModItems.PROPERTIES));
 
     //Fluids
     public static final RegistryObject<SludgeFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);
