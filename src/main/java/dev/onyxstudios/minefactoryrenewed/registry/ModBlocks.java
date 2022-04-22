@@ -195,4 +195,9 @@ public class ModBlocks {
     public static final RegistryObject<SteamFluid> STEAM_FLOWING = FLUIDS.register("steam_flowing", SteamFluid.Flowing::new);
     public static final RegistryObject<BaseFluidBlock> STEAM_FLUID_BLOCK = BLOCKS.register("steam", () ->
             new BaseFluidBlock(STEAM::get, BASE_FLUID_PROPS));
+
+    public static final RegistryObject<EthanolFluid> ETHANOL = FLUIDS.register("ethanol", EthanolFluid.Source::new);
+    public static final RegistryObject<EthanolFluid> ETHANOL_FLOWING = FLUIDS.register("ethanol_flowing", EthanolFluid.Flowing::new);
+    public static final RegistryObject<BaseFluidBlock> ETHANOL_FLUID_BLOCK = BLOCKS.register("ethanol", () ->
+            new BaseFluidBlock(ETHANOL::get, BASE_FLUID_PROPS));
 }

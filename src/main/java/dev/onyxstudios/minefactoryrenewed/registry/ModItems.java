@@ -54,6 +54,7 @@ public class ModItems {
     public static final RegistryObject<Item> ESSENCE_BUCKET = ITEMS.register("essence_bucket", () -> new BucketItem(ModBlocks.ESSENCE, BUCKET_PROPS));
     public static final RegistryObject<Item> SEWAGE_BUCKET = ITEMS.register("sewage_bucket", () -> new BucketItem(ModBlocks.SEWAGE, BUCKET_PROPS));
     public static final RegistryObject<Item> STEAM_BUCKET = ITEMS.register("steam_bucket", () -> new BucketItem(ModBlocks.STEAM, BUCKET_PROPS));
+    public static final RegistryObject<Item> ETHANOL_BUCKET = ITEMS.register("ethanol_bucket", () -> new BucketItem(ModBlocks.ETHANOL, BUCKET_PROPS));
 
     //Syringes
     public static final RegistryObject<Item> EMPTY_SYRINGE = ITEMS.register("empty_syringe", () ->

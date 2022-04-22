@@ -41,6 +41,10 @@ public class BaseFluidBlock extends LiquidBlock {
             event.setRed(0.9f);
             event.setGreen(0.9f);
             event.setBlue(0.9f);
+        } else if (fluidState.is(ModTags.ETHANOL)) {
+            event.setRed(0.7f);
+            event.setGreen(0.309f);
+            event.setBlue(0.05f);
         }
     }
 }

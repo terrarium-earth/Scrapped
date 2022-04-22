@@ -17,6 +17,7 @@ public class ModTags {
     public static TagKey<Fluid> PINK_SLIME = createModFluidTag("pink_slime");
     public static TagKey<Fluid> SEWAGE = createModFluidTag("sewage");
     public static TagKey<Fluid> STEAM = createModFluidTag("steam");
+    public static TagKey<Fluid> ETHANOL = createModFluidTag("ethanol");
 
     public static TagKey<Item> LASER_ORE = createModItemTag("laser_ore");
     public static TagKey<Item> WHITE_FOCUS = createModItemTag("white_focus");

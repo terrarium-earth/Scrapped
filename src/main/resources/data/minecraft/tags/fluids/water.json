@@ -14,6 +14,9 @@
     "minefactoryrenewed:sewage_flowing",
 
     "minefactoryrenewed:steam",
-    "minefactoryrenewed:steam_flowing"
+    "minefactoryrenewed:steam_flowing",
+
+    "minefactoryrenewed:ethanol",
+    "minefactoryrenewed:ethanol_flowing"
   ]
 }

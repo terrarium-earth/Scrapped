@@ -55,6 +55,7 @@
   "item.minefactoryrenewed.purple_focus": "Laser Focus (Purple)",
   "item.minefactoryrenewed.red_focus": "Laser Focus (Red)",
   "item.minefactoryrenewed.steam_bucket": "Steam Bucket",
+  "item.minefactoryrenewed.ethanol_bucket": "Ethanol Bucket",
 
   "_comment3": "Blocks",
   "block.minefactoryrenewed.conveyor_belt": "Conveyor Belt",
@@ -94,6 +95,7 @@
   "block.minefactoryrenewed.steam": "Steam",
   "block.minefactoryrenewed.steam_boiler": "Steam Boiler",
   "block.minefactoryrenewed.steam_turbine": "Steam Turbine",
+  "block.minefactoryrenewed.ethanol": "Ethanol",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",
