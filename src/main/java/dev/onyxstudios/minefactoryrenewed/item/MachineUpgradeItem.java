@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class MachineUpgradeItem extends Item {
+public class MachineUpgradeItem extends BaseItem {
 
     private final int radiusIncrease;
 

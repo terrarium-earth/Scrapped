@@ -14,7 +14,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class WrenchItem extends Item {
+public class WrenchItem extends BaseItem {
 
     public WrenchItem() {
         super(new Item.Properties()

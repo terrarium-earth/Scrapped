@@ -26,7 +26,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class SafariNetItem extends Item {
+public class SafariNetItem extends BaseItem {
 
     public static final String ENTITY_KEY = "trappedEntity";
     public static final String ENTITY_ID_KEY = "trappedEntityId";

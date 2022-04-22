@@ -1,6 +1,7 @@
 package dev.onyxstudios.minefactoryrenewed.item.syringe;
 
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
+import dev.onyxstudios.minefactoryrenewed.item.BaseItem;
 import dev.onyxstudios.minefactoryrenewed.registry.ModItems;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -12,7 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-public abstract class SyringeItem extends Item {
+public abstract class SyringeItem extends BaseItem {
 
     public SyringeItem() {
         super(new Item.Properties().stacksTo(1).tab(MinefactoryRenewed.TAB));

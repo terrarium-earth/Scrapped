@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class SafariNetLauncherItem extends Item {
+public class SafariNetLauncherItem extends BaseItem {
 
     public SafariNetLauncherItem() {
         super(new Item.Properties().stacksTo(1).tab(MinefactoryRenewed.TAB));

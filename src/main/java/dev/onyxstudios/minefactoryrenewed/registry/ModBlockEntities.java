@@ -44,10 +44,8 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class ModBlockEntities {
 
-    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
-            DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, MinefactoryRenewed.MODID);
-    public static final DeferredRegister<MenuType<?>> CONTAINERS =
-            DeferredRegister.create(ForgeRegistries.CONTAINERS, MinefactoryRenewed.MODID);
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, MinefactoryRenewed.MODID);
+    public static final DeferredRegister<MenuType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.CONTAINERS, MinefactoryRenewed.MODID);
 
     public static final RegistryObject<BlockEntityType<PlanterBlockEntity>> PLANTER_BLOCK_ENTITY =
             BLOCK_ENTITIES.register("planter_block_entity", () ->
@@ -189,202 +187,177 @@ public class ModBlockEntities {
      */
     public static final RegistryObject<MenuType<PlanterContainer>> PLANTER_CONTAINER =
             CONTAINERS.register("planter_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                        BlockPos pos = data.readBlockPos();
-                        PlanterBlockEntity planter = (PlanterBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new PlanterContainer(windowId, inv, planter);
-                    })
-            );
+                BlockPos pos = data.readBlockPos();
+                PlanterBlockEntity planter = (PlanterBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new PlanterContainer(windowId, inv, planter);
+            }));
 
     public static final RegistryObject<MenuType<FarmerContainer>> FARMER_CONTAINER =
             CONTAINERS.register("farmer_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                        BlockPos pos = data.readBlockPos();
-                        FarmerBlockEntity farmer = (FarmerBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new FarmerContainer(windowId, inv, farmer);
-                    })
-            );
+                BlockPos pos = data.readBlockPos();
+                FarmerBlockEntity farmer = (FarmerBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new FarmerContainer(windowId, inv, farmer);
+            }));
 
     public static final RegistryObject<MenuType<FertilizerContainer>> FERTILIZER_CONTAINER =
             CONTAINERS.register("fertilizer_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                        BlockPos pos = data.readBlockPos();
-                        FertilizerBlockEntity fertilizer = (FertilizerBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new FertilizerContainer(windowId, inv, fertilizer);
-                    })
-            );
+                BlockPos pos = data.readBlockPos();
+                FertilizerBlockEntity fertilizer = (FertilizerBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new FertilizerContainer(windowId, inv, fertilizer);
+            }));
 
     public static final RegistryObject<MenuType<FruitPickerContainer>> FRUIT_PICKER_CONTAINER =
             CONTAINERS.register("fruit_picker_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                        BlockPos pos = data.readBlockPos();
-                        FruitPickerBlockEntity fruitPicker = (FruitPickerBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new FruitPickerContainer(windowId, inv, fruitPicker);
-                    })
-            );
+                BlockPos pos = data.readBlockPos();
+                FruitPickerBlockEntity fruitPicker = (FruitPickerBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new FruitPickerContainer(windowId, inv, fruitPicker);
+            }));
 
     public static final RegistryObject<MenuType<SlaughterhouseContainer>> SLAUGHTERHOUSE_CONTAINER =
             CONTAINERS.register("slaughterhouse_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                        BlockPos pos = data.readBlockPos();
-                        SlaughterhouseBlockEntity slaughterhouse =
-                                (SlaughterhouseBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new SlaughterhouseContainer(windowId, inv, slaughterhouse);
-                    })
-            );
+                BlockPos pos = data.readBlockPos();
+                SlaughterhouseBlockEntity slaughterhouse =
+                        (SlaughterhouseBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new SlaughterhouseContainer(windowId, inv, slaughterhouse);
+            }));
 
     public static final RegistryObject<MenuType<GrinderContainer>> GRINDER_CONTAINER =
             CONTAINERS.register("grinder_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                        BlockPos pos = data.readBlockPos();
-                        GrinderBlockEntity grinder = (GrinderBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new GrinderContainer(windowId, inv, grinder);
-                    })
-            );
+                BlockPos pos = data.readBlockPos();
+                GrinderBlockEntity grinder = (GrinderBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new GrinderContainer(windowId, inv, grinder);
+            }));
 
     public static final RegistryObject<MenuType<MeatPackerContainer>> MEAT_PACKER_CONTAINER =
             CONTAINERS.register("meat_packer_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                        BlockPos pos = data.readBlockPos();
-                        MeatPackerBlockEntity meatPacker = (MeatPackerBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new MeatPackerContainer(windowId, inv, meatPacker);
-                    })
-            );
+                BlockPos pos = data.readBlockPos();
+                MeatPackerBlockEntity meatPacker = (MeatPackerBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new MeatPackerContainer(windowId, inv, meatPacker);
+            }));
 
     public static final RegistryObject<MenuType<MobRouterContainer>> MOB_ROUTER_CONTAINER =
             CONTAINERS.register("mob_router_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                        BlockPos pos = data.readBlockPos();
-                        MobRouterBlockEntity mobRouter = (MobRouterBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new MobRouterContainer(windowId, inv, mobRouter);
-                    })
-            );
+                BlockPos pos = data.readBlockPos();
+                MobRouterBlockEntity mobRouter = (MobRouterBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new MobRouterContainer(windowId, inv, mobRouter);
+            }));
 
     public static final RegistryObject<MenuType<AutoSpawnerContainer>> AUTO_SPAWNER_CONTAINER =
             CONTAINERS.register("auto_spawner_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                        BlockPos pos = data.readBlockPos();
-                        AutoSpawnerBlockEntity autoSpawner = (AutoSpawnerBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new AutoSpawnerContainer(windowId, inv, autoSpawner);
-                    })
-            );
+                BlockPos pos = data.readBlockPos();
+                AutoSpawnerBlockEntity autoSpawner = (AutoSpawnerBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new AutoSpawnerContainer(windowId, inv, autoSpawner);
+            }));
 
     public static final RegistryObject<MenuType<FisherContainer>> FISHER_CONTAINER =
             CONTAINERS.register("fisher_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                        BlockPos pos = data.readBlockPos();
-                        FisherBlockEntity fisher = (FisherBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new FisherContainer(windowId, inv, fisher);
-                    })
-            );
+                BlockPos pos = data.readBlockPos();
+                FisherBlockEntity fisher = (FisherBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new FisherContainer(windowId, inv, fisher);
+            }));
 
     public static final RegistryObject<MenuType<RancherContainer>> RANCHER_CONTAINER =
             CONTAINERS.register("rancher_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                        BlockPos pos = data.readBlockPos();
-                        RancherBlockEntity rancher = (RancherBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new RancherContainer(windowId, inv, rancher);
-                    })
-            );
+                BlockPos pos = data.readBlockPos();
+                RancherBlockEntity rancher = (RancherBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new RancherContainer(windowId, inv, rancher);
+            }));
 
     public static final RegistryObject<MenuType<BreederContainer>> BREEDER_CONTAINER =
             CONTAINERS.register("breeder_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                        BlockPos pos = data.readBlockPos();
-                        BreederBlockEntity breeder = (BreederBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new BreederContainer(windowId, inv, breeder);
-                    })
-            );
+                BlockPos pos = data.readBlockPos();
+                BreederBlockEntity breeder = (BreederBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new BreederContainer(windowId, inv, breeder);
+            }));
 
     public static final RegistryObject<MenuType<ChronotyperContainer>> CHRONOTYPER_CONTAINER =
             CONTAINERS.register("chronotyper_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                        BlockPos pos = data.readBlockPos();
-                        ChronotyperBlockEntity chronotyper = (ChronotyperBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new ChronotyperContainer(windowId, inv, chronotyper);
-                    })
-            );
+                BlockPos pos = data.readBlockPos();
+                ChronotyperBlockEntity chronotyper = (ChronotyperBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new ChronotyperContainer(windowId, inv, chronotyper);
+            }));
 
     public static final RegistryObject<MenuType<SewerContainer>> SEWER_CONTAINER =
             CONTAINERS.register("sewer_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                        BlockPos pos = data.readBlockPos();
-                        SewerBlockEntity sewer = (SewerBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new SewerContainer(windowId, inv, sewer);
-                    })
-            );
+                BlockPos pos = data.readBlockPos();
+                SewerBlockEntity sewer = (SewerBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new SewerContainer(windowId, inv, sewer);
+            }));
 
     public static final RegistryObject<MenuType<VeterinaryContainer>> VETERINARY_CONTAINER =
             CONTAINERS.register("veterinary_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                        BlockPos pos = data.readBlockPos();
-                        VeterinaryBlockEntity veterinary = (VeterinaryBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new VeterinaryContainer(windowId, inv, veterinary);
-                    })
-            );
+                BlockPos pos = data.readBlockPos();
+                VeterinaryBlockEntity veterinary = (VeterinaryBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new VeterinaryContainer(windowId, inv, veterinary);
+            }));
 
     public static final RegistryObject<MenuType<BlockPlacerContainer>> BLOCK_PLACER_CONTAINER =
             CONTAINERS.register("block_placer_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                        BlockPos pos = data.readBlockPos();
-                        BlockPlacerBlockEntity blockPlacer = (BlockPlacerBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new BlockPlacerContainer(windowId, inv, blockPlacer);
-                    })
-            );
+                BlockPos pos = data.readBlockPos();
+                BlockPlacerBlockEntity blockPlacer = (BlockPlacerBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new BlockPlacerContainer(windowId, inv, blockPlacer);
+            }));
 
     public static final RegistryObject<MenuType<BlockSmasherContainer>> BLOCK_SMASHER_CONTAINER =
             CONTAINERS.register("block_smasher_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                        BlockPos pos = data.readBlockPos();
-                        BlockSmasherBlockEntity blockSmasher = (BlockSmasherBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new BlockSmasherContainer(windowId, inv, blockSmasher);
-                    })
-            );
+                BlockPos pos = data.readBlockPos();
+                BlockSmasherBlockEntity blockSmasher = (BlockSmasherBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new BlockSmasherContainer(windowId, inv, blockSmasher);
+            }));
 
     public static final RegistryObject<MenuType<DeepStorageContainer>> DEEP_STORAGE_CONTAINER =
             CONTAINERS.register("deep_storage_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                        BlockPos pos = data.readBlockPos();
-                        DeepStorageBlockEntity deepStorage = (DeepStorageBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new DeepStorageContainer(windowId, inv, deepStorage);
-                    })
-            );
+                BlockPos pos = data.readBlockPos();
+                DeepStorageBlockEntity deepStorage = (DeepStorageBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new DeepStorageContainer(windowId, inv, deepStorage);
+            }));
 
     public static final RegistryObject<MenuType<AutoDisenchanterContainer>> AUTO_DISENCHANTER_CONTAINER =
             CONTAINERS.register("auto_disenchanter_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                        BlockPos pos = data.readBlockPos();
-                        AutoDisenchanterBlockEntity autoDisenchanter = (AutoDisenchanterBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new AutoDisenchanterContainer(windowId, inv, autoDisenchanter);
-                    })
-            );
+                BlockPos pos = data.readBlockPos();
+                AutoDisenchanterBlockEntity autoDisenchanter = (AutoDisenchanterBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new AutoDisenchanterContainer(windowId, inv, autoDisenchanter);
+            }));
 
     public static final RegistryObject<MenuType<AutoEnchanterContainer>> AUTO_ENCHANTER_CONTAINER =
             CONTAINERS.register("auto_enchanter_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                        BlockPos pos = data.readBlockPos();
-                        AutoEnchanterBlockEntity autoEnchanter = (AutoEnchanterBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new AutoEnchanterContainer(windowId, inv, autoEnchanter);
-                    })
-            );
+                BlockPos pos = data.readBlockPos();
+                AutoEnchanterBlockEntity autoEnchanter = (AutoEnchanterBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new AutoEnchanterContainer(windowId, inv, autoEnchanter);
+            }));
 
     public static final RegistryObject<MenuType<AutoAnvilContainer>> AUTO_ANVIL_CONTAINER =
             CONTAINERS.register("auto_anvil_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                        BlockPos pos = data.readBlockPos();
-                        AutoAnvilBlockEntity autoAnvil = (AutoAnvilBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new AutoAnvilContainer(windowId, inv, autoAnvil);
-                    })
-            );
+                BlockPos pos = data.readBlockPos();
+                AutoAnvilBlockEntity autoAnvil = (AutoAnvilBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new AutoAnvilContainer(windowId, inv, autoAnvil);
+            }));
 
     public static final RegistryObject<MenuType<LaserDrillContainer>> LASER_DRILL_CONTAINER =
             CONTAINERS.register("laser_drill_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                        BlockPos pos = data.readBlockPos();
-                        LaserDrillBlockEntity laserDrill = (LaserDrillBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new LaserDrillContainer(windowId, inv, laserDrill);
-                    })
-            );
+                BlockPos pos = data.readBlockPos();
+                LaserDrillBlockEntity laserDrill = (LaserDrillBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new LaserDrillContainer(windowId, inv, laserDrill);
+            }));
 
     public static final RegistryObject<MenuType<LaserChargerContainer>> LASER_CHARGER_CONTAINER =
             CONTAINERS.register("laser_charger_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                        BlockPos pos = data.readBlockPos();
-                        LaserChargerBlockEntity laserCharger = (LaserChargerBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new LaserChargerContainer(windowId, inv, laserCharger);
-                    })
-            );
+                BlockPos pos = data.readBlockPos();
+                LaserChargerBlockEntity laserCharger = (LaserChargerBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new LaserChargerContainer(windowId, inv, laserCharger);
+            }));
 
     public static final RegistryObject<MenuType<SteamBoilerContainer>> STEAM_BOILER_CONTAINER =
             CONTAINERS.register("steam_boiler_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                        BlockPos pos = data.readBlockPos();
-                        SteamBoilerBlockEntity steamBoiler = (SteamBoilerBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new SteamBoilerContainer(windowId, inv, steamBoiler);
-                    })
-            );
+                BlockPos pos = data.readBlockPos();
+                SteamBoilerBlockEntity steamBoiler = (SteamBoilerBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new SteamBoilerContainer(windowId, inv, steamBoiler);
+            }));
 
     public static final RegistryObject<MenuType<SteamTurbineContainer>> STEAM_TURBINE_CONTAINER =
             CONTAINERS.register("steam_turbine_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                        BlockPos pos = data.readBlockPos();
-                        SteamTurbineBlockEntity steamTurbine = (SteamTurbineBlockEntity) inv.player.level.getBlockEntity(pos);
-                        return new SteamTurbineContainer(windowId, inv, steamTurbine);
-                    })
-            );
+                BlockPos pos = data.readBlockPos();
+                SteamTurbineBlockEntity steamTurbine = (SteamTurbineBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new SteamTurbineContainer(windowId, inv, steamTurbine);
+            }));
 }

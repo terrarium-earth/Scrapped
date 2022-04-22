@@ -5,7 +5,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 
-public class FocusItem extends Item {
+public class FocusItem extends BaseItem {
 
     private final TagKey<Item> tag;
     private final DyeColor color;
