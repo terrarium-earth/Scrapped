@@ -13,6 +13,7 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.Fertiliz
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.FruitPickerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.PlanterContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.*;
+import dev.onyxstudios.minefactoryrenewed.blockentity.container.power.EthanolGeneratorContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.power.SteamTurbineContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.processing.LaserChargerContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.processing.LaserDrillContainer;
@@ -30,6 +31,7 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.Fertilizer
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FruitPickerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.PlanterBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.mobs.*;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.power.EthanolGeneratorBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.power.SteamTurbineBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.processing.LaserChargerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.processing.LaserDrillBlockEntity;
@@ -180,6 +182,11 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<SteamTurbineBlockEntity>> STEAM_TURBINE =
             BLOCK_ENTITIES.register("steam_turbine_block_entity", () ->
                     BlockEntityType.Builder.of(SteamTurbineBlockEntity::new, ModBlocks.STEAM_TURBINE.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<EthanolGeneratorBlockEntity>> ETHANOL_GENERATOR =
+            BLOCK_ENTITIES.register("ethanol_generator_block_entity", () ->
+                    BlockEntityType.Builder.of(EthanolGeneratorBlockEntity::new, ModBlocks.ETHANOL_GENERATOR.get())
                             .build(null));
 
     /**
@@ -359,5 +366,12 @@ public class ModBlockEntities {
                 BlockPos pos = data.readBlockPos();
                 SteamTurbineBlockEntity steamTurbine = (SteamTurbineBlockEntity) inv.player.level.getBlockEntity(pos);
                 return new SteamTurbineContainer(windowId, inv, steamTurbine);
+            }));
+
+    public static final RegistryObject<MenuType<EthanolGeneratorContainer>> ETHANOL_GENERATOR_CONTAINER =
+            CONTAINERS.register("ethanol_generator_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                BlockPos pos = data.readBlockPos();
+                EthanolGeneratorBlockEntity gen = (EthanolGeneratorBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new EthanolGeneratorContainer(windowId, inv, gen);
             }));
 }

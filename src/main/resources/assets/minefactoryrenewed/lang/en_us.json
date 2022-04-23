@@ -96,6 +96,7 @@
   "block.minefactoryrenewed.steam_boiler": "Steam Boiler",
   "block.minefactoryrenewed.steam_turbine": "Steam Turbine",
   "block.minefactoryrenewed.ethanol": "Ethanol",
+  "block.minefactoryrenewed.ethanol_generator": "Ethanol Generator",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",
