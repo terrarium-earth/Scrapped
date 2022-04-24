@@ -1,7 +1,7 @@
 package dev.onyxstudios.minefactoryrenewed.registry;
 
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
-import dev.onyxstudios.minefactoryrenewed.block.ConveyorBeltBlock;
+import dev.onyxstudios.minefactoryrenewed.block.transport.ConveyorBeltBlock;
 import dev.onyxstudios.minefactoryrenewed.block.MeatBlock;
 import dev.onyxstudios.minefactoryrenewed.block.PinkSlimeBlock;
 import dev.onyxstudios.minefactoryrenewed.block.fluid.*;
