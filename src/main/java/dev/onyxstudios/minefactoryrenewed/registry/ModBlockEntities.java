@@ -61,7 +61,7 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(FarmerBlockEntity::new, ModBlocks.FARMER.get())
                             .build(null));
 
-    public static final RegistryObject<BlockEntityType<FertilizerBlockEntity>> FERTALIZER =
+    public static final RegistryObject<BlockEntityType<FertilizerBlockEntity>> FERTILIZER =
             BLOCK_ENTITIES.register("fertilizer_block_entity", () ->
                     BlockEntityType.Builder.of(FertilizerBlockEntity::new, ModBlocks.FERTILIZER.get())
                             .build(null));
@@ -204,6 +204,11 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<ComposterBlockEntity>> COMPOSTER =
             BLOCK_ENTITIES.register("composter_block_entity", () ->
                     BlockEntityType.Builder.of(ComposterBlockEntity::new, ModBlocks.COMPOSTER.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<SludgeBoilerBlockEntity>> SLUDGE_BOILER =
+            BLOCK_ENTITIES.register("sludge_boiler_block_entity", () ->
+                    BlockEntityType.Builder.of(SludgeBoilerBlockEntity::new, ModBlocks.SLUDGE_BOILER.get())
                             .build(null));
 
     /**
@@ -411,5 +416,12 @@ public class ModBlockEntities {
                 BlockPos pos = data.readBlockPos();
                 ComposterBlockEntity composter = (ComposterBlockEntity) inv.player.level.getBlockEntity(pos);
                 return new ComposterContainer(windowId, inv, composter);
+            }));
+
+    public static final RegistryObject<MenuType<SludgeBoilerContainer>> SLUDGE_BOILER_CONTAINER =
+            CONTAINERS.register("sludge_boiler_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                BlockPos pos = data.readBlockPos();
+                SludgeBoilerBlockEntity sludgeBoiler = (SludgeBoilerBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new SludgeBoilerContainer(windowId, inv, sludgeBoiler);
             }));
 }

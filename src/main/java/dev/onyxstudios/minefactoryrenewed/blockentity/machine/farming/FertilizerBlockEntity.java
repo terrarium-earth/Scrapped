@@ -21,7 +21,7 @@ import org.jetbrains.annotations.Nullable;
 public class FertilizerBlockEntity extends MachineBlockEntity implements MenuProvider {
 
     public FertilizerBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.FERTALIZER.get(), pos, state);
+        super(ModBlockEntities.FERTILIZER.get(), pos, state);
         this.createInventory(9);
         this.createEnergy(32000, 960);
         this.setMaxWorkTime(2);

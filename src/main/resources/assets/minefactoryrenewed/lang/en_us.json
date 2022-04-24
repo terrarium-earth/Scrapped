@@ -101,6 +101,7 @@
   "block.minefactoryrenewed.lava_fabricator": "Lava Fabricator",
   "block.minefactoryrenewed.composter": "Composter",
   "block.minefactoryrenewed.creative_energy": "Creative Energy",
+  "block.minefactoryrenewed.sludge_boiler": "Sludge Boiler",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",

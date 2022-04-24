@@ -95,7 +95,7 @@ public class LaserDrillBlockEntity extends MachineBlockEntity implements MenuPro
     @Override
     protected void tick() {
         super.tick();
-        //Check valid bedrock every 20 secs
+        //Check valid bedrock every 5 secs
         checkTime++;
         if (checkTime > (5 * 20)) {
             checkForBedrock();

@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:clay",
+    "minecraft:clay_ball",
+    "minecraft:dirt",
+    "minecraft:sand",
+    "minecraft:red_sand",
+    "minecraft:gravel",
+    "minecraft:mycelium",
+    "minecraft:netherrack",
+    "minecraft:soul_sand",
+    "minecraft:podzol"
+  ]
+}
