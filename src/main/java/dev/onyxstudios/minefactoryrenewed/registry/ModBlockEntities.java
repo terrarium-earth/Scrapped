@@ -15,10 +15,7 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.container.farming.PlanterC
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.*;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.power.EthanolGeneratorContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.power.SteamTurbineContainer;
-import dev.onyxstudios.minefactoryrenewed.blockentity.container.processing.EthanolReactorContainer;
-import dev.onyxstudios.minefactoryrenewed.blockentity.container.processing.LaserChargerContainer;
-import dev.onyxstudios.minefactoryrenewed.blockentity.container.processing.LaserDrillContainer;
-import dev.onyxstudios.minefactoryrenewed.blockentity.container.processing.SteamBoilerContainer;
+import dev.onyxstudios.minefactoryrenewed.blockentity.container.processing.*;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.animals.*;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.blocks.BlockBreakerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.blocks.BlockPlacerBlockEntity;
@@ -34,10 +31,7 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.PlanterBlo
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.mobs.*;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.power.EthanolGeneratorBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.power.SteamTurbineBlockEntity;
-import dev.onyxstudios.minefactoryrenewed.blockentity.machine.processing.EthanolReactorBlockEntity;
-import dev.onyxstudios.minefactoryrenewed.blockentity.machine.processing.LaserChargerBlockEntity;
-import dev.onyxstudios.minefactoryrenewed.blockentity.machine.processing.LaserDrillBlockEntity;
-import dev.onyxstudios.minefactoryrenewed.blockentity.machine.processing.SteamBoilerBlockEntity;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.processing.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -194,6 +188,11 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<EthanolReactorBlockEntity>> ETHANOL_REACTOR =
             BLOCK_ENTITIES.register("ethanol_reactor_block_entity", () ->
                     BlockEntityType.Builder.of(EthanolReactorBlockEntity::new, ModBlocks.ETHANOL_REACTOR.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<LavaFabBlockEntity>> LAVA_FABRICATOR =
+            BLOCK_ENTITIES.register("lava_fabricator_block_entity", () ->
+                    BlockEntityType.Builder.of(LavaFabBlockEntity::new, ModBlocks.LAVA_FABRICATOR.get())
                             .build(null));
 
     /**
@@ -387,5 +386,12 @@ public class ModBlockEntities {
                 BlockPos pos = data.readBlockPos();
                 EthanolReactorBlockEntity ethanolReactor = (EthanolReactorBlockEntity) inv.player.level.getBlockEntity(pos);
                 return new EthanolReactorContainer(windowId, inv, ethanolReactor);
+            }));
+
+    public static final RegistryObject<MenuType<LavaFabContainer>> LAVA_FABRICATOR_CONTAINER =
+            CONTAINERS.register("lava_fabricator_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                BlockPos pos = data.readBlockPos();
+                LavaFabBlockEntity lavaFabricator = (LavaFabBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new LavaFabContainer(windowId, inv, lavaFabricator);
             }));
 }

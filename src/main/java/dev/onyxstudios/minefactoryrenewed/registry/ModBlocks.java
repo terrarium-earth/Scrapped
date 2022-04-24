@@ -20,10 +20,7 @@ import dev.onyxstudios.minefactoryrenewed.block.machine.farming.PlanterBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.mobs.*;
 import dev.onyxstudios.minefactoryrenewed.block.machine.power.EthanolGeneratorBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.power.SteamTurbineBlock;
-import dev.onyxstudios.minefactoryrenewed.block.machine.processing.EthanolReactorBlock;
-import dev.onyxstudios.minefactoryrenewed.block.machine.processing.LaserChargerBlock;
-import dev.onyxstudios.minefactoryrenewed.block.machine.processing.LaserDrillBlock;
-import dev.onyxstudios.minefactoryrenewed.block.machine.processing.SteamBoilerBlock;
+import dev.onyxstudios.minefactoryrenewed.block.machine.processing.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -140,6 +137,9 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> ETHANOL_REACTOR = BLOCKS.register("ethanol_reactor", EthanolReactorBlock::new);
     public static final RegistryObject<Item> ETHANOL_REACTOR_ITEM = ITEMS.register("ethanol_reactor", () -> new BlockItem(ETHANOL_REACTOR.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> LAVA_FABRICATOR = BLOCKS.register("lava_fabricator", LavaFabBlock::new);
+    public static final RegistryObject<Item> LAVA_FABRICATOR_ITEM = ITEMS.register("lava_fabricator", () -> new BlockItem(LAVA_FABRICATOR.get(), ModItems.PROPERTIES));
 
     //Fluids
     public static final RegistryObject<SludgeFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);

@@ -21,10 +21,7 @@ import dev.onyxstudios.minefactoryrenewed.client.gui.machine.farming.PlanterScre
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.mobs.*;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.power.EthanolGeneratorScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.power.SteamTurbineScreen;
-import dev.onyxstudios.minefactoryrenewed.client.gui.machine.processing.EthanolReactorScreen;
-import dev.onyxstudios.minefactoryrenewed.client.gui.machine.processing.LaserChargerScreen;
-import dev.onyxstudios.minefactoryrenewed.client.gui.machine.processing.LaserDrillScreen;
-import dev.onyxstudios.minefactoryrenewed.client.gui.machine.processing.SteamBoilerScreen;
+import dev.onyxstudios.minefactoryrenewed.client.gui.machine.processing.*;
 import dev.onyxstudios.minefactoryrenewed.item.FocusItem;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlocks;
@@ -102,6 +99,7 @@ public class ModClient {
         MenuScreens.register(ModBlockEntities.STEAM_TURBINE_CONTAINER.get(), SteamTurbineScreen::new);
         MenuScreens.register(ModBlockEntities.ETHANOL_GENERATOR_CONTAINER.get(), EthanolGeneratorScreen::new);
         MenuScreens.register(ModBlockEntities.ETHANOL_REACTOR_CONTAINER.get(), EthanolReactorScreen::new);
+        MenuScreens.register(ModBlockEntities.LAVA_FABRICATOR_CONTAINER.get(), LavaFabScreen::new);
     }
 
     private static void initEntities() {
