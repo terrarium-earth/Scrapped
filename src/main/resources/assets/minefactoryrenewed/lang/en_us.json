@@ -99,6 +99,7 @@
   "block.minefactoryrenewed.ethanol_generator": "Ethanol Generator",
   "block.minefactoryrenewed.ethanol_reactor": "Ethanol Reactor",
   "block.minefactoryrenewed.lava_fabricator": "Lava Fabricator",
+  "block.minefactoryrenewed.composter": "Composter",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",

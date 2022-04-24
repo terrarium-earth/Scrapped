@@ -195,6 +195,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(LavaFabBlockEntity::new, ModBlocks.LAVA_FABRICATOR.get())
                             .build(null));
 
+    public static final RegistryObject<BlockEntityType<ComposterBlockEntity>> COMPOSTER =
+            BLOCK_ENTITIES.register("composter_block_entity", () ->
+                    BlockEntityType.Builder.of(ComposterBlockEntity::new, ModBlocks.COMPOSTER.get())
+                            .build(null));
+
     /**
      * Containers
      */
@@ -393,5 +398,12 @@ public class ModBlockEntities {
                 BlockPos pos = data.readBlockPos();
                 LavaFabBlockEntity lavaFabricator = (LavaFabBlockEntity) inv.player.level.getBlockEntity(pos);
                 return new LavaFabContainer(windowId, inv, lavaFabricator);
+            }));
+
+    public static final RegistryObject<MenuType<ComposterContainer>> COMPOSTER_CONTAINER =
+            CONTAINERS.register("composter_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                BlockPos pos = data.readBlockPos();
+                ComposterBlockEntity composter = (ComposterBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new ComposterContainer(windowId, inv, composter);
             }));
 }

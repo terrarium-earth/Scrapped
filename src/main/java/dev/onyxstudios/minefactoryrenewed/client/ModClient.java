@@ -100,6 +100,7 @@ public class ModClient {
         MenuScreens.register(ModBlockEntities.ETHANOL_GENERATOR_CONTAINER.get(), EthanolGeneratorScreen::new);
         MenuScreens.register(ModBlockEntities.ETHANOL_REACTOR_CONTAINER.get(), EthanolReactorScreen::new);
         MenuScreens.register(ModBlockEntities.LAVA_FABRICATOR_CONTAINER.get(), LavaFabScreen::new);
+        MenuScreens.register(ModBlockEntities.COMPOSTER_CONTAINER.get(), ComposterScreen::new);
     }
 
     private static void initEntities() {

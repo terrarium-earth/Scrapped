@@ -141,6 +141,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> LAVA_FABRICATOR = BLOCKS.register("lava_fabricator", LavaFabBlock::new);
     public static final RegistryObject<Item> LAVA_FABRICATOR_ITEM = ITEMS.register("lava_fabricator", () -> new BlockItem(LAVA_FABRICATOR.get(), ModItems.PROPERTIES));
 
+    public static final RegistryObject<Block> COMPOSTER = BLOCKS.register("composter", ComposterBlock::new);
+    public static final RegistryObject<Item> COMPOSTER_ITEM = ITEMS.register("composter", () -> new BlockItem(COMPOSTER.get(), ModItems.PROPERTIES));
+
     //Fluids
     public static final RegistryObject<SludgeFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);
     public static final RegistryObject<SludgeFluid> SLUDGE_FLOWING = FLUIDS.register("sludge_flowing", SludgeFluid.Flowing::new);

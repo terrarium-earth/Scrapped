@@ -3,7 +3,6 @@ package dev.onyxstudios.minefactoryrenewed.blockentity.machine.processing;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.processing.LavaFabContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
-import dev.onyxstudios.minefactoryrenewed.registry.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
