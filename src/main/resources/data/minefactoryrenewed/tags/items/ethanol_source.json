@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:saplings",
+    "#forge:dyes",
+    "minecraft:bamboo",
+    "minecraft:cactus",
+    "minecraft:carrot",
+    "minecraft:nether_wart",
+    "minecraft:melon_seeds",
+    "minecraft:potato",
+    "minecraft:pumpkin_seeds",
+    "minecraft:sugar_cane",
+    "minecraft:wheat_seeds",
+    "minecraft:bone_meal",
+    "minecraft:red_mushroom",
+    "minecraft:brown_mushroom"
+  ]
+}

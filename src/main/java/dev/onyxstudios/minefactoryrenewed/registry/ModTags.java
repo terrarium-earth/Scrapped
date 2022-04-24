@@ -37,6 +37,8 @@ public class ModTags {
     public static TagKey<Item> PURPLE_FOCUS = createModItemTag("purple_focus");
     public static TagKey<Item> RED_FOCUS = createModItemTag("red_focus");
 
+    public static TagKey<Item> ETHANOL_SOURCE = createModItemTag("ethanol_source");
+
     public static TagKey<Item> createModItemTag(String name) {
         return ItemTags.create(new ResourceLocation(MinefactoryRenewed.MODID, name));
     }

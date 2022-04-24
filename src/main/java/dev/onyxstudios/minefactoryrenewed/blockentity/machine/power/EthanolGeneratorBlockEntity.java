@@ -18,29 +18,30 @@ import org.jetbrains.annotations.Nullable;
 
 public class EthanolGeneratorBlockEntity extends MachineBlockEntity implements MenuProvider {
 
-    private static final int FLUID_COST = 100;
-    private static final int ENERGY_GEN = 160;
+    private static final int FLUID_COST = 5;
+    private static final int ENERGY_GEN = 8;
 
     public EthanolGeneratorBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.ETHANOL_GENERATOR.get(), pos, state);
         this.createEnergy(100000, 0);
         this.createFluid(8000, new FluidStack(ModBlocks.ETHANOL.get(), 1000));
-        this.setMaxIdleTime(2);
+        this.setMaxIdleTime(1);
         this.setMaxWorkTime(1);
     }
 
     @Override
     public boolean run() {
-        if (level == null || getTank().getFluidAmount() < FLUID_COST) return false;
-
-        getTank().drain(FLUID_COST, IFluidHandler.FluidAction.EXECUTE);
-        getEnergy().receiveEnergy(ENERGY_GEN, false);
         return true;
     }
 
     @Override
     protected void tick() {
         super.tick();
+        if (canRun() && getTank().getFluidAmount() >= FLUID_COST && hasEnoughPower()) {
+            getTank().drain(FLUID_COST, IFluidHandler.FluidAction.EXECUTE);
+            getEnergy().receiveEnergy(ENERGY_GEN, false);
+        }
+
         transferEnergy(ENERGY_GEN);
     }
 

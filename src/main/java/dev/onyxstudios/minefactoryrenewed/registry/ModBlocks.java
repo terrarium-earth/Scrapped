@@ -20,6 +20,7 @@ import dev.onyxstudios.minefactoryrenewed.block.machine.farming.PlanterBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.mobs.*;
 import dev.onyxstudios.minefactoryrenewed.block.machine.power.EthanolGeneratorBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.power.SteamTurbineBlock;
+import dev.onyxstudios.minefactoryrenewed.block.machine.processing.EthanolReactorBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.processing.LaserChargerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.processing.LaserDrillBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.processing.SteamBoilerBlock;
@@ -136,6 +137,9 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> ETHANOL_GENERATOR = BLOCKS.register("ethanol_generator", EthanolGeneratorBlock::new);
     public static final RegistryObject<Item> ETHANOL_GENERATOR_ITEM = ITEMS.register("ethanol_generator", () -> new BlockItem(ETHANOL_GENERATOR.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> ETHANOL_REACTOR = BLOCKS.register("ethanol_reactor", EthanolReactorBlock::new);
+    public static final RegistryObject<Item> ETHANOL_REACTOR_ITEM = ITEMS.register("ethanol_reactor", () -> new BlockItem(ETHANOL_REACTOR.get(), ModItems.PROPERTIES));
 
     //Fluids
     public static final RegistryObject<SludgeFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);
