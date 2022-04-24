@@ -46,7 +46,7 @@ public class ItemCollectorBlockEntity extends BaseBlockEntity {
     }
 
     private void tick() {
-        if (level == null) return;
+        if (level == null || level.hasNeighborSignal(getBlockPos())) return;
 
         ItemStack stack = inventory.getStackInSlot(0);
         List<Entity> entities = level.getEntities((Entity) null, aabb, ENTITY_PREDICATE);

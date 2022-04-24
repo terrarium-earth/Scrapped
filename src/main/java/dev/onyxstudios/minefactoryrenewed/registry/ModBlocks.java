@@ -22,6 +22,7 @@ import dev.onyxstudios.minefactoryrenewed.block.machine.power.EthanolGeneratorBl
 import dev.onyxstudios.minefactoryrenewed.block.machine.power.SteamTurbineBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.processing.*;
 import dev.onyxstudios.minefactoryrenewed.block.transport.ConveyorBeltBlock;
+import dev.onyxstudios.minefactoryrenewed.block.transport.EjectorBlock;
 import dev.onyxstudios.minefactoryrenewed.block.transport.ItemCollectorBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -157,6 +158,9 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> ITEM_COLLECTOR = BLOCKS.register("item_collector", ItemCollectorBlock::new);
     public static final RegistryObject<BlockItem> ITEM_COLLECTOR_ITEM = ITEMS.register("item_collector", () -> new BlockItem(ITEM_COLLECTOR.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> EJECTOR = BLOCKS.register("ejector", EjectorBlock::new);
+    public static final RegistryObject<BlockItem> EJECTOR_ITEM = ITEMS.register("ejector", () -> new BlockItem(EJECTOR.get(), ModItems.PROPERTIES));
 
     //Fluids
     public static final RegistryObject<SludgeFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);
