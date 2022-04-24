@@ -33,7 +33,7 @@ public class GrinderBlockEntity extends MachineBlockEntity implements MenuProvid
     private static final int ESSENCE_AMOUNT = 25;
 
     public GrinderBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.GRINDER_BLOCK_ENTITY.get(), pos, state);
+        super(ModBlockEntities.GRINDER.get(), pos, state);
         this.createEnergy(32000, 3200);
         this.createFluid(10000, new FluidStack(ModBlocks.ESSENCE.get(), 8000));
         this.setMaxWorkTime(4);

@@ -29,6 +29,7 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.Fertilizer
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.FruitPickerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.farming.PlanterBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.mobs.*;
+import dev.onyxstudios.minefactoryrenewed.blockentity.machine.power.CreativeEnergyBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.power.EthanolGeneratorBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.power.SteamTurbineBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.processing.*;
@@ -45,52 +46,57 @@ public class ModBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, MinefactoryRenewed.MODID);
     public static final DeferredRegister<MenuType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.CONTAINERS, MinefactoryRenewed.MODID);
 
-    public static final RegistryObject<BlockEntityType<PlanterBlockEntity>> PLANTER_BLOCK_ENTITY =
+    public static final RegistryObject<BlockEntityType<CreativeEnergyBlockEntity>> CREATIVE_ENERGY =
+            BLOCK_ENTITIES.register("creative_energy_block_entity", () ->
+                    BlockEntityType.Builder.of(CreativeEnergyBlockEntity::new, ModBlocks.CREATIVE_ENERGY.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<PlanterBlockEntity>> PLANTER =
             BLOCK_ENTITIES.register("planter_block_entity", () ->
                     BlockEntityType.Builder.of(PlanterBlockEntity::new, ModBlocks.PLANTER.get())
                             .build(null));
 
-    public static final RegistryObject<BlockEntityType<FarmerBlockEntity>> FARMER_BLOCK_ENTITY =
+    public static final RegistryObject<BlockEntityType<FarmerBlockEntity>> FARMER =
             BLOCK_ENTITIES.register("farmer_block_entity", () ->
                     BlockEntityType.Builder.of(FarmerBlockEntity::new, ModBlocks.FARMER.get())
                             .build(null));
 
-    public static final RegistryObject<BlockEntityType<FertilizerBlockEntity>> FERTILIZER_BLOCK_ENTITY =
+    public static final RegistryObject<BlockEntityType<FertilizerBlockEntity>> FERTALIZER =
             BLOCK_ENTITIES.register("fertilizer_block_entity", () ->
                     BlockEntityType.Builder.of(FertilizerBlockEntity::new, ModBlocks.FERTILIZER.get())
                             .build(null));
 
-    public static final RegistryObject<BlockEntityType<FruitPickerBlockEntity>> FRUIT_PICKER_BLOCK_ENTITY =
+    public static final RegistryObject<BlockEntityType<FruitPickerBlockEntity>> FRUIT_PICKER =
             BLOCK_ENTITIES.register("fruit_picker_block_entity", () ->
                     BlockEntityType.Builder.of(FruitPickerBlockEntity::new, ModBlocks.FRUIT_PICKER.get())
                             .build(null));
 
-    public static final RegistryObject<BlockEntityType<SlaughterhouseBlockEntity>> SLAUGHTERHOUSE_BLOCK_ENTITY =
+    public static final RegistryObject<BlockEntityType<SlaughterhouseBlockEntity>> SLAUGHTERHOUSE =
             BLOCK_ENTITIES.register("slaughterhouse_block_entity", () ->
                     BlockEntityType.Builder.of(SlaughterhouseBlockEntity::new, ModBlocks.SLAUGHTERHOUSE.get())
                             .build(null));
 
-    public static final RegistryObject<BlockEntityType<GrinderBlockEntity>> GRINDER_BLOCK_ENTITY =
+    public static final RegistryObject<BlockEntityType<GrinderBlockEntity>> GRINDER =
             BLOCK_ENTITIES.register("grinder_block_entity", () ->
                     BlockEntityType.Builder.of(GrinderBlockEntity::new, ModBlocks.GRINDER.get())
                             .build(null));
 
-    public static final RegistryObject<BlockEntityType<MeatPackerBlockEntity>> MEAT_PACKER_BLOCK_ENTITY =
+    public static final RegistryObject<BlockEntityType<MeatPackerBlockEntity>> MEAT_PACKER =
             BLOCK_ENTITIES.register("meat_packer_block_entity", () ->
                     BlockEntityType.Builder.of(MeatPackerBlockEntity::new, ModBlocks.MEAT_PACKER.get())
                             .build(null));
 
-    public static final RegistryObject<BlockEntityType<MobCounterBlockEntity>> MOB_COUNTER_BLOCK_ENTITY =
+    public static final RegistryObject<BlockEntityType<MobCounterBlockEntity>> MOB_COUNTER =
             BLOCK_ENTITIES.register("mob_counter_block_entity", () ->
                     BlockEntityType.Builder.of(MobCounterBlockEntity::new, ModBlocks.MOB_COUNTER.get())
                             .build(null));
 
-    public static final RegistryObject<BlockEntityType<MobRouterBlockEntity>> MOB_ROUTER_BLOCK_ENTITY =
+    public static final RegistryObject<BlockEntityType<MobRouterBlockEntity>> MOB_ROUTER =
             BLOCK_ENTITIES.register("mob_router_block_entity", () ->
                     BlockEntityType.Builder.of(MobRouterBlockEntity::new, ModBlocks.MOB_ROUTER.get())
                             .build(null));
 
-    public static final RegistryObject<BlockEntityType<AutoSpawnerBlockEntity>> AUTO_SPAWNER_BLOCK_ENTITY =
+    public static final RegistryObject<BlockEntityType<AutoSpawnerBlockEntity>> AUTO_SPAWNER =
             BLOCK_ENTITIES.register("auto_spawner_block_entity", () ->
                     BlockEntityType.Builder.of(AutoSpawnerBlockEntity::new, ModBlocks.AUTO_SPAWNER.get())
                             .build(null));

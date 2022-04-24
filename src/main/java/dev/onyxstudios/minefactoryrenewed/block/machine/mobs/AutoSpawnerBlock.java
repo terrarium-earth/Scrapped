@@ -20,7 +20,7 @@ public class AutoSpawnerBlock extends MachineBlock {
 
     @Override
     public BlockEntityType<? extends MachineBlockEntity> getBlockEntityType() {
-        return ModBlockEntities.AUTO_SPAWNER_BLOCK_ENTITY.get();
+        return ModBlockEntities.AUTO_SPAWNER.get();
     }
 
     @Override

@@ -38,7 +38,7 @@ public class MobRouterBlockEntity extends MachineBlockEntity implements MenuProv
     private boolean allowBabies = false;
 
     public MobRouterBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.MOB_ROUTER_BLOCK_ENTITY.get(), pos, state);
+        super(ModBlockEntities.MOB_ROUTER.get(), pos, state);
         this.createInventory(new ItemStackHandler(1) {
             @Override
             protected void onContentsChanged(int slot) {

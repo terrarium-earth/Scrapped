@@ -6,6 +6,8 @@ import net.minecraftforge.energy.EnergyStorage;
 
 public class MFREnergyStorage extends EnergyStorage {
 
+    private boolean isInfinite = false;
+
     public MFREnergyStorage(int capacity) {
         super(capacity);
     }
@@ -22,12 +24,30 @@ public class MFREnergyStorage extends EnergyStorage {
         super(capacity, maxReceive, maxExtract, energy);
     }
 
+    @Override
+    public int extractEnergy(int maxExtract, boolean simulate) {
+        if (isInfinite) {
+            return maxExtract;
+        }
+
+        return super.extractEnergy(maxExtract, simulate);
+    }
+
+    public void setInfinite(boolean infinite) {
+        this.isInfinite = infinite;
+        this.energy = capacity;
+    }
+
     public int getMaxExtract() {
         return this.maxExtract;
     }
 
     public int getMaxReceive() {
         return this.maxReceive;
+    }
+
+    public boolean isInfinite() {
+        return isInfinite;
     }
 
     @Override
@@ -37,6 +57,7 @@ public class MFREnergyStorage extends EnergyStorage {
         tag.putInt("energy", this.energy);
         tag.putInt("maxExtract", this.maxExtract);
         tag.putInt("maxReceive", this.maxReceive);
+        tag.putBoolean("isInfinite", isInfinite);
 
         return tag;
     }
@@ -48,5 +69,6 @@ public class MFREnergyStorage extends EnergyStorage {
         this.energy = compoundTag.getInt("energy");
         this.maxExtract = compoundTag.getInt("maxExtract");
         this.maxReceive = compoundTag.getInt("maxReceive");
+        this.isInfinite = compoundTag.getBoolean("isInfinite");
     }
 }

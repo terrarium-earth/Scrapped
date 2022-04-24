@@ -18,6 +18,7 @@ import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FertilizerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.FruitPickerBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.farming.PlanterBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.mobs.*;
+import dev.onyxstudios.minefactoryrenewed.block.machine.power.CreativeEnergyBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.power.EthanolGeneratorBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.power.SteamTurbineBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.processing.*;
@@ -41,6 +42,9 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CONVEYOR_BELT = BLOCKS.register("conveyor_belt", ConveyorBeltBlock::new);
     public static final RegistryObject<BlockItem> CONVEYOR_BELT_ITEM = ITEMS.register("conveyor_belt", () -> new BlockItem(CONVEYOR_BELT.get(), new Item.Properties().stacksTo(16).tab(MinefactoryRenewed.TAB)));
+
+    public static final RegistryObject<Block> CREATIVE_ENERGY = BLOCKS.register("creative_energy", CreativeEnergyBlock::new);
+    public static final RegistryObject<BlockItem> CREATIVE_ENERGY_ITEM = ITEMS.register("creative_energy", () -> new BlockItem(CREATIVE_ENERGY.get(), ModItems.PROPERTIES));
 
     public static final RegistryObject<Block> PLANTER = BLOCKS.register("planter", PlanterBlock::new);
     public static final RegistryObject<BlockItem> PLANTER_ITEM = ITEMS.register("planter", () -> new BlockItem(PLANTER.get(), ModItems.PROPERTIES));
@@ -112,37 +116,37 @@ public class ModBlocks {
     public static final RegistryObject<BlockItem> DEEP_STORAGE_ITEM = ITEMS.register("deep_storage", () -> new BlockItem(DEEP_STORAGE.get(), ModItems.PROPERTIES));
 
     public static final RegistryObject<Block> AUTO_DISENCHANTER = BLOCKS.register("auto_disenchanter", AutoDisenchanterBlock::new);
-    public static final RegistryObject<Item> AUTO_DISENCHANTER_ITEM = ITEMS.register("auto_disenchanter", () -> new BlockItem(AUTO_DISENCHANTER.get(), ModItems.PROPERTIES));
+    public static final RegistryObject<BlockItem> AUTO_DISENCHANTER_ITEM = ITEMS.register("auto_disenchanter", () -> new BlockItem(AUTO_DISENCHANTER.get(), ModItems.PROPERTIES));
 
     public static final RegistryObject<Block> AUTO_ENCHANTER = BLOCKS.register("auto_enchanter", AutoEnchanterBlock::new);
-    public static final RegistryObject<Item> AUTO_ENCHANTER_ITEM = ITEMS.register("auto_enchanter", () -> new BlockItem(AUTO_ENCHANTER.get(), ModItems.PROPERTIES));
+    public static final RegistryObject<BlockItem> AUTO_ENCHANTER_ITEM = ITEMS.register("auto_enchanter", () -> new BlockItem(AUTO_ENCHANTER.get(), ModItems.PROPERTIES));
 
     public static final RegistryObject<Block> AUTO_ANVIL = BLOCKS.register("auto_anvil", AutoAnvilBlock::new);
-    public static final RegistryObject<Item> AUTO_ANVIL_ITEM = ITEMS.register("auto_anvil", () -> new BlockItem(AUTO_ANVIL.get(), ModItems.PROPERTIES));
+    public static final RegistryObject<BlockItem> AUTO_ANVIL_ITEM = ITEMS.register("auto_anvil", () -> new BlockItem(AUTO_ANVIL.get(), ModItems.PROPERTIES));
 
     public static final RegistryObject<Block> LASER_DRILL = BLOCKS.register("laser_drill", LaserDrillBlock::new);
-    public static final RegistryObject<Item> LASER_DRILL_ITEM = ITEMS.register("laser_drill", () -> new BlockItem(LASER_DRILL.get(), ModItems.PROPERTIES));
+    public static final RegistryObject<BlockItem> LASER_DRILL_ITEM = ITEMS.register("laser_drill", () -> new BlockItem(LASER_DRILL.get(), ModItems.PROPERTIES));
 
     public static final RegistryObject<Block> LASER_CHARGER = BLOCKS.register("laser_charger", LaserChargerBlock::new);
-    public static final RegistryObject<Item> LASER_CHARGER_ITEM = ITEMS.register("laser_charger", () -> new BlockItem(LASER_CHARGER.get(), ModItems.PROPERTIES));
+    public static final RegistryObject<BlockItem> LASER_CHARGER_ITEM = ITEMS.register("laser_charger", () -> new BlockItem(LASER_CHARGER.get(), ModItems.PROPERTIES));
 
     public static final RegistryObject<Block> STEAM_BOILER = BLOCKS.register("steam_boiler", SteamBoilerBlock::new);
-    public static final RegistryObject<Item> STEAM_BOILER_ITEM = ITEMS.register("steam_boiler", () -> new BlockItem(STEAM_BOILER.get(), ModItems.PROPERTIES));
+    public static final RegistryObject<BlockItem> STEAM_BOILER_ITEM = ITEMS.register("steam_boiler", () -> new BlockItem(STEAM_BOILER.get(), ModItems.PROPERTIES));
 
     public static final RegistryObject<Block> STEAM_TURBINE = BLOCKS.register("steam_turbine", SteamTurbineBlock::new);
-    public static final RegistryObject<Item> STEAM_TURBINE_ITEM = ITEMS.register("steam_turbine", () -> new BlockItem(STEAM_TURBINE.get(), ModItems.PROPERTIES));
+    public static final RegistryObject<BlockItem> STEAM_TURBINE_ITEM = ITEMS.register("steam_turbine", () -> new BlockItem(STEAM_TURBINE.get(), ModItems.PROPERTIES));
 
     public static final RegistryObject<Block> ETHANOL_GENERATOR = BLOCKS.register("ethanol_generator", EthanolGeneratorBlock::new);
-    public static final RegistryObject<Item> ETHANOL_GENERATOR_ITEM = ITEMS.register("ethanol_generator", () -> new BlockItem(ETHANOL_GENERATOR.get(), ModItems.PROPERTIES));
+    public static final RegistryObject<BlockItem> ETHANOL_GENERATOR_ITEM = ITEMS.register("ethanol_generator", () -> new BlockItem(ETHANOL_GENERATOR.get(), ModItems.PROPERTIES));
 
     public static final RegistryObject<Block> ETHANOL_REACTOR = BLOCKS.register("ethanol_reactor", EthanolReactorBlock::new);
-    public static final RegistryObject<Item> ETHANOL_REACTOR_ITEM = ITEMS.register("ethanol_reactor", () -> new BlockItem(ETHANOL_REACTOR.get(), ModItems.PROPERTIES));
+    public static final RegistryObject<BlockItem> ETHANOL_REACTOR_ITEM = ITEMS.register("ethanol_reactor", () -> new BlockItem(ETHANOL_REACTOR.get(), ModItems.PROPERTIES));
 
     public static final RegistryObject<Block> LAVA_FABRICATOR = BLOCKS.register("lava_fabricator", LavaFabBlock::new);
-    public static final RegistryObject<Item> LAVA_FABRICATOR_ITEM = ITEMS.register("lava_fabricator", () -> new BlockItem(LAVA_FABRICATOR.get(), ModItems.PROPERTIES));
+    public static final RegistryObject<BlockItem> LAVA_FABRICATOR_ITEM = ITEMS.register("lava_fabricator", () -> new BlockItem(LAVA_FABRICATOR.get(), ModItems.PROPERTIES));
 
     public static final RegistryObject<Block> COMPOSTER = BLOCKS.register("composter", ComposterBlock::new);
-    public static final RegistryObject<Item> COMPOSTER_ITEM = ITEMS.register("composter", () -> new BlockItem(COMPOSTER.get(), ModItems.PROPERTIES));
+    public static final RegistryObject<BlockItem> COMPOSTER_ITEM = ITEMS.register("composter", () -> new BlockItem(COMPOSTER.get(), ModItems.PROPERTIES));
 
     //Fluids
     public static final RegistryObject<SludgeFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);

@@ -38,7 +38,7 @@ public class AutoSpawnerBlockEntity extends MachineBlockEntity implements MenuPr
     private boolean spawnExact = false;
 
     public AutoSpawnerBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.AUTO_SPAWNER_BLOCK_ENTITY.get(), pos, state);
+        super(ModBlockEntities.AUTO_SPAWNER.get(), pos, state);
         this.createInventory(new ItemStackHandler(1) {
             @Override
             protected void onContentsChanged(int slot) {

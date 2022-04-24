@@ -100,6 +100,7 @@
   "block.minefactoryrenewed.ethanol_reactor": "Ethanol Reactor",
   "block.minefactoryrenewed.lava_fabricator": "Lava Fabricator",
   "block.minefactoryrenewed.composter": "Composter",
+  "block.minefactoryrenewed.creative_energy": "Creative Energy",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",

@@ -17,7 +17,7 @@ public class MobCounterBlockEntity extends MachineBlockEntity {
     private int currentCount;
 
     public MobCounterBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.MOB_COUNTER_BLOCK_ENTITY.get(), pos, state, false);
+        super(ModBlockEntities.MOB_COUNTER.get(), pos, state, false);
         this.createMachineArea(pos, Direction.NORTH);
         this.getMachineArea().setUpgradeRadius(1);
         this.getMachineArea().setVerticalRange(2);

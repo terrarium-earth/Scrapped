@@ -20,7 +20,7 @@ public class GrinderBlock extends RotatableMachineBlock {
 
     @Override
     public BlockEntityType<? extends MachineBlockEntity> getBlockEntityType() {
-        return ModBlockEntities.GRINDER_BLOCK_ENTITY.get();
+        return ModBlockEntities.GRINDER.get();
     }
 
     @Override

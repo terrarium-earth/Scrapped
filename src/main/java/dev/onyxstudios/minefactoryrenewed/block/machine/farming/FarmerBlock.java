@@ -20,7 +20,7 @@ public class FarmerBlock extends RotatableMachineBlock {
 
     @Override
     public BlockEntityType<? extends MachineBlockEntity> getBlockEntityType() {
-        return ModBlockEntities.FARMER_BLOCK_ENTITY.get();
+        return ModBlockEntities.FARMER.get();
     }
 
     @Override

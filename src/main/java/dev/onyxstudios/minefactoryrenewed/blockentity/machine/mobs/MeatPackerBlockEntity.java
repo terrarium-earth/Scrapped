@@ -23,7 +23,7 @@ import java.util.List;
 public class MeatPackerBlockEntity extends MachineBlockEntity implements MenuProvider {
 
     public MeatPackerBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.MEAT_PACKER_BLOCK_ENTITY.get(), pos, state);
+        super(ModBlockEntities.MEAT_PACKER.get(), pos, state);
         this.createEnergy(16000, 100);
         this.createFluid(10000, new FluidStack(ModBlocks.MEAT.get(), 10000));
         this.setMaxWorkTime(40);

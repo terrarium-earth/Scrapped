@@ -47,7 +47,7 @@ public class MobCounterBlock extends RotatableMachineBlock {
 
     @Override
     public BlockEntityType<? extends MobCounterBlockEntity> getBlockEntityType() {
-        return ModBlockEntities.MOB_COUNTER_BLOCK_ENTITY.get();
+        return ModBlockEntities.MOB_COUNTER.get();
     }
 
     @Override

@@ -20,7 +20,7 @@ public class FruitPickerBlock extends RotatableMachineBlock {
 
     @Override
     public BlockEntityType<? extends MachineBlockEntity> getBlockEntityType() {
-        return ModBlockEntities.FRUIT_PICKER_BLOCK_ENTITY.get();
+        return ModBlockEntities.FRUIT_PICKER.get();
     }
 
     @Override

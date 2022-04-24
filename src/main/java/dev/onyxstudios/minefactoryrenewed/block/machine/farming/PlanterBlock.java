@@ -31,7 +31,7 @@ public class PlanterBlock extends MachineBlock {
 
     @Override
     public BlockEntityType<? extends MachineBlockEntity> getBlockEntityType() {
-        return ModBlockEntities.PLANTER_BLOCK_ENTITY.get();
+        return ModBlockEntities.PLANTER.get();
     }
 
     @Override

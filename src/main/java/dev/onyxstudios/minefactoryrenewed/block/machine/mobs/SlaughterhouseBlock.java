@@ -46,7 +46,7 @@ public class SlaughterhouseBlock extends RotatableMachineBlock {
 
     @Override
     public BlockEntityType<? extends MachineBlockEntity> getBlockEntityType() {
-        return ModBlockEntities.SLAUGHTERHOUSE_BLOCK_ENTITY.get();
+        return ModBlockEntities.SLAUGHTERHOUSE.get();
     }
 
     @Override

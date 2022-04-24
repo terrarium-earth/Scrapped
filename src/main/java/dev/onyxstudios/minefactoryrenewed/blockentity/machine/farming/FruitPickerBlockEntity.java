@@ -30,7 +30,7 @@ import java.util.List;
 public class FruitPickerBlockEntity extends MachineBlockEntity implements MenuProvider {
 
     public FruitPickerBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.FRUIT_PICKER_BLOCK_ENTITY.get(), pos, state);
+        super(ModBlockEntities.FRUIT_PICKER.get(), pos, state);
         this.createInventory();
         this.createEnergy(16000, 320);
         this.setMaxWorkTime(2);

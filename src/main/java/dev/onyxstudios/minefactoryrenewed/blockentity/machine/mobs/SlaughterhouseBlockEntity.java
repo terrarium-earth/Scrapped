@@ -36,7 +36,7 @@ public class SlaughterhouseBlockEntity extends MachineBlockEntity implements Men
     private final LazyOptional<FluidTank> slimeTankHandler = LazyOptional.of(() -> pinkSlimeTank);
 
     public SlaughterhouseBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.SLAUGHTERHOUSE_BLOCK_ENTITY.get(), pos, state);
+        super(ModBlockEntities.SLAUGHTERHOUSE.get(), pos, state);
         this.createEnergy(16000, 1000);
         this.createFluid(10000, new FluidStack(ModBlocks.MEAT.get(), 1000));
         this.setMaxWorkTime(4);

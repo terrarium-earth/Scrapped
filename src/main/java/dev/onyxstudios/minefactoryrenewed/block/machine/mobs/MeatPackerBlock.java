@@ -20,7 +20,7 @@ public class MeatPackerBlock extends MachineBlock {
 
     @Override
     public BlockEntityType<? extends MachineBlockEntity> getBlockEntityType() {
-        return ModBlockEntities.MEAT_PACKER_BLOCK_ENTITY.get();
+        return ModBlockEntities.MEAT_PACKER.get();
     }
 
     @Override

@@ -37,7 +37,7 @@ public class PlanterBlockEntity extends MachineBlockEntity implements MenuProvid
     };
 
     public PlanterBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.PLANTER_BLOCK_ENTITY.get(), pos, state);
+        super(ModBlockEntities.PLANTER.get(), pos, state);
         this.createInventory(16);
         this.createEnergy(10000, 160);
         this.setMaxWorkTime(5);

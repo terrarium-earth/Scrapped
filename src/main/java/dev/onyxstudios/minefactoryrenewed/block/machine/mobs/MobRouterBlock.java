@@ -20,7 +20,7 @@ public class MobRouterBlock extends RotatableMachineBlock {
 
     @Override
     public BlockEntityType<? extends MachineBlockEntity> getBlockEntityType() {
-        return ModBlockEntities.MOB_ROUTER_BLOCK_ENTITY.get();
+        return ModBlockEntities.MOB_ROUTER.get();
     }
 
     @Override
