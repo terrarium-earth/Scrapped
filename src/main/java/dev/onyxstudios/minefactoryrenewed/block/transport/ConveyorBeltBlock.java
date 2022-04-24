@@ -1,4 +1,4 @@
-package dev.onyxstudios.minefactoryrenewed.block;
+package dev.onyxstudios.minefactoryrenewed.block.transport;
 
 import dev.onyxstudios.minefactoryrenewed.api.machine.IRotatableMachine;
 import net.minecraft.core.BlockPos;
@@ -10,6 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
@@ -53,6 +54,11 @@ public class ConveyorBeltBlock extends Block implements IRotatableMachine {
 
         entity.setDeltaMovement(entity.getDeltaMovement()
                 .add(0.10 * direction.getStepX(), 0, 0.10 * direction.getStepZ()));
+    }
+
+    @Override
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        return level.getBlockState(pos.below()).getMaterial().isSolid();
     }
 
     @Override
