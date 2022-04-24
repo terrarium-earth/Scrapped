@@ -211,6 +211,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(SludgeBoilerBlockEntity::new, ModBlocks.SLUDGE_BOILER.get())
                             .build(null));
 
+    public static final RegistryObject<BlockEntityType<WeatherBlockEntity>> WEATHER =
+            BLOCK_ENTITIES.register("weather_block_entity", () ->
+                    BlockEntityType.Builder.of(WeatherBlockEntity::new, ModBlocks.WEATHER.get())
+                            .build(null));
+
     /**
      * Containers
      */
@@ -423,5 +428,12 @@ public class ModBlockEntities {
                 BlockPos pos = data.readBlockPos();
                 SludgeBoilerBlockEntity sludgeBoiler = (SludgeBoilerBlockEntity) inv.player.level.getBlockEntity(pos);
                 return new SludgeBoilerContainer(windowId, inv, sludgeBoiler);
+            }));
+
+    public static final RegistryObject<MenuType<WeatherContainer>> WEATHER_CONTAINER =
+            CONTAINERS.register("weather_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                BlockPos pos = data.readBlockPos();
+                WeatherBlockEntity weather = (WeatherBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new WeatherContainer(windowId, inv, weather);
             }));
 }

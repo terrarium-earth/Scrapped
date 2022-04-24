@@ -151,6 +151,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> SLUDGE_BOILER = BLOCKS.register("sludge_boiler", SludgeBoilerBlock::new);
     public static final RegistryObject<BlockItem> SLUDGE_BOILER_ITEM = ITEMS.register("sludge_boiler", () -> new BlockItem(SLUDGE_BOILER.get(), ModItems.PROPERTIES));
 
+    public static final RegistryObject<Block> WEATHER = BLOCKS.register("weather", WeatherBlock::new);
+    public static final RegistryObject<BlockItem> WEATHER_ITEM = ITEMS.register("weather", () -> new BlockItem(WEATHER.get(), ModItems.PROPERTIES));
+
     //Fluids
     public static final RegistryObject<SludgeFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);
     public static final RegistryObject<SludgeFluid> SLUDGE_FLOWING = FLUIDS.register("sludge_flowing", SludgeFluid.Flowing::new);

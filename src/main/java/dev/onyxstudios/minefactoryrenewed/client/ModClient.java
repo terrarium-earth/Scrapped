@@ -102,6 +102,7 @@ public class ModClient {
         MenuScreens.register(ModBlockEntities.LAVA_FABRICATOR_CONTAINER.get(), LavaFabScreen::new);
         MenuScreens.register(ModBlockEntities.COMPOSTER_CONTAINER.get(), ComposterScreen::new);
         MenuScreens.register(ModBlockEntities.SLUDGE_BOILER_CONTAINER.get(), SludgeBoilerScreen::new);
+        MenuScreens.register(ModBlockEntities.WEATHER_CONTAINER.get(), WeatherScreen::new);
     }
 
     private static void initEntities() {
