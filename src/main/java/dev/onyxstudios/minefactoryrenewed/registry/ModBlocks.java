@@ -1,7 +1,6 @@
 package dev.onyxstudios.minefactoryrenewed.registry;
 
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
-import dev.onyxstudios.minefactoryrenewed.block.transport.ConveyorBeltBlock;
 import dev.onyxstudios.minefactoryrenewed.block.MeatBlock;
 import dev.onyxstudios.minefactoryrenewed.block.PinkSlimeBlock;
 import dev.onyxstudios.minefactoryrenewed.block.fluid.*;
@@ -22,6 +21,8 @@ import dev.onyxstudios.minefactoryrenewed.block.machine.power.CreativeEnergyBloc
 import dev.onyxstudios.minefactoryrenewed.block.machine.power.EthanolGeneratorBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.power.SteamTurbineBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.processing.*;
+import dev.onyxstudios.minefactoryrenewed.block.transport.ConveyorBeltBlock;
+import dev.onyxstudios.minefactoryrenewed.block.transport.ItemCollectorBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -153,6 +154,9 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> WEATHER = BLOCKS.register("weather", WeatherBlock::new);
     public static final RegistryObject<BlockItem> WEATHER_ITEM = ITEMS.register("weather", () -> new BlockItem(WEATHER.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> ITEM_COLLECTOR = BLOCKS.register("item_collector", ItemCollectorBlock::new);
+    public static final RegistryObject<BlockItem> ITEM_COLLECTOR_ITEM = ITEMS.register("item_collector", () -> new BlockItem(ITEM_COLLECTOR.get(), ModItems.PROPERTIES));
 
     //Fluids
     public static final RegistryObject<SludgeFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);

@@ -33,6 +33,7 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.machine.power.CreativeEner
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.power.EthanolGeneratorBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.power.SteamTurbineBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.processing.*;
+import dev.onyxstudios.minefactoryrenewed.blockentity.transport.ItemCollectorBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -214,6 +215,11 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<WeatherBlockEntity>> WEATHER =
             BLOCK_ENTITIES.register("weather_block_entity", () ->
                     BlockEntityType.Builder.of(WeatherBlockEntity::new, ModBlocks.WEATHER.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<ItemCollectorBlockEntity>> ITEM_COLLECTOR =
+            BLOCK_ENTITIES.register("item_collector_block_entity", () ->
+                    BlockEntityType.Builder.of(ItemCollectorBlockEntity::new, ModBlocks.ITEM_COLLECTOR.get())
                             .build(null));
 
     /**

@@ -103,6 +103,7 @@
   "block.minefactoryrenewed.creative_energy": "Creative Energy",
   "block.minefactoryrenewed.sludge_boiler": "Sludge Boiler",
   "block.minefactoryrenewed.weather": "Weather Collector",
+  "block.minefactoryrenewed.item_collector": "Item Collector",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",
