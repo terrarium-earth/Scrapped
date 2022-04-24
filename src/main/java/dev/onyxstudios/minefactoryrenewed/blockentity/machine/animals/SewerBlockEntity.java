@@ -49,6 +49,12 @@ public class SewerBlockEntity extends MachineBlockEntity implements MenuProvider
     }
 
     @Override
+    protected void tick() {
+        super.tick();
+        transferFluid(100, getTank());
+    }
+
+    @Override
     protected void updateRange() {
         super.updateRange();
         ItemStack stack = getInventory().getStackInSlot(0);
