@@ -5,7 +5,9 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.transport.EjectorBlockEnti
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.Containers;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
@@ -30,7 +32,8 @@ public class EjectorBlock extends BaseEntityBlock implements IRotatableMachine {
 
     @Override
     public void onWrenched(Level level, Player player, BlockPos pos) {
-
+        level.destroyBlock(pos, false, player);
+        Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(this));
     }
 
     @Override
