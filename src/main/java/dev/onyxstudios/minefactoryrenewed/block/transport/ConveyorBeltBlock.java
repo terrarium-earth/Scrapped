@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.Containers;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -49,7 +50,13 @@ public class ConveyorBeltBlock extends Block implements IRotatableMachine {
 
         Direction direction = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
         if (entity instanceof Player && entity.isShiftKeyDown()) return;
-        entity.setDeltaMovement(0.10 * direction.getStepX(), 0, 0.10 * direction.getStepZ());
+
+        if (entity instanceof ItemEntity) {
+            entity.setDeltaMovement(0.15 * direction.getStepX(), entity.getDeltaMovement().y, 0.15 * direction.getStepZ());
+            return;
+        }
+
+        entity.setDeltaMovement(entity.getDeltaMovement().add(0.10 * direction.getStepX(), 0, 0.10 * direction.getStepZ()));
     }
 
     @Override
