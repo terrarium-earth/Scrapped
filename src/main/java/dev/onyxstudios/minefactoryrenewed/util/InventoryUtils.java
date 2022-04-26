@@ -21,6 +21,12 @@ public class InventoryUtils {
 
     //Cache direction array
     public static final Direction[] VALUES = Direction.values();
+    public static final Direction[] HORIZONTAL = new Direction[]{
+            Direction.NORTH,
+            Direction.SOUTH,
+            Direction.EAST,
+            Direction.WEST
+    };
 
     public static void dropInventoryItems(Level level, BlockPos pos, ItemStackHandler inventory) {
         if (inventory == null) return;

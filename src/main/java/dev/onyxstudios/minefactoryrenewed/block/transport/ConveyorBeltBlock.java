@@ -48,12 +48,8 @@ public class ConveyorBeltBlock extends Block implements IRotatableMachine {
         super.entityInside(state, level, pos, entity);
 
         Direction direction = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
-        if (entity instanceof Player && entity.isShiftKeyDown()) {
-            return;
-        }
-
-        entity.setDeltaMovement(entity.getDeltaMovement()
-                .add(0.10 * direction.getStepX(), 0, 0.10 * direction.getStepZ()));
+        if (entity instanceof Player && entity.isShiftKeyDown()) return;
+        entity.setDeltaMovement(0.10 * direction.getStepX(), 0, 0.10 * direction.getStepZ());
     }
 
     @Override

@@ -24,6 +24,7 @@ import dev.onyxstudios.minefactoryrenewed.block.machine.processing.*;
 import dev.onyxstudios.minefactoryrenewed.block.transport.ConveyorBeltBlock;
 import dev.onyxstudios.minefactoryrenewed.block.transport.EjectorBlock;
 import dev.onyxstudios.minefactoryrenewed.block.transport.ItemCollectorBlock;
+import dev.onyxstudios.minefactoryrenewed.block.transport.ItemRouterBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -161,6 +162,9 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> EJECTOR = BLOCKS.register("ejector", EjectorBlock::new);
     public static final RegistryObject<BlockItem> EJECTOR_ITEM = ITEMS.register("ejector", () -> new BlockItem(EJECTOR.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> ITEM_ROUTER = BLOCKS.register("item_router", ItemRouterBlock::new);
+    public static final RegistryObject<BlockItem> ITEM_ROUTER_ITEM = ITEMS.register("item_router", () -> new BlockItem(ITEM_ROUTER.get(), ModItems.PROPERTIES));
 
     //Fluids
     public static final RegistryObject<SludgeFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);

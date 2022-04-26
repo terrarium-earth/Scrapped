@@ -26,7 +26,7 @@ public class ItemCollectorBlockEntity extends BaseBlockEntity {
 
     public ItemCollectorBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.ITEM_COLLECTOR.get(), pos, state);
-        aabb = new AABB(pos).inflate(0.1);
+        aabb = new AABB(pos).inflate(0.25);
     }
 
     @Override

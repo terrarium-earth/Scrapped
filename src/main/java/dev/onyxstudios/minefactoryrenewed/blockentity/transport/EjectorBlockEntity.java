@@ -54,9 +54,11 @@ public class EjectorBlockEntity extends BaseBlockEntity {
 
                     if (!stack.isEmpty()) {
                         BlockPos front = getBlockPos().relative(facing);
-                        ItemEntity itemEntity = new ItemEntity(level, front.getX() + 0.5, front.getY() + 0.5, front.getZ() + 0.5, stack.copy());
+                        ItemEntity itemEntity = new ItemEntity(level,
+                                front.getX() + 0.5, front.getY() + 0.5, front.getZ() + 0.5,
+                                new ItemStack(stack.getItem(), 1));
                         level.addFreshEntity(itemEntity);
-                        itemHandler.extractItem(i, stack.getCount(), false);
+                        itemHandler.extractItem(i, 1, false);
                         break;
                     }
                 }

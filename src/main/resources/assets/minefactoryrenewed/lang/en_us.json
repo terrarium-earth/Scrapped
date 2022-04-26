@@ -105,6 +105,7 @@
   "block.minefactoryrenewed.weather": "Weather Collector",
   "block.minefactoryrenewed.item_collector": "Item Collector",
   "block.minefactoryrenewed.ejector": "Ejector",
+  "block.minefactoryrenewed.item_router": "Item Router",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",

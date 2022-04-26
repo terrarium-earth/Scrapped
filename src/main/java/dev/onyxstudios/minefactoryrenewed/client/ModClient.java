@@ -22,6 +22,7 @@ import dev.onyxstudios.minefactoryrenewed.client.gui.machine.mobs.*;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.power.EthanolGeneratorScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.power.SteamTurbineScreen;
 import dev.onyxstudios.minefactoryrenewed.client.gui.machine.processing.*;
+import dev.onyxstudios.minefactoryrenewed.client.gui.transport.ItemRouterScreen;
 import dev.onyxstudios.minefactoryrenewed.item.FocusItem;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlocks;
@@ -103,6 +104,7 @@ public class ModClient {
         MenuScreens.register(ModBlockEntities.COMPOSTER_CONTAINER.get(), ComposterScreen::new);
         MenuScreens.register(ModBlockEntities.SLUDGE_BOILER_CONTAINER.get(), SludgeBoilerScreen::new);
         MenuScreens.register(ModBlockEntities.WEATHER_CONTAINER.get(), WeatherScreen::new);
+        MenuScreens.register(ModBlockEntities.ITEM_ROUTER_CONTAINER.get(), ItemRouterScreen::new);
     }
 
     private static void initEntities() {

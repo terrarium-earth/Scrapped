@@ -16,6 +16,7 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.container.mobs.*;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.power.EthanolGeneratorContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.power.SteamTurbineContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.container.processing.*;
+import dev.onyxstudios.minefactoryrenewed.blockentity.container.transport.ItemRouterContainer;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.animals.*;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.blocks.BlockBreakerBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.blocks.BlockPlacerBlockEntity;
@@ -35,6 +36,7 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.machine.power.SteamTurbine
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.processing.*;
 import dev.onyxstudios.minefactoryrenewed.blockentity.transport.EjectorBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.blockentity.transport.ItemCollectorBlockEntity;
+import dev.onyxstudios.minefactoryrenewed.blockentity.transport.ItemRouterBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -226,6 +228,11 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<EjectorBlockEntity>> EJECTOR =
             BLOCK_ENTITIES.register("ejector_block_entity", () ->
                     BlockEntityType.Builder.of(EjectorBlockEntity::new, ModBlocks.EJECTOR.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<ItemRouterBlockEntity>> ITEM_ROUTER =
+            BLOCK_ENTITIES.register("item_router_block_entity", () ->
+                    BlockEntityType.Builder.of(ItemRouterBlockEntity::new, ModBlocks.ITEM_ROUTER.get())
                             .build(null));
 
     /**
@@ -447,5 +454,12 @@ public class ModBlockEntities {
                 BlockPos pos = data.readBlockPos();
                 WeatherBlockEntity weather = (WeatherBlockEntity) inv.player.level.getBlockEntity(pos);
                 return new WeatherContainer(windowId, inv, weather);
+            }));
+
+    public static final RegistryObject<MenuType<ItemRouterContainer>> ITEM_ROUTER_CONTAINER =
+            CONTAINERS.register("item_router_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                BlockPos pos = data.readBlockPos();
+                ItemRouterBlockEntity itemRouter = (ItemRouterBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new ItemRouterContainer(windowId, inv, itemRouter);
             }));
 }
