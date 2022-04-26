@@ -33,7 +33,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -42,7 +41,7 @@ public class DeepStorageBlock extends BaseEntityBlock implements IWrenchableMach
     public static final String STORAGE_KEY = "DeepStorageData";
 
     public DeepStorageBlock() {
-        super(BlockBehaviour.Properties.of(Material.STONE).strength(2f));
+        super(BlockBehaviour.Properties.of(Material.STONE).strength(2f).requiresCorrectToolForDrops());
     }
 
     @Override

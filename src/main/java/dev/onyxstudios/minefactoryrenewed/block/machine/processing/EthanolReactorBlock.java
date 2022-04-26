@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 public class EthanolReactorBlock extends MachineBlock {
 
     public EthanolReactorBlock() {
-        super(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f));
+        super();
     }
 
     @Override

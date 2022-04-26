@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 public class SteamTurbineBlock extends MachineBlock {
 
     public SteamTurbineBlock() {
-        super(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).noOcclusion());
+        super(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).noOcclusion().requiresCorrectToolForDrops());
     }
 
     @Override

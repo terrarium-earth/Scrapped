@@ -22,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
 public class ItemCollectorBlock extends BaseEntityBlock implements IWrenchableMachine {
 
     public ItemCollectorBlock() {
-        super(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f));
+        super(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops());
     }
 
     @Override

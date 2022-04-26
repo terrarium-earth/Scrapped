@@ -12,9 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
@@ -27,7 +25,7 @@ import java.util.Optional;
 public class SteamBoilerBlock extends MachineBlock {
 
     public SteamBoilerBlock() {
-        super(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f));
+        super();
     }
 
     @Override

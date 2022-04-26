@@ -24,7 +24,7 @@ import org.jetbrains.annotations.Nullable;
 public class EjectorBlock extends BaseEntityBlock implements IRotatableMachine {
 
     public EjectorBlock() {
-        super(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f));
+        super(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops());
         this.registerDefaultState(stateDefinition.any()
                 .setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH));
     }
