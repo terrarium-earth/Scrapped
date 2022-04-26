@@ -1,8 +1,7 @@
 package dev.onyxstudios.minefactoryrenewed.registry;
 
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
-import dev.onyxstudios.minefactoryrenewed.block.MeatBlock;
-import dev.onyxstudios.minefactoryrenewed.block.PinkSlimeBlock;
+import dev.onyxstudios.minefactoryrenewed.block.*;
 import dev.onyxstudios.minefactoryrenewed.block.fluid.*;
 import dev.onyxstudios.minefactoryrenewed.block.machine.animals.*;
 import dev.onyxstudios.minefactoryrenewed.block.machine.blocks.BlockBreakerBlock;
@@ -20,17 +19,25 @@ import dev.onyxstudios.minefactoryrenewed.block.machine.mobs.*;
 import dev.onyxstudios.minefactoryrenewed.block.machine.power.CreativeEnergyBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.power.EthanolGeneratorBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.power.SteamTurbineBlock;
+import dev.onyxstudios.minefactoryrenewed.block.machine.processing.ComposterBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.processing.*;
 import dev.onyxstudios.minefactoryrenewed.block.transport.ConveyorBeltBlock;
 import dev.onyxstudios.minefactoryrenewed.block.transport.EjectorBlock;
 import dev.onyxstudios.minefactoryrenewed.block.transport.ItemCollectorBlock;
 import dev.onyxstudios.minefactoryrenewed.block.transport.ItemRouterBlock;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.DoubleHighBlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.item.SignItem;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
+import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -42,6 +49,9 @@ public class ModBlocks {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MinefactoryRenewed.MODID);
 
     private static final BlockBehaviour.Properties BASE_FLUID_PROPS = BlockBehaviour.Properties.of(Material.WATER).randomTicks().noDrops();
+    private static final BlockBehaviour.Properties PLANK_PROPERTIES = BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD);
+
+    public static final WoodType RUBBER_TYPE = WoodType.register(WoodType.create(MinefactoryRenewed.MODID + ":rubber"));
 
     public static final RegistryObject<Block> CONVEYOR_BELT = BLOCKS.register("conveyor_belt", ConveyorBeltBlock::new);
     public static final RegistryObject<BlockItem> CONVEYOR_BELT_ITEM = ITEMS.register("conveyor_belt", () -> new BlockItem(CONVEYOR_BELT.get(), new Item.Properties().stacksTo(16).tab(MinefactoryRenewed.TAB)));
@@ -166,6 +176,47 @@ public class ModBlocks {
     public static final RegistryObject<Block> ITEM_ROUTER = BLOCKS.register("item_router", ItemRouterBlock::new);
     public static final RegistryObject<BlockItem> ITEM_ROUTER_ITEM = ITEMS.register("item_router", () -> new BlockItem(ITEM_ROUTER.get(), ModItems.PROPERTIES));
 
+    //Rubbery stuff
+    public static final RegistryObject<Block> RUBBER_LOG = BLOCKS.register("rubber_log", () -> new RubberLogBlock(ModBlocks.STRIPPED_RUBBER_LOG));
+    public static final RegistryObject<BlockItem> RUBBER_LOG_ITEM = ITEMS.register("rubber_log", () -> new BlockItem(RUBBER_LOG.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> RUBBER_WOOD = BLOCKS.register("rubber_wood", () -> new RubberLogBlock(ModBlocks.STRIPPED_RUBBER_WOOD));
+    public static final RegistryObject<BlockItem> RUBBER_WOOD_ITEM = ITEMS.register("rubber_wood", () -> new BlockItem(RUBBER_WOOD.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> STRIPPED_RUBBER_LOG = BLOCKS.register("stripped_rubber_log", ModBlocks::log);
+    public static final RegistryObject<BlockItem> STRIPPED_RUBBER_LOG_ITEM = ITEMS.register("stripped_rubber_log", () -> new BlockItem(STRIPPED_RUBBER_LOG.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> STRIPPED_RUBBER_WOOD = BLOCKS.register("stripped_rubber_wood", () -> new Block(PLANK_PROPERTIES));
+    public static final RegistryObject<BlockItem> STRIPPED_RUBBER_WOOD_ITEM = ITEMS.register("stripped_rubber_wood", () -> new BlockItem(STRIPPED_RUBBER_WOOD.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> RUBBER_PLANKS = BLOCKS.register("rubber_planks", () -> new Block(PLANK_PROPERTIES));
+    public static final RegistryObject<BlockItem> RUBBER_PLANKS_ITEM = ITEMS.register("rubber_planks", () -> new BlockItem(RUBBER_PLANKS.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> RUBBER_LEAVES = BLOCKS.register("rubber_leaves", ModBlocks::leaves);
+    public static final RegistryObject<BlockItem> RUBBER_LEAVES_ITEM = ITEMS.register("rubber_leaves", () -> new BlockItem(RUBBER_LEAVES.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> RUBBER_STAIRS = BLOCKS.register("rubber_stairs", () -> new StairBlock(RUBBER_PLANKS.get()::defaultBlockState, BlockBehaviour.Properties.copy(RUBBER_PLANKS.get())));
+    public static final RegistryObject<BlockItem> RUBBER_STAIRS_ITEM = ITEMS.register("rubber_stairs", () -> new BlockItem(RUBBER_STAIRS.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> RUBBER_SIGN = BLOCKS.register("rubber_sign", RubberStandingSignBlock::new);
+    public static final RegistryObject<Block> RUBBER_WALL_SIGN = BLOCKS.register("rubber_wall_sign", RubberWallSignBlock::new);
+    public static final RegistryObject<BlockItem> RUBBER_SIGN_ITEM = ITEMS.register("rubber_sign", () -> new SignItem(new Item.Properties().stacksTo(16).tab(MinefactoryRenewed.TAB), RUBBER_SIGN.get(), RUBBER_WALL_SIGN.get()));
+
+    public static final RegistryObject<Block> RUBBER_FENCE = BLOCKS.register("rubber_fence", () -> new FenceBlock(PLANK_PROPERTIES));
+    public static final RegistryObject<BlockItem> RUBBER_FENCE_ITEM = ITEMS.register("rubber_fence", () -> new BlockItem(RUBBER_FENCE.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> RUBBER_TRAPDOOR = BLOCKS.register("rubber_trapdoor", () -> new TrapDoorBlock(PLANK_PROPERTIES.noOcclusion().isValidSpawn((state, getter, pos, entityType) -> false)));
+    public static final RegistryObject<BlockItem> RUBBER_TRAPDOOR_ITEM = ITEMS.register("rubber_trapdoor", () -> new BlockItem(RUBBER_TRAPDOOR.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> RUBBER_FENCE_GATE = BLOCKS.register("rubber_fence_gate", () -> new FenceGateBlock(PLANK_PROPERTIES));
+    public static final RegistryObject<BlockItem> RUBBER_FENCE_GATE_ITEM = ITEMS.register("rubber_fence_gate", () -> new BlockItem(RUBBER_FENCE_GATE.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> RUBBER_SLAB = BLOCKS.register("rubber_slab", () -> new SlabBlock(PLANK_PROPERTIES));
+    public static final RegistryObject<BlockItem> RUBBER_SLAB_ITEM = ITEMS.register("rubber_slab", () -> new BlockItem(RUBBER_SLAB.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> RUBBER_DOOR = BLOCKS.register("rubber_door", () -> new DoorBlock(PLANK_PROPERTIES.noCollission()));
+    public static final RegistryObject<BlockItem> RUBBER_DOOR_ITEM = ITEMS.register("rubber_door", () -> new DoubleHighBlockItem(RUBBER_DOOR.get(), ModItems.PROPERTIES));
+
     //Fluids
     public static final RegistryObject<SludgeFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);
     public static final RegistryObject<SludgeFluid> SLUDGE_FLOWING = FLUIDS.register("sludge_flowing", SludgeFluid.Flowing::new);
@@ -194,4 +245,21 @@ public class ModBlocks {
     public static final RegistryObject<EthanolFluid> ETHANOL = FLUIDS.register("ethanol", EthanolFluid.Source::new);
     public static final RegistryObject<EthanolFluid> ETHANOL_FLOWING = FLUIDS.register("ethanol_flowing", EthanolFluid.Flowing::new);
     public static final RegistryObject<BaseFluidBlock> ETHANOL_FLUID_BLOCK = BLOCKS.register("ethanol", () -> new BaseFluidBlock(ETHANOL::get, BASE_FLUID_PROPS));
+
+    private static RotatedPillarBlock log() {
+        return new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD, (state) -> MaterialColor.WOOD)
+                .strength(2.0F)
+                .sound(SoundType.WOOD));
+    }
+
+    private static LeavesBlock leaves() {
+        return new LeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES)
+                .strength(0.2F)
+                .randomTicks()
+                .sound(SoundType.GRASS)
+                .noOcclusion()
+                .isValidSpawn((state, getter, pos, entityType) -> entityType == EntityType.OCELOT || entityType == EntityType.PARROT)
+                .isSuffocating((state, getter, pos) -> false)
+                .isViewBlocking((state, getter, pos) -> false));
+    }
 }

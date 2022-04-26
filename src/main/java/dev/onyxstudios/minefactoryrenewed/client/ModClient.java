@@ -33,7 +33,9 @@ import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ShaderInstance;
+import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.resources.model.BakedModel;
@@ -65,11 +67,16 @@ public class ModClient {
         initEntities();
         initBlockEntities();
         initColors(event);
+
+        event.enqueueWork(() -> Sheets.addWoodType(ModBlocks.RUBBER_TYPE));
     }
 
     private static void initLayers() {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.PINK_SLIME_BLOCK.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.STEAM_TURBINE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.RUBBER_LEAVES.get(), RenderType.cutoutMipped());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.RUBBER_TRAPDOOR.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.RUBBER_DOOR.get(), RenderType.cutout());
     }
 
     private static void initScreens() {
@@ -116,6 +123,7 @@ public class ModClient {
         BlockEntityRenderers.register(ModBlockEntities.LASER_CHARGER.get(), ctx -> new LaserChargerRenderer());
         BlockEntityRenderers.register(ModBlockEntities.LASER_DRILL.get(), ctx -> new LaserDrillRenderer());
         BlockEntityRenderers.register(ModBlockEntities.STEAM_TURBINE.get(), ctx -> new SteamTurbineRenderer());
+        BlockEntityRenderers.register(ModBlockEntities.RUBBER_SIGN.get(), SignRenderer::new);
     }
 
     private static void initColors(FMLClientSetupEvent event) {

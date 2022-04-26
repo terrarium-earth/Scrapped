@@ -40,6 +40,7 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.transport.ItemRouterBlockE
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.SignBlockEntity;
 import net.minecraftforge.common.extensions.IForgeMenuType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -233,6 +234,12 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<ItemRouterBlockEntity>> ITEM_ROUTER =
             BLOCK_ENTITIES.register("item_router_block_entity", () ->
                     BlockEntityType.Builder.of(ItemRouterBlockEntity::new, ModBlocks.ITEM_ROUTER.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<SignBlockEntity>> RUBBER_SIGN =
+            BLOCK_ENTITIES.register("rubber_sign_block_entity", () ->
+                    BlockEntityType.Builder.of(SignBlockEntity::new,
+                                    ModBlocks.RUBBER_SIGN.get(), ModBlocks.RUBBER_WALL_SIGN.get())
                             .build(null));
 
     /**
