@@ -49,6 +49,8 @@ public class MinefactoryRenewed {
         ModBlocks.ITEMS.register(eventBus);
         ModBlocks.BLOCKS.register(eventBus);
         ModBlocks.FLUIDS.register(eventBus);
+        ModBlocks.FEATURES.register(eventBus);
+        ModBlocks.CONFIGURED_FEATURES.register(eventBus);
         ModBlockEntities.BLOCK_ENTITIES.register(eventBus);
         ModBlockEntities.CONTAINERS.register(eventBus);
 

@@ -1,7 +1,8 @@
 package dev.onyxstudios.minefactoryrenewed.registry;
 
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
-import dev.onyxstudios.minefactoryrenewed.block.*;
+import dev.onyxstudios.minefactoryrenewed.block.MeatBlock;
+import dev.onyxstudios.minefactoryrenewed.block.PinkSlimeBlock;
 import dev.onyxstudios.minefactoryrenewed.block.fluid.*;
 import dev.onyxstudios.minefactoryrenewed.block.machine.animals.*;
 import dev.onyxstudios.minefactoryrenewed.block.machine.blocks.BlockBreakerBlock;
@@ -21,10 +22,16 @@ import dev.onyxstudios.minefactoryrenewed.block.machine.power.EthanolGeneratorBl
 import dev.onyxstudios.minefactoryrenewed.block.machine.power.SteamTurbineBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.processing.ComposterBlock;
 import dev.onyxstudios.minefactoryrenewed.block.machine.processing.*;
+import dev.onyxstudios.minefactoryrenewed.block.rubber.RubberLogBlock;
+import dev.onyxstudios.minefactoryrenewed.block.rubber.RubberStandingSignBlock;
+import dev.onyxstudios.minefactoryrenewed.block.rubber.RubberTreeGrower;
+import dev.onyxstudios.minefactoryrenewed.block.rubber.RubberWallSignBlock;
 import dev.onyxstudios.minefactoryrenewed.block.transport.ConveyorBeltBlock;
 import dev.onyxstudios.minefactoryrenewed.block.transport.EjectorBlock;
 import dev.onyxstudios.minefactoryrenewed.block.transport.ItemCollectorBlock;
 import dev.onyxstudios.minefactoryrenewed.block.transport.ItemRouterBlock;
+import net.minecraft.core.Registry;
+import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DoubleHighBlockItem;
@@ -33,11 +40,16 @@ import net.minecraft.world.item.SignItem;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
-import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -47,6 +59,8 @@ public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MinefactoryRenewed.MODID);
     public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, MinefactoryRenewed.MODID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MinefactoryRenewed.MODID);
+    public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES = DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, MinefactoryRenewed.MODID);
+    public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, MinefactoryRenewed.MODID);
 
     private static final BlockBehaviour.Properties BASE_FLUID_PROPS = BlockBehaviour.Properties.of(Material.WATER).randomTicks().noDrops();
     private static final BlockBehaviour.Properties PLANK_PROPERTIES = BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD);
@@ -217,6 +231,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> RUBBER_DOOR = BLOCKS.register("rubber_door", () -> new DoorBlock(PLANK_PROPERTIES.noCollission()));
     public static final RegistryObject<BlockItem> RUBBER_DOOR_ITEM = ITEMS.register("rubber_door", () -> new DoubleHighBlockItem(RUBBER_DOOR.get(), ModItems.PROPERTIES));
 
+    public static final RegistryObject<Block> RUBBER_SAPLING = BLOCKS.register("rubber_sapling", () -> new SaplingBlock(new RubberTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
+    public static final RegistryObject<Item> RUBBER_SAPLING_ITEM = ITEMS.register("rubber_sapling", () -> new BlockItem(RUBBER_SAPLING.get(), ModItems.PROPERTIES));
+
     //Fluids
     public static final RegistryObject<SludgeFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);
     public static final RegistryObject<SludgeFluid> SLUDGE_FLOWING = FLUIDS.register("sludge_flowing", SludgeFluid.Flowing::new);
@@ -246,6 +263,8 @@ public class ModBlocks {
     public static final RegistryObject<EthanolFluid> ETHANOL_FLOWING = FLUIDS.register("ethanol_flowing", EthanolFluid.Flowing::new);
     public static final RegistryObject<BaseFluidBlock> ETHANOL_FLUID_BLOCK = BLOCKS.register("ethanol", () -> new BaseFluidBlock(ETHANOL::get, BASE_FLUID_PROPS));
 
+    public static final RegistryObject<ConfiguredFeature<TreeConfiguration, ?>> RUBBER_TREE_FEATURE = CONFIGURED_FEATURES.register("rubber", () -> new ConfiguredFeature<>(Feature.TREE, createRubber()));
+
     private static RotatedPillarBlock log() {
         return new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD, (state) -> MaterialColor.WOOD)
                 .strength(2.0F)
@@ -261,5 +280,15 @@ public class ModBlocks {
                 .isValidSpawn((state, getter, pos, entityType) -> entityType == EntityType.OCELOT || entityType == EntityType.PARROT)
                 .isSuffocating((state, getter, pos) -> false)
                 .isViewBlocking((state, getter, pos) -> false));
+    }
+
+    private static TreeConfiguration createRubber() {
+        return new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(RUBBER_LOG.get()),
+                new StraightTrunkPlacer(5, 2, 0),
+                BlockStateProvider.simple(RUBBER_LEAVES.get()),
+                new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
+                new TwoLayersFeatureSize(1, 0, 1)
+        ).ignoreVines().build();
     }
 }

@@ -1,18 +1,18 @@
-package dev.onyxstudios.minefactoryrenewed.block;
+package dev.onyxstudios.minefactoryrenewed.block.rubber;
 
 import dev.onyxstudios.minefactoryrenewed.blockentity.RubberSignBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.StandingSignBlock;
+import net.minecraft.world.level.block.WallSignBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class RubberStandingSignBlock extends StandingSignBlock {
+public class RubberWallSignBlock extends WallSignBlock {
 
-    public RubberStandingSignBlock() {
-        super(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), ModBlocks.RUBBER_TYPE);
+    public RubberWallSignBlock() {
+        super(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN).lootFrom(ModBlocks.RUBBER_SIGN), ModBlocks.RUBBER_TYPE);
     }
 
     @Override

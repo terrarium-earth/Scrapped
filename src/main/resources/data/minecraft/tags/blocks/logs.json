@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "minecraft:rubber_log",
-    "minecraft:rubber_wood",
-    "minecraft:stripped_rubber_log",
-    "minecraft:stripped_rubber_wood"
+    "minefactoryrenewed:rubber_log",
+    "minefactoryrenewed:rubber_wood",
+    "minefactoryrenewed:stripped_rubber_log",
+    "minefactoryrenewed:stripped_rubber_wood"
   ]
 }
