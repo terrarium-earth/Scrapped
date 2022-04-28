@@ -21,6 +21,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> FACTORY_MACHINE_BASE = ITEMS.register("factory_machine_base", BaseItem::new);
     public static final RegistryObject<Item> PORTASPAWNER = ITEMS.register("portaspawner", PortaSpawnerItem::new);
+    public static final RegistryObject<Item> XP_EXTRACTOR = ITEMS.register("xp_extractor", XPExtractorItem::new);
 
     //Upgrades
     public static final RegistryObject<Item> IRON_UPGRADE = ITEMS.register("iron_upgrade", () -> new MachineUpgradeItem(1));

@@ -58,6 +58,7 @@
   "item.minefactoryrenewed.ethanol_bucket": "Ethanol Bucket",
   "item.minefactoryrenewed.factory_machine_base": "Factory Machine Base",
   "item.minefactoryrenewed.portaspawner": "PortaSpawner",
+  "item.minefactoryrenewed.xp_extractor": "XP Extractor",
 
   "_comment3": "Blocks",
   "block.minefactoryrenewed.conveyor_belt": "Conveyor Belt",
