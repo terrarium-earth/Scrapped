@@ -19,6 +19,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 
 @Mod(MinefactoryRenewed.MODID)
 public class MinefactoryRenewed {
@@ -28,7 +29,7 @@ public class MinefactoryRenewed {
 
     public static CreativeModeTab TAB = new CreativeModeTab(MODID) {
         @Override
-        public ItemStack makeIcon() {
+        public @NotNull ItemStack makeIcon() {
             return ModItems.IRON_UPGRADE.get().getDefaultInstance();
         }
     };
@@ -49,8 +50,8 @@ public class MinefactoryRenewed {
         ModBlocks.ITEMS.register(eventBus);
         ModBlocks.BLOCKS.register(eventBus);
         ModBlocks.FLUIDS.register(eventBus);
-        ModBlocks.FEATURES.register(eventBus);
-        ModBlocks.CONFIGURED_FEATURES.register(eventBus);
+        ModWorldGen.PLACED_FEATURES.register(eventBus);
+        ModWorldGen.CONFIGURED_FEATURES.register(eventBus);
         ModBlockEntities.BLOCK_ENTITIES.register(eventBus);
         ModBlockEntities.CONTAINERS.register(eventBus);
 

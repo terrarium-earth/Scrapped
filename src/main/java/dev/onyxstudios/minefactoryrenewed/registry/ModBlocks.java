@@ -30,8 +30,6 @@ import dev.onyxstudios.minefactoryrenewed.block.transport.ConveyorBeltBlock;
 import dev.onyxstudios.minefactoryrenewed.block.transport.EjectorBlock;
 import dev.onyxstudios.minefactoryrenewed.block.transport.ItemCollectorBlock;
 import dev.onyxstudios.minefactoryrenewed.block.transport.ItemRouterBlock;
-import net.minecraft.core.Registry;
-import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DoubleHighBlockItem;
@@ -40,13 +38,6 @@ import net.minecraft.world.item.SignItem;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.WoodType;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
@@ -59,8 +50,6 @@ public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MinefactoryRenewed.MODID);
     public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, MinefactoryRenewed.MODID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MinefactoryRenewed.MODID);
-    public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES = DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, MinefactoryRenewed.MODID);
-    public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, MinefactoryRenewed.MODID);
 
     private static final BlockBehaviour.Properties BASE_FLUID_PROPS = BlockBehaviour.Properties.of(Material.WATER).randomTicks().noDrops();
     private static final BlockBehaviour.Properties PLANK_PROPERTIES = BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD);
@@ -263,8 +252,6 @@ public class ModBlocks {
     public static final RegistryObject<EthanolFluid> ETHANOL_FLOWING = FLUIDS.register("ethanol_flowing", EthanolFluid.Flowing::new);
     public static final RegistryObject<BaseFluidBlock> ETHANOL_FLUID_BLOCK = BLOCKS.register("ethanol", () -> new BaseFluidBlock(ETHANOL::get, BASE_FLUID_PROPS));
 
-    public static final RegistryObject<ConfiguredFeature<TreeConfiguration, ?>> RUBBER_TREE_FEATURE = CONFIGURED_FEATURES.register("rubber", () -> new ConfiguredFeature<>(Feature.TREE, createRubber()));
-
     private static RotatedPillarBlock log() {
         return new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD, (state) -> MaterialColor.WOOD)
                 .strength(2.0F)
@@ -280,15 +267,5 @@ public class ModBlocks {
                 .isValidSpawn((state, getter, pos, entityType) -> entityType == EntityType.OCELOT || entityType == EntityType.PARROT)
                 .isSuffocating((state, getter, pos) -> false)
                 .isViewBlocking((state, getter, pos) -> false));
-    }
-
-    private static TreeConfiguration createRubber() {
-        return new TreeConfiguration.TreeConfigurationBuilder(
-                BlockStateProvider.simple(RUBBER_LOG.get()),
-                new StraightTrunkPlacer(5, 2, 0),
-                BlockStateProvider.simple(RUBBER_LEAVES.get()),
-                new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
-                new TwoLayersFeatureSize(1, 0, 1)
-        ).ignoreVines().build();
     }
 }
