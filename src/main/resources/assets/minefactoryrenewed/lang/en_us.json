@@ -57,6 +57,7 @@
   "item.minefactoryrenewed.steam_bucket": "Steam Bucket",
   "item.minefactoryrenewed.ethanol_bucket": "Ethanol Bucket",
   "item.minefactoryrenewed.factory_machine_base": "Factory Machine Base",
+  "item.minefactoryrenewed.portaspawner": "PortaSpawner",
 
   "_comment3": "Blocks",
   "block.minefactoryrenewed.conveyor_belt": "Conveyor Belt",
@@ -136,6 +137,10 @@
   "tooltip.safari_net_launcher.capture": "Capture",
   "tooltip.safari_net_launcher.release": "Release",
   "tooltip.safari_net_launcher.no_safari_net": "No Safari Net found!",
+  "tooltip.portaspawner.captured_spawner": "Spawner Type: %s",
+  "tooltip.portaspawner.no_spawner": "No spawner captured!",
+
+  "_comment6": "Gui Translatable Text",
   "gui.button.harvester.shear_leaves": "Shear Leaves: %s",
   "gui.button.harvester.small_shrooms": "Small Shrooms: %s",
   "gui.button.harvester.jungle_wood": "Jungle Wood: %s",

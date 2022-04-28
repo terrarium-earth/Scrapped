@@ -6,7 +6,8 @@
   "refmap": "minefactoryrenewed.refmap.json",
   "mixins": [
     "common.SlimeAccessor",
-    "common.ZombieVillagerAccessor"
+    "common.ZombieVillagerAccessor",
+    "common.BaseSpawnerAccessor"
   ],
   "client": [
     "client.BlockEntityRenderDispatcherMixin"

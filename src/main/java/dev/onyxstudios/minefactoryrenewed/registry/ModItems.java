@@ -20,6 +20,7 @@ public class ModItems {
     private static final Item.Properties BUCKET_PROPS = new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(MinefactoryRenewed.TAB);
 
     public static final RegistryObject<Item> FACTORY_MACHINE_BASE = ITEMS.register("factory_machine_base", BaseItem::new);
+    public static final RegistryObject<Item> PORTASPAWNER = ITEMS.register("portaspawner", PortaSpawnerItem::new);
 
     //Upgrades
     public static final RegistryObject<Item> IRON_UPGRADE = ITEMS.register("iron_upgrade", () -> new MachineUpgradeItem(1));
