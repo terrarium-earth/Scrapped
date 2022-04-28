@@ -3,6 +3,7 @@ package dev.onyxstudios.minefactoryrenewed.registry;
 import dev.onyxstudios.minefactoryrenewed.MinefactoryRenewed;
 import dev.onyxstudios.minefactoryrenewed.block.MeatBlock;
 import dev.onyxstudios.minefactoryrenewed.block.PinkSlimeBlock;
+import dev.onyxstudios.minefactoryrenewed.block.RoadBlock;
 import dev.onyxstudios.minefactoryrenewed.block.fluid.*;
 import dev.onyxstudios.minefactoryrenewed.block.machine.animals.*;
 import dev.onyxstudios.minefactoryrenewed.block.machine.blocks.BlockBreakerBlock;
@@ -55,6 +56,9 @@ public class ModBlocks {
     private static final BlockBehaviour.Properties PLANK_PROPERTIES = BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD);
 
     public static final WoodType RUBBER_TYPE = WoodType.register(WoodType.create(MinefactoryRenewed.MODID + ":rubber"));
+
+    public static final RegistryObject<Block> ROAD = BLOCKS.register("road", RoadBlock::new);
+    public static final RegistryObject<BlockItem> ROAD_ITEM = ITEMS.register("road", () -> new BlockItem(ROAD.get(), ModItems.PROPERTIES));
 
     public static final RegistryObject<Block> CONVEYOR_BELT = BLOCKS.register("conveyor_belt", ConveyorBeltBlock::new);
     public static final RegistryObject<BlockItem> CONVEYOR_BELT_ITEM = ITEMS.register("conveyor_belt", () -> new BlockItem(CONVEYOR_BELT.get(), new Item.Properties().stacksTo(16).tab(MinefactoryRenewed.TAB)));
