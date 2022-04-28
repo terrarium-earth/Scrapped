@@ -56,6 +56,7 @@
   "item.minefactoryrenewed.red_focus": "Laser Focus (Red)",
   "item.minefactoryrenewed.steam_bucket": "Steam Bucket",
   "item.minefactoryrenewed.ethanol_bucket": "Ethanol Bucket",
+  "item.minefactoryrenewed.factory_machine_base": "Factory Machine Base",
 
   "_comment3": "Blocks",
   "block.minefactoryrenewed.conveyor_belt": "Conveyor Belt",
