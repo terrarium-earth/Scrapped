@@ -19,7 +19,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.storage.loot.LootContext;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class EjectorBlock extends BaseEntityBlock implements IRotatableMachine {
 
@@ -65,6 +69,17 @@ public class EjectorBlock extends BaseEntityBlock implements IRotatableMachine {
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
         builder.add(BlockStateProperties.HORIZONTAL_FACING);
+    }
+
+    @NotNull
+    @Override
+    public List<ItemStack> getDrops(@NotNull BlockState state, LootContext.@NotNull Builder builder) {
+        List<ItemStack> drops = super.getDrops(state, builder);
+        if (drops.isEmpty()) {
+            drops.add(new ItemStack(this));
+        }
+
+        return drops;
     }
 
     @Override

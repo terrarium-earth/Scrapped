@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "minefactoryrenewed:rubber_log",
+    "minefactoryrenewed:rubber_wood",
+    "minefactoryrenewed:stripped_rubber_log",
+    "minefactoryrenewed:stripped_rubber_wood",
+    "minefactoryrenewed:rubber_planks",
+    "minefactoryrenewed:rubber_stairs",
+    "minefactoryrenewed:rubber_sign",
+    "minefactoryrenewed:rubber_wall_sign",
+    "minefactoryrenewed:rubber_fence",
+    "minefactoryrenewed:rubber_trapdoor",
+    "minefactoryrenewed:rubber_fence_gate",
+    "minefactoryrenewed:rubber_slab",
+    "minefactoryrenewed:rubber_door"
+  ]
+}

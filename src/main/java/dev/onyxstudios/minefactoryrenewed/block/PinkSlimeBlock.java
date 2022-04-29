@@ -1,8 +1,15 @@
 package dev.onyxstudios.minefactoryrenewed.block;
 
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.SlimeBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.storage.loot.LootContext;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PinkSlimeBlock extends SlimeBlock {
 
@@ -12,5 +19,16 @@ public class PinkSlimeBlock extends SlimeBlock {
                 .sound(SoundType.SLIME_BLOCK)
                 .noOcclusion()
         );
+    }
+
+    @NotNull
+    @Override
+    public List<ItemStack> getDrops(@NotNull BlockState state, LootContext.@NotNull Builder builder) {
+        List<ItemStack> drops = super.getDrops(state, builder);
+        if (drops.isEmpty()) {
+            drops.add(new ItemStack(this));
+        }
+
+        return drops;
     }
 }

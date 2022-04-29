@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "minefactoryrenewed:conveyor_belt",
     "minefactoryrenewed:planter",
     "minefactoryrenewed:farmer",
     "minefactoryrenewed:fertilizer",

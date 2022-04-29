@@ -17,7 +17,11 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.storage.loot.LootContext;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class ItemCollectorBlock extends BaseEntityBlock implements IWrenchableMachine {
 
@@ -38,6 +42,17 @@ public class ItemCollectorBlock extends BaseEntityBlock implements IWrenchableMa
         }
 
         super.onRemove(state, level, pos, newState, isMoving);
+    }
+
+    @NotNull
+    @Override
+    public List<ItemStack> getDrops(@NotNull BlockState state, LootContext.@NotNull Builder builder) {
+        List<ItemStack> drops = super.getDrops(state, builder);
+        if (drops.isEmpty()) {
+            drops.add(new ItemStack(this));
+        }
+
+        return drops;
     }
 
     @Override
