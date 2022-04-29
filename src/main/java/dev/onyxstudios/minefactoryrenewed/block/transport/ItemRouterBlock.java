@@ -4,7 +4,10 @@ import dev.onyxstudios.minefactoryrenewed.api.machine.IWrenchableMachine;
 import dev.onyxstudios.minefactoryrenewed.blockentity.transport.ItemRouterBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
 import dev.onyxstudios.minefactoryrenewed.util.InventoryUtils;
+import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
@@ -12,6 +15,8 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.RenderShape;
@@ -68,6 +73,20 @@ public class ItemRouterBlock extends BaseEntityBlock implements IWrenchableMachi
         }
 
         return drops;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
+        super.appendHoverText(stack, level, tooltip, flag);
+
+        if (this.getRegistryName() != null) {
+            String tooltipText = I18n.get("tooltip.machine." + this.getRegistryName().getPath());
+            String[] lines = tooltipText.split("<br>");
+            for (String line : lines) {
+                Component text = new TextComponent(line);
+                tooltip.add(text);
+            }
+        }
     }
 
     @Override

@@ -4,10 +4,12 @@ import dev.onyxstudios.minefactoryrenewed.api.machine.IWrenchableMachine;
 import dev.onyxstudios.minefactoryrenewed.blockentity.machine.blocks.DeepStorageBlockEntity;
 import dev.onyxstudios.minefactoryrenewed.registry.ModBlockEntities;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Containers;
@@ -103,9 +105,12 @@ public class DeepStorageBlock extends BaseEntityBlock implements IWrenchableMach
         super.appendHoverText(stack, level, tooltip, flag);
 
         if (this.getRegistryName() != null) {
-            Component text = new TranslatableComponent("tooltip.machine." + this.getRegistryName().getPath())
-                    .setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY));
-            tooltip.add(text);
+            String tooltipText = I18n.get("tooltip.machine." + this.getRegistryName().getPath());
+            String[] lines = tooltipText.split("<br>");
+            for (String line : lines) {
+                Component text = new TextComponent(line);
+                tooltip.add(text);
+            }
         }
     }
 

@@ -5,9 +5,11 @@ import dev.onyxstudios.minefactoryrenewed.blockentity.machine.MachineBlockEntity
 import dev.onyxstudios.minefactoryrenewed.registry.ModItems;
 import dev.onyxstudios.minefactoryrenewed.util.InventoryUtils;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Containers;
@@ -107,9 +109,12 @@ public abstract class MachineBlock extends BaseEntityBlock implements IWrenchabl
         super.appendHoverText(stack, level, tooltip, flag);
 
         if (this.getRegistryName() != null) {
-            Component text = new TranslatableComponent("tooltip.machine." + this.getRegistryName().getPath())
-                    .setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY));
-            tooltip.add(text);
+            String tooltipText = I18n.get("tooltip.machine." + this.getRegistryName().getPath());
+            String[] lines = tooltipText.split("<br>");
+            for (String line : lines) {
+                Component text = new TextComponent(line);
+                tooltip.add(text);
+            }
         }
     }
 
