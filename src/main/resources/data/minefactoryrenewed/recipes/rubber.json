@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "minefactoryrenewed:raw_rubber"
+  },
+  "result": "minefactoryrenewed:rubber",
+  "experience": 0.15,
+  "cookingtime": 200
+}

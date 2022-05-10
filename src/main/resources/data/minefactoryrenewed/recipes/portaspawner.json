@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XYX",
+    "ZWZ",
+    "XYX"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:gold_ingot"
+    },
+    "Y": {
+      "item": "minecraft:glass"
+    },
+    "Z": {
+      "item": "minecraft:diamond"
+    },
+    "W": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "result": {
+    "item": "minefactoryrenewed:portaspawner",
+    "count": 1
+  }
+}

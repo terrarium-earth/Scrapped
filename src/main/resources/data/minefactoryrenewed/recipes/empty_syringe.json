@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XYX",
+    "X X",
+    " Z "
+  ],
+  "key": {
+    "X": {
+      "item": "minefactoryrenewed:plastic_sheets"
+    },
+    "Y": {
+      "item": "minefactoryrenewed:rubber"
+    },
+    "Z": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "minefactoryrenewed:empty_syringe",
+    "count": 1
+  }
+}

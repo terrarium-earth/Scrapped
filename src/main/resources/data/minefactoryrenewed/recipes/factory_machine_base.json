@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "YYY"
+  ],
+  "key": {
+    "X": {
+      "item": "minefactoryrenewed:plastic_sheets"
+    },
+    "Y": {
+      "item": "minecraft:stone"
+    }
+  },
+  "result": {
+    "item": "minefactoryrenewed:factorymachinebase",
+    "count": 1
+  }
+}

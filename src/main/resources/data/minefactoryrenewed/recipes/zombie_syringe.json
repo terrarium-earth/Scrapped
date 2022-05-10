@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "XYX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:rotten_flesh"
+    },
+    "Y": {
+      "item": "minefactoryrenewed:empty_syringe"
+    }
+  },
+  "result": {
+    "item": "minefactoryrenewed:zombie_syringe",
+    "count": 1
+  }
+}

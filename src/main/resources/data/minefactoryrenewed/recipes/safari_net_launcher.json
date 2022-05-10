@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XYX",
+    "ZYZ",
+    "WRW"
+  ],
+  "key": {
+    "X": {
+      "item": "minefactoryrenewed:plastic_sheets"
+    },
+    "Y": {
+      "item": "minecraft:gunpowder"
+    },
+    "Z": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "W": {
+      "item": "minecraft:iron_ingot"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "item": "minefactoryrenewed:safari_net_launcher",
+    "count": 1
+  }
+}

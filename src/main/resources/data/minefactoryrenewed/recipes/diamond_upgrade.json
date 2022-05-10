@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "YYY",
+    "ZWZ"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:diamond"
+    },
+    "Y": {
+      "item": "minefactoryrenewed:raw_plastic"
+    },
+    "Z": {
+      "item": "minecraft:redstone"
+    },
+    "W": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "result": {
+    "item": "minefactoryrenewed:diamond_upgrade",
+    "count": 1
+  }
+}

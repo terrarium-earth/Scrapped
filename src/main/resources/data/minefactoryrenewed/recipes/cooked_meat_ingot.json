@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "minefactoryrenewed:raw_meat_ingot"
+  },
+  "result": "minefactoryrenewed:cooked_meat_ingot",
+  "experience": 0.15,
+  "cookingtime": 200
+}

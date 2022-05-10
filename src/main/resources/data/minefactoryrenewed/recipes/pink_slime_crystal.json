@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "minefactoryrenewed:pink_slime_block"
+  },
+  "result": "minefactoryrenewed:pink_slime_crystal",
+  "experience": 0.45,
+  "cookingtime": 200
+}

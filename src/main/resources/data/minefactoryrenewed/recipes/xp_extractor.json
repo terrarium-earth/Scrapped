@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XYX",
+    "XYX",
+    "ZXZ"
+  ],
+  "key": {
+    "X": {
+      "item": "minefactoryrenewed:plastic_sheets"
+    },
+    "Y": {
+      "item": "minecraft:glass"
+    },
+    "Z": {
+      "item": "minefactoryrenewed:rubber"
+    }
+  },
+  "result": {
+    "item": "minefactoryrenewed:xp_extractor",
+    "count": 1
+  }
+}
