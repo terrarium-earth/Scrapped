@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "YZY"
+  ],
+  "key": {
+    "X": {
+      "item": "minefactoryrenewed:rubber"
+    },
+    "Y": {
+      "item": "minecraft:redstone"
+    },
+    "Z": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "minefactoryrenewed:conveyor_belt",
+    "count": 16
+  }
+}

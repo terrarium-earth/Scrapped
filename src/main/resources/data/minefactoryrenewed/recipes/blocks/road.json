@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "XYX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:stone_bricks"
+    },
+    "Y": {
+      "item": "minefactoryrenewed:plastic_sheets"
+    }
+  },
+  "result": {
+    "item": "minefactoryrenewed:road",
+    "count": 8
+  }
+}

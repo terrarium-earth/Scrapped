@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "YZW",
+    " A "
+  ],
+  "key": {
+    "X": {
+      "item": "minefactoryrenewed:plastic_sheets"
+    },
+    "Y": {
+      "item": "minecraft:book"
+    },
+    "Z": {
+      "item": "minecraft:golden_sword"
+    },
+    "W": {
+      "item": "minecraft:piston"
+    },
+    "A": {
+      "item": "minefactoryrenewed:factory_machine_base"
+    }
+  },
+  "result": {
+    "item": "minefactoryrenewed:grinder",
+    "count": 1
+  }
+}

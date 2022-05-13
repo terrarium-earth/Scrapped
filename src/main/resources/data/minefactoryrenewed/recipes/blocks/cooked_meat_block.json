@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "minefactoryrenewed:cooked_meat_ingot"
+    }
+  },
+  "result": {
+    "item": "minefactoryrenewed:cooked_meat_block",
+    "count": 1
+  }
+}
