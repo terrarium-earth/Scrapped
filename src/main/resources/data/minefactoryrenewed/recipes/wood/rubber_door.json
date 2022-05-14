@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX",
+    "XX",
+    "XX"
+  ],
+  "key": {
+    "X": {
+      "item": "minefactoryrenewed:rubber_planks"
+    }
+  },
+  "result": {
+    "item": "minefactoryrenewed:rubber_door",
+    "count": 3
+  }
+}

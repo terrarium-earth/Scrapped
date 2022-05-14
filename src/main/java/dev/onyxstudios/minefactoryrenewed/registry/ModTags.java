@@ -40,6 +40,8 @@ public class ModTags {
     public static TagKey<Item> ETHANOL_SOURCE = createModItemTag("ethanol_source");
     public static TagKey<Item> SLUDGE_DROP = createModItemTag("sludge_drop");
 
+    public static TagKey<Item> RUBBER_LOGS = createModItemTag("rubber_logs");
+
     public static TagKey<Item> createModItemTag(String name) {
         return ItemTags.create(new ResourceLocation(MinefactoryRenewed.MODID, name));
     }
