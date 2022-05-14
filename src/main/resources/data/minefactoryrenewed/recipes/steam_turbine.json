@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "YZY",
+    "AWA"
+  ],
+  "key": {
+    "X": {
+      "item": "minefactoryrenewed:plastic_sheets"
+    },
+    "Y": {
+      "item": "minecraft:piston"
+    },
+    "Z": {
+      "item": "minecraft:furnace"
+    },
+    "W": {
+      "item": "minefactoryrenewed:factory_machine_base"
+    },
+    "A": {
+      "item": "minecraft:nether_brick"
+    }
+  },
+  "result": {
+    "item": "minefactoryrenewed:steam_turbine",
+    "count": 1
+  }
+}

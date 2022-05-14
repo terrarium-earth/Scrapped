@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "minefactoryrenewed:raw_meat_block"
+  },
+  "result": "minefactoryrenewed:cooked_meat_block",
+  "experience": 0.20,
+  "cookingtime": 200
+}

@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "YZY",
+    "AWA"
+  ],
+  "key": {
+    "X": {
+      "item": "minefactoryrenewed:plastic_sheets"
+    },
+    "Y": {
+      "item": "minecraft:sugar"
+    },
+    "Z": {
+      "item": "minecraft:spider_eye"
+    },
+    "W": {
+      "item": "minefactoryrenewed:factory_machine_base"
+    },
+    "A": {
+      "item": "minecraft:slime_ball"
+    }
+  },
+  "result": {
+    "item": "minefactoryrenewed:ethanol_reactor",
+    "count": 1
+  }
+}

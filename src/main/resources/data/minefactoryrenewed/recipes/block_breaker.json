@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "YZW",
+    " A "
+  ],
+  "key": {
+    "X": {
+      "item": "minefactoryrenewed:plastic_sheets"
+    },
+    "Y": {
+      "item": "minecraft:golden_pickaxe"
+    },
+    "Z": {
+      "item": "minefactoryrenewed:wrench"
+    },
+    "W": {
+      "item": "minecraft:golden_shovel"
+    },
+    "A": {
+      "item": "minefactoryrenewed:factory_machine_base"
+    }
+  },
+  "result": {
+    "item": "minefactoryrenewed:block_breaker",
+    "count": 1
+  }
+}

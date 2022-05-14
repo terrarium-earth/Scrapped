@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "YYY",
+    "ZWZ"
+  ],
+  "key": {
+    "X": {
+      "item": "minefactoryrenewed:plastic_sheets"
+    },
+    "Y": {
+      "item": "minefactoryrenewed:empty_syringe"
+    },
+    "Z": {
+      "item": "minecraft:spider_eye"
+    },
+    "W": {
+      "item": "minefactoryrenewed:factory_machine_base"
+    }
+  },
+  "result": {
+    "item": "minefactoryrenewed:veterinary",
+    "count": 1
+  }
+}

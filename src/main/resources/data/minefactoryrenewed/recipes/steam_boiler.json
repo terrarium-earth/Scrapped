@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "YZY",
+    "WWW"
+  ],
+  "key": {
+    "X": {
+      "item": "minefactoryrenewed:plastic_sheets"
+    },
+    "Y": {
+      "item": "minecraft:cauldron"
+    },
+    "Z": {
+      "item": "minefactoryrenewed:sludge_boiler"
+    },
+    "W": {
+      "item": "minecraft:nether_bricks"
+    }
+  },
+  "result": {
+    "item": "minefactoryrenewed:steam_boiler",
+    "count": 1
+  }
+}

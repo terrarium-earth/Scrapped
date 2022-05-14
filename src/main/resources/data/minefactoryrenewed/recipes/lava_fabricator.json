@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "YZY",
+    "AWA"
+  ],
+  "key": {
+    "X": {
+      "item": "minefactoryrenewed:plastic_sheets"
+    },
+    "Y": {
+      "item": "minecraft:obsidian"
+    },
+    "Z": {
+      "item": "minecraft:blaze_rod"
+    },
+    "W": {
+      "item": "minefactoryrenewed:factory_machine_base"
+    },
+    "A": {
+      "item": "minecraft:magma_cream"
+    }
+  },
+  "result": {
+    "item": "minefactoryrenewed:lava_fabricator",
+    "count": 1
+  }
+}

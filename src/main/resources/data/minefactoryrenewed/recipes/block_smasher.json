@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "YYY",
+    "ZWZ"
+  ],
+  "key": {
+    "X": {
+      "item": "minefactoryrenewed:plastic_sheets"
+    },
+    "Y": {
+      "item": "minefactoryrenewed:wrench"
+    },
+    "Z": {
+      "item": "minecraft:book"
+    },
+    "W": {
+      "item": "minefactoryrenewed:factory_machine_base"
+    }
+  },
+  "result": {
+    "item": "minefactoryrenewed:block_smasher",
+    "count": 1
+  }
+}

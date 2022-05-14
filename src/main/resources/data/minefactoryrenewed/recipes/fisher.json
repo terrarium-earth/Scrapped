@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "YYY",
+    "ZWZ"
+  ],
+  "key": {
+    "X": {
+      "item": "minefactoryrenewed:plastic_sheets"
+    },
+    "Y": {
+      "item": "minecraft:fishing_rod"
+    },
+    "Z": {
+      "item": "minecraft:bucket"
+    },
+    "W": {
+      "item": "minefactoryrenewed:factory_machine_base"
+    }
+  },
+  "result": {
+    "item": "minefactoryrenewed:fisher",
+    "count": 1
+  }
+}

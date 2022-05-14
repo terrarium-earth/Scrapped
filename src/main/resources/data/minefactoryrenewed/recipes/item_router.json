@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XYX",
+    "ZWZ",
+    "XZX"
+  ],
+  "key": {
+    "X": {
+      "item": "minefactoryrenewed:plastic_sheets"
+    },
+    "Y": {
+      "item": "minecraft:chest"
+    },
+    "Z": {
+      "item": "minecraft:hopper"
+    },
+    "W": {
+      "item": "minefactoryrenewed:factory_machine_base"
+    }
+  },
+  "result": {
+    "item": "minefactoryrenewed:item_router",
+    "count": 1
+  }
+}
