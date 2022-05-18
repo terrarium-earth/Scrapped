@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "dev.onyxstudios.minefactoryrenewed.mixin",
+  "package": "dev.terrarium.minefactoryrenewed.mixin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "minefactoryrenewed.refmap.json",
   "mixins": [
