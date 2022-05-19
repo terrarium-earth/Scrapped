@@ -4,6 +4,7 @@
     "top": "minefactoryrenewed:block/machine_top",
     "bottom": "minefactoryrenewed:block/machine_bottom",
     "front": "minefactoryrenewed:block/mob_grinder_front",
-    "side": "minefactoryrenewed:block/mob_grinder_side"
+    "side": "minefactoryrenewed:block/mob_grinder_side",
+    "south": "minefactoryrenewed:block/machine_side"
   }
 }
