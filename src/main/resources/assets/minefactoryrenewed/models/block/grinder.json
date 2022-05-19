@@ -3,7 +3,7 @@
   "textures": {
     "top": "minefactoryrenewed:block/machine_top",
     "bottom": "minefactoryrenewed:block/machine_bottom",
-    "front": "minefactoryrenewed:block/grinder_front",
-    "side": "minefactoryrenewed:block/machine_side"
+    "front": "minefactoryrenewed:block/mob_grinder_front",
+    "side": "minefactoryrenewed:block/mob_grinder_side"
   }
 }
