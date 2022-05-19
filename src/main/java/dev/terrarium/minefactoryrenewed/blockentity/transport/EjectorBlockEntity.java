@@ -19,6 +19,7 @@ import net.minecraftforge.items.IItemHandler;
 public class EjectorBlockEntity extends BaseBlockEntity {
 
     private Direction facing;
+    private int cooldown = 0;
 
     public EjectorBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.EJECTOR.get(), pos, state);
@@ -43,26 +44,33 @@ public class EjectorBlockEntity extends BaseBlockEntity {
 
     private void tick() {
         if (level == null || level.isClientSide() || level.hasNeighborSignal(getBlockPos())) return;
-        BlockPos behind = getBlockPos().relative(facing.getOpposite());
-        BlockEntity blockEntity = level.getBlockEntity(behind);
-        if (blockEntity != null) {
-            LazyOptional<IItemHandler> optional = blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY);
+        cooldown++;
 
-            optional.ifPresent(itemHandler -> {
-                for (int i = 0; i < itemHandler.getSlots(); i++) {
-                    ItemStack stack = itemHandler.getStackInSlot(i);
+        if (cooldown >= 4) {
+            BlockPos behind = getBlockPos().relative(facing.getOpposite());
+            BlockEntity blockEntity = level.getBlockEntity(behind);
+            if (blockEntity != null) {
+                LazyOptional<IItemHandler> optional = blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY);
 
-                    if (!stack.isEmpty()) {
-                        BlockPos front = getBlockPos().relative(facing);
-                        ItemEntity itemEntity = new ItemEntity(level,
-                                front.getX() + 0.5, front.getY() + 0.5, front.getZ() + 0.5,
-                                new ItemStack(stack.getItem(), 1));
-                        level.addFreshEntity(itemEntity);
-                        itemHandler.extractItem(i, 1, false);
-                        break;
+                optional.ifPresent(itemHandler -> {
+                    for (int i = 0; i < itemHandler.getSlots(); i++) {
+                        ItemStack stack = itemHandler.getStackInSlot(i);
+
+                        if (!stack.isEmpty()) {
+                            BlockPos front = getBlockPos().relative(facing);
+                            ItemEntity itemEntity = new ItemEntity(level,
+                                    front.getX() + 0.5, front.getY() + 0.2, front.getZ() + 0.5,
+                                    new ItemStack(stack.getItem(), 1));
+                            itemEntity.setDeltaMovement(0, 0, 0);
+                            level.addFreshEntity(itemEntity);
+                            itemHandler.extractItem(i, 1, false);
+                            break;
+                        }
                     }
-                }
-            });
+                });
+            }
+
+            cooldown = 0;
         }
     }
 

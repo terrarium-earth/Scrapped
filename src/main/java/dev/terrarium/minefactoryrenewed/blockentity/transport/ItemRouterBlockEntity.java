@@ -98,7 +98,7 @@ public class ItemRouterBlockEntity extends BaseBlockEntity implements MenuProvid
         Direction route = findRoute(entity.getItem(), direction);
         if (route != null) {
             BlockPos offsetPos = pos.relative(route);
-            entity.moveTo(offsetPos.getX() + 0.5, offsetPos.getY() + 0.5, offsetPos.getZ() + 0.5);
+            entity.moveTo(offsetPos.getX() + 0.5, offsetPos.getY() + 0.15, offsetPos.getZ() + 0.5);
             return true;
         }
 
