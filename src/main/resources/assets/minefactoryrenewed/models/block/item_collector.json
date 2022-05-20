@@ -1,6 +1,9 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/orientable",
   "textures": {
-    "all": "minefactoryrenewed:block/item_collector"
+    "top": "minefactoryrenewed:block/item_collector_top",
+    "bottom": "minefactoryrenewed:block/item_collector_bottom",
+    "front": "minefactoryrenewed:block/item_collector",
+    "side": "minefactoryrenewed:block/item_collector"
   }
 }
