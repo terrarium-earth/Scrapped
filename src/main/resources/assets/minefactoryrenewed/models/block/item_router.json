@@ -9,8 +9,8 @@
   },
   "textures": {
     "particle": "minefactoryrenewed:block/item_router_white",
-    "down": "minefactoryrenewed:block/machine_bottom",
-    "up": "minefactoryrenewed:block/machine_top",
+    "down": "minefactoryrenewed:block/item_bottom",
+    "up": "minefactoryrenewed:block/item_top",
     "north": "minefactoryrenewed:block/item_router_white",
     "east": "minefactoryrenewed:block/item_router_red",
     "south": "minefactoryrenewed:block/item_router_green",
