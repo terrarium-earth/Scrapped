@@ -1,9 +1,10 @@
 {
   "parent": "minecraft:block/orientable",
   "textures": {
-    "top": "minefactoryrenewed:block/machine_top",
+    "top": "minefactoryrenewed:block/farmer_top",
     "bottom": "minefactoryrenewed:block/machine_bottom",
     "front": "minefactoryrenewed:block/farmer_front",
-    "side": "minefactoryrenewed:block/machine_side"
+    "side": "minefactoryrenewed:block/farmer_side",
+    "south": "minefactoryrenewed:block/machine_side"
   }
 }
