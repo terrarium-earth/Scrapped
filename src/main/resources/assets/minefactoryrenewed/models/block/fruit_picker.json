@@ -4,6 +4,7 @@
     "top": "minefactoryrenewed:block/machine_top",
     "bottom": "minefactoryrenewed:block/machine_bottom",
     "front": "minefactoryrenewed:block/fruit_picker_front",
-    "side": "minefactoryrenewed:block/machine_side"
+    "side": "minefactoryrenewed:block/fruit_picker_side",
+    "south": "minefactoryrenewed:block/machine_side"
   }
 }
