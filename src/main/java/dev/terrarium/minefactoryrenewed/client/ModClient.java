@@ -3,6 +3,7 @@ package dev.terrarium.minefactoryrenewed.client;
 import com.mojang.blaze3d.shaders.Uniform;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
+import dev.terrarium.minefactoryrenewed.client.blockentity.AutoEnchanterRenderer;
 import dev.terrarium.minefactoryrenewed.client.blockentity.LaserChargerRenderer;
 import dev.terrarium.minefactoryrenewed.client.blockentity.LaserDrillRenderer;
 import dev.terrarium.minefactoryrenewed.client.blockentity.SteamTurbineRenderer;
@@ -79,6 +80,7 @@ public class ModClient {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.RUBBER_DOOR.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.RUBBER_SAPLING.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.AUTO_ANVIL.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.AUTO_ENCHANTER.get(), RenderType.cutout());
     }
 
     private static void initScreens() {
@@ -126,6 +128,7 @@ public class ModClient {
         BlockEntityRenderers.register(ModBlockEntities.LASER_DRILL.get(), ctx -> new LaserDrillRenderer());
         BlockEntityRenderers.register(ModBlockEntities.STEAM_TURBINE.get(), ctx -> new SteamTurbineRenderer());
         BlockEntityRenderers.register(ModBlockEntities.RUBBER_SIGN.get(), SignRenderer::new);
+        BlockEntityRenderers.register(ModBlockEntities.AUTO_ENCHANTER.get(), AutoEnchanterRenderer::new);
     }
 
     private static void initColors(FMLClientSetupEvent event) {

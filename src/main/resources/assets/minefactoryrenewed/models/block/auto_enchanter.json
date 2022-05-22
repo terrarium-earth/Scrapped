@@ -1,9 +1,22 @@
 {
-  "parent": "minecraft:block/orientable",
+  "parent": "block/block",
   "textures": {
-    "top": "minefactoryrenewed:block/auto_enchanter_top",
+    "particle": "minefactoryrenewed:block/auto_enchanter_side",
     "bottom": "minefactoryrenewed:block/machine_bottom",
-    "front": "minefactoryrenewed:block/machine_side",
-    "side": "minefactoryrenewed:block/machine_side"
-  }
+    "top": "minefactoryrenewed:block/auto_enchanter_top",
+    "side": "minefactoryrenewed:block/auto_enchanter_side"
+  },
+  "elements": [
+    {   "from": [ 0, 0, 0 ],
+      "to": [ 16, 12, 16 ],
+      "faces": {
+        "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#bottom", "cullface": "down" },
+        "up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#top" },
+        "north": { "uv": [ 0, 4, 16, 16 ], "texture": "#side", "cullface": "north" },
+        "south": { "uv": [ 0, 4, 16, 16 ], "texture": "#side", "cullface": "south" },
+        "west":  { "uv": [ 0, 4, 16, 16 ], "texture": "#side", "cullface": "west" },
+        "east":  { "uv": [ 0, 4, 16, 16 ], "texture": "#side", "cullface": "east" }
+      }
+    }
+  ]
 }
