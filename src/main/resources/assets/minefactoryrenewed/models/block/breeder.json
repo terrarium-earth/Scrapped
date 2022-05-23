@@ -4,6 +4,6 @@
     "top": "minefactoryrenewed:block/machine_top",
     "bottom": "minefactoryrenewed:block/machine_bottom",
     "front": "minefactoryrenewed:block/breeder_front",
-    "side": "minefactoryrenewed:block/machine_side"
+    "side": "minefactoryrenewed:block/breeder_side"
   }
 }

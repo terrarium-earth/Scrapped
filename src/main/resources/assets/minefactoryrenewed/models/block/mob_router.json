@@ -12,8 +12,8 @@
     "down": "minefactoryrenewed:block/machine_bottom",
     "up": "minefactoryrenewed:block/machine_top",
     "north": "minefactoryrenewed:block/mob_router_front",
-    "east": "minefactoryrenewed:block/machine_side",
-    "south": "minefactoryrenewed:block/mob_router_back",
-    "west": "minefactoryrenewed:block/machine_side"
+    "east": "minefactoryrenewed:block/mob_router_side",
+    "south": "minefactoryrenewed:block/mob_router_side",
+    "west": "minefactoryrenewed:block/mob_router_side"
   }
 }

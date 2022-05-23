@@ -6,7 +6,6 @@ import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
 import dev.terrarium.minefactoryrenewed.client.blockentity.AutoEnchanterRenderer;
 import dev.terrarium.minefactoryrenewed.client.blockentity.LaserChargerRenderer;
 import dev.terrarium.minefactoryrenewed.client.blockentity.LaserDrillRenderer;
-import dev.terrarium.minefactoryrenewed.client.blockentity.SteamTurbineRenderer;
 import dev.terrarium.minefactoryrenewed.client.entity.PinkSlimeRenderer;
 import dev.terrarium.minefactoryrenewed.client.gui.machine.animals.*;
 import dev.terrarium.minefactoryrenewed.client.gui.machine.blocks.BlockPlacerScreen;
@@ -81,6 +80,7 @@ public class ModClient {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.RUBBER_SAPLING.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.AUTO_ANVIL.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.AUTO_ENCHANTER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.AUTO_DISENCHANTER.get(), RenderType.cutout());
     }
 
     private static void initScreens() {
@@ -126,7 +126,6 @@ public class ModClient {
     private static void initBlockEntities() {
         BlockEntityRenderers.register(ModBlockEntities.LASER_CHARGER.get(), ctx -> new LaserChargerRenderer());
         BlockEntityRenderers.register(ModBlockEntities.LASER_DRILL.get(), ctx -> new LaserDrillRenderer());
-        BlockEntityRenderers.register(ModBlockEntities.STEAM_TURBINE.get(), ctx -> new SteamTurbineRenderer());
         BlockEntityRenderers.register(ModBlockEntities.RUBBER_SIGN.get(), SignRenderer::new);
         BlockEntityRenderers.register(ModBlockEntities.AUTO_ENCHANTER.get(), AutoEnchanterRenderer::new);
     }

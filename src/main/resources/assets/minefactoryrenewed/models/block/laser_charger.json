@@ -3,7 +3,8 @@
   "textures": {
     "top": "minefactoryrenewed:block/machine_top",
     "bottom": "minefactoryrenewed:block/machine_bottom",
-    "front": "minefactoryrenewed:block/laser_drill_side",
-    "side": "minefactoryrenewed:block/machine_side"
+    "front": "minefactoryrenewed:block/laser_side",
+    "side": "minefactoryrenewed:block/laser_charger_side",
+    "south": "minefactoryrenewed:block/laser_back"
   }
 }
