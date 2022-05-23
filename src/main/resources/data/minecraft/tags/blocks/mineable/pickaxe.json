@@ -37,6 +37,7 @@
     "minefactoryrenewed:item_collector",
     "minefactoryrenewed:ejector",
     "minefactoryrenewed:item_router",
-    "minefactoryrenewed:road"
+    "minefactoryrenewed:road",
+    "minefactoryrenewed:dark_road"
   ]
 }

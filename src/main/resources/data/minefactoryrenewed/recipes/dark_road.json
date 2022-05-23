@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "XYX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "minefactoryrenewed:road"
+    },
+    "Y": {
+      "item": "minecraft:gray_dye"
+    }
+  },
+  "result": {
+    "item": "minefactoryrenewed:dark_road",
+    "count": 8
+  }
+}

@@ -60,6 +60,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> ROAD = BLOCKS.register("road", RoadBlock::new);
     public static final RegistryObject<BlockItem> ROAD_ITEM = ITEMS.register("road", () -> new BlockItem(ROAD.get(), ModItems.PROPERTIES));
 
+    public static final RegistryObject<Block> DARK_ROAD = BLOCKS.register("dark_road", RoadBlock::new);
+    public static final RegistryObject<BlockItem> DARK_ROAD_ITEM = ITEMS.register("dark_road", () -> new BlockItem(DARK_ROAD.get(), ModItems.PROPERTIES));
+
     public static final RegistryObject<Block> CONVEYOR_BELT = BLOCKS.register("conveyor_belt", ConveyorBeltBlock::new);
     public static final RegistryObject<BlockItem> CONVEYOR_BELT_ITEM = ITEMS.register("conveyor_belt", () -> new BlockItem(CONVEYOR_BELT.get(), new Item.Properties().stacksTo(16).tab(MinefactoryRenewed.TAB)));
 
