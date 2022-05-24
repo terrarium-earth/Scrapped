@@ -1,5 +1,14 @@
 import net.minecraftforge.gradle.userdev.UserDevExtension
 
+plugins {
+    java
+    idea
+
+    id("net.minecraftforge.gradle") version ("5.1.+")
+    id("org.spongepowered.mixin") version ("0.7-SNAPSHOT")
+    id("org.parchmentmc.librarian.forgegradle") version ("1.+")
+}
+
 val modVendor: String by project
 val modName: String by project
 val modid: String by project
@@ -11,20 +20,11 @@ val forgeVersion: String by project
 val jeiVersion: String by project
 val topVersion: String by project
 
-plugins {
-    java
-    idea
-
-    id("net.minecraftforge.gradle") version("5.1.+")
-    id("org.spongepowered.mixin") version("0.7-SNAPSHOT")
-    id("org.parchmentmc.librarian.forgegradle") version("1.+")
-}
-
 version = modVersion
 group = "${modGroup}:${modid}"
 base.archivesName.set(modid)
 
-configure<JavaPluginExtension> {
+java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
 }
@@ -34,7 +34,7 @@ mixin {
     config("minefactoryrenewed.mixins.json")
 }
 
-configure<UserDevExtension> {
+minecraft {
     mappings("parchment", mappingsVersion)
 
     runs {
@@ -69,11 +69,13 @@ configure<UserDevExtension> {
             property("forge.logging.markers", "REGISTRIES")
             property("forge.logging.console.level", "debug")
 
-            args(listOf(
-                "--mod", modid, "--all", "--output",
-                file("src/generated/resources/"),
-                "--existing", file("src/main/resources/")
-            ))
+            args(
+                listOf(
+                    "--mod", modid, "--all", "--output",
+                    file("src/generated/resources/"),
+                    "--existing", file("src/main/resources/")
+                )
+            )
 
             mods {
                 create(modid) {
@@ -85,12 +87,12 @@ configure<UserDevExtension> {
 }
 
 repositories {
-    maven { url = uri("https://dvs1.progwml6.com/files/maven/") }
-    maven { url = uri("https://modmaven.k-4u.nl") }
+    maven(url = "https://dvs1.progwml6.com/files/maven/")
+    maven(url = "https://modmaven.k-4u.nl")
 }
 
 dependencies {
-    add("minecraft", "net.minecraftforge:forge:$minecraftVersion-$forgeVersion")
+    minecraft("net.minecraftforge:forge:$minecraftVersion-$forgeVersion")
     implementation(fg.deobf("mezz.jei:jei-$minecraftVersion:$jeiVersion"))
     implementation(fg.deobf(project.dependencies.create(group = "mcjty.theoneprobe", name = "theoneprobe", version = topVersion).apply { isTransitive = false }))
     annotationProcessor("org.spongepowered:mixin:0.8.5:processor")
@@ -104,7 +106,7 @@ sourceSets {
     }
 }
 
-tasks.named<Jar>("jar") {
+tasks.jar {
     manifest {
         attributes(
             "Specification-Title" to modName,

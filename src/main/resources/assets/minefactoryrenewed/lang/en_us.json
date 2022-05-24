@@ -146,7 +146,7 @@
 
   "_comment6": "Machine Tooltips",
   "tooltip.machine.creative_energy": "§8An infinite supply of power<br>§bCreative only of course",
-  "tooltip.machine.planter": "§aAuto planter<br>§6Range: 3x3",
+  "tooltip.machine.planter": "§aAutomatically plants things in 9 different sectors<br>§6Range: 3x3",
   "tooltip.machine.farmer": "§aHarvests plants<br>§aCollects sludge while working<br>§6Range: 3x3",
   "tooltip.machine.fertilizer": "§aUses Industrial Fertilizer<br>§6Range: 3x3",
   "tooltip.machine.fruit_picker": "§aHarvest fruits without the hassle<br>§6Range: 3x3",
