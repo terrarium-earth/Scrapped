@@ -9,6 +9,7 @@ val mappingsVersion: String by project
 val minecraftVersion: String by project
 val forgeVersion: String by project
 val jeiVersion: String by project
+val topVersion: String by project
 
 plugins {
     java
@@ -85,11 +86,13 @@ configure<UserDevExtension> {
 
 repositories {
     maven { url = uri("https://dvs1.progwml6.com/files/maven/") }
+    maven { url = uri("https://modmaven.k-4u.nl") }
 }
 
 dependencies {
     add("minecraft", "net.minecraftforge:forge:$minecraftVersion-$forgeVersion")
     implementation(fg.deobf("mezz.jei:jei-$minecraftVersion:$jeiVersion"))
+    implementation(fg.deobf(project.dependencies.create(group = "mcjty.theoneprobe", name = "theoneprobe", version = topVersion).apply { isTransitive = false }))
     annotationProcessor("org.spongepowered:mixin:0.8.5:processor")
 }
 
