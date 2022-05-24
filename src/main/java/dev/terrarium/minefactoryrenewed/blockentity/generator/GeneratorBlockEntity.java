@@ -101,7 +101,7 @@ public abstract class GeneratorBlockEntity extends BaseBlockEntity implements Me
 
     public void generateEnergy(int energyAmount) {
         if (getEnergy() == null) return;
-        getEnergy().receiveEnergy(energyAmount, false);
+        getEnergy().receiveInternal(energyAmount, false);
     }
 
     public void transferEnergy() {

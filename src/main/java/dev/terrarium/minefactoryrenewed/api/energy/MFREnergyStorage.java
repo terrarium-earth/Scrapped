@@ -25,6 +25,18 @@ public class MFREnergyStorage extends EnergyStorage {
     }
 
     @Override
+    public int receiveEnergy(int maxReceive, boolean simulate) {
+        return super.receiveEnergy(maxReceive, simulate);
+    }
+
+    public int receiveInternal(int maxReceive, boolean simulate) {
+        int energyReceived = Math.min(capacity - energy, Math.min(this.maxReceive, maxReceive));
+        if (!simulate)
+            energy += energyReceived;
+        return energyReceived;
+    }
+
+    @Override
     public int extractEnergy(int maxExtract, boolean simulate) {
         if (isInfinite) {
             return maxExtract;
