@@ -3,11 +3,13 @@ package dev.terrarium.minefactoryrenewed.client;
 import com.mojang.blaze3d.shaders.Uniform;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
+import dev.terrarium.minefactoryrenewed.block.generator.LavaGenBlock;
 import dev.terrarium.minefactoryrenewed.client.blockentity.AutoEnchanterRenderer;
 import dev.terrarium.minefactoryrenewed.client.blockentity.LaserChargerRenderer;
 import dev.terrarium.minefactoryrenewed.client.blockentity.LaserDrillRenderer;
 import dev.terrarium.minefactoryrenewed.client.entity.PinkSlimeRenderer;
 import dev.terrarium.minefactoryrenewed.client.gui.generator.FurnaceGenScreen;
+import dev.terrarium.minefactoryrenewed.client.gui.generator.LavaGenScreen;
 import dev.terrarium.minefactoryrenewed.client.gui.machine.animals.*;
 import dev.terrarium.minefactoryrenewed.client.gui.machine.blocks.BlockPlacerScreen;
 import dev.terrarium.minefactoryrenewed.client.gui.machine.blocks.BlockSmasherScreen;
@@ -120,6 +122,7 @@ public class ModClient {
 
         //Generators
         MenuScreens.register(ModBlockEntities.FURNACE_GENERATOR_CONTAINER.get(), FurnaceGenScreen::new);
+        MenuScreens.register(ModBlockEntities.LAVA_GENERATOR_CONTAINER.get(), LavaGenScreen::new);
     }
 
     private static void initEntities() {

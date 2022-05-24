@@ -6,6 +6,7 @@ import dev.terrarium.minefactoryrenewed.block.PinkSlimeBlock;
 import dev.terrarium.minefactoryrenewed.block.RoadBlock;
 import dev.terrarium.minefactoryrenewed.block.fluid.*;
 import dev.terrarium.minefactoryrenewed.block.generator.FurnaceGenBlock;
+import dev.terrarium.minefactoryrenewed.block.generator.LavaGenBlock;
 import dev.terrarium.minefactoryrenewed.block.machine.animals.*;
 import dev.terrarium.minefactoryrenewed.block.machine.blocks.BlockBreakerBlock;
 import dev.terrarium.minefactoryrenewed.block.machine.blocks.BlockPlacerBlock;
@@ -187,8 +188,13 @@ public class ModBlocks {
     public static final RegistryObject<Block> ITEM_ROUTER = BLOCKS.register("item_router", ItemRouterBlock::new);
     public static final RegistryObject<BlockItem> ITEM_ROUTER_ITEM = ITEMS.register("item_router", () -> new BlockItem(ITEM_ROUTER.get(), ModItems.PROPERTIES));
 
+    //Generators for adrian's sanity
+
     public static final RegistryObject<Block> FURNACE_GENERATOR = BLOCKS.register("furnace_generator", FurnaceGenBlock::new);
     public static final RegistryObject<BlockItem> FURNACE_GENERATOR_ITEM = ITEMS.register("furnace_generator", () -> new BlockItem(FURNACE_GENERATOR.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> LAVA_GENERATOR = BLOCKS.register("lava_generator", LavaGenBlock::new);
+    public static final RegistryObject<BlockItem> LAVA_GENERATOR_ITEM = ITEMS.register("lava_generator", () -> new BlockItem(LAVA_GENERATOR.get(), ModItems.PROPERTIES));
 
     //Rubbery stuff
     public static final RegistryObject<Block> RUBBER_LOG = BLOCKS.register("rubber_log", () -> new RubberLogBlock(ModBlocks.STRIPPED_RUBBER_LOG));

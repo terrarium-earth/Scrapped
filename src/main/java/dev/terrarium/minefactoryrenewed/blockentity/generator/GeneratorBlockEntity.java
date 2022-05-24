@@ -95,6 +95,10 @@ public abstract class GeneratorBlockEntity extends BaseBlockEntity implements Me
         return getEnergy().getMaxEnergyStored() - getEnergy().getEnergyStored() >= energyGen;
     }
 
+    public void generateEnergy() {
+        this.generateEnergy(getEnergyGen());
+    }
+
     public void generateEnergy(int energyAmount) {
         if (getEnergy() == null) return;
         getEnergy().receiveEnergy(energyAmount, false);
