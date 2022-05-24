@@ -44,7 +44,7 @@ public abstract class GeneratorBlockEntity extends BaseBlockEntity implements Me
 
     public GeneratorBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state, int energyCapacity, int energyGen, int maxTransfer) {
         super(type, pos, state);
-        this.energy = new MFREnergyStorage(energyCapacity, Integer.MAX_VALUE, Integer.MAX_VALUE);
+        this.energy = new MFREnergyStorage(energyCapacity, 0, Integer.MAX_VALUE);
         this.energyHandler = LazyOptional.of(() -> energy);
         this.energyGen = energyGen;
         this.maxTransfer = maxTransfer;
