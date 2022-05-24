@@ -8,7 +8,7 @@ uniform sampler2D Sampler0;
 uniform float Time;
 
 void main() {
-    vec4 textureColor = texture2D(Sampler0, texCoord0);
+    vec4 textureColor = texture(Sampler0, texCoord0);
 
     float slowTime = Time / 20.0;
     vec3 uv = vec3((texCoord0 * 0.5), 0.0);
