@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class LavaGenBlock extends GeneratorBlock{
+public class LavaGenBlock extends GeneratorBlock {
     @Override
     public BlockEntityType<? extends GeneratorBlockEntity> getBlockEntityType() {
         return ModBlockEntities.LAVA_GENERATOR.get();
@@ -18,6 +18,6 @@ public class LavaGenBlock extends GeneratorBlock{
 
     @Override
     public @Nullable BlockEntity newBlockEntity(@NotNull BlockPos pos, @NotNull BlockState state) {
-        return null;
+        return new LavaGenBlockEntity(pos, state);
     }
 }
