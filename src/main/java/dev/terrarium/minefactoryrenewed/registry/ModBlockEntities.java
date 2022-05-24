@@ -12,11 +12,13 @@ import dev.terrarium.minefactoryrenewed.blockentity.container.farming.FarmerCont
 import dev.terrarium.minefactoryrenewed.blockentity.container.farming.FertilizerContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.container.farming.FruitPickerContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.container.farming.PlanterContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.generator.FurnaceGenContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.container.mobs.*;
 import dev.terrarium.minefactoryrenewed.blockentity.container.power.EthanolGeneratorContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.container.power.SteamTurbineContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.container.processing.*;
 import dev.terrarium.minefactoryrenewed.blockentity.container.transport.ItemRouterContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.generator.FurnaceGenBlockEntity;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.animals.*;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.blocks.BlockBreakerBlockEntity;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.blocks.BlockPlacerBlockEntity;
@@ -240,6 +242,11 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("rubber_sign_block_entity", () ->
                     BlockEntityType.Builder.of(SignBlockEntity::new,
                                     ModBlocks.RUBBER_SIGN.get(), ModBlocks.RUBBER_WALL_SIGN.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<FurnaceGenBlockEntity>> FURNACE_GENERATOR =
+            BLOCK_ENTITIES.register("furnace_generator", () ->
+                    BlockEntityType.Builder.of(FurnaceGenBlockEntity::new, ModBlocks.FURNACE_GENERATOR.get())
                             .build(null));
 
     /**
@@ -468,5 +475,12 @@ public class ModBlockEntities {
                 BlockPos pos = data.readBlockPos();
                 ItemRouterBlockEntity itemRouter = (ItemRouterBlockEntity) inv.player.level.getBlockEntity(pos);
                 return new ItemRouterContainer(windowId, inv, itemRouter);
+            }));
+
+    public static final RegistryObject<MenuType<FurnaceGenContainer>> FURNACE_GENERATOR_CONTAINER =
+            CONTAINERS.register("furnace_generator_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                BlockPos pos = data.readBlockPos();
+                FurnaceGenBlockEntity furnaceGen = (FurnaceGenBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new FurnaceGenContainer(windowId, inv, furnaceGen);
             }));
 }

@@ -7,6 +7,7 @@ import dev.terrarium.minefactoryrenewed.client.blockentity.AutoEnchanterRenderer
 import dev.terrarium.minefactoryrenewed.client.blockentity.LaserChargerRenderer;
 import dev.terrarium.minefactoryrenewed.client.blockentity.LaserDrillRenderer;
 import dev.terrarium.minefactoryrenewed.client.entity.PinkSlimeRenderer;
+import dev.terrarium.minefactoryrenewed.client.gui.generator.FurnaceGenScreen;
 import dev.terrarium.minefactoryrenewed.client.gui.machine.animals.*;
 import dev.terrarium.minefactoryrenewed.client.gui.machine.blocks.BlockPlacerScreen;
 import dev.terrarium.minefactoryrenewed.client.gui.machine.blocks.BlockSmasherScreen;
@@ -116,6 +117,9 @@ public class ModClient {
         MenuScreens.register(ModBlockEntities.SLUDGE_BOILER_CONTAINER.get(), SludgeBoilerScreen::new);
         MenuScreens.register(ModBlockEntities.WEATHER_CONTAINER.get(), WeatherScreen::new);
         MenuScreens.register(ModBlockEntities.ITEM_ROUTER_CONTAINER.get(), ItemRouterScreen::new);
+
+        //Generators
+        MenuScreens.register(ModBlockEntities.FURNACE_GENERATOR_CONTAINER.get(), FurnaceGenScreen::new);
     }
 
     private static void initEntities() {
