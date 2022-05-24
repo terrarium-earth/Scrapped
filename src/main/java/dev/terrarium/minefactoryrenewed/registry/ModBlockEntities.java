@@ -12,6 +12,7 @@ import dev.terrarium.minefactoryrenewed.blockentity.container.farming.FarmerCont
 import dev.terrarium.minefactoryrenewed.blockentity.container.farming.FertilizerContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.container.farming.FruitPickerContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.container.farming.PlanterContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.generator.CulinaryGenContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.container.generator.FurnaceGenContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.container.generator.LavaGenContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.container.mobs.*;
@@ -19,6 +20,7 @@ import dev.terrarium.minefactoryrenewed.blockentity.container.power.EthanolGener
 import dev.terrarium.minefactoryrenewed.blockentity.container.power.SteamTurbineContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.container.processing.*;
 import dev.terrarium.minefactoryrenewed.blockentity.container.transport.ItemRouterContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.generator.CulinaryGenBlockEntity;
 import dev.terrarium.minefactoryrenewed.blockentity.generator.FurnaceGenBlockEntity;
 import dev.terrarium.minefactoryrenewed.blockentity.generator.LavaGenBlockEntity;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.animals.*;
@@ -254,6 +256,11 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<LavaGenBlockEntity>> LAVA_GENERATOR =
             BLOCK_ENTITIES.register("lava_generator", () ->
                     BlockEntityType.Builder.of(LavaGenBlockEntity::new, ModBlocks.LAVA_GENERATOR.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<CulinaryGenBlockEntity>> CULINARY_GENERATOR =
+            BLOCK_ENTITIES.register("culinary_generator", () ->
+                    BlockEntityType.Builder.of(CulinaryGenBlockEntity::new, ModBlocks.CULINARY_GENERATOR.get())
                             .build(null));
 
     /**
@@ -496,5 +503,12 @@ public class ModBlockEntities {
                 BlockPos pos = data.readBlockPos();
                 LavaGenBlockEntity furnaceGen = (LavaGenBlockEntity) inv.player.level.getBlockEntity(pos);
                 return new LavaGenContainer(windowId, inv, furnaceGen);
+            }));
+
+    public static final RegistryObject<MenuType<CulinaryGenContainer>> CULINARY_GENERATOR_CONTAINER =
+            CONTAINERS.register("culinary_generator_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                BlockPos pos = data.readBlockPos();
+                CulinaryGenBlockEntity culinaryGen = (CulinaryGenBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new CulinaryGenContainer(windowId, inv, culinaryGen);
             }));
 }
