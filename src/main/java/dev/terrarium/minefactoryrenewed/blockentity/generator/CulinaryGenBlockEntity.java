@@ -75,6 +75,7 @@ public class CulinaryGenBlockEntity extends GeneratorBlockEntity {
                 if (food != null) {
                     foodEnergyGen = food.getNutrition() * getEnergyGen();
                     burnTime = (int) (food.getSaturationModifier() / food.getNutrition() * (45 * 20));
+                    maxBurnTime = burnTime;
                     stack.shrink(1);
                 }
             }
