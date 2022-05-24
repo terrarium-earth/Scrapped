@@ -34,7 +34,7 @@ public class LavaFabBlockEntity extends MachineBlockEntity implements MenuProvid
     @Override
     protected void tick() {
         super.tick();
-        if (canRun() && getTank().getSpace() > 0) {
+        if (canRun() && hasEnoughPower() && getTank().getSpace() > 0) {
             getTank().fill(new FluidStack(Fluids.LAVA, 1), IFluidHandler.FluidAction.EXECUTE);
             useEnergy();
         }
