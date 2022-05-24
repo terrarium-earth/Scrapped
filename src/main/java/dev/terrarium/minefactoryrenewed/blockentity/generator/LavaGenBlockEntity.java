@@ -20,7 +20,7 @@ public class LavaGenBlockEntity extends GeneratorBlockEntity {
     private int ticker = 0;
 
     public LavaGenBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.LAVA_GENERATOR.get(), pos, state, 100000, 40, 100);
+        super(ModBlockEntities.LAVA_GENERATOR.get(), pos, state, 100000, 80, 100);
         this.createFluid(8000, new FluidStack(Fluids.LAVA, 1000));
     }
 
@@ -28,7 +28,7 @@ public class LavaGenBlockEntity extends GeneratorBlockEntity {
     @Override
     protected void tick() {
         super.tick();
-        if(ticker > 10 && this.getTank().getCapacity() > 10) {
+        if(ticker > 2 && this.getTank().getFluidAmount() > 10 && canGenerate()) {
             this.getTank().drain(10, IFluidHandler.FluidAction.EXECUTE);
             this.generateEnergy();
             ticker = 0;
@@ -38,7 +38,7 @@ public class LavaGenBlockEntity extends GeneratorBlockEntity {
 
     @Override
     public @NotNull Component getDisplayName() {
-        return new TranslatableComponent("blocks.minefactoryrenewed.lava_generator");
+        return new TranslatableComponent("block.minefactoryrenewed.lava_generator");
     }
 
     @Override
