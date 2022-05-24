@@ -1,6 +1,7 @@
 package dev.terrarium.minefactoryrenewed.blockentity.generator;
 
 import dev.terrarium.minefactoryrenewed.blockentity.container.generator.LavaGenContainer;
+import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -19,8 +20,8 @@ public class LavaGenBlockEntity extends GeneratorBlockEntity {
 
     private int ticker = 0;
 
-    public LavaGenBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
-        super(type, pos, state, 100000, 40, 100);
+    public LavaGenBlockEntity(BlockPos pos, BlockState state) {
+        super(ModBlockEntities.LAVA_GENERATOR.get(), pos, state, 100000, 40, 100);
         this.createFluid(8000, new FluidStack(Fluids.LAVA, 1000));
     }
 

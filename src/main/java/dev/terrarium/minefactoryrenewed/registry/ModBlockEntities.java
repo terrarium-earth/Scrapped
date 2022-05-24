@@ -252,8 +252,8 @@ public class ModBlockEntities {
                             .build(null));
 
     public static final RegistryObject<BlockEntityType<FurnaceGenBlockEntity>> LAVA_GENERATOR =
-            BLOCK_ENTITIES.register("furnace_generator", () ->
-                    BlockEntityType.Builder.of(FurnaceGenBlockEntity::new, ModBlocks.FURNACE_GENERATOR.get())
+            BLOCK_ENTITIES.register("lava_generator", () ->
+                    BlockEntityType.Builder.of(LavaGenBlockEntity::new, ModBlocks.LAVA_GENERATOR.get())
                             .build(null));
 
     /**
