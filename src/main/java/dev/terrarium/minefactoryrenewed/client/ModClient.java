@@ -7,10 +7,7 @@ import dev.terrarium.minefactoryrenewed.client.blockentity.AutoEnchanterRenderer
 import dev.terrarium.minefactoryrenewed.client.blockentity.LaserChargerRenderer;
 import dev.terrarium.minefactoryrenewed.client.blockentity.LaserDrillRenderer;
 import dev.terrarium.minefactoryrenewed.client.entity.PinkSlimeRenderer;
-import dev.terrarium.minefactoryrenewed.client.gui.generator.CulinaryGenScreen;
-import dev.terrarium.minefactoryrenewed.client.gui.generator.FurnaceGenScreen;
-import dev.terrarium.minefactoryrenewed.client.gui.generator.LavaGenScreen;
-import dev.terrarium.minefactoryrenewed.client.gui.generator.PinkGenScreen;
+import dev.terrarium.minefactoryrenewed.client.gui.generator.*;
 import dev.terrarium.minefactoryrenewed.client.gui.machine.animals.*;
 import dev.terrarium.minefactoryrenewed.client.gui.machine.blocks.BlockPlacerScreen;
 import dev.terrarium.minefactoryrenewed.client.gui.machine.blocks.BlockSmasherScreen;
@@ -126,6 +123,7 @@ public class ModClient {
         MenuScreens.register(ModBlockEntities.LAVA_GENERATOR_CONTAINER.get(), LavaGenScreen::new);
         MenuScreens.register(ModBlockEntities.CULINARY_GENERATOR_CONTAINER.get(), CulinaryGenScreen::new);
         MenuScreens.register(ModBlockEntities.PINK_GENERATOR_CONTAINER.get(), PinkGenScreen::new);
+        MenuScreens.register(ModBlockEntities.POTION_GENERATOR_CONTAINER.get(), PotionGenScreen::new);
     }
 
     private static void initEntities() {

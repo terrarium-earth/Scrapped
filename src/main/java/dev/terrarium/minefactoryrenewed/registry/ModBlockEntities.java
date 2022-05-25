@@ -12,10 +12,7 @@ import dev.terrarium.minefactoryrenewed.blockentity.container.farming.FarmerCont
 import dev.terrarium.minefactoryrenewed.blockentity.container.farming.FertilizerContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.container.farming.FruitPickerContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.container.farming.PlanterContainer;
-import dev.terrarium.minefactoryrenewed.blockentity.container.generator.CulinaryGenContainer;
-import dev.terrarium.minefactoryrenewed.blockentity.container.generator.FurnaceGenContainer;
-import dev.terrarium.minefactoryrenewed.blockentity.container.generator.LavaGenContainer;
-import dev.terrarium.minefactoryrenewed.blockentity.container.generator.PinkGenContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.generator.*;
 import dev.terrarium.minefactoryrenewed.blockentity.container.mobs.*;
 import dev.terrarium.minefactoryrenewed.blockentity.container.power.EthanolGeneratorContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.container.power.SteamTurbineContainer;
@@ -277,6 +274,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(PinkGenBlockEntity::new, ModBlocks.PINK_GENERATOR.get())
                             .build(null));
 
+    public static final RegistryObject<BlockEntityType<PotionGenBlockEntity>> POTION_GENERATOR =
+            BLOCK_ENTITIES.register("potion_generator", () ->
+                    BlockEntityType.Builder.of(PotionGenBlockEntity::new, ModBlocks.POTION_GENERATOR.get())
+                            .build(null));
+
     /**
      * Containers
      */
@@ -531,5 +533,12 @@ public class ModBlockEntities {
                 BlockPos pos = data.readBlockPos();
                 PinkGenBlockEntity pinkGen = (PinkGenBlockEntity) inv.player.level.getBlockEntity(pos);
                 return new PinkGenContainer(windowId, inv, pinkGen);
+            }));
+
+    public static final RegistryObject<MenuType<PotionGenContainer>> POTION_GENERATOR_CONTAINER =
+            CONTAINERS.register("potion_generator_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                BlockPos pos = data.readBlockPos();
+                PotionGenBlockEntity pinkGen = (PotionGenBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new PotionGenContainer(windowId, inv, pinkGen);
             }));
 }

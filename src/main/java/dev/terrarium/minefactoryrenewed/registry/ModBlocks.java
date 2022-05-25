@@ -207,6 +207,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> PINK_GENERATOR = BLOCKS.register("pink_generator", PinkGenBlock::new);
     public static final RegistryObject<BlockItem> PINK_GENERATOR_ITEM = ITEMS.register("pink_generator", () -> new BlockItem(PINK_GENERATOR.get(), ModItems.PROPERTIES));
 
+    public static final RegistryObject<Block> POTION_GENERATOR = BLOCKS.register("potion_generator", PotionGenBlock::new);
+    public static final RegistryObject<BlockItem> POTION_GENERATOR_ITEM = ITEMS.register("potion_generator", () -> new BlockItem(POTION_GENERATOR.get(), ModItems.PROPERTIES));
+
     //Rubbery stuff
     public static final RegistryObject<Block> RUBBER_LOG = BLOCKS.register("rubber_log", () -> new RubberLogBlock(ModBlocks.STRIPPED_RUBBER_LOG));
     public static final RegistryObject<BlockItem> RUBBER_LOG_ITEM = ITEMS.register("rubber_log", () -> new BlockItem(RUBBER_LOG.get(), ModItems.PROPERTIES));

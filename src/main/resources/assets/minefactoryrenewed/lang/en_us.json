@@ -133,6 +133,7 @@
   "block.minefactoryrenewed.pink_generator": "Pink Generator",
   "block.minefactoryrenewed.lunar_generator": "Lunar Generator",
   "block.minefactoryrenewed.solar_generator": "Solar Generator",
+  "block.minefactoryrenewed.potion_generator": "Potion Generator",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",
@@ -194,6 +195,11 @@
   "tooltip.generator.idle": "Idle",
   "tooltip.generator.furnace_generator": "Generates energy from burnable items",
   "tooltip.generator.lava_generator": "Generates energy from flammable fluids",
+  "tooltip.generator.pink_generator": "Generates energy from fabulously pink items",
+  "tooltip.generator.solar_generator": "Generates energy via the power of the sun!",
+  "tooltip.generator.lunar_generator": "Generates energy from the darkness of the night",
+  "tooltip.generator.culinary_generator": "Generates energy from the calories found within food<br>FE/t = Nutrition * 4",
+  "tooltip.generator.potion_generator": "Generates energy from magical potential of potions",
 
   "_comment7": "Gui Translatable Text",
   "gui.button.harvester.shear_leaves": "Shear Leaves: %s",

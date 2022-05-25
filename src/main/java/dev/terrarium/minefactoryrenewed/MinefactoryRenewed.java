@@ -6,6 +6,7 @@ import dev.terrarium.minefactoryrenewed.compat.TOPCompat;
 import dev.terrarium.minefactoryrenewed.data.PickableReloadListener;
 import dev.terrarium.minefactoryrenewed.data.PinkReloadListener;
 import dev.terrarium.minefactoryrenewed.data.PlantableReloadListener;
+import dev.terrarium.minefactoryrenewed.data.PotionReloadListener;
 import dev.terrarium.minefactoryrenewed.item.SafariNetItem;
 import dev.terrarium.minefactoryrenewed.item.syringe.SyringeItem;
 import dev.terrarium.minefactoryrenewed.network.ModPackets;
@@ -84,5 +85,6 @@ public class MinefactoryRenewed {
         event.addListener(new PlantableReloadListener());
         event.addListener(new PickableReloadListener());
         event.addListener(new PinkReloadListener());
+        event.addListener(new PotionReloadListener());
     }
 }

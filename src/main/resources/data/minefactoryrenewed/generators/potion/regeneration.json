@@ -1,0 +1,5 @@
+{
+  "potionId": "minecraft:regeneration",
+  "energyGen": 80,
+  "burnTime": 1800
+}
