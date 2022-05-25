@@ -147,6 +147,7 @@
   "tooltip.portaspawner.no_spawner": "No spawner captured!",
 
   "_comment6": "Machine Tooltips",
+  "tooltip.item.shift_info": "Hold §6[SHIFT]§r for more info",
   "tooltip.machine.creative_energy": "§8An infinite supply of power<br>§bCreative only of course",
   "tooltip.machine.planter": "§aAutomatically plants things in 9 different sectors<br>§6Range: 3x3",
   "tooltip.machine.farmer": "§aHarvests plants<br>§aCollects sludge while working<br>§6Range: 3x3",

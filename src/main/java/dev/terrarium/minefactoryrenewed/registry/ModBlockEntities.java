@@ -1,6 +1,7 @@
 package dev.terrarium.minefactoryrenewed.registry;
 
 import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
+import dev.terrarium.minefactoryrenewed.block.generator.SolarGenBlock;
 import dev.terrarium.minefactoryrenewed.blockentity.container.animals.*;
 import dev.terrarium.minefactoryrenewed.blockentity.container.blocks.BlockPlacerContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.container.blocks.BlockSmasherContainer;
@@ -20,9 +21,7 @@ import dev.terrarium.minefactoryrenewed.blockentity.container.power.EthanolGener
 import dev.terrarium.minefactoryrenewed.blockentity.container.power.SteamTurbineContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.container.processing.*;
 import dev.terrarium.minefactoryrenewed.blockentity.container.transport.ItemRouterContainer;
-import dev.terrarium.minefactoryrenewed.blockentity.generator.CulinaryGenBlockEntity;
-import dev.terrarium.minefactoryrenewed.blockentity.generator.FurnaceGenBlockEntity;
-import dev.terrarium.minefactoryrenewed.blockentity.generator.LavaGenBlockEntity;
+import dev.terrarium.minefactoryrenewed.blockentity.generator.*;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.animals.*;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.blocks.BlockBreakerBlockEntity;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.blocks.BlockPlacerBlockEntity;
@@ -261,6 +260,16 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<CulinaryGenBlockEntity>> CULINARY_GENERATOR =
             BLOCK_ENTITIES.register("culinary_generator", () ->
                     BlockEntityType.Builder.of(CulinaryGenBlockEntity::new, ModBlocks.CULINARY_GENERATOR.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<LunarGenBlockEntity>> LUNAR_GENERATOR =
+            BLOCK_ENTITIES.register("lunar_generator", () ->
+                    BlockEntityType.Builder.of(LunarGenBlockEntity::new, ModBlocks.LUNAR_GENERATOR.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<SolarGenBlockEntity>> SOLAR_GENERATOR =
+            BLOCK_ENTITIES.register("solar_generator", () ->
+                    BlockEntityType.Builder.of(SolarGenBlockEntity::new, ModBlocks.SOLAR_GENERATOR.get())
                             .build(null));
 
     /**

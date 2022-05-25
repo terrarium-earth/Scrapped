@@ -5,9 +5,7 @@ import dev.terrarium.minefactoryrenewed.block.MeatBlock;
 import dev.terrarium.minefactoryrenewed.block.PinkSlimeBlock;
 import dev.terrarium.minefactoryrenewed.block.RoadBlock;
 import dev.terrarium.minefactoryrenewed.block.fluid.*;
-import dev.terrarium.minefactoryrenewed.block.generator.CulinaryGenBlock;
-import dev.terrarium.minefactoryrenewed.block.generator.FurnaceGenBlock;
-import dev.terrarium.minefactoryrenewed.block.generator.LavaGenBlock;
+import dev.terrarium.minefactoryrenewed.block.generator.*;
 import dev.terrarium.minefactoryrenewed.block.machine.animals.*;
 import dev.terrarium.minefactoryrenewed.block.machine.blocks.BlockBreakerBlock;
 import dev.terrarium.minefactoryrenewed.block.machine.blocks.BlockPlacerBlock;
@@ -34,6 +32,7 @@ import dev.terrarium.minefactoryrenewed.block.transport.ConveyorBeltBlock;
 import dev.terrarium.minefactoryrenewed.block.transport.EjectorBlock;
 import dev.terrarium.minefactoryrenewed.block.transport.ItemCollectorBlock;
 import dev.terrarium.minefactoryrenewed.block.transport.ItemRouterBlock;
+import dev.terrarium.minefactoryrenewed.blockentity.generator.LunarGenBlockEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DoubleHighBlockItem;
@@ -198,6 +197,14 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CULINARY_GENERATOR = BLOCKS.register("culinary_generator", CulinaryGenBlock::new);
     public static final RegistryObject<BlockItem> CULINARY_GENERATOR_ITEM = ITEMS.register("culinary_generator", () -> new BlockItem(CULINARY_GENERATOR.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> LUNAR_GENERATOR = BLOCKS.register("lunar_generator", LunarGenBlock::new);
+    public static final RegistryObject<BlockItem> LUNAR_GENERATOR_ITEM = ITEMS.register("lunar_generator", () -> new BlockItem(LUNAR_GENERATOR.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> SOLAR_GENERATOR = BLOCKS.register("solar_generator", SolarGenBlock::new);
+    public static final RegistryObject<BlockItem> SOLAR_GENERATOR_ITEM = ITEMS.register("solar_generator", () -> new BlockItem(SOLAR_GENERATOR.get(), ModItems.PROPERTIES));
+
+
 
     //Rubbery stuff
     public static final RegistryObject<Block> RUBBER_LOG = BLOCKS.register("rubber_log", () -> new RubberLogBlock(ModBlocks.STRIPPED_RUBBER_LOG));
