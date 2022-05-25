@@ -18,7 +18,8 @@ import org.jetbrains.annotations.Nullable;
 
 public class CulinaryGenBlockEntity extends GeneratorBlockEntity {
 
-    private int foodEnergyGen;
+    private static final int BASE_ENERGY_GEN = 4;
+
     private int burnTime;
     private int maxBurnTime;
 
@@ -43,7 +44,6 @@ public class CulinaryGenBlockEntity extends GeneratorBlockEntity {
         super.saveAdditional(tag);
         tag.putInt("burnTime", burnTime);
         tag.putInt("maxBurnTime", maxBurnTime);
-        tag.putInt("foodEnergyGen", foodEnergyGen);
     }
 
     @Override
@@ -51,7 +51,6 @@ public class CulinaryGenBlockEntity extends GeneratorBlockEntity {
         super.load(tag);
         burnTime = tag.getInt("burnTime");
         maxBurnTime = tag.getInt("maxBurnTime");
-        foodEnergyGen = tag.getInt("foodEnergyGen");
     }
 
     @Override
@@ -62,18 +61,17 @@ public class CulinaryGenBlockEntity extends GeneratorBlockEntity {
             burnTime--;
 
             if (canGenerate())
-                generateEnergy(foodEnergyGen);
+                generateEnergy();
         } else {
             burnTime = 0;
             maxBurnTime = 0;
-            foodEnergyGen = 0;
 
             ItemStack stack = getInventory().getStackInSlot(0);
             if (!stack.isEmpty()) {
                 FoodProperties food = stack.getFoodProperties(null);
 
                 if (food != null) {
-                    foodEnergyGen = food.getNutrition() * getEnergyGen();
+                    setEnergyGen(food.getNutrition() * BASE_ENERGY_GEN);
                     burnTime = (int) (food.getSaturationModifier() / food.getNutrition() * (45 * 20));
                     maxBurnTime = burnTime;
                     stack.shrink(1);
@@ -90,6 +88,13 @@ public class CulinaryGenBlockEntity extends GeneratorBlockEntity {
     @Override
     public @Nullable AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
         return new CulinaryGenContainer(id, inventory, this);
+    }
+
+    @Override
+    public Component getDisplayText() {
+        return burnTime > 0 ?
+                new TranslatableComponent("tooltip.generator.culinary_generator.generating", String.valueOf(getEnergyGen())) :
+                new TranslatableComponent("tooltip.generator.culinary_generator.idle", String.valueOf(BASE_ENERGY_GEN));
     }
 
     public int getBurnTime() {

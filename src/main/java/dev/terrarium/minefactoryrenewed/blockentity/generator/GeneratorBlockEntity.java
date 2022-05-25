@@ -39,8 +39,8 @@ public abstract class GeneratorBlockEntity extends BaseBlockEntity implements Me
     private FluidTank tank;
     private LazyOptional<FluidTank> tankHandler;
 
-    private final int energyGen;
     private final int maxTransfer;
+    private int energyGen;
 
     public GeneratorBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state, int energyCapacity, int energyGen, int maxTransfer) {
         super(type, pos, state);
@@ -61,6 +61,8 @@ public abstract class GeneratorBlockEntity extends BaseBlockEntity implements Me
 
         if (tank != null)
             tag.put("fluid", tank.writeToNBT(new CompoundTag()));
+
+        tag.putInt("energyGen", energyGen);
     }
 
     @Override
@@ -74,6 +76,8 @@ public abstract class GeneratorBlockEntity extends BaseBlockEntity implements Me
 
         if (tag.contains("fluid"))
             tank.readFromNBT(tag.getCompound("fluid"));
+
+        energyGen = tag.getInt("energyGen");
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, GeneratorBlockEntity blockEntity) {
@@ -120,6 +124,11 @@ public abstract class GeneratorBlockEntity extends BaseBlockEntity implements Me
         }
     }
 
+    public void setEnergyGen(int energyGen) {
+        this.energyGen = energyGen;
+        this.setChanged();
+    }
+
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
         //Energy can never be null
@@ -163,6 +172,8 @@ public abstract class GeneratorBlockEntity extends BaseBlockEntity implements Me
     @Nullable
     @Override
     public abstract AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player);
+
+    public abstract Component getDisplayText();
 
     public ItemStackHandler getInventory() {
         return inventory;

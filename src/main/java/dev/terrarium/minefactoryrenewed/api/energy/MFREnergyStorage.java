@@ -30,9 +30,10 @@ public class MFREnergyStorage extends EnergyStorage {
     }
 
     public int receiveInternal(int maxReceive, boolean simulate) {
-        int energyReceived = Math.min(capacity - energy, Math.min(Integer.MAX_VALUE, maxReceive));
+        int energyReceived = Math.min(capacity - energy, maxReceive);
         if (!simulate)
             energy += energyReceived;
+
         return energyReceived;
     }
 

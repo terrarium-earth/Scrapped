@@ -185,6 +185,12 @@
   "tooltip.machine.ejector": "§aEjects items from any inventory behind it",
   "tooltip.machine.item_router": "§aRoutes items from one side to another<br>§aItems can be filtered per side",
 
+  "tooltip.generator.generating": "Generating: %s",
+  "tooltip.generator.idle": "Generates: %s",
+
+  "tooltip.generator.culinary_generator.generating": "Generating: %s FE",
+  "tooltip.generator.culinary_generator.idle": "Generates: (Food Nutrition Value) * %s FE",
+
   "_comment7": "Gui Translatable Text",
   "gui.button.harvester.shear_leaves": "Shear Leaves: %s",
   "gui.button.harvester.small_shrooms": "Small Shrooms: %s",
