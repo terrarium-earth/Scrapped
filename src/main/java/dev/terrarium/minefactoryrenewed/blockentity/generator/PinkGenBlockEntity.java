@@ -1,5 +1,6 @@
 package dev.terrarium.minefactoryrenewed.blockentity.generator;
 
+import dev.terrarium.minefactoryrenewed.blockentity.container.generator.PinkGenContainer;
 import dev.terrarium.minefactoryrenewed.data.PinkManager;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
@@ -11,6 +12,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -21,6 +23,18 @@ public class PinkGenBlockEntity extends GeneratorBlockEntity {
 
     public PinkGenBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.PINK_GENERATOR.get(), pos, state, 100000, 40, 100);
+        this.createInventory(new ItemStackHandler(1) {
+            @Override
+            protected void onContentsChanged(int slot) {
+                super.onContentsChanged(slot);
+                PinkGenBlockEntity.this.setChanged();
+            }
+
+            @Override
+            public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+                return PinkManager.getInstance().isPink(stack);
+            }
+        });
     }
 
     @Override
@@ -66,7 +80,7 @@ public class PinkGenBlockEntity extends GeneratorBlockEntity {
 
     @Override
     public @Nullable AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
-        return null;
+        return new PinkGenContainer(id, inventory, this);
     }
 
     @Override
