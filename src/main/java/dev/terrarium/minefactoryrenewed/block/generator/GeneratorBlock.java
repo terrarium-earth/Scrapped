@@ -70,8 +70,8 @@ public abstract class GeneratorBlock extends BaseEntityBlock implements IWrencha
             return InteractionResult.SUCCESS;
         }
 
-        if (!level.isClientSide() && level.getBlockEntity(pos) instanceof MenuProvider menuProvider) {
-            NetworkHooks.openGui((ServerPlayer) player, menuProvider, pos);
+        if (!level.isClientSide() && level.getBlockEntity(pos) instanceof GeneratorBlockEntity generator && generator.hasMenu()) {
+            NetworkHooks.openGui((ServerPlayer) player, generator, pos);
         }
 
         return InteractionResult.sidedSuccess(level.isClientSide());

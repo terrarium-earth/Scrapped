@@ -173,6 +173,10 @@ public abstract class GeneratorBlockEntity extends BaseBlockEntity implements Me
     @Override
     public abstract AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player);
 
+    public boolean hasMenu() {
+        return true;
+    }
+
     public abstract Component getDisplayText();
 
     public ItemStackHandler getInventory() {
