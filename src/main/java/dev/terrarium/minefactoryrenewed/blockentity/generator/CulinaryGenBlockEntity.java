@@ -92,9 +92,7 @@ public class CulinaryGenBlockEntity extends GeneratorBlockEntity {
 
     @Override
     public Component getDisplayText() {
-        return burnTime > 0 ?
-                new TranslatableComponent("tooltip.generator.culinary_generator.generating", String.valueOf(getEnergyGen())) :
-                new TranslatableComponent("tooltip.generator.culinary_generator.idle", String.valueOf(BASE_ENERGY_GEN));
+        return new TranslatableComponent("tooltip.generator." + (burnTime > 0 ? "generating" : "idle"), String.valueOf(getEnergyGen()));
     }
 
     public int getBurnTime() {

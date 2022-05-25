@@ -83,7 +83,7 @@ public class FurnaceGenBlockEntity extends GeneratorBlockEntity {
 
     @Override
     public Component getDisplayText() {
-        return new TranslatableComponent("tooltip.generator.generating." + (burnTime > 0 ? "generating" : "idle"), String.valueOf(getEnergyGen()));
+        return new TranslatableComponent("tooltip.generator." + (burnTime > 0 ? "generating" : "idle"), String.valueOf(getEnergyGen()));
     }
 
     public int getBurnTime() {

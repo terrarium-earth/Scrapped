@@ -42,8 +42,8 @@ public class LavaGenBlockEntity extends GeneratorBlockEntity {
     @Override
     public Component getDisplayText() {
         return getTank().getFluidAmount() >= FLUID_COST && canGenerate() ?
-                new TranslatableComponent("tooltip.generator.generating", String.valueOf(getEnergy())) :
-                new TranslatableComponent("tooltip.generator.idle", String.valueOf(getEnergy()));
+                new TranslatableComponent("tooltip.generator.generating", String.valueOf(getEnergyGen())) :
+                new TranslatableComponent("tooltip.generator.idle");
     }
 
     @Override

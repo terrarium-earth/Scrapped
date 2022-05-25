@@ -1,9 +1,11 @@
 package dev.terrarium.minefactoryrenewed.client.gui.generator;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.*;
+import com.mojang.math.Matrix4f;
 import dev.terrarium.minefactoryrenewed.blockentity.container.generator.GeneratorContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.generator.GeneratorBlockEntity;
+import dev.terrarium.minefactoryrenewed.client.gui.machine.MachineScreen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -134,7 +136,9 @@ public abstract class GeneratorScreen<T extends GeneratorBlockEntity, C extends 
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(red, green, blue, alpha);
         RenderSystem.setShaderTexture(0, InventoryMenu.BLOCK_ATLAS);
-        blit(poseStack, x, y, 0, width, i, sprite);
+        //blit(poseStack, x, y, 0, width, i, sprite);
+        float spriteWidth = (sprite.getU1() - sprite.getU0()) / (sprite.getWidth() * 2.0f);
+        MachineScreen.innerBlit(poseStack.last().pose(), x, x + width, y, y + i, 0, sprite.getU0(), sprite.getU0() + (spriteWidth * width), sprite.getV0(), sprite.getV1());
 
         //Reset texture back to gui texture
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);

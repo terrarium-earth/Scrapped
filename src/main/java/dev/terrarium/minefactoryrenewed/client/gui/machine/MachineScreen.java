@@ -1,7 +1,8 @@
 package dev.terrarium.minefactoryrenewed.client.gui.machine;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.*;
+import com.mojang.math.Matrix4f;
 import dev.terrarium.minefactoryrenewed.blockentity.container.MachineContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -167,10 +168,25 @@ public abstract class MachineScreen<T extends MachineContainer> extends Abstract
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(red, green, blue, alpha);
         RenderSystem.setShaderTexture(0, InventoryMenu.BLOCK_ATLAS);
-        blit(poseStack, x, y, 0, width, i, sprite);
+        //blit(poseStack, x, y, 0, width, i, sprite);
+        float spriteWidth = (sprite.getU1() - sprite.getU0()) / (sprite.getWidth() * 2.0f);
+        innerBlit(poseStack.last().pose(), x, x + width, y, y + i, 0, sprite.getU0(), sprite.getU0() + (spriteWidth * width), sprite.getV0(), sprite.getV1());
+
 
         //Reset texture back to gui texture
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, this.guiLocation);
+    }
+
+    public static void innerBlit(Matrix4f pMatrix, int pX1, int pX2, int pY1, int pY2, int pBlitOffset, float pMinU, float pMaxU, float pMinV, float pMaxV) {
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
+        BufferBuilder bufferbuilder = Tesselator.getInstance().getBuilder();
+        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
+        bufferbuilder.vertex(pMatrix, (float) pX1, (float) pY2, (float) pBlitOffset).uv(pMinU, pMaxV).endVertex();
+        bufferbuilder.vertex(pMatrix, (float) pX2, (float) pY2, (float) pBlitOffset).uv(pMaxU, pMaxV).endVertex();
+        bufferbuilder.vertex(pMatrix, (float) pX2, (float) pY1, (float) pBlitOffset).uv(pMaxU, pMinV).endVertex();
+        bufferbuilder.vertex(pMatrix, (float) pX1, (float) pY1, (float) pBlitOffset).uv(pMinU, pMinV).endVertex();
+        bufferbuilder.end();
+        BufferUploader.end(bufferbuilder);
     }
 }
