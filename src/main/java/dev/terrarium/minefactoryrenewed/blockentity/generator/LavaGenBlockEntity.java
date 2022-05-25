@@ -17,7 +17,6 @@ import org.jetbrains.annotations.Nullable;
 
 public class LavaGenBlockEntity extends GeneratorBlockEntity {
 
-    private int ticker = 0;
 
     public LavaGenBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.LAVA_GENERATOR.get(), pos, state, 100000, 80, 100);
@@ -28,12 +27,10 @@ public class LavaGenBlockEntity extends GeneratorBlockEntity {
     @Override
     protected void tick() {
         super.tick();
-        if(ticker > 2 && this.getTank().getFluidAmount() > 10 && canGenerate()) {
-            this.getTank().drain(10, IFluidHandler.FluidAction.EXECUTE);
+        if(this.getTank().getFluidAmount() >= 1 && canGenerate()) {
+            this.getTank().drain(1, IFluidHandler.FluidAction.EXECUTE);
             this.generateEnergy();
-            ticker = 0;
         }
-        ticker++;
     }
 
     @Override
