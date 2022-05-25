@@ -64,7 +64,7 @@ public class PotionGenBlockEntity extends GeneratorBlockEntity {
             maxBurnTime = 0;
 
             ItemStack stack = getInventory().getStackInSlot(0);
-            if (!stack.isEmpty() && PotionManager.getInstance().isPotionBurnable(stack)) {
+            if (canGenerate() && !stack.isEmpty() && PotionManager.getInstance().isPotionBurnable(stack)) {
                 setEnergyGen(PotionManager.getInstance().getEnergyGen(stack));
                 burnTime = PotionManager.getInstance().getBurnTime(stack);
                 maxBurnTime = burnTime;

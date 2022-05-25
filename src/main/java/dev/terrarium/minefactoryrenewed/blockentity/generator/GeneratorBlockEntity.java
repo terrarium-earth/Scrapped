@@ -81,8 +81,7 @@ public abstract class GeneratorBlockEntity extends BaseBlockEntity implements Me
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, GeneratorBlockEntity blockEntity) {
-        if (level == null || level.hasNeighborSignal(pos)) return;
-        blockEntity.transferEnergy();
+        if (level == null) return;
         blockEntity.tick();
     }
 
@@ -96,7 +95,9 @@ public abstract class GeneratorBlockEntity extends BaseBlockEntity implements Me
     }
 
     public boolean canGenerate() {
-        return getEnergy().getMaxEnergyStored() - getEnergy().getEnergyStored() >= energyGen;
+        return level != null &&
+                !level.hasNeighborSignal(getBlockPos()) &&
+                getEnergy().getMaxEnergyStored() - getEnergy().getEnergyStored() >= energyGen;
     }
 
     public void generateEnergy() {

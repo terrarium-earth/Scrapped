@@ -63,7 +63,7 @@ public class FurnaceGenBlockEntity extends GeneratorBlockEntity {
             maxBurnTime = 0;
 
             ItemStack stack = getInventory().getStackInSlot(0);
-            if (!stack.isEmpty()) {
+            if (canGenerate() && !stack.isEmpty()) {
                 burnTime = ForgeHooks.getBurnTime(stack, null) / 2;
                 maxBurnTime = burnTime;
                 stack.shrink(1);

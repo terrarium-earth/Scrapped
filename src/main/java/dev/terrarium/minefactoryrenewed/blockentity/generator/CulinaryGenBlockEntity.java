@@ -67,7 +67,7 @@ public class CulinaryGenBlockEntity extends GeneratorBlockEntity {
             maxBurnTime = 0;
 
             ItemStack stack = getInventory().getStackInSlot(0);
-            if (!stack.isEmpty()) {
+            if (canGenerate() && !stack.isEmpty()) {
                 FoodProperties food = stack.getFoodProperties(null);
 
                 if (food != null) {

@@ -62,19 +62,21 @@ public class ExplosionGenBlockEntity extends GeneratorBlockEntity {
             burnTime--;
             cooldown++;
 
-            if (canGenerate())
+            if (canGenerate()) {
                 generateEnergy();
 
-            if (cooldown >= 40) {
-                this.level.explode(null, getBlockPos().getX(), getBlockPos().getY() + 0.0625f, getBlockPos().getZ(), 4.0F, Explosion.BlockInteraction.NONE);
-                cooldown = 0;
+                if (cooldown >= 40) {
+                    this.level.explode(null, getBlockPos().getX(), getBlockPos().getY() + 0.0625f, getBlockPos().getZ(), 4.0F, Explosion.BlockInteraction.NONE);
+                    cooldown = 0;
+                }
             }
+
         } else {
             burnTime = 0;
             maxBurnTime = 0;
 
             ItemStack stack = getInventory().getStackInSlot(0);
-            if (!stack.isEmpty() && ExplosiveManager.getInstance().isExplosive(stack)) {
+            if (canGenerate() && !stack.isEmpty() && ExplosiveManager.getInstance().isExplosive(stack)) {
                 setEnergyGen(ExplosiveManager.getInstance().getEnergyGen(stack));
                 burnTime = ExplosiveManager.getInstance().getBurnTime(stack);
                 maxBurnTime = burnTime;

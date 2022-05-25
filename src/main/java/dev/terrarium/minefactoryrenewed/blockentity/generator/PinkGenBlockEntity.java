@@ -64,7 +64,7 @@ public class PinkGenBlockEntity extends GeneratorBlockEntity {
             maxBurnTime = 0;
 
             ItemStack stack = getInventory().getStackInSlot(0);
-            if (!stack.isEmpty() && PinkManager.getInstance().isPink(stack)) {
+            if (canGenerate() && !stack.isEmpty() && PinkManager.getInstance().isPink(stack)) {
                 setEnergyGen(PinkManager.getInstance().getEnergyGen(stack));
                 burnTime = PinkManager.getInstance().getBurnTime(stack);
                 maxBurnTime = burnTime;
