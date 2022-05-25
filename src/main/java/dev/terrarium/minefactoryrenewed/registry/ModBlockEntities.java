@@ -279,6 +279,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(PotionGenBlockEntity::new, ModBlocks.POTION_GENERATOR.get())
                             .build(null));
 
+    public static final RegistryObject<BlockEntityType<ExplosionGenBlockEntity>> EXPLOSION_GENERATOR =
+            BLOCK_ENTITIES.register("explosion_generator", () ->
+                    BlockEntityType.Builder.of(ExplosionGenBlockEntity::new, ModBlocks.EXPLOSION_GENERATOR.get())
+                            .build(null));
+
     /**
      * Containers
      */
@@ -540,5 +545,12 @@ public class ModBlockEntities {
                 BlockPos pos = data.readBlockPos();
                 PotionGenBlockEntity pinkGen = (PotionGenBlockEntity) inv.player.level.getBlockEntity(pos);
                 return new PotionGenContainer(windowId, inv, pinkGen);
+            }));
+
+    public static final RegistryObject<MenuType<ExplosionGenContainer>> EXPLOSION_GENERATOR_CONTAINER =
+            CONTAINERS.register("explosion_generator_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                BlockPos pos = data.readBlockPos();
+                ExplosionGenBlockEntity explosionGen = (ExplosionGenBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new ExplosionGenContainer(windowId, inv, explosionGen);
             }));
 }

@@ -124,6 +124,7 @@ public class ModClient {
         MenuScreens.register(ModBlockEntities.CULINARY_GENERATOR_CONTAINER.get(), CulinaryGenScreen::new);
         MenuScreens.register(ModBlockEntities.PINK_GENERATOR_CONTAINER.get(), PinkGenScreen::new);
         MenuScreens.register(ModBlockEntities.POTION_GENERATOR_CONTAINER.get(), PotionGenScreen::new);
+        MenuScreens.register(ModBlockEntities.EXPLOSION_GENERATOR_CONTAINER.get(), ExplosionGenScreen::new);
     }
 
     private static void initEntities() {

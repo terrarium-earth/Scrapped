@@ -3,10 +3,11 @@ package dev.terrarium.minefactoryrenewed;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import dev.terrarium.minefactoryrenewed.client.ModClient;
 import dev.terrarium.minefactoryrenewed.compat.TOPCompat;
-import dev.terrarium.minefactoryrenewed.data.machine.PickableReloadListener;
+import dev.terrarium.minefactoryrenewed.data.generator.ExplosiveReloadListener;
 import dev.terrarium.minefactoryrenewed.data.generator.PinkReloadListener;
-import dev.terrarium.minefactoryrenewed.data.machine.PlantableReloadListener;
 import dev.terrarium.minefactoryrenewed.data.generator.PotionReloadListener;
+import dev.terrarium.minefactoryrenewed.data.machine.PickableReloadListener;
+import dev.terrarium.minefactoryrenewed.data.machine.PlantableReloadListener;
 import dev.terrarium.minefactoryrenewed.item.SafariNetItem;
 import dev.terrarium.minefactoryrenewed.item.syringe.SyringeItem;
 import dev.terrarium.minefactoryrenewed.network.ModPackets;
@@ -86,5 +87,6 @@ public class MinefactoryRenewed {
         event.addListener(new PickableReloadListener());
         event.addListener(new PinkReloadListener());
         event.addListener(new PotionReloadListener());
+        event.addListener(new ExplosiveReloadListener());
     }
 }

@@ -32,7 +32,6 @@ import dev.terrarium.minefactoryrenewed.block.transport.ConveyorBeltBlock;
 import dev.terrarium.minefactoryrenewed.block.transport.EjectorBlock;
 import dev.terrarium.minefactoryrenewed.block.transport.ItemCollectorBlock;
 import dev.terrarium.minefactoryrenewed.block.transport.ItemRouterBlock;
-import dev.terrarium.minefactoryrenewed.blockentity.generator.LunarGenBlockEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DoubleHighBlockItem;
@@ -209,6 +208,9 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> POTION_GENERATOR = BLOCKS.register("potion_generator", PotionGenBlock::new);
     public static final RegistryObject<BlockItem> POTION_GENERATOR_ITEM = ITEMS.register("potion_generator", () -> new BlockItem(POTION_GENERATOR.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> EXPLOSION_GENERATOR = BLOCKS.register("explosion_generator", ExplosionGenBlock::new);
+    public static final RegistryObject<BlockItem> EXPLOSION_GENERATOR_ITEM = ITEMS.register("explosion_generator", () -> new BlockItem(EXPLOSION_GENERATOR.get(), ModItems.PROPERTIES));
 
     //Rubbery stuff
     public static final RegistryObject<Block> RUBBER_LOG = BLOCKS.register("rubber_log", () -> new RubberLogBlock(ModBlocks.STRIPPED_RUBBER_LOG));

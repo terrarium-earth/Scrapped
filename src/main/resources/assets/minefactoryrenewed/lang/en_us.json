@@ -134,6 +134,7 @@
   "block.minefactoryrenewed.lunar_generator": "Lunar Generator",
   "block.minefactoryrenewed.solar_generator": "Solar Generator",
   "block.minefactoryrenewed.potion_generator": "Potion Generator",
+  "block.minefactoryrenewed.explosion_generator": "Explosion! Generator",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",
