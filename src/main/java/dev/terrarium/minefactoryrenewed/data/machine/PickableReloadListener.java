@@ -1,4 +1,4 @@
-package dev.terrarium.minefactoryrenewed.data;
+package dev.terrarium.minefactoryrenewed.data.machine;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

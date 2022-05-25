@@ -1,7 +1,7 @@
 package dev.terrarium.minefactoryrenewed.blockentity.generator;
 
 import dev.terrarium.minefactoryrenewed.blockentity.container.generator.PinkGenContainer;
-import dev.terrarium.minefactoryrenewed.data.PinkManager;
+import dev.terrarium.minefactoryrenewed.data.generator.PinkManager;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;

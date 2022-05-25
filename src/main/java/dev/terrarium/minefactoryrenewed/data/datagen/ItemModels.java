@@ -1,4 +1,4 @@
-package dev.terrarium.minefactoryrenewed.data.generator;
+package dev.terrarium.minefactoryrenewed.data.datagen;
 
 import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
 import dev.terrarium.minefactoryrenewed.registry.ModItems;

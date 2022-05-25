@@ -2,7 +2,7 @@ package dev.terrarium.minefactoryrenewed.blockentity.machine.farming;
 
 import dev.terrarium.minefactoryrenewed.blockentity.container.farming.PlanterContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
-import dev.terrarium.minefactoryrenewed.data.PlantManager;
+import dev.terrarium.minefactoryrenewed.data.machine.PlantManager;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

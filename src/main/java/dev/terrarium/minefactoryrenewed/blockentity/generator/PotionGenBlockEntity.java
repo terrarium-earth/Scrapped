@@ -1,9 +1,7 @@
 package dev.terrarium.minefactoryrenewed.blockentity.generator;
 
 import dev.terrarium.minefactoryrenewed.blockentity.container.generator.PotionGenContainer;
-import dev.terrarium.minefactoryrenewed.client.gui.generator.PotionGenScreen;
-import dev.terrarium.minefactoryrenewed.data.PinkManager;
-import dev.terrarium.minefactoryrenewed.data.PotionManager;
+import dev.terrarium.minefactoryrenewed.data.generator.PotionManager;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -13,7 +11,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;

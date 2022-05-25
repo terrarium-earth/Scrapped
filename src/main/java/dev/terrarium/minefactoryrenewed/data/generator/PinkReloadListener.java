@@ -1,4 +1,4 @@
-package dev.terrarium.minefactoryrenewed.data;
+package dev.terrarium.minefactoryrenewed.data.generator;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -6,7 +6,6 @@ import com.google.gson.JsonElement;
 import com.mojang.serialization.JsonOps;
 import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
 import dev.terrarium.minefactoryrenewed.api.item.Pink;
-import dev.terrarium.minefactoryrenewed.api.item.PotionData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
@@ -14,12 +13,12 @@ import net.minecraft.util.profiling.ProfilerFiller;
 
 import java.util.Map;
 
-public class PotionReloadListener extends SimpleJsonResourceReloadListener {
+public class PinkReloadListener extends SimpleJsonResourceReloadListener {
 
     private static final Gson GSON = new GsonBuilder().create();
     private static final String FOLDER_ID = "generators";
 
-    public PotionReloadListener() {
+    public PinkReloadListener() {
         super(GSON, FOLDER_ID);
     }
 
@@ -29,12 +28,12 @@ public class PotionReloadListener extends SimpleJsonResourceReloadListener {
 
         for (Map.Entry<ResourceLocation, JsonElement> entry : elements.entrySet()) {
             ResourceLocation id = entry.getKey();
-            if (!id.getNamespace().equals(MinefactoryRenewed.MODID) || !id.getPath().startsWith("potion/")) continue;
-            PotionData potion = PotionData.CODEC.parse(JsonOps.INSTANCE, entry.getValue().getAsJsonObject())
+            if (!id.getNamespace().equals(MinefactoryRenewed.MODID) || !id.getPath().startsWith("pink/")) continue;
+            Pink pink = Pink.CODEC.parse(JsonOps.INSTANCE, entry.getValue().getAsJsonObject())
                     .getOrThrow(false, s ->
-                            MinefactoryRenewed.LOGGER.error("Unable to load Potion data for {}, \n{}", id.toString(), s));
+                            MinefactoryRenewed.LOGGER.error("Unable to load Pink data for {}, \n{}", id.toString(), s));
 
-            PotionManager.getInstance().addEntry(potion);
+            PinkManager.getInstance().addEntry(pink);
         }
     }
 }

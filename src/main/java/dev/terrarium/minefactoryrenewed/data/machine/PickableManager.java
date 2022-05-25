@@ -1,4 +1,4 @@
-package dev.terrarium.minefactoryrenewed.data;
+package dev.terrarium.minefactoryrenewed.data.machine;
 
 import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
 import dev.terrarium.minefactoryrenewed.api.item.Pickable;

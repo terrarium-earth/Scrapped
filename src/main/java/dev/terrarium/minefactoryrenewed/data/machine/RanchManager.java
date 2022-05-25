@@ -1,4 +1,4 @@
-package dev.terrarium.minefactoryrenewed.data;
+package dev.terrarium.minefactoryrenewed.data.machine;
 
 import com.google.common.collect.Maps;
 import dev.terrarium.minefactoryrenewed.api.item.Ranchable;

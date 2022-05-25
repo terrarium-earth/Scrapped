@@ -3,7 +3,7 @@ package dev.terrarium.minefactoryrenewed.blockentity.machine.farming;
 import dev.terrarium.minefactoryrenewed.api.item.Pickable;
 import dev.terrarium.minefactoryrenewed.blockentity.container.farming.FruitPickerContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
-import dev.terrarium.minefactoryrenewed.data.PickableManager;
+import dev.terrarium.minefactoryrenewed.data.machine.PickableManager;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

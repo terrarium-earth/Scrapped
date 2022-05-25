@@ -1,4 +1,4 @@
-package dev.terrarium.minefactoryrenewed.data;
+package dev.terrarium.minefactoryrenewed.data.generator;
 
 import dev.terrarium.minefactoryrenewed.api.item.Pink;
 import net.minecraft.world.item.Item;
