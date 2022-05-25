@@ -23,8 +23,7 @@ public class LavaGenBlockEntity extends GeneratorBlockEntity {
         super(ModBlockEntities.LAVA_GENERATOR.get(), pos, state, 100000, 80, 100);
         this.createFluid(8000, new FluidStack(Fluids.LAVA, 1000));
     }
-
-
+    
     @Override
     protected void tick() {
         super.tick();
