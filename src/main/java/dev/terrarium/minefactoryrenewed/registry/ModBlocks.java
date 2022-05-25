@@ -204,7 +204,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> SOLAR_GENERATOR = BLOCKS.register("solar_generator", SolarGenBlock::new);
     public static final RegistryObject<BlockItem> SOLAR_GENERATOR_ITEM = ITEMS.register("solar_generator", () -> new BlockItem(SOLAR_GENERATOR.get(), ModItems.PROPERTIES));
 
-
+    public static final RegistryObject<Block> PINK_GENERATOR = BLOCKS.register("pink_generator", PinkGenBlock::new);
+    public static final RegistryObject<BlockItem> PINK_GENERATOR_ITEM = ITEMS.register("pink_generator", () -> new BlockItem(PINK_GENERATOR.get(), ModItems.PROPERTIES));
 
     //Rubbery stuff
     public static final RegistryObject<Block> RUBBER_LOG = BLOCKS.register("rubber_log", () -> new RubberLogBlock(ModBlocks.STRIPPED_RUBBER_LOG));

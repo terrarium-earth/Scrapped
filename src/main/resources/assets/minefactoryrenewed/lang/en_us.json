@@ -130,6 +130,9 @@
   "block.minefactoryrenewed.furnace_generator": "Furnace Generator",
   "block.minefactoryrenewed.lava_generator": "Lava Generator",
   "block.minefactoryrenewed.culinary_generator": "Culinary Generator",
+  "block.minefactoryrenewed.pink_generator": "Pink Generator",
+  "block.minefactoryrenewed.lunar_generator": "Lunar Generator",
+  "block.minefactoryrenewed.solar_generator": "Solar Generator",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",

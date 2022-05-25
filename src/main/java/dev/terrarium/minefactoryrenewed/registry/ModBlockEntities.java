@@ -1,7 +1,6 @@
 package dev.terrarium.minefactoryrenewed.registry;
 
 import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
-import dev.terrarium.minefactoryrenewed.block.generator.SolarGenBlock;
 import dev.terrarium.minefactoryrenewed.blockentity.container.animals.*;
 import dev.terrarium.minefactoryrenewed.blockentity.container.blocks.BlockPlacerContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.container.blocks.BlockSmasherContainer;
@@ -16,6 +15,7 @@ import dev.terrarium.minefactoryrenewed.blockentity.container.farming.PlanterCon
 import dev.terrarium.minefactoryrenewed.blockentity.container.generator.CulinaryGenContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.container.generator.FurnaceGenContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.container.generator.LavaGenContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.generator.PinkGenContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.container.mobs.*;
 import dev.terrarium.minefactoryrenewed.blockentity.container.power.EthanolGeneratorContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.container.power.SteamTurbineContainer;
@@ -272,6 +272,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(SolarGenBlockEntity::new, ModBlocks.SOLAR_GENERATOR.get())
                             .build(null));
 
+    public static final RegistryObject<BlockEntityType<PinkGenBlockEntity>> PINK_GENERATOR =
+            BLOCK_ENTITIES.register("pink_generator", () ->
+                    BlockEntityType.Builder.of(PinkGenBlockEntity::new, ModBlocks.PINK_GENERATOR.get())
+                            .build(null));
+
     /**
      * Containers
      */
@@ -519,5 +524,12 @@ public class ModBlockEntities {
                 BlockPos pos = data.readBlockPos();
                 CulinaryGenBlockEntity culinaryGen = (CulinaryGenBlockEntity) inv.player.level.getBlockEntity(pos);
                 return new CulinaryGenContainer(windowId, inv, culinaryGen);
+            }));
+
+    public static final RegistryObject<MenuType<PinkGenContainer>> PINK_GENERATOR_CONTAINER =
+            CONTAINERS.register("pink_generator_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                BlockPos pos = data.readBlockPos();
+                PinkGenBlockEntity pinkGen = (PinkGenBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new PinkGenContainer(windowId, inv, pinkGen);
             }));
 }
