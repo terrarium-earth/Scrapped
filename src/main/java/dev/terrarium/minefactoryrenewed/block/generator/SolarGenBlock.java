@@ -20,4 +20,6 @@ public class SolarGenBlock extends GeneratorBlock{
     public @Nullable BlockEntity newBlockEntity(@NotNull BlockPos pos, @NotNull BlockState state) {
         return new SolarGenBlockEntity(pos, state);
     }
+
+
 }

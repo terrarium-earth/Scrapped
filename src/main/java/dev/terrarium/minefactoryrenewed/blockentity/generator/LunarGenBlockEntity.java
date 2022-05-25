@@ -4,11 +4,9 @@ import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -22,8 +20,8 @@ public class LunarGenBlockEntity extends GeneratorBlockEntity {
     @Override
     protected void tick() {
         super.tick();
-        if(level == null) return;
-        if(level.isNight() && level.canSeeSky(getBlockPos())) {
+        if (level == null) return;
+        if (level.isNight() && level.canSeeSky(getBlockPos().above()) && canGenerate()) {
             this.generateEnergy();
         }
     }
@@ -35,7 +33,7 @@ public class LunarGenBlockEntity extends GeneratorBlockEntity {
 
     @Override
     public Component getDisplayText() {
-        return level != null && level.isNight() && level.canSeeSky(getBlockPos()) && canGenerate() ?
+        return level != null && level.isNight() && level.canSeeSky(getBlockPos().above()) && canGenerate() ?
                 new TranslatableComponent("tooltip.generator.generating", String.valueOf(getEnergyGen())) :
                 new TranslatableComponent("tooltip.generator.idle");
     }
@@ -44,4 +42,10 @@ public class LunarGenBlockEntity extends GeneratorBlockEntity {
     public @Nullable AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
         return null;
     }
+
+    @Override
+    public boolean hasMenu() {
+        return false;
+    }
+
 }

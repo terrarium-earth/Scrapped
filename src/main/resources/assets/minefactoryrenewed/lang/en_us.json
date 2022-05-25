@@ -189,8 +189,11 @@
   "tooltip.machine.ejector": "§aEjects items from any inventory behind it",
   "tooltip.machine.item_router": "§aRoutes items from one side to another<br>§aItems can be filtered per side",
 
+  "_comment8": "Generator Tooltips",
   "tooltip.generator.generating": "Generating: %s FE",
   "tooltip.generator.idle": "Idle",
+  "tooltip.generator.furnace_generator": "Generates energy from burnable items",
+  "tooltip.generator.lava_generator": "Generates energy from flammable fluids",
 
   "_comment7": "Gui Translatable Text",
   "gui.button.harvester.shear_leaves": "Shear Leaves: %s",
