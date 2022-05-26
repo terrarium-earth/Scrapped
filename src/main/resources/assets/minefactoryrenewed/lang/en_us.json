@@ -154,7 +154,6 @@
 
   "_comment6": "Machine Tooltips",
   "tooltip.item.shift_info": "Hold §6[SHIFT]§r for more info",
-  "tooltip.machine.creative_energy": "§8An infinite supply of power<br>§bCreative only of course",
   "tooltip.machine.planter": "§aAutomatically plants things in 9 different sectors<br>§6Range: 3x3",
   "tooltip.machine.farmer": "§aHarvests plants<br>§aCollects sludge while working<br>§6Range: 3x3",
   "tooltip.machine.fertilizer": "§aUses Industrial Fertilizer<br>§6Range: 3x3",
@@ -202,6 +201,7 @@
   "tooltip.generator.lunar_generator": "Generates energy from the darkness of the night",
   "tooltip.generator.culinary_generator": "Generates energy from the calories found within food<br>FE/t = Nutrition * 4",
   "tooltip.generator.potion_generator": "Generates energy from magical potential of potions",
+  "tooltip.generator.creative_energy": "§8An infinite supply of power<br>§bCreative only of course",
 
   "_comment7": "Gui Translatable Text",
   "gui.button.harvester.shear_leaves": "Shear Leaves: %s",

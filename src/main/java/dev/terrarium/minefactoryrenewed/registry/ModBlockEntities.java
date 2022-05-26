@@ -14,8 +14,8 @@ import dev.terrarium.minefactoryrenewed.blockentity.container.farming.FruitPicke
 import dev.terrarium.minefactoryrenewed.blockentity.container.farming.PlanterContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.container.generator.*;
 import dev.terrarium.minefactoryrenewed.blockentity.container.mobs.*;
-import dev.terrarium.minefactoryrenewed.blockentity.container.power.EthanolGeneratorContainer;
-import dev.terrarium.minefactoryrenewed.blockentity.container.power.SteamTurbineContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.generator.EthanolGeneratorContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.generator.SteamTurbineContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.container.processing.*;
 import dev.terrarium.minefactoryrenewed.blockentity.container.transport.ItemRouterContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.generator.*;
@@ -32,9 +32,9 @@ import dev.terrarium.minefactoryrenewed.blockentity.machine.farming.FertilizerBl
 import dev.terrarium.minefactoryrenewed.blockentity.machine.farming.FruitPickerBlockEntity;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.farming.PlanterBlockEntity;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.mobs.*;
-import dev.terrarium.minefactoryrenewed.blockentity.machine.power.CreativeEnergyBlockEntity;
-import dev.terrarium.minefactoryrenewed.blockentity.machine.power.EthanolGeneratorBlockEntity;
-import dev.terrarium.minefactoryrenewed.blockentity.machine.power.SteamTurbineBlockEntity;
+import dev.terrarium.minefactoryrenewed.blockentity.generator.CreativeEnergyBlockEntity;
+import dev.terrarium.minefactoryrenewed.blockentity.generator.EthanolGeneratorBlockEntity;
+import dev.terrarium.minefactoryrenewed.blockentity.generator.SteamTurbineBlockEntity;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.processing.*;
 import dev.terrarium.minefactoryrenewed.blockentity.transport.EjectorBlockEntity;
 import dev.terrarium.minefactoryrenewed.blockentity.transport.ItemCollectorBlockEntity;
@@ -282,6 +282,11 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<ExplosionGenBlockEntity>> EXPLOSION_GENERATOR =
             BLOCK_ENTITIES.register("explosion_generator", () ->
                     BlockEntityType.Builder.of(ExplosionGenBlockEntity::new, ModBlocks.EXPLOSION_GENERATOR.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<DisenchantmentGenBlockEntity>> DISENCHANTMENT_GENERATOR =
+            BLOCK_ENTITIES.register("disenchantment_generator", () ->
+                    BlockEntityType.Builder.of(DisenchantmentGenBlockEntity::new, ModBlocks.DISENCHANTMENT_GENERATOR.get())
                             .build(null));
 
     /**
@@ -552,5 +557,12 @@ public class ModBlockEntities {
                 BlockPos pos = data.readBlockPos();
                 ExplosionGenBlockEntity explosionGen = (ExplosionGenBlockEntity) inv.player.level.getBlockEntity(pos);
                 return new ExplosionGenContainer(windowId, inv, explosionGen);
+            }));
+
+    public static final RegistryObject<MenuType<DisenchantmentGenContainer>> DISENCHANTMENT_GENERATOR_CONTAINER =
+            CONTAINERS.register("disenchantment_generator_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                BlockPos pos = data.readBlockPos();
+                DisenchantmentGenBlockEntity explosionGen = (DisenchantmentGenBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new DisenchantmentGenContainer(windowId, inv, explosionGen);
             }));
 }

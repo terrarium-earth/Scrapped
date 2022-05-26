@@ -19,9 +19,9 @@ import dev.terrarium.minefactoryrenewed.block.machine.farming.FertilizerBlock;
 import dev.terrarium.minefactoryrenewed.block.machine.farming.FruitPickerBlock;
 import dev.terrarium.minefactoryrenewed.block.machine.farming.PlanterBlock;
 import dev.terrarium.minefactoryrenewed.block.machine.mobs.*;
-import dev.terrarium.minefactoryrenewed.block.machine.power.CreativeEnergyBlock;
-import dev.terrarium.minefactoryrenewed.block.machine.power.EthanolGeneratorBlock;
-import dev.terrarium.minefactoryrenewed.block.machine.power.SteamTurbineBlock;
+import dev.terrarium.minefactoryrenewed.block.generator.CreativeEnergyBlock;
+import dev.terrarium.minefactoryrenewed.block.generator.EthanolGeneratorBlock;
+import dev.terrarium.minefactoryrenewed.block.generator.SteamTurbineBlock;
 import dev.terrarium.minefactoryrenewed.block.machine.processing.ComposterBlock;
 import dev.terrarium.minefactoryrenewed.block.machine.processing.*;
 import dev.terrarium.minefactoryrenewed.block.rubber.RubberLogBlock;
@@ -212,6 +212,9 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> EXPLOSION_GENERATOR = BLOCKS.register("explosion_generator", ExplosionGenBlock::new);
     public static final RegistryObject<BlockItem> EXPLOSION_GENERATOR_ITEM = ITEMS.register("explosion_generator", () -> new BlockItem(EXPLOSION_GENERATOR.get(), GEN_PROPERTIES));
+
+    public static final RegistryObject<Block> DISENCHANTMENT_GENERATOR = BLOCKS.register("disenchantment_generator", DisenchantmentGenBlock::new);
+    public static final RegistryObject<BlockItem> DISENCHANTMENT_GENERATOR_ITEM = ITEMS.register("disenchantment_generator", () -> new BlockItem(DISENCHANTMENT_GENERATOR.get(), ModItems.PROPERTIES));
 
     //Rubbery stuff
     public static final RegistryObject<Block> RUBBER_LOG = BLOCKS.register("rubber_log", () -> new RubberLogBlock(ModBlocks.STRIPPED_RUBBER_LOG));
