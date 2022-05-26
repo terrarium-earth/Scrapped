@@ -53,6 +53,7 @@ public class ModBlocks {
     public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, MinefactoryRenewed.MODID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MinefactoryRenewed.MODID);
 
+    public static final Item.Properties GEN_PROPERTIES = new Item.Properties().tab(MinefactoryRenewed.GENERATOR_TAB);
     private static final BlockBehaviour.Properties BASE_FLUID_PROPS = BlockBehaviour.Properties.of(Material.WATER).randomTicks().noDrops();
     private static final BlockBehaviour.Properties PLANK_PROPERTIES = BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD);
 
@@ -158,10 +159,10 @@ public class ModBlocks {
     public static final RegistryObject<BlockItem> STEAM_BOILER_ITEM = ITEMS.register("steam_boiler", () -> new BlockItem(STEAM_BOILER.get(), ModItems.PROPERTIES));
 
     public static final RegistryObject<Block> STEAM_TURBINE = BLOCKS.register("steam_turbine", SteamTurbineBlock::new);
-    public static final RegistryObject<BlockItem> STEAM_TURBINE_ITEM = ITEMS.register("steam_turbine", () -> new BlockItem(STEAM_TURBINE.get(), ModItems.PROPERTIES));
+    public static final RegistryObject<BlockItem> STEAM_TURBINE_ITEM = ITEMS.register("steam_turbine", () -> new BlockItem(STEAM_TURBINE.get(), GEN_PROPERTIES));
 
     public static final RegistryObject<Block> ETHANOL_GENERATOR = BLOCKS.register("ethanol_generator", EthanolGeneratorBlock::new);
-    public static final RegistryObject<BlockItem> ETHANOL_GENERATOR_ITEM = ITEMS.register("ethanol_generator", () -> new BlockItem(ETHANOL_GENERATOR.get(), ModItems.PROPERTIES));
+    public static final RegistryObject<BlockItem> ETHANOL_GENERATOR_ITEM = ITEMS.register("ethanol_generator", () -> new BlockItem(ETHANOL_GENERATOR.get(), GEN_PROPERTIES));
 
     public static final RegistryObject<Block> ETHANOL_REACTOR = BLOCKS.register("ethanol_reactor", EthanolReactorBlock::new);
     public static final RegistryObject<BlockItem> ETHANOL_REACTOR_ITEM = ITEMS.register("ethanol_reactor", () -> new BlockItem(ETHANOL_REACTOR.get(), ModItems.PROPERTIES));
@@ -189,28 +190,28 @@ public class ModBlocks {
 
     //Generators for adrian's sanity
     public static final RegistryObject<Block> FURNACE_GENERATOR = BLOCKS.register("furnace_generator", FurnaceGenBlock::new);
-    public static final RegistryObject<BlockItem> FURNACE_GENERATOR_ITEM = ITEMS.register("furnace_generator", () -> new BlockItem(FURNACE_GENERATOR.get(), ModItems.PROPERTIES));
+    public static final RegistryObject<BlockItem> FURNACE_GENERATOR_ITEM = ITEMS.register("furnace_generator", () -> new BlockItem(FURNACE_GENERATOR.get(), GEN_PROPERTIES));
 
     public static final RegistryObject<Block> LAVA_GENERATOR = BLOCKS.register("lava_generator", LavaGenBlock::new);
-    public static final RegistryObject<BlockItem> LAVA_GENERATOR_ITEM = ITEMS.register("lava_generator", () -> new BlockItem(LAVA_GENERATOR.get(), ModItems.PROPERTIES));
+    public static final RegistryObject<BlockItem> LAVA_GENERATOR_ITEM = ITEMS.register("lava_generator", () -> new BlockItem(LAVA_GENERATOR.get(), GEN_PROPERTIES));
 
     public static final RegistryObject<Block> CULINARY_GENERATOR = BLOCKS.register("culinary_generator", CulinaryGenBlock::new);
-    public static final RegistryObject<BlockItem> CULINARY_GENERATOR_ITEM = ITEMS.register("culinary_generator", () -> new BlockItem(CULINARY_GENERATOR.get(), ModItems.PROPERTIES));
+    public static final RegistryObject<BlockItem> CULINARY_GENERATOR_ITEM = ITEMS.register("culinary_generator", () -> new BlockItem(CULINARY_GENERATOR.get(), GEN_PROPERTIES));
 
     public static final RegistryObject<Block> LUNAR_GENERATOR = BLOCKS.register("lunar_generator", LunarGenBlock::new);
-    public static final RegistryObject<BlockItem> LUNAR_GENERATOR_ITEM = ITEMS.register("lunar_generator", () -> new BlockItem(LUNAR_GENERATOR.get(), ModItems.PROPERTIES));
+    public static final RegistryObject<BlockItem> LUNAR_GENERATOR_ITEM = ITEMS.register("lunar_generator", () -> new BlockItem(LUNAR_GENERATOR.get(), GEN_PROPERTIES));
 
     public static final RegistryObject<Block> SOLAR_GENERATOR = BLOCKS.register("solar_generator", SolarGenBlock::new);
-    public static final RegistryObject<BlockItem> SOLAR_GENERATOR_ITEM = ITEMS.register("solar_generator", () -> new BlockItem(SOLAR_GENERATOR.get(), ModItems.PROPERTIES));
+    public static final RegistryObject<BlockItem> SOLAR_GENERATOR_ITEM = ITEMS.register("solar_generator", () -> new BlockItem(SOLAR_GENERATOR.get(), GEN_PROPERTIES));
 
     public static final RegistryObject<Block> PINK_GENERATOR = BLOCKS.register("pink_generator", PinkGenBlock::new);
-    public static final RegistryObject<BlockItem> PINK_GENERATOR_ITEM = ITEMS.register("pink_generator", () -> new BlockItem(PINK_GENERATOR.get(), ModItems.PROPERTIES));
+    public static final RegistryObject<BlockItem> PINK_GENERATOR_ITEM = ITEMS.register("pink_generator", () -> new BlockItem(PINK_GENERATOR.get(), GEN_PROPERTIES));
 
     public static final RegistryObject<Block> POTION_GENERATOR = BLOCKS.register("potion_generator", PotionGenBlock::new);
-    public static final RegistryObject<BlockItem> POTION_GENERATOR_ITEM = ITEMS.register("potion_generator", () -> new BlockItem(POTION_GENERATOR.get(), ModItems.PROPERTIES));
+    public static final RegistryObject<BlockItem> POTION_GENERATOR_ITEM = ITEMS.register("potion_generator", () -> new BlockItem(POTION_GENERATOR.get(), GEN_PROPERTIES));
 
     public static final RegistryObject<Block> EXPLOSION_GENERATOR = BLOCKS.register("explosion_generator", ExplosionGenBlock::new);
-    public static final RegistryObject<BlockItem> EXPLOSION_GENERATOR_ITEM = ITEMS.register("explosion_generator", () -> new BlockItem(EXPLOSION_GENERATOR.get(), ModItems.PROPERTIES));
+    public static final RegistryObject<BlockItem> EXPLOSION_GENERATOR_ITEM = ITEMS.register("explosion_generator", () -> new BlockItem(EXPLOSION_GENERATOR.get(), GEN_PROPERTIES));
 
     //Rubbery stuff
     public static final RegistryObject<Block> RUBBER_LOG = BLOCKS.register("rubber_log", () -> new RubberLogBlock(ModBlocks.STRIPPED_RUBBER_LOG));

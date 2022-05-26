@@ -1,5 +1,6 @@
 {
   "itemGroup.minefactoryrenewed": "Minefactory Renewed",
+  "itemGroup.minefactoryrenewed_generators": "Minefactory Renewed: Generators",
 
   "_comment1": "Machine Upgrades",
   "item.minefactoryrenewed.iron_upgrade": "Iron Radius Upgrade",

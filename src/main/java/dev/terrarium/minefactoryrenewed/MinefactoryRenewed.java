@@ -41,6 +41,13 @@ public class MinefactoryRenewed {
         }
     };
 
+    public static CreativeModeTab GENERATOR_TAB = new CreativeModeTab(MODID + "_generators") {
+        @Override
+        public @NotNull ItemStack makeIcon() {
+            return ModBlocks.FURNACE_GENERATOR_ITEM.get().getDefaultInstance();
+        }
+    };
+
     public MinefactoryRenewed() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         eventBus.addListener(this::init);
