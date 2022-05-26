@@ -180,8 +180,6 @@
   "tooltip.machine.laser_drill": "§aGenerates random ores<br>§aRequires a clear view of bedrock<br>§aCan be slightly filtered using a Laser Focus",
   "tooltip.machine.laser_charger": "§aTransfers energy to a Laser Drill<br>§aMust have 1 block space between Laser Drill",
   "tooltip.machine.steam_boiler": "§aBoils Water into Steam<br>§aRuns once temperature reaches 100C",
-  "tooltip.machine.steam_turbine": "§aGenerates power using Steam",
-  "tooltip.machine.ethanol_generator": "§aBurns ethanol as fuel to generate power",
   "tooltip.machine.ethanol_reactor": "§aBurns various plants to create Ethanol<br>§aThe wider variety of plants, the better efficiency",
   "tooltip.machine.lava_fabricator": "§aCreate Lava automagically",
   "tooltip.machine.composter": "§aComposts Sludge into Industrial Fertilizer",
@@ -202,6 +200,8 @@
   "tooltip.generator.culinary_generator": "Generates energy from the calories found within food<br>FE/t = Nutrition * 4",
   "tooltip.generator.potion_generator": "Generates energy from magical potential of potions",
   "tooltip.generator.creative_energy": "§8An infinite supply of power<br>§bCreative only of course",
+  "tooltip.generator.steam_turbine": "§aGenerates power using Steam",
+  "tooltip.machine.ethanol_generator": "§aBurns ethanol as fuel to generate power",
 
   "_comment7": "Gui Translatable Text",
   "gui.button.harvester.shear_leaves": "Shear Leaves: %s",

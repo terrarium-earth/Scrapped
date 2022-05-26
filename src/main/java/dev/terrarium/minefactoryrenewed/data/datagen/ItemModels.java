@@ -30,9 +30,10 @@ public class ItemModels extends ItemModelProvider {
             }
 
             if (registryName.getPath().endsWith("_focus")) {
+                String token = registryName.getPath().replace("_focus", "");
+
                 withExistingParent(registryName.toString(), ITEM_GENERATED)
-                        .texture("layer0", registryName.getNamespace() + ":item/laser_focus")
-                        .texture("layer1", registryName.getNamespace() + ":item/laser_focus_gem" );
+                        .texture("layer0", registryName.getNamespace() + ":item/" + token + "_laser_focus");
             }
         }
     }

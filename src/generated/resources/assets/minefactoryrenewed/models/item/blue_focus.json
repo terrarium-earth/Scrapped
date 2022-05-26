@@ -1,7 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "minefactoryrenewed:item/laser_focus",
-    "layer1": "minefactoryrenewed:item/laser_focus_gem"
+    "layer0": "minefactoryrenewed:item/blue_laser_focus"
   }
 }
