@@ -1,25 +1,21 @@
 package dev.terrarium.minefactoryrenewed.data.generator;
 
 import dev.terrarium.minefactoryrenewed.api.item.Disenchantment;
-import dev.terrarium.minefactoryrenewed.api.item.PotionData;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 
 import java.util.*;
 
-public class EnchantmentManager {
+public class DisenchantmentManager {
 
-    private static final EnchantmentManager INSTANCE = new EnchantmentManager();
+    private static final DisenchantmentManager INSTANCE = new DisenchantmentManager();
     private final Map<ResourceLocation, Disenchantment> enchantments = new HashMap<>();
 
     public boolean isEnchantmentBurnable(ItemStack stack) {
-        if(stack.isEnchanted()) {
+        if(stack.isEnchanted() || stack.is(Items.ENCHANTED_BOOK)) {
             Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(stack);
             for(Map.Entry<Enchantment, Integer> enchantment : enchantments.entrySet()) {
                 if(this.enchantments.containsKey(enchantment.getKey().getRegistryName())) return true;
@@ -53,7 +49,7 @@ public class EnchantmentManager {
         enchantments.clear();
     }
 
-    public static EnchantmentManager getInstance() {
+    public static DisenchantmentManager getInstance() {
         return INSTANCE;
     }
 }

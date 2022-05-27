@@ -289,6 +289,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(DisenchantmentGenBlockEntity::new, ModBlocks.DISENCHANTMENT_GENERATOR.get())
                             .build(null));
 
+    public static final RegistryObject<BlockEntityType<HellishGenBlockEntity>> HELLISH_GENERATOR =
+            BLOCK_ENTITIES.register("disenchantment_generator", () ->
+                    BlockEntityType.Builder.of(HellishGenBlockEntity::new, ModBlocks.DISENCHANTMENT_GENERATOR.get())
+                            .build(null));
+
     /**
      * Containers
      */
@@ -517,13 +522,6 @@ public class ModBlockEntities {
                 return new ItemRouterContainer(windowId, inv, itemRouter);
             }));
 
-    public static final RegistryObject<MenuType<FurnaceGenContainer>> FURNACE_GENERATOR_CONTAINER =
-            CONTAINERS.register("furnace_generator_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                BlockPos pos = data.readBlockPos();
-                FurnaceGenBlockEntity furnaceGen = (FurnaceGenBlockEntity) inv.player.level.getBlockEntity(pos);
-                return new FurnaceGenContainer(windowId, inv, furnaceGen);
-            }));
-
     public static final RegistryObject<MenuType<LavaGenContainer>> LAVA_GENERATOR_CONTAINER =
             CONTAINERS.register("lava_generator_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
                 BlockPos pos = data.readBlockPos();
@@ -531,38 +529,11 @@ public class ModBlockEntities {
                 return new LavaGenContainer(windowId, inv, furnaceGen);
             }));
 
-    public static final RegistryObject<MenuType<CulinaryGenContainer>> CULINARY_GENERATOR_CONTAINER =
-            CONTAINERS.register("culinary_generator_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                BlockPos pos = data.readBlockPos();
-                CulinaryGenBlockEntity culinaryGen = (CulinaryGenBlockEntity) inv.player.level.getBlockEntity(pos);
-                return new CulinaryGenContainer(windowId, inv, culinaryGen);
-            }));
 
-    public static final RegistryObject<MenuType<PinkGenContainer>> PINK_GENERATOR_CONTAINER =
-            CONTAINERS.register("pink_generator_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+    public static final RegistryObject<MenuType<BurnableGenContainer>> BURNABLE_GENERATOR_CONTAINER =
+            CONTAINERS.register("burnable_generator_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
                 BlockPos pos = data.readBlockPos();
-                PinkGenBlockEntity pinkGen = (PinkGenBlockEntity) inv.player.level.getBlockEntity(pos);
-                return new PinkGenContainer(windowId, inv, pinkGen);
-            }));
-
-    public static final RegistryObject<MenuType<PotionGenContainer>> POTION_GENERATOR_CONTAINER =
-            CONTAINERS.register("potion_generator_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                BlockPos pos = data.readBlockPos();
-                PotionGenBlockEntity pinkGen = (PotionGenBlockEntity) inv.player.level.getBlockEntity(pos);
-                return new PotionGenContainer(windowId, inv, pinkGen);
-            }));
-
-    public static final RegistryObject<MenuType<ExplosionGenContainer>> EXPLOSION_GENERATOR_CONTAINER =
-            CONTAINERS.register("explosion_generator_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                BlockPos pos = data.readBlockPos();
-                ExplosionGenBlockEntity explosionGen = (ExplosionGenBlockEntity) inv.player.level.getBlockEntity(pos);
-                return new ExplosionGenContainer(windowId, inv, explosionGen);
-            }));
-
-    public static final RegistryObject<MenuType<DisenchantmentGenContainer>> DISENCHANTMENT_GENERATOR_CONTAINER =
-            CONTAINERS.register("disenchantment_generator_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
-                BlockPos pos = data.readBlockPos();
-                DisenchantmentGenBlockEntity explosionGen = (DisenchantmentGenBlockEntity) inv.player.level.getBlockEntity(pos);
-                return new DisenchantmentGenContainer(windowId, inv, explosionGen);
+                BurnableGenBlockEntity explosionGen = (BurnableGenBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new BurnableGenContainer(windowId, inv, explosionGen);
             }));
 }

@@ -5,8 +5,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.mojang.serialization.JsonOps;
 import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
-import dev.terrarium.minefactoryrenewed.api.item.Disenchantment;
-import dev.terrarium.minefactoryrenewed.api.item.PotionData;
+import dev.terrarium.minefactoryrenewed.api.item.Hellish;
+import dev.terrarium.minefactoryrenewed.api.item.Pink;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
@@ -14,12 +14,12 @@ import net.minecraft.util.profiling.ProfilerFiller;
 
 import java.util.Map;
 
-public class EnchantmentReloadListener extends SimpleJsonResourceReloadListener {
+public class HellishReloadListener extends SimpleJsonResourceReloadListener {
 
     private static final Gson GSON = new GsonBuilder().create();
     private static final String FOLDER_ID = "generators";
 
-    public EnchantmentReloadListener() {
+    public HellishReloadListener() {
         super(GSON, FOLDER_ID);
     }
 
@@ -29,12 +29,12 @@ public class EnchantmentReloadListener extends SimpleJsonResourceReloadListener 
 
         for (Map.Entry<ResourceLocation, JsonElement> entry : elements.entrySet()) {
             ResourceLocation id = entry.getKey();
-            if (!id.getNamespace().equals(MinefactoryRenewed.MODID) || !id.getPath().startsWith("disenchantment/")) continue;
-            Disenchantment disenchantment = Disenchantment.CODEC.parse(JsonOps.INSTANCE, entry.getValue().getAsJsonObject())
+            if (!id.getNamespace().equals(MinefactoryRenewed.MODID) || !id.getPath().startsWith("hellish/")) continue;
+            Hellish pink = Hellish.CODEC.parse(JsonOps.INSTANCE, entry.getValue().getAsJsonObject())
                     .getOrThrow(false, s ->
-                            MinefactoryRenewed.LOGGER.error("Unable to load Disenchantment data for {}, \n{}", id.toString(), s));
+                            MinefactoryRenewed.LOGGER.error("Unable to load Hellish data for {}, \n{}", id.toString(), s));
 
-            EnchantmentManager.getInstance().addEntry(disenchantment);
+            HellishManager.getInstance().addEntry(pink);
         }
     }
 }

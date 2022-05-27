@@ -119,13 +119,8 @@ public class ModClient {
         MenuScreens.register(ModBlockEntities.ITEM_ROUTER_CONTAINER.get(), ItemRouterScreen::new);
 
         //Generators
-        MenuScreens.register(ModBlockEntities.FURNACE_GENERATOR_CONTAINER.get(), FurnaceGenScreen::new);
         MenuScreens.register(ModBlockEntities.LAVA_GENERATOR_CONTAINER.get(), LavaGenScreen::new);
-        MenuScreens.register(ModBlockEntities.CULINARY_GENERATOR_CONTAINER.get(), CulinaryGenScreen::new);
-        MenuScreens.register(ModBlockEntities.PINK_GENERATOR_CONTAINER.get(), PinkGenScreen::new);
-        MenuScreens.register(ModBlockEntities.POTION_GENERATOR_CONTAINER.get(), PotionGenScreen::new);
-        MenuScreens.register(ModBlockEntities.EXPLOSION_GENERATOR_CONTAINER.get(), ExplosionGenScreen::new);
-        MenuScreens.register(ModBlockEntities.DISENCHANTMENT_GENERATOR_CONTAINER.get(), DisenchantmentGenScreen::new);
+        MenuScreens.register(ModBlockEntities.BURNABLE_GENERATOR_CONTAINER.get(), BurnableGenScreen::new);
     }
 
     private static void initEntities() {

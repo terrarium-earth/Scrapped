@@ -216,6 +216,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> DISENCHANTMENT_GENERATOR = BLOCKS.register("disenchantment_generator", DisenchantmentGenBlock::new);
     public static final RegistryObject<BlockItem> DISENCHANTMENT_GENERATOR_ITEM = ITEMS.register("disenchantment_generator", () -> new BlockItem(DISENCHANTMENT_GENERATOR.get(), ModItems.PROPERTIES));
 
+    public static final RegistryObject<Block> HELLISH_GENERATOR = BLOCKS.register("hellish_generator", DisenchantmentGenBlock::new);
+    public static final RegistryObject<BlockItem> HELLISH_GENERATOR_ITEM = ITEMS.register("hellish_generator", () -> new BlockItem(HELLISH_GENERATOR.get(), ModItems.PROPERTIES));
+
     //Rubbery stuff
     public static final RegistryObject<Block> RUBBER_LOG = BLOCKS.register("rubber_log", () -> new RubberLogBlock(ModBlocks.STRIPPED_RUBBER_LOG));
     public static final RegistryObject<BlockItem> RUBBER_LOG_ITEM = ITEMS.register("rubber_log", () -> new BlockItem(RUBBER_LOG.get(), ModItems.PROPERTIES));

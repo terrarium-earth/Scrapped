@@ -46,7 +46,7 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
             !((LivingEntity) entity).isBaby() &&
             entity.canChangeDimensions()
     );
-    protected static final Predicate<Entity> ALL_ENTITY_PREDICATE = (entity) -> (entity.isAlive() &&
+    public static final Predicate<Entity> ALL_ENTITY_PREDICATE = (entity) -> (entity.isAlive() &&
             entity instanceof LivingEntity &&
             entity.canChangeDimensions()
     );
