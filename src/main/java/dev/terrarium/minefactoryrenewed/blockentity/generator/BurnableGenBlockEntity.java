@@ -52,15 +52,14 @@ public abstract class BurnableGenBlockEntity extends GeneratorBlockEntity {
 
     @Override
     protected void tick() {
+        super.tick();
         if (burnTime > 0) {
             burnTime--;
-
             onBurn();
-
         } else {
             burnTime = 0;
             maxBurnTime = 0;
-
+            afterBurn();
             ItemStack stack = getInventory().getStackInSlot(0);
             if (canGenerate() && !stack.isEmpty() && isItemValid(stack)) {
                 burnItem(stack);
@@ -112,6 +111,9 @@ public abstract class BurnableGenBlockEntity extends GeneratorBlockEntity {
      */
     public void onBurn() {
         if (canGenerate()) generateEnergy();
+    }
+
+    public void afterBurn() {
     }
 
     public abstract boolean isItemValid(ItemStack stack);

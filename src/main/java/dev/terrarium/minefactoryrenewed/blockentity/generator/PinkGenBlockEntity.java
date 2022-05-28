@@ -27,9 +27,4 @@ public class PinkGenBlockEntity extends BurnableGenBlockEntity {
     public boolean isItemValid(ItemStack stack) {
         return PinkManager.getInstance().isPink(stack);
     }
-
-    @Override
-    public @Nullable AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
-        return new PinkGenContainer(id, inventory, this);
-    }
 }

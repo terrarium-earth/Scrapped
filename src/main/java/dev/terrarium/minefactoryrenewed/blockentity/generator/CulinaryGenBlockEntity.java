@@ -32,9 +32,4 @@ public class CulinaryGenBlockEntity extends BurnableGenBlockEntity {
     public boolean isItemValid(ItemStack stack) {
         return stack.isEdible();
     }
-
-    @Override
-    public @Nullable AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
-        return new CulinaryGenContainer(id, inventory, this);
-    }
 }

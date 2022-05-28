@@ -45,6 +45,7 @@ public class HellishGenBlockEntity extends BurnableGenBlockEntity {
     public void burnItem(ItemStack stack) {
         setEnergyGen(HellishManager.getInstance().getEnergyGen(stack));
         setBurnTime(HellishManager.getInstance().getBurnTime(stack));
+        if(HellishManager.getInstance().doesWithering(stack)) isWithering = true;
     }
 
     @Override
@@ -66,6 +67,11 @@ public class HellishGenBlockEntity extends BurnableGenBlockEntity {
                 }
             }
         }
+    }
+
+    @Override
+    public void afterBurn() {
+        isWithering = false;
     }
 
     @Override

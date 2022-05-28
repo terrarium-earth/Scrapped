@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class DisenchantmentGenBlock extends GeneratorBlock {
+
     @Override
     public BlockEntityType<? extends GeneratorBlockEntity> getBlockEntityType() {
         return ModBlockEntities.DISENCHANTMENT_GENERATOR.get();

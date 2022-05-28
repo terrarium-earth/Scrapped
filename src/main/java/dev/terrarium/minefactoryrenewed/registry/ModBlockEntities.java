@@ -290,9 +290,30 @@ public class ModBlockEntities {
                             .build(null));
 
     public static final RegistryObject<BlockEntityType<HellishGenBlockEntity>> HELLISH_GENERATOR =
-            BLOCK_ENTITIES.register("disenchantment_generator", () ->
-                    BlockEntityType.Builder.of(HellishGenBlockEntity::new, ModBlocks.DISENCHANTMENT_GENERATOR.get())
+            BLOCK_ENTITIES.register("hellish_generator", () ->
+                    BlockEntityType.Builder.of(HellishGenBlockEntity::new, ModBlocks.HELLISH_GENERATOR.get())
                             .build(null));
+
+    public static final RegistryObject<BlockEntityType<DeathGenBlockEntity>> DEATH_GENERATOR =
+            BLOCK_ENTITIES.register("death_generator", () ->
+                    BlockEntityType.Builder.of(DeathGenBlockEntity::new, ModBlocks.DEATH_GENERATOR.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<FrostyGenBlockEntity>> FROSTY_GENERATOR =
+            BLOCK_ENTITIES.register("frosty_generator", () ->
+                    BlockEntityType.Builder.of(FrostyGenBlockEntity::new, ModBlocks.FROSTY_GENERATOR.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<EnderGenBlockEntity>> ENDER_GENERATOR =
+            BLOCK_ENTITIES.register("ender_generator", () ->
+                    BlockEntityType.Builder.of(EnderGenBlockEntity::new, ModBlocks.ENDER_GENERATOR.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<SlimeyGenBlockEntity>> SLIMEY_GENERATOR =
+            BLOCK_ENTITIES.register("slimey_generator", () ->
+                    BlockEntityType.Builder.of(SlimeyGenBlockEntity::new, ModBlocks.SLIMEY_GENERATOR.get())
+                            .build(null));
+
 
     /**
      * Containers

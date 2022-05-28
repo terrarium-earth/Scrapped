@@ -21,11 +21,6 @@ public class ExplosionGenBlockEntity extends BurnableGenBlockEntity {
     }
 
     @Override
-    public @Nullable AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
-        return new ExplosionGenContainer(id, inventory, this);
-    }
-
-    @Override
     public void burnItem(ItemStack stack) {
         setEnergyGen(ExplosiveManager.getInstance().getEnergyGen(stack));
         setBurnTime(ExplosiveManager.getInstance().getBurnTime(stack));
@@ -40,6 +35,7 @@ public class ExplosionGenBlockEntity extends BurnableGenBlockEntity {
     public void onBurn() {
         super.onBurn();
         if(level == null) return;
+        cooldown++;
         if (cooldown >= 40) {
             this.level.explode(null, getBlockPos().getX(), getBlockPos().getY() + 0.0625f, getBlockPos().getZ(), 4.0F, Explosion.BlockInteraction.NONE);
             cooldown = 0;

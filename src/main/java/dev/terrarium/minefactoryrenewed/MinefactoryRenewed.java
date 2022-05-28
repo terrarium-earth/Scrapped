@@ -95,5 +95,9 @@ public class MinefactoryRenewed {
         event.addListener(new ExplosiveReloadListener());
         event.addListener(new DisenchantmentReloadListener());
         event.addListener(new HellishReloadListener());
+        event.addListener(new SlimeyReloadListener());
+        event.addListener(new DeathReloadListener());
+        event.addListener(new FrostyReloadListener());
+        event.addListener(new EnderReloadListener());
     }
 }

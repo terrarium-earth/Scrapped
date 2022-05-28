@@ -24,7 +24,7 @@ public class DisenchantmentReloadListener extends SimpleJsonResourceReloadListen
 
     @Override
     public void apply(Map<ResourceLocation, JsonElement> elements, ResourceManager manager, ProfilerFiller filter) {
-        PinkManager.getInstance().clear();
+        DisenchantmentManager.getInstance().clear();
 
         for (Map.Entry<ResourceLocation, JsonElement> entry : elements.entrySet()) {
             ResourceLocation id = entry.getKey();
