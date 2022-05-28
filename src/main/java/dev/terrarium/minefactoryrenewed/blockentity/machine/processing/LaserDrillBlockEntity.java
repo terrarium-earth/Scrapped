@@ -188,9 +188,10 @@ public class LaserDrillBlockEntity extends MachineBlockEntity implements MenuPro
         return true;
     }
 
+    @NotNull
     @Override
     public Component getDisplayName() {
-        return new TranslatableComponent("block.minefactoryrenewed.laser_drill");
+        return this.getBlockState().getBlock().getName();
     }
 
     @Nullable

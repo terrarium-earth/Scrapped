@@ -118,9 +118,10 @@ public class EthanolReactorBlockEntity extends MachineBlockEntity implements Men
         return SCALE[SCALE.length - 1];
     }
 
+    @NotNull
     @Override
     public Component getDisplayName() {
-        return new TranslatableComponent("block.minefactoryrenewed.ethanol_reactor");
+        return this.getBlockState().getBlock().getName();
     }
 
     @Nullable

@@ -17,6 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -66,9 +67,10 @@ public class ComposterBlockEntity extends MachineBlockEntity implements MenuProv
         }
     }
 
+    @NotNull
     @Override
     public Component getDisplayName() {
-        return new TranslatableComponent("block.minefactoryrenewed.composter");
+        return this.getBlockState().getBlock().getName();
     }
 
     @Nullable

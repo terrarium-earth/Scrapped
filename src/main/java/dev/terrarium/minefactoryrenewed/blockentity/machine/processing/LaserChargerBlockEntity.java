@@ -16,6 +16,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class LaserChargerBlockEntity extends MachineBlockEntity implements MenuProvider {
@@ -85,10 +86,10 @@ public class LaserChargerBlockEntity extends MachineBlockEntity implements MenuP
         return super.getRenderBoundingBox();
     }
 
-
+    @NotNull
     @Override
     public Component getDisplayName() {
-        return new TranslatableComponent("block.minefactoryrenewed.laser_charger");
+        return this.getBlockState().getBlock().getName();
     }
 
     @Nullable

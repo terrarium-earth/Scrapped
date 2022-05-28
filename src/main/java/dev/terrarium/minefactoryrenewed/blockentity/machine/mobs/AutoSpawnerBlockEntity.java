@@ -188,9 +188,10 @@ public class AutoSpawnerBlockEntity extends MachineBlockEntity implements MenuPr
         this.spawnExact = spawnExact;
     }
 
+    @NotNull
     @Override
     public Component getDisplayName() {
-        return new TranslatableComponent("block.minefactoryrenewed.auto_spawner");
+        return this.getBlockState().getBlock().getName();
     }
 
     @Nullable

@@ -23,6 +23,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -85,9 +86,10 @@ public class FruitPickerBlockEntity extends MachineBlockEntity implements MenuPr
         insertOrDropItems(drops);
     }
 
+    @NotNull
     @Override
     public Component getDisplayName() {
-        return new TranslatableComponent("block.minefactoryrenewed.fruit_picker");
+        return this.getBlockState().getBlock().getName();
     }
 
     @Nullable

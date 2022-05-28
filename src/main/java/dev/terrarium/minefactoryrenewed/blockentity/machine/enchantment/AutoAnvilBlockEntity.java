@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
@@ -210,11 +211,12 @@ public class AutoAnvilBlockEntity extends MachineBlockEntity implements MenuProv
                 (slot1.is(Items.ENCHANTED_BOOK) && !EnchantedBookItem.getEnchantments(slot1).isEmpty());
     }
 
+    @NotNull
     @Override
     public Component getDisplayName() {
-        return new TranslatableComponent("block.minefactoryrenewed.auto_anvil");
+        return this.getBlockState().getBlock().getName();
     }
-
+    
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {

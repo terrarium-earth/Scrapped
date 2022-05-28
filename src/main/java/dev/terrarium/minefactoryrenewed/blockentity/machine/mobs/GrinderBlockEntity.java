@@ -24,6 +24,7 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -77,9 +78,10 @@ public class GrinderBlockEntity extends MachineBlockEntity implements MenuProvid
         insertOrDropItems(lootTable.getRandomItems(ctx));
     }
 
+    @NotNull
     @Override
     public Component getDisplayName() {
-        return new TranslatableComponent("block.minefactoryrenewed.grinder");
+        return this.getBlockState().getBlock().getName();
     }
 
     @Nullable

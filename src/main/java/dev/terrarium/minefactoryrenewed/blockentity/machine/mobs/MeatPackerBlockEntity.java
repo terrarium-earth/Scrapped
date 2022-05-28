@@ -16,6 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -54,9 +55,10 @@ public class MeatPackerBlockEntity extends MachineBlockEntity implements MenuPro
         return getTank().getFluidAmount() >= 200 || getTank().getFluidAmount() >= 50;
     }
 
+    @NotNull
     @Override
     public Component getDisplayName() {
-        return new TranslatableComponent("block.minefactoryrenewed.meat_packer");
+        return this.getBlockState().getBlock().getName();
     }
 
     @Nullable

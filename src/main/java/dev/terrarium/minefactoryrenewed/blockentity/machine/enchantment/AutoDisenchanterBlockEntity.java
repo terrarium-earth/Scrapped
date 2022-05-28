@@ -20,6 +20,7 @@ import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
@@ -83,9 +84,10 @@ public class AutoDisenchanterBlockEntity extends MachineBlockEntity implements M
         return !bookStack.isEmpty() && bookStack.is(Items.BOOK) && !toolStack.isEmpty() && outputStack.isEmpty();
     }
 
+    @NotNull
     @Override
     public Component getDisplayName() {
-        return new TranslatableComponent("block.minefactoryrenewed.auto_disenchanter");
+        return this.getBlockState().getBlock().getName();
     }
 
     @Nullable

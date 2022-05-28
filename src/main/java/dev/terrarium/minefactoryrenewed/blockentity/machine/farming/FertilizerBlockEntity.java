@@ -16,6 +16,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class FertilizerBlockEntity extends MachineBlockEntity implements MenuProvider {
@@ -62,9 +63,10 @@ public class FertilizerBlockEntity extends MachineBlockEntity implements MenuPro
         return -1;
     }
 
+    @NotNull
     @Override
     public Component getDisplayName() {
-        return new TranslatableComponent("block.minefactoryrenewed.fertilizer");
+        return this.getBlockState().getBlock().getName();
     }
 
     @Nullable

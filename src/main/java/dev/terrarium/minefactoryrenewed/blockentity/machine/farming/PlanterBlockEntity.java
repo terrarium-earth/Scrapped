@@ -19,6 +19,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.ItemStackHandler;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class PlanterBlockEntity extends MachineBlockEntity implements MenuProvider {
@@ -93,9 +94,10 @@ public class PlanterBlockEntity extends MachineBlockEntity implements MenuProvid
         return 4 + x + 3 * z;
     }
 
+    @NotNull
     @Override
     public Component getDisplayName() {
-        return new TranslatableComponent("block.minefactoryrenewed.planter");
+        return this.getBlockState().getBlock().getName();
     }
 
     @Nullable

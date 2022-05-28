@@ -29,6 +29,7 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -198,9 +199,10 @@ public class FarmerBlockEntity extends MachineBlockEntity implements MenuProvide
         this.jungleWood = jungleWood;
     }
 
+    @NotNull
     @Override
     public Component getDisplayName() {
-        return new TranslatableComponent("block.minefactoryrenewed.farmer");
+        return this.getBlockState().getBlock().getName();
     }
 
     @Nullable

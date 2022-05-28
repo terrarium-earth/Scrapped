@@ -91,9 +91,10 @@ public class SlaughterhouseBlockEntity extends MachineBlockEntity implements Men
         return super.getCapability(cap, side);
     }
 
+    @NotNull
     @Override
     public Component getDisplayName() {
-        return new TranslatableComponent("block.minefactoryrenewed.slaughterhouse");
+        return this.getBlockState().getBlock().getName();
     }
 
     @Nullable

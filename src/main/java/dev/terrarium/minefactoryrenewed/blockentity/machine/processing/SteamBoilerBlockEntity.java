@@ -143,9 +143,10 @@ public class SteamBoilerBlockEntity extends MachineBlockEntity implements MenuPr
         return maxBurnTime;
     }
 
+    @NotNull
     @Override
     public Component getDisplayName() {
-        return new TranslatableComponent("block.minefactoryrenewed.steam_boiler");
+        return this.getBlockState().getBlock().getName();
     }
 
     @Nullable

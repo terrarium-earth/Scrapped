@@ -184,9 +184,10 @@ public class MobRouterBlockEntity extends MachineBlockEntity implements MenuProv
         this.allowBabies = allowBabies;
     }
 
+    @NotNull
     @Override
     public Component getDisplayName() {
-        return new TranslatableComponent("block.minefactoryrenewed.mob_router");
+        return this.getBlockState().getBlock().getName();
     }
 
     @Nullable

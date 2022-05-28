@@ -119,11 +119,11 @@ public class DeepStorageBlockEntity extends BaseBlockEntity implements MenuProvi
         return inventory;
     }
 
+    @NotNull
     @Override
     public Component getDisplayName() {
-        return new TranslatableComponent("block.minefactoryrenewed.deep_storage");
+        return this.getBlockState().getBlock().getName();
     }
-
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {

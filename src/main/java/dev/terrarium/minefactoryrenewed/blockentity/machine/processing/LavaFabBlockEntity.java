@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class LavaFabBlockEntity extends MachineBlockEntity implements MenuProvider {
@@ -42,9 +43,10 @@ public class LavaFabBlockEntity extends MachineBlockEntity implements MenuProvid
         transferFluid(100, getTank());
     }
 
+    @NotNull
     @Override
     public Component getDisplayName() {
-        return new TranslatableComponent("block.minefactoryrenewed.lava_fabricator");
+        return this.getBlockState().getBlock().getName();
     }
 
     @Nullable

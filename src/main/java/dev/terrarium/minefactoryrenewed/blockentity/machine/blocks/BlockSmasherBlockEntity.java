@@ -120,11 +120,11 @@ public class BlockSmasherBlockEntity extends MachineBlockEntity implements MenuP
                 .withParameter(LootContextParams.TOOL, pickaxe);
     }
 
+    @NotNull
     @Override
     public Component getDisplayName() {
-        return new TranslatableComponent("block.minefactoryrenewed.block_smasher");
+        return this.getBlockState().getBlock().getName();
     }
-
     public void addFortune() {
         setFortune(Math.min(fortune + 1, MAX_FORTUNE));
     }
