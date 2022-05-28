@@ -214,7 +214,22 @@ public class ModBlocks {
     public static final RegistryObject<BlockItem> EXPLOSION_GENERATOR_ITEM = ITEMS.register("explosion_generator", () -> new BlockItem(EXPLOSION_GENERATOR.get(), GEN_PROPERTIES));
 
     public static final RegistryObject<Block> DISENCHANTMENT_GENERATOR = BLOCKS.register("disenchantment_generator", DisenchantmentGenBlock::new);
-    public static final RegistryObject<BlockItem> DISENCHANTMENT_GENERATOR_ITEM = ITEMS.register("disenchantment_generator", () -> new BlockItem(DISENCHANTMENT_GENERATOR.get(), ModItems.PROPERTIES));
+    public static final RegistryObject<BlockItem> DISENCHANTMENT_GENERATOR_ITEM = ITEMS.register("disenchantment_generator", () -> new BlockItem(DISENCHANTMENT_GENERATOR.get(), GEN_PROPERTIES));
+
+    public static final RegistryObject<Block> HELLISH_GENERATOR = BLOCKS.register("hellish_generator", HellishGenBlock::new);
+    public static final RegistryObject<BlockItem> HELLISH_GENERATOR_ITEM = ITEMS.register("hellish_generator", () -> new BlockItem(HELLISH_GENERATOR.get(), GEN_PROPERTIES));
+
+    public static final RegistryObject<Block> DEATH_GENERATOR = BLOCKS.register("death_generator", DeathGenBlock::new);
+    public static final RegistryObject<BlockItem> DEATH_GENERATOR_ITEM = ITEMS.register("death_generator", () -> new BlockItem(DEATH_GENERATOR.get(), GEN_PROPERTIES));
+
+    public static final RegistryObject<Block> FROSTY_GENERATOR = BLOCKS.register("frosty_generator", FrostyGenBlock::new);
+    public static final RegistryObject<BlockItem> FROSTY_GENERATOR_ITEM = ITEMS.register("frosty_generator", () -> new BlockItem(FROSTY_GENERATOR.get(), GEN_PROPERTIES));
+
+    public static final RegistryObject<Block> ENDER_GENERATOR = BLOCKS.register("ender_generator", EnderGenBlock::new);
+    public static final RegistryObject<BlockItem> ENDER_GENERATOR_ITEM = ITEMS.register("ender_generator", () -> new BlockItem(ENDER_GENERATOR.get(), GEN_PROPERTIES));
+
+    public static final RegistryObject<Block> SLIMEY_GENERATOR = BLOCKS.register("slimey_generator", SlimeyGenBlock::new);
+    public static final RegistryObject<BlockItem> SLIMEY_GENERATOR_ITEM = ITEMS.register("slimey_generator", () -> new BlockItem(SLIMEY_GENERATOR.get(), GEN_PROPERTIES));
 
     //Rubbery stuff
     public static final RegistryObject<Block> RUBBER_LOG = BLOCKS.register("rubber_log", () -> new RubberLogBlock(ModBlocks.STRIPPED_RUBBER_LOG));

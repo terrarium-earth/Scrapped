@@ -136,6 +136,8 @@
   "block.minefactoryrenewed.solar_generator": "Solar Generator",
   "block.minefactoryrenewed.potion_generator": "Potion Generator",
   "block.minefactoryrenewed.explosion_generator": "Explosion! Generator",
+  "block.minefactoryrenewed.explosion_generator": "Disenchantment Generator",
+  "block.minefactoryrenewed.explosion_generator": "Disenchantment Generator",
 
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",
