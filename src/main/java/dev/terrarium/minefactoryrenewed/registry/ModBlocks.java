@@ -69,7 +69,7 @@ public class ModBlocks {
     public static final RegistryObject<BlockItem> CONVEYOR_BELT_ITEM = ITEMS.register("conveyor_belt", () -> new BlockItem(CONVEYOR_BELT.get(), new Item.Properties().stacksTo(16).tab(MinefactoryRenewed.TAB)));
 
     public static final RegistryObject<Block> CREATIVE_ENERGY = BLOCKS.register("creative_energy", CreativeEnergyBlock::new);
-    public static final RegistryObject<BlockItem> CREATIVE_ENERGY_ITEM = ITEMS.register("creative_energy", () -> new BlockItem(CREATIVE_ENERGY.get(), ModItems.PROPERTIES));
+    public static final RegistryObject<BlockItem> CREATIVE_ENERGY_ITEM = ITEMS.register("creative_energy", () -> new BlockItem(CREATIVE_ENERGY.get(), GEN_PROPERTIES));
 
     public static final RegistryObject<Block> PLANTER = BLOCKS.register("planter", PlanterBlock::new);
     public static final RegistryObject<BlockItem> PLANTER_ITEM = ITEMS.register("planter", () -> new BlockItem(PLANTER.get(), ModItems.PROPERTIES));

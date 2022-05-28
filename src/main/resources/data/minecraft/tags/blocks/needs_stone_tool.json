@@ -6,6 +6,7 @@
     "minefactoryrenewed:fertilizer",
     "minefactoryrenewed:fruit_picker",
     "minefactoryrenewed:slaughterhouse",
+    "minefactoryrenewed:meat_packer",
     "minefactoryrenewed:grinder",
     "minefactoryrenewed:mob_counter",
     "minefactoryrenewed:mob_router",
@@ -37,6 +38,20 @@
     "minefactoryrenewed:ejector",
     "minefactoryrenewed:item_router",
     "minefactoryrenewed:road",
-    "minefactoryrenewed:dark_road"
+    "minefactoryrenewed:dark_road",
+    "minefactoryrenewed:furnace_generator",
+    "minefactoryrenewed:pink_generator",
+    "minefactoryrenewed:hellish_generator",
+    "minefactoryrenewed:ender_generator",
+    "minefactoryrenewed:lava_generator",
+    "minefactoryrenewed:potion_generator",
+    "minefactoryrenewed:disenchantment_generator",
+    "minefactoryrenewed:explosion_generator",
+    "minefactoryrenewed:death_generator",
+    "minefactoryrenewed:slimey_generator",
+    "minefactoryrenewed:solar_generator",
+    "minefactoryrenewed:lunar_generator",
+    "minefactoryrenewed:culinary_generator",
+    "minefactoryrenewed:frosty_generator"
   ]
 }
