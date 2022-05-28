@@ -269,7 +269,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> RUBBER_SLAB = BLOCKS.register("rubber_slab", () -> new SlabBlock(PLANK_PROPERTIES));
     public static final RegistryObject<BlockItem> RUBBER_SLAB_ITEM = ITEMS.register("rubber_slab", () -> new BlockItem(RUBBER_SLAB.get(), ModItems.PROPERTIES));
 
-    public static final RegistryObject<Block> RUBBER_DOOR = BLOCKS.register("rubber_door", () -> new DoorBlock(PLANK_PROPERTIES.noCollission()));
+    public static final RegistryObject<Block> RUBBER_DOOR = BLOCKS.register("rubber_door", () -> new DoorBlock(PLANK_PROPERTIES.noOcclusion()));
     public static final RegistryObject<BlockItem> RUBBER_DOOR_ITEM = ITEMS.register("rubber_door", () -> new DoubleHighBlockItem(RUBBER_DOOR.get(), ModItems.PROPERTIES));
 
     public static final RegistryObject<Block> RUBBER_SAPLING = BLOCKS.register("rubber_sapling", () -> new SaplingBlock(new RubberTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
