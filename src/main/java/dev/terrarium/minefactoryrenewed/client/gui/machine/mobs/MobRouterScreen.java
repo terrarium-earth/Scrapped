@@ -2,7 +2,7 @@ package dev.terrarium.minefactoryrenewed.client.gui.machine.mobs;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
-import dev.terrarium.minefactoryrenewed.blockentity.container.mobs.MobRouterContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.machine.mobs.MobRouterContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.mobs.MobRouterBlockEntity;
 import dev.terrarium.minefactoryrenewed.client.gui.machine.MachineScreen;

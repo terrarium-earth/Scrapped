@@ -1,6 +1,6 @@
 package dev.terrarium.minefactoryrenewed.blockentity.machine.processing;
 
-import dev.terrarium.minefactoryrenewed.blockentity.container.processing.SteamBoilerContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.machine.processing.SteamBoilerContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
 import dev.terrarium.minefactoryrenewed.registry.ModBlocks;
@@ -8,7 +8,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;

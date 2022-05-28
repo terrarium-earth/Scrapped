@@ -1,6 +1,6 @@
 package dev.terrarium.minefactoryrenewed.blockentity.machine.farming;
 
-import dev.terrarium.minefactoryrenewed.blockentity.container.farming.FarmerContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.machine.farming.FarmerContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
 import dev.terrarium.minefactoryrenewed.registry.ModBlocks;
@@ -9,7 +9,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.MenuProvider;

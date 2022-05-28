@@ -1,6 +1,6 @@
 package dev.terrarium.minefactoryrenewed.blockentity.machine.blocks;
 
-import dev.terrarium.minefactoryrenewed.blockentity.container.blocks.BlockPlacerContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.machine.blocks.BlockPlacerContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;

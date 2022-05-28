@@ -3,7 +3,7 @@ package dev.terrarium.minefactoryrenewed.client.gui.machine;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
 import com.mojang.math.Matrix4f;
-import dev.terrarium.minefactoryrenewed.blockentity.container.MachineContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.machine.MachineContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;

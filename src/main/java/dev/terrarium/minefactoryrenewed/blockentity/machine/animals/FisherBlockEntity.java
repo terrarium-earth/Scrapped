@@ -1,6 +1,6 @@
 package dev.terrarium.minefactoryrenewed.blockentity.machine.animals;
 
-import dev.terrarium.minefactoryrenewed.blockentity.container.animals.FisherContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.machine.animals.FisherContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;

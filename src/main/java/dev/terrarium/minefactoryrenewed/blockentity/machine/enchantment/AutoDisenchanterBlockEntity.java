@@ -1,12 +1,11 @@
 package dev.terrarium.minefactoryrenewed.blockentity.machine.enchantment;
 
-import dev.terrarium.minefactoryrenewed.blockentity.container.enchantment.AutoDisenchanterContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.machine.enchantment.AutoDisenchanterContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
 import dev.terrarium.minefactoryrenewed.registry.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;

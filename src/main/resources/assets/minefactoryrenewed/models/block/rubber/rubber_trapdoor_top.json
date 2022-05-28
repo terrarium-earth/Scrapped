@@ -1,7 +1,7 @@
 {
   "textures": {
     "5": "minefactoryrenewed:block/rubber_trapdoor",
-    "6": "rminefactoryrenewed:block/rubber_doors_sides",
+    "6": "minefactoryrenewed:block/rubber_doors_sides",
     "particle": "#5"
   },
   "elements": [

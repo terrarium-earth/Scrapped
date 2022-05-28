@@ -2,7 +2,7 @@ package dev.terrarium.minefactoryrenewed.client.gui.machine.animals;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
-import dev.terrarium.minefactoryrenewed.blockentity.container.animals.RancherContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.machine.animals.RancherContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import dev.terrarium.minefactoryrenewed.client.gui.machine.MachineScreen;
 import net.minecraft.network.chat.Component;

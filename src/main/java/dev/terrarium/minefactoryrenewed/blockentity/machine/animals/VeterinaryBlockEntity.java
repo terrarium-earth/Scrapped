@@ -1,6 +1,6 @@
 package dev.terrarium.minefactoryrenewed.blockentity.machine.animals;
 
-import dev.terrarium.minefactoryrenewed.blockentity.container.animals.VeterinaryContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.machine.animals.VeterinaryContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import dev.terrarium.minefactoryrenewed.item.syringe.SyringeItem;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;

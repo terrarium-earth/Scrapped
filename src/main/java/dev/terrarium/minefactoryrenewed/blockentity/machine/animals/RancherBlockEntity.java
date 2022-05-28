@@ -1,7 +1,7 @@
 package dev.terrarium.minefactoryrenewed.blockentity.machine.animals;
 
 import dev.terrarium.minefactoryrenewed.api.item.Ranchable;
-import dev.terrarium.minefactoryrenewed.blockentity.container.animals.RancherContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.machine.animals.RancherContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import dev.terrarium.minefactoryrenewed.data.machine.RanchManager;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;

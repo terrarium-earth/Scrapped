@@ -1,6 +1,6 @@
 package dev.terrarium.minefactoryrenewed.blockentity.machine.processing;
 
-import dev.terrarium.minefactoryrenewed.blockentity.container.processing.LaserDrillContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.machine.processing.LaserDrillContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import dev.terrarium.minefactoryrenewed.item.FocusItem;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
@@ -12,7 +12,6 @@ import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;

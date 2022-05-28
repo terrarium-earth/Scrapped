@@ -2,7 +2,7 @@ package dev.terrarium.minefactoryrenewed.client.gui.machine.farming;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
-import dev.terrarium.minefactoryrenewed.blockentity.container.farming.PlanterContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.machine.farming.PlanterContainer;
 import dev.terrarium.minefactoryrenewed.client.gui.machine.MachineScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;

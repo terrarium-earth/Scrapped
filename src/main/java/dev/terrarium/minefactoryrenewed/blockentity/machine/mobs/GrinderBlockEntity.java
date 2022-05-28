@@ -1,13 +1,12 @@
 package dev.terrarium.minefactoryrenewed.blockentity.machine.mobs;
 
-import dev.terrarium.minefactoryrenewed.blockentity.container.mobs.GrinderContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.machine.mobs.GrinderContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
 import dev.terrarium.minefactoryrenewed.registry.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.MenuProvider;

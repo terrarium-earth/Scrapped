@@ -1,7 +1,7 @@
 package dev.terrarium.minefactoryrenewed.blockentity.transport;
 
 import dev.terrarium.minefactoryrenewed.blockentity.BaseBlockEntity;
-import dev.terrarium.minefactoryrenewed.blockentity.container.transport.ItemRouterContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.machine.transport.ItemRouterContainer;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
 import dev.terrarium.minefactoryrenewed.util.InventoryUtils;
 import net.minecraft.core.BlockPos;

@@ -2,7 +2,7 @@ package dev.terrarium.minefactoryrenewed.client.gui.machine.processing;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
-import dev.terrarium.minefactoryrenewed.blockentity.container.processing.SteamBoilerContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.machine.processing.SteamBoilerContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.processing.SteamBoilerBlockEntity;
 import dev.terrarium.minefactoryrenewed.client.gui.machine.MachineScreen;
 import net.minecraft.network.chat.Component;

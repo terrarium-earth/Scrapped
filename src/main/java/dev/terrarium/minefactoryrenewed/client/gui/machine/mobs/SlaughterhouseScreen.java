@@ -2,7 +2,7 @@ package dev.terrarium.minefactoryrenewed.client.gui.machine.mobs;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
-import dev.terrarium.minefactoryrenewed.blockentity.container.mobs.SlaughterhouseContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.machine.mobs.SlaughterhouseContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.mobs.SlaughterhouseBlockEntity;
 import dev.terrarium.minefactoryrenewed.client.gui.machine.MachineScreen;
 import net.minecraft.network.chat.Component;

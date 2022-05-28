@@ -3,7 +3,7 @@ package dev.terrarium.minefactoryrenewed.client.gui.machine.blocks;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
-import dev.terrarium.minefactoryrenewed.blockentity.container.blocks.DeepStorageContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.machine.blocks.DeepStorageContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.blocks.DeepStorageBlockEntity;
 import dev.terrarium.minefactoryrenewed.util.DeepStorageInventory;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;

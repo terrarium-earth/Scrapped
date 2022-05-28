@@ -2,7 +2,7 @@ package dev.terrarium.minefactoryrenewed.client.gui.machine.enchantment;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
-import dev.terrarium.minefactoryrenewed.blockentity.container.enchantment.AutoEnchanterContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.machine.enchantment.AutoEnchanterContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.enchantment.AutoEnchanterBlockEntity;
 import dev.terrarium.minefactoryrenewed.client.gui.machine.MachineScreen;

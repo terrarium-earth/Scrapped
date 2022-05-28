@@ -2,7 +2,7 @@ package dev.terrarium.minefactoryrenewed.client.gui.machine.processing;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
-import dev.terrarium.minefactoryrenewed.blockentity.container.processing.LaserDrillContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.machine.processing.LaserDrillContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.processing.LaserDrillBlockEntity;
 import dev.terrarium.minefactoryrenewed.client.gui.machine.MachineScreen;
 import net.minecraft.network.chat.Component;
