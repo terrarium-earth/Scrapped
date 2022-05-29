@@ -1,5 +1,6 @@
 package dev.terrarium.minefactoryrenewed.blockentity.generator;
 
+import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
 import dev.terrarium.minefactoryrenewed.blockentity.container.generator.BurnableGenContainer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -87,7 +88,7 @@ public abstract class BurnableGenBlockEntity extends GeneratorBlockEntity {
 
     @Override
     public Component getDisplayText() {
-        return new TranslatableComponent("tooltip.generator." + (burnTime > 0 && canGenerate() ? "generating" : "idle"), String.valueOf(getEnergyGen()));
+        return new TranslatableComponent("tooltip." + MinefactoryRenewed.MODID + ".generator." + (burnTime > 0 && canGenerate() ? "generating" : "idle"), String.valueOf(getEnergyGen()));
     }
 
     @Override

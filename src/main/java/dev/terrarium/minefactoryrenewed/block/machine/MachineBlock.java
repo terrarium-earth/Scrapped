@@ -1,5 +1,6 @@
 package dev.terrarium.minefactoryrenewed.block.machine;
 
+import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
 import dev.terrarium.minefactoryrenewed.api.machine.IWrenchableMachine;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import dev.terrarium.minefactoryrenewed.registry.ModItems;
@@ -109,7 +110,7 @@ public abstract class MachineBlock extends BaseEntityBlock implements IWrenchabl
 
         if(Screen.hasShiftDown()) {
             if (this.getRegistryName() != null) {
-                String tooltipText = I18n.get("tooltip.machine." + this.getRegistryName().getPath());
+                String tooltipText = I18n.get("tooltip." + MinefactoryRenewed.MODID + ".machine." + this.getRegistryName().getPath());
                 String[] lines = tooltipText.split("<br>");
                 for (String line : lines) {
                     Component text = new TextComponent(line);
@@ -117,7 +118,7 @@ public abstract class MachineBlock extends BaseEntityBlock implements IWrenchabl
                 }
             }
         } else {
-            tooltip.add(new TranslatableComponent("tooltip.item.shift_info"));
+            tooltip.add(new TranslatableComponent("tooltip." + MinefactoryRenewed.MODID + ".item.shift_info"));
         }
     }
 

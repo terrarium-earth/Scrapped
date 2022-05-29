@@ -1,5 +1,6 @@
 package dev.terrarium.minefactoryrenewed.blockentity.generator;
 
+import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
@@ -27,7 +28,7 @@ public class CreativeEnergyBlockEntity extends GeneratorBlockEntity {
 
     @Override
     public @NotNull Component getDisplayName() {
-        return new TranslatableComponent("tooltip.generator.creative_energy");
+        return new TranslatableComponent("tooltip." + MinefactoryRenewed.MODID + ".generator.creative_energy");
     }
 
     @Override
@@ -43,7 +44,7 @@ public class CreativeEnergyBlockEntity extends GeneratorBlockEntity {
     @Override
     public Component getDisplayText() {
         return canGenerate() ?
-                new TranslatableComponent("tooltip.generator.generating", String.valueOf(getEnergyGen())) :
-                new TranslatableComponent("tooltip.generator.idle");
+                new TranslatableComponent("tooltip.generator." + MinefactoryRenewed.MODID + ".generating", String.valueOf(getEnergyGen())) :
+                new TranslatableComponent("tooltip.generator." + MinefactoryRenewed.MODID + ".idle");
     }
 }

@@ -1,5 +1,6 @@
 package dev.terrarium.minefactoryrenewed.blockentity.generator;
 
+import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -34,8 +35,8 @@ public class LunarGenBlockEntity extends GeneratorBlockEntity {
     @Override
     public Component getDisplayText() {
         return level != null && level.isNight() && level.canSeeSky(getBlockPos().above()) && canGenerate() ?
-                new TranslatableComponent("tooltip.generator.generating", String.valueOf(getEnergyGen())) :
-                new TranslatableComponent("tooltip.generator.idle");
+                new TranslatableComponent("tooltip." + MinefactoryRenewed.MODID + ".generator.generating", String.valueOf(getEnergyGen())) :
+                new TranslatableComponent("tooltip." + MinefactoryRenewed.MODID + ".generator.idle");
     }
 
     @Override

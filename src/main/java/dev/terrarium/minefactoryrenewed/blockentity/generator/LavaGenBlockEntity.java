@@ -1,5 +1,6 @@
 package dev.terrarium.minefactoryrenewed.blockentity.generator;
 
+import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
 import dev.terrarium.minefactoryrenewed.blockentity.container.generator.LavaGenContainer;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
@@ -41,8 +42,8 @@ public class LavaGenBlockEntity extends GeneratorBlockEntity {
     @Override
     public Component getDisplayText() {
         return getTank().getFluidAmount() >= FLUID_COST && canGenerate() ?
-                new TranslatableComponent("tooltip.generator.generating", String.valueOf(getEnergyGen())) :
-                new TranslatableComponent("tooltip.generator.idle");
+                new TranslatableComponent("tooltip." + MinefactoryRenewed.MODID + ".generator.generating", String.valueOf(getEnergyGen())) :
+                new TranslatableComponent("tooltip." + MinefactoryRenewed.MODID + ".generator.idle");
     }
 
     @Override
