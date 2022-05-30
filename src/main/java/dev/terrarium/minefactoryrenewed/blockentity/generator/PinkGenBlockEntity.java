@@ -14,12 +14,12 @@ public class PinkGenBlockEntity extends BurnableGenBlockEntity {
 
     @Override
     public void burnItem(ItemStack stack) {
-        setEnergyGen(GeneratorItemManager.getInstance().getEnergyGen(stack));
-        setBurnTime(GeneratorItemManager.getInstance().getBurnTime(stack));
+        setEnergyGen(GeneratorItemManager.getPink().getEnergyGen(stack));
+        setBurnTime(GeneratorItemManager.getPink().getBurnTime(stack));
     }
 
     @Override
     public boolean isItemValid(ItemStack stack) {
-        return GeneratorItemManager.getInstance().isValid(stack);
+        return GeneratorItemManager.getPink().isValid(stack);
     }
 }
