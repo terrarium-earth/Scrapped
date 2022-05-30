@@ -1,12 +1,10 @@
 package dev.terrarium.minefactoryrenewed.data.generator;
 
 import dev.terrarium.minefactoryrenewed.api.item.Hellish;
-import dev.terrarium.minefactoryrenewed.api.item.Pink;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class HellishManager extends HashMap<Item, Hellish> {
 
