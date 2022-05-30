@@ -9,8 +9,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 public class MachineAreaRenderer implements BlockEntityRenderer<MachineBlockEntity> {
 
     @Override
-    public void render(MachineBlockEntity blockEntity, float partialTick, PoseStack poseStack,
-                       MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
+    public void render(MachineBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
         RenderHelper.outlineArea(blockEntity, poseStack, bufferSource, partialTick);
     }
 }

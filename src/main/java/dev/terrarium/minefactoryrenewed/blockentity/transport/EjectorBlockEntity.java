@@ -54,7 +54,7 @@ public class EjectorBlockEntity extends BaseBlockEntity {
 
                 optional.ifPresent(itemHandler -> {
                     for (int i = 0; i < itemHandler.getSlots(); i++) {
-                        ItemStack stack = itemHandler.getStackInSlot(i);
+                        ItemStack stack = itemHandler.extractItem(i, 1, false);
 
                         if (!stack.isEmpty()) {
                             BlockPos front = getBlockPos().relative(facing);
@@ -63,7 +63,6 @@ public class EjectorBlockEntity extends BaseBlockEntity {
                                     new ItemStack(stack.getItem(), 1));
                             itemEntity.setDeltaMovement(0, 0, 0);
                             level.addFreshEntity(itemEntity);
-                            itemHandler.extractItem(i, 1, false);
                             break;
                         }
                     }

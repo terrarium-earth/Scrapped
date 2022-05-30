@@ -28,5 +28,9 @@ public class ModPackets {
                 SmasherButtonMessage::decode, SmasherButtonMessage::handleMessage);
         INSTANCE.registerMessage(5, EnchanterButtonMessage.class, EnchanterButtonMessage::encode,
                 EnchanterButtonMessage::decode, EnchanterButtonMessage::handleMessage);
+        INSTANCE.registerMessage(6, EnergyCellPowerMessage.class, EnergyCellPowerMessage::encode,
+                EnergyCellPowerMessage::decode, EnergyCellPowerMessage::handleMessage);
+        INSTANCE.registerMessage(7, EnergyCellSideMessage.class, EnergyCellSideMessage::encode,
+                EnergyCellSideMessage::decode, EnergyCellSideMessage::handleMessage);
     }
 }

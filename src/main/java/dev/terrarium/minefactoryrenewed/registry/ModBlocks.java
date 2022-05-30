@@ -24,6 +24,7 @@ import dev.terrarium.minefactoryrenewed.block.generator.EthanolGeneratorBlock;
 import dev.terrarium.minefactoryrenewed.block.generator.SteamTurbineBlock;
 import dev.terrarium.minefactoryrenewed.block.machine.processing.ComposterBlock;
 import dev.terrarium.minefactoryrenewed.block.machine.processing.*;
+import dev.terrarium.minefactoryrenewed.block.power.EnergyCellBlock;
 import dev.terrarium.minefactoryrenewed.block.rubber.RubberLogBlock;
 import dev.terrarium.minefactoryrenewed.block.rubber.RubberStandingSignBlock;
 import dev.terrarium.minefactoryrenewed.block.rubber.RubberTreeGrower;
@@ -230,6 +231,15 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> SLIMEY_GENERATOR = BLOCKS.register("slimey_generator", SlimeyGenBlock::new);
     public static final RegistryObject<BlockItem> SLIMEY_GENERATOR_ITEM = ITEMS.register("slimey_generator", () -> new BlockItem(SLIMEY_GENERATOR.get(), GEN_PROPERTIES));
+
+    public static final RegistryObject<Block> BASIC_ENERGY_CELL = BLOCKS.register("basic_energy_cell", () -> new EnergyCellBlock(128000, 8000));
+    public static final RegistryObject<BlockItem> BASIC_ENERGY_CELL_ITEM = ITEMS.register("basic_energy_cell", () -> new BlockItem(BASIC_ENERGY_CELL.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> ADVANCED_ENERGY_CELL = BLOCKS.register("advanced_energy_cell", () -> new EnergyCellBlock(256000, 16000));
+    public static final RegistryObject<BlockItem> ADVANCED_ENERGY_CELL_ITEM = ITEMS.register("advanced_energy_cell", () -> new BlockItem(ADVANCED_ENERGY_CELL.get(), ModItems.PROPERTIES));
+
+    public static final RegistryObject<Block> ELITE_ENERGY_CELL = BLOCKS.register("elite_energy_cell", () -> new EnergyCellBlock(512000, 32000));
+    public static final RegistryObject<BlockItem> ELITE_ENERGY_CELL_ITEM = ITEMS.register("elite_energy_cell", () -> new BlockItem(ELITE_ENERGY_CELL.get(), ModItems.PROPERTIES));
 
     //Rubbery stuff
     public static final RegistryObject<Block> RUBBER_LOG = BLOCKS.register("rubber_log", () -> new RubberLogBlock(ModBlocks.STRIPPED_RUBBER_LOG));

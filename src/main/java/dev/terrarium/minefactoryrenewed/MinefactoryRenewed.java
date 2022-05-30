@@ -2,7 +2,7 @@ package dev.terrarium.minefactoryrenewed;
 
 import dev.terrarium.minefactoryrenewed.blockentity.machine.MachineBlockEntity;
 import dev.terrarium.minefactoryrenewed.client.ModClient;
-import dev.terrarium.minefactoryrenewed.compat.TOPCompat;
+import dev.terrarium.minefactoryrenewed.compat.top.TOPCompat;
 import dev.terrarium.minefactoryrenewed.data.generator.*;
 import dev.terrarium.minefactoryrenewed.data.machine.PickableReloadListener;
 import dev.terrarium.minefactoryrenewed.data.machine.PlantableReloadListener;

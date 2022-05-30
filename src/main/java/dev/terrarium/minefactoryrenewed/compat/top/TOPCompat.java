@@ -1,4 +1,4 @@
-package dev.terrarium.minefactoryrenewed.compat;
+package dev.terrarium.minefactoryrenewed.compat.top;
 
 import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
 import dev.terrarium.minefactoryrenewed.blockentity.generator.GeneratorBlockEntity;

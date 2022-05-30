@@ -51,6 +51,14 @@ public class MFREnergyStorage extends EnergyStorage {
         this.energy = capacity;
     }
 
+    public void setMaxExtract(int maxExtract) {
+        this.maxExtract = maxExtract;
+    }
+
+    public void setMaxReceive(int maxReceive) {
+        this.maxReceive = maxReceive;
+    }
+
     public int getMaxExtract() {
         return this.maxExtract;
     }

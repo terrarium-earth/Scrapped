@@ -19,6 +19,7 @@ import dev.terrarium.minefactoryrenewed.blockentity.container.machine.farming.Pl
 import dev.terrarium.minefactoryrenewed.blockentity.container.machine.mobs.*;
 import dev.terrarium.minefactoryrenewed.blockentity.container.machine.processing.*;
 import dev.terrarium.minefactoryrenewed.blockentity.container.machine.transport.ItemRouterContainer;
+import dev.terrarium.minefactoryrenewed.blockentity.container.power.EnergyCellContainer;
 import dev.terrarium.minefactoryrenewed.blockentity.generator.*;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.animals.*;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.blocks.BlockBreakerBlockEntity;
@@ -34,6 +35,7 @@ import dev.terrarium.minefactoryrenewed.blockentity.machine.farming.FruitPickerB
 import dev.terrarium.minefactoryrenewed.blockentity.machine.farming.PlanterBlockEntity;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.mobs.*;
 import dev.terrarium.minefactoryrenewed.blockentity.machine.processing.*;
+import dev.terrarium.minefactoryrenewed.blockentity.power.EnergyCellBlockEntity;
 import dev.terrarium.minefactoryrenewed.blockentity.transport.EjectorBlockEntity;
 import dev.terrarium.minefactoryrenewed.blockentity.transport.ItemCollectorBlockEntity;
 import dev.terrarium.minefactoryrenewed.blockentity.transport.ItemRouterBlockEntity;
@@ -312,6 +314,15 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(SlimeyGenBlockEntity::new, ModBlocks.SLIMEY_GENERATOR.get())
                             .build(null));
 
+    public static final RegistryObject<BlockEntityType<EnergyCellBlockEntity>> ENERGY_CELL =
+            BLOCK_ENTITIES.register("energy_cell", () ->
+                    BlockEntityType.Builder.of(
+                            EnergyCellBlockEntity::new,
+                            ModBlocks.BASIC_ENERGY_CELL.get(),
+                            ModBlocks.ADVANCED_ENERGY_CELL.get(),
+                            ModBlocks.ELITE_ENERGY_CELL.get()
+                    ).build(null)
+            );
 
     /**
      * Containers
@@ -548,11 +559,17 @@ public class ModBlockEntities {
                 return new LavaGenContainer(windowId, inv, furnaceGen);
             }));
 
-
     public static final RegistryObject<MenuType<BurnableGenContainer>> BURNABLE_GENERATOR_CONTAINER =
             CONTAINERS.register("burnable_generator_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
                 BlockPos pos = data.readBlockPos();
                 BurnableGenBlockEntity explosionGen = (BurnableGenBlockEntity) inv.player.level.getBlockEntity(pos);
                 return new BurnableGenContainer(windowId, inv, explosionGen);
+            }));
+
+    public static final RegistryObject<MenuType<EnergyCellContainer>> ENERGY_CELL_CONTAINER =
+            CONTAINERS.register("energy_cell_container", () -> IForgeMenuType.create((windowId, inv, data) -> {
+                BlockPos pos = data.readBlockPos();
+                EnergyCellBlockEntity energyCell = (EnergyCellBlockEntity) inv.player.level.getBlockEntity(pos);
+                return new EnergyCellContainer(windowId, inv, energyCell);
             }));
 }

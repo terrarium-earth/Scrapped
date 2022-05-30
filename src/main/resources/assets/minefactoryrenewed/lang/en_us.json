@@ -143,6 +143,10 @@
   "block.minefactoryrenewed.ender_generator": "Ender Generator",
   "block.minefactoryrenewed.slimey_generator": "Slimey Generator",
 
+  "block.minefactoryrenewed.basic_energy_cell": "Basic Energy Cell",
+  "block.minefactoryrenewed.advanced_energy_cell": "Advanced Energy Cell",
+  "block.minefactoryrenewed.elite_energy_cell": "Elite Energy Cell",
+
   "_comment4": "Entities",
   "entity.minefactoryrenewed.safari_net": "Safari Net",
   "entity.minefactoryrenewed.pink_slime": "Pink Slime",

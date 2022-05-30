@@ -52,6 +52,9 @@
     "minefactoryrenewed:solar_generator",
     "minefactoryrenewed:lunar_generator",
     "minefactoryrenewed:culinary_generator",
-    "minefactoryrenewed:frosty_generator"
+    "minefactoryrenewed:frosty_generator",
+    "minefactoryrenewed:basic_energy_cell",
+    "minefactoryrenewed:advanced_energy_cell",
+    "minefactoryrenewed:elite_energy_cell"
   ]
 }

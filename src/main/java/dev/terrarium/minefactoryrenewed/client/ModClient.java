@@ -7,7 +7,8 @@ import dev.terrarium.minefactoryrenewed.client.blockentity.AutoEnchanterRenderer
 import dev.terrarium.minefactoryrenewed.client.blockentity.LaserChargerRenderer;
 import dev.terrarium.minefactoryrenewed.client.blockentity.LaserDrillRenderer;
 import dev.terrarium.minefactoryrenewed.client.entity.PinkSlimeRenderer;
-import dev.terrarium.minefactoryrenewed.client.gui.generator.*;
+import dev.terrarium.minefactoryrenewed.client.gui.generator.BurnableGenScreen;
+import dev.terrarium.minefactoryrenewed.client.gui.generator.LavaGenScreen;
 import dev.terrarium.minefactoryrenewed.client.gui.machine.animals.*;
 import dev.terrarium.minefactoryrenewed.client.gui.machine.blocks.BlockPlacerScreen;
 import dev.terrarium.minefactoryrenewed.client.gui.machine.blocks.BlockSmasherScreen;
@@ -23,13 +24,13 @@ import dev.terrarium.minefactoryrenewed.client.gui.machine.mobs.*;
 import dev.terrarium.minefactoryrenewed.client.gui.machine.power.EthanolGeneratorScreen;
 import dev.terrarium.minefactoryrenewed.client.gui.machine.power.SteamTurbineScreen;
 import dev.terrarium.minefactoryrenewed.client.gui.machine.processing.*;
+import dev.terrarium.minefactoryrenewed.client.gui.power.EnergyCellScreen;
 import dev.terrarium.minefactoryrenewed.client.gui.transport.ItemRouterScreen;
-import dev.terrarium.minefactoryrenewed.item.FocusItem;
+import dev.terrarium.minefactoryrenewed.client.model.EnergyCellBakedModel;
+import dev.terrarium.minefactoryrenewed.client.model.EnergyCellModelLoader;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
 import dev.terrarium.minefactoryrenewed.registry.ModBlocks;
 import dev.terrarium.minefactoryrenewed.registry.ModEntities;
-import dev.terrarium.minefactoryrenewed.registry.ModItems;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -41,15 +42,15 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
+import net.minecraftforge.client.ForgeRenderTypes;
 import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.event.RegisterShadersEvent;
 import net.minecraftforge.client.model.ForgeModelBakery;
+import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.registries.RegistryObject;
 
 import java.io.IOException;
 
@@ -82,6 +83,10 @@ public class ModClient {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.AUTO_ANVIL.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.AUTO_ENCHANTER.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.AUTO_DISENCHANTER.get(), RenderType.cutout());
+
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BASIC_ENERGY_CELL.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.ADVANCED_ENERGY_CELL.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.ELITE_ENERGY_CELL.get(), RenderType.cutout());
     }
 
     private static void initScreens() {
@@ -117,6 +122,7 @@ public class ModClient {
         MenuScreens.register(ModBlockEntities.SLUDGE_BOILER_CONTAINER.get(), SludgeBoilerScreen::new);
         MenuScreens.register(ModBlockEntities.WEATHER_CONTAINER.get(), WeatherScreen::new);
         MenuScreens.register(ModBlockEntities.ITEM_ROUTER_CONTAINER.get(), ItemRouterScreen::new);
+        MenuScreens.register(ModBlockEntities.ENERGY_CELL_CONTAINER.get(), EnergyCellScreen::new);
 
         //Generators
         MenuScreens.register(ModBlockEntities.LAVA_GENERATOR_CONTAINER.get(), LavaGenScreen::new);
@@ -136,15 +142,6 @@ public class ModClient {
     }
 
     private static void initColors(FMLClientSetupEvent event) {
-        event.enqueueWork(() -> {
-            Minecraft minecraft = Minecraft.getInstance();
-            for (RegistryObject<Item> entry : ModItems.ITEMS.getEntries()) {
-                if (entry.get() instanceof FocusItem focusItem) {
-                    minecraft.getItemColors().register((stack, tintIndex) ->
-                            tintIndex == 1 ? focusItem.getColor().getFireworkColor() : 0xFFFFFF, focusItem);
-                }
-            }
-        });
     }
 
     @SubscribeEvent
@@ -159,11 +156,18 @@ public class ModClient {
 
     @SubscribeEvent
     public static void onModelRegistry(ModelRegistryEvent event) {
+        ModelLoaderRegistry.registerLoader(new ResourceLocation(MinefactoryRenewed.MODID, "energy_cell"), EnergyCellModelLoader.INSTANCE);
         ForgeModelBakery.addSpecialModel(BLADES_LOCATION);
+        ForgeModelBakery.addSpecialModel(EnergyCellBakedModel.INPUT_OVERLAY);
+        ForgeModelBakery.addSpecialModel(EnergyCellBakedModel.OUTPUT_OVERLAY);
+        ForgeModelBakery.addSpecialModel(EnergyCellBakedModel.INPUT_OUTPUT_OVERLAY);
     }
 
     @SubscribeEvent
     public static void onModelBake(ModelBakeEvent event) {
         BLADES_MODEL = event.getModelManager().getModel(BLADES_LOCATION);
+        EnergyCellBakedModel.INPUT_MODEL = event.getModelRegistry().get(EnergyCellBakedModel.INPUT_OVERLAY);
+        EnergyCellBakedModel.OUTPUT_MODEL = event.getModelRegistry().get(EnergyCellBakedModel.OUTPUT_OVERLAY);
+        EnergyCellBakedModel.INPUT_OUTPUT_MODEL = event.getModelRegistry().get(EnergyCellBakedModel.INPUT_OUTPUT_OVERLAY);
     }
 }
