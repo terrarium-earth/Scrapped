@@ -76,6 +76,6 @@ public class HellishGenBlockEntity extends BurnableGenBlockEntity {
 
     @Override
     public boolean isItemValid(ItemStack stack) {
-        return HellishManager.getInstance().isHellish(stack);
+        return HellishManager.getInstance().isValid(stack);
     }
 }

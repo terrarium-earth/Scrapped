@@ -1,6 +1,6 @@
 package dev.terrarium.minefactoryrenewed.blockentity.generator;
 
-import dev.terrarium.minefactoryrenewed.data.generator.DeathManager;
+import dev.terrarium.minefactoryrenewed.data.generator.GeneratorItemManager;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
@@ -14,12 +14,12 @@ public class DeathGenBlockEntity extends BurnableGenBlockEntity {
 
     @Override
     public void burnItem(ItemStack stack) {
-        setEnergyGen(DeathManager.getInstance().getEnergyGen(stack));
-        setBurnTime(DeathManager.getInstance().getBurnTime(stack));
+        setEnergyGen(GeneratorItemManager.getDeath().getEnergyGen(stack));
+        setBurnTime(GeneratorItemManager.getDeath().getBurnTime(stack));
     }
 
     @Override
     public boolean isItemValid(ItemStack stack) {
-        return DeathManager.getInstance().isValid(stack);
+        return GeneratorItemManager.getDeath().isValid(stack);
     }
 }

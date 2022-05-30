@@ -1,6 +1,5 @@
 package dev.terrarium.minefactoryrenewed.blockentity.generator;
 
-import dev.terrarium.minefactoryrenewed.data.generator.SlimeyManager;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
