@@ -6,6 +6,7 @@ import com.google.gson.JsonElement;
 import com.mojang.serialization.JsonOps;
 import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
 import dev.terrarium.minefactoryrenewed.api.item.Disenchantment;
+import dev.terrarium.minefactoryrenewed.api.item.Hellish;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
@@ -13,27 +14,9 @@ import net.minecraft.util.profiling.ProfilerFiller;
 
 import java.util.Map;
 
-public class DisenchantmentReloadListener extends SimpleJsonResourceReloadListener {
-
-    private static final Gson GSON = new GsonBuilder().create();
-    private static final String FOLDER_ID = "generators";
+public class DisenchantmentReloadListener extends GeneratorReloadListener<Disenchantment> {
 
     public DisenchantmentReloadListener() {
-        super(GSON, FOLDER_ID);
-    }
-
-    @Override
-    public void apply(Map<ResourceLocation, JsonElement> elements, ResourceManager manager, ProfilerFiller filter) {
-        DisenchantmentManager.getInstance().clear();
-
-        for (Map.Entry<ResourceLocation, JsonElement> entry : elements.entrySet()) {
-            ResourceLocation id = entry.getKey();
-            if (!id.getNamespace().equals(MinefactoryRenewed.MODID) || !id.getPath().startsWith("disenchantment/")) continue;
-            Disenchantment disenchantment = Disenchantment.CODEC.parse(JsonOps.INSTANCE, entry.getValue().getAsJsonObject())
-                    .getOrThrow(false, s ->
-                            MinefactoryRenewed.LOGGER.error("Unable to load Disenchantment data for {}, \n{}", id.toString(), s));
-
-            DisenchantmentManager.getInstance().addEntry(disenchantment);
-        }
+        super("disenchantment", Disenchantment.CODEC, DisenchantmentManager.getInstance()::addEntry, DisenchantmentManager.getInstance()::clear);
     }
 }

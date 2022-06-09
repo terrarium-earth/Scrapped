@@ -20,6 +20,6 @@ public class PotionGenBlockEntity extends BurnableGenBlockEntity {
 
     @Override
     public boolean isItemValid(ItemStack stack) {
-        return PotionManager.getInstance().isPotionBurnable(stack);
+        return PotionManager.getInstance().isValid(stack);
     }
 }

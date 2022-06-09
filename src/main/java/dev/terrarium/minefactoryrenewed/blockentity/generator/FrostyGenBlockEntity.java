@@ -1,6 +1,6 @@
 package dev.terrarium.minefactoryrenewed.blockentity.generator;
 
-import dev.terrarium.minefactoryrenewed.data.generator.FrostyManager;
+import dev.terrarium.minefactoryrenewed.data.generator.GeneratorItemManager;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
@@ -14,12 +14,12 @@ public class FrostyGenBlockEntity extends BurnableGenBlockEntity {
 
     @Override
     public void burnItem(ItemStack stack) {
-        setEnergyGen(FrostyManager.getInstance().getEnergyGen(stack));
-        setBurnTime(FrostyManager.getInstance().getBurnTime(stack));
+        setEnergyGen(GeneratorItemManager.getFrosty().getEnergyGen(stack));
+        setBurnTime(GeneratorItemManager.getFrosty().getBurnTime(stack));
     }
 
     @Override
     public boolean isItemValid(ItemStack stack) {
-        return FrostyManager.getInstance().isValid(stack);
+        return GeneratorItemManager.getFrosty().isValid(stack);
     }
 }

@@ -28,7 +28,6 @@ public class PlantableReloadListener extends SimpleJsonResourceReloadListener {
 
         for (Map.Entry<ResourceLocation, JsonElement> entry : elements.entrySet()) {
             ResourceLocation id = entry.getKey();
-
             if (!id.getNamespace().equals(MinefactoryRenewed.MODID)) continue;
             Plantable plantable = Plantable.CODEC.parse(JsonOps.INSTANCE, entry.getValue().getAsJsonObject())
                     .getOrThrow(false, s ->

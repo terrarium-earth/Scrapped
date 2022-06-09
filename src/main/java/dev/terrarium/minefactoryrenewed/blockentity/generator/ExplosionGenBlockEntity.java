@@ -1,16 +1,11 @@
 package dev.terrarium.minefactoryrenewed.blockentity.generator;
 
-import dev.terrarium.minefactoryrenewed.data.generator.ExplosiveManager;
+import dev.terrarium.minefactoryrenewed.data.generator.GeneratorItemManager;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 public class ExplosionGenBlockEntity extends BurnableGenBlockEntity {
 
@@ -22,13 +17,13 @@ public class ExplosionGenBlockEntity extends BurnableGenBlockEntity {
 
     @Override
     public void burnItem(ItemStack stack) {
-        setEnergyGen(ExplosiveManager.getInstance().getEnergyGen(stack));
-        setBurnTime(ExplosiveManager.getInstance().getBurnTime(stack));
+        setEnergyGen(GeneratorItemManager.getExplosive().getEnergyGen(stack));
+        setBurnTime(GeneratorItemManager.getExplosive().getBurnTime(stack));
     }
 
     @Override
     public boolean isItemValid(ItemStack stack) {
-        return ExplosiveManager.getInstance().isExplosive(stack);
+        return GeneratorItemManager.getExplosive().isValid(stack);
     }
 
     @Override
