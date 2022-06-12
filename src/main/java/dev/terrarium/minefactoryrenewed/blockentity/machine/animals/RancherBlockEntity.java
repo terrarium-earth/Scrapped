@@ -18,6 +18,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -39,24 +40,29 @@ public class RancherBlockEntity extends MachineBlockEntity implements MenuProvid
     @Override
     public boolean run() {
         if (level == null) return false;
-        List<Entity> entities = level.getEntities((Entity) null, getMachineArea().getAabb(), ENTITY_PREDICATE);
+        List<LivingEntity> entities = level.getEntities(LIVING_ENTITY_TEST, getMachineArea().getAabb(), ENTITY_PREDICATE);
 
-        for (Entity entity : entities) {
-            LivingEntity livingEntity = (LivingEntity) entity;
-            Ranchable ranchable = RanchManager.getInstance().getRanchable(livingEntity);
+        for (LivingEntity livingEntity : entities) {
+            Ranchable ranchable = RanchManager.getInstance().getEntry(livingEntity);
             if (ranchable == null || !ranchable.entityPredicate().test(livingEntity)) return false;
 
             if (ranchable.tool() != null) {
                 int toolSlot = findToolSlot(ranchable.tool());
                 if (toolSlot < 0) continue;
 
-                if (ranchable.consumeTool())
-                    getInventory().extractItem(toolSlot, 1, false);
+                switch (ranchable.interactType()) {
+                    case CONSUME -> getInventory().extractItem(toolSlot, 1, false);
+                    case DAMAGING -> {
+                        ItemStack slotStack = getInventory().getStackInSlot(toolSlot);
+                        if (slotStack.hurt(ranchable.damage(), level.random, null)) {
+                            slotStack.shrink(1);
+                        }
+                    }
+                }
             }
 
-            ItemStack result = ranchable.result(livingEntity);
             ranchable.consumer().accept(livingEntity);
-            insertOrDropItems(List.of(result));
+            insertOrDropItems(ranchable.result(livingEntity));
             useEnergy();
             return true;
         }
@@ -78,13 +84,13 @@ public class RancherBlockEntity extends MachineBlockEntity implements MenuProvid
     }
 
     @Override
-    public Component getDisplayName() {
+    public @NotNull Component getDisplayName() {
         return new TranslatableComponent("block.minefactoryrenewed.rancher");
     }
 
     @Nullable
     @Override
-    public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+    public AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
         return new RancherContainer(id, inventory, this);
     }
 }
