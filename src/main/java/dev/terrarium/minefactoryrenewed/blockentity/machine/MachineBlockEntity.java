@@ -20,6 +20,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.CapabilityEnergy;
@@ -54,6 +55,20 @@ public abstract class MachineBlockEntity extends BaseBlockEntity {
             entity instanceof Animal &&
             entity.canChangeDimensions()
     );
+
+    protected static final EntityTypeTest<Entity, LivingEntity> LIVING_ENTITY_TEST = new EntityTypeTest<>() {
+        @Nullable
+        @Override
+        public LivingEntity tryCast(@NotNull Entity entity) {
+            return entity instanceof LivingEntity living ? living : null;
+        }
+
+        @NotNull
+        @Override
+        public Class<? extends Entity> getBaseClass() {
+            return LivingEntity.class;
+        }
+    };
 
     //Cache directions array
     protected static final Direction[] DIRECTIONS = Direction.values();
