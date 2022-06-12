@@ -1,5 +1,6 @@
 package dev.terrarium.minefactoryrenewed.blockentity.generator;
 
+import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
 import dev.terrarium.minefactoryrenewed.blockentity.container.generator.SteamTurbineContainer;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
 import dev.terrarium.minefactoryrenewed.registry.ModBlocks;
@@ -41,9 +42,7 @@ public class SteamTurbineBlockEntity extends GeneratorBlockEntity {
 
     @Override
     public Component getDisplayText() {
-        return getTank().getFluidAmount() >= FLUID_COST && canGenerate() ?
-                new TranslatableComponent("tooltip.generator.generating", String.valueOf(getEnergyGen())) :
-                new TranslatableComponent("tooltip.generator.idle");
+        return new TranslatableComponent("tooltip." + MinefactoryRenewed.MODID + ".generator." + (getTank().getFluidAmount() >= FLUID_COST && canGenerate() ? "generating" : "idle"), String.valueOf(getEnergyGen()));
     }
 
     @Override

@@ -43,8 +43,6 @@ public class CreativeEnergyBlockEntity extends GeneratorBlockEntity {
 
     @Override
     public Component getDisplayText() {
-        return canGenerate() ?
-                new TranslatableComponent("tooltip.generator." + MinefactoryRenewed.MODID + ".generating", String.valueOf(getEnergyGen())) :
-                new TranslatableComponent("tooltip.generator." + MinefactoryRenewed.MODID + ".idle");
+        return new TranslatableComponent("tooltip." + MinefactoryRenewed.MODID + ".generator." + (canGenerate() ? "generating" : "idle"), String.valueOf(getEnergyGen()));
     }
 }
