@@ -54,6 +54,7 @@ public class EnergyCellBakedModel implements IDynamicBakedModel {
 
     public List<BakedQuad> createConfigQuads(Direction direction, MachineConfigType type, Random random) {
         return switch (type) {
+            case NONE -> new ArrayList<>();
             case INPUT -> INPUT_MODEL.getQuads(null, direction, random, EmptyModelData.INSTANCE);
             case EXTRACT -> OUTPUT_MODEL.getQuads(null, direction, random, EmptyModelData.INSTANCE);
             case INPUT_EXTRACT -> INPUT_OUTPUT_MODEL.getQuads(null, direction, random, EmptyModelData.INSTANCE);

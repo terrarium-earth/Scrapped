@@ -232,13 +232,13 @@ public class ModBlocks {
     public static final RegistryObject<Block> SLIMEY_GENERATOR = BLOCKS.register("slimey_generator", SlimeyGenBlock::new);
     public static final RegistryObject<BlockItem> SLIMEY_GENERATOR_ITEM = ITEMS.register("slimey_generator", () -> new BlockItem(SLIMEY_GENERATOR.get(), GEN_PROPERTIES));
 
-    public static final RegistryObject<Block> BASIC_ENERGY_CELL = BLOCKS.register("basic_energy_cell", () -> new EnergyCellBlock(128000, 8000));
+    public static final RegistryObject<Block> BASIC_ENERGY_CELL = BLOCKS.register("basic_energy_cell", () -> new EnergyCellBlock(128000, 8000, EnergyCellBlock.BASIC_SHAPE));
     public static final RegistryObject<BlockItem> BASIC_ENERGY_CELL_ITEM = ITEMS.register("basic_energy_cell", () -> new BlockItem(BASIC_ENERGY_CELL.get(), ModItems.PROPERTIES));
 
-    public static final RegistryObject<Block> ADVANCED_ENERGY_CELL = BLOCKS.register("advanced_energy_cell", () -> new EnergyCellBlock(256000, 16000));
+    public static final RegistryObject<Block> ADVANCED_ENERGY_CELL = BLOCKS.register("advanced_energy_cell", () -> new EnergyCellBlock(256000, 16000, EnergyCellBlock.ADVANCED_SHAPE));
     public static final RegistryObject<BlockItem> ADVANCED_ENERGY_CELL_ITEM = ITEMS.register("advanced_energy_cell", () -> new BlockItem(ADVANCED_ENERGY_CELL.get(), ModItems.PROPERTIES));
 
-    public static final RegistryObject<Block> ELITE_ENERGY_CELL = BLOCKS.register("elite_energy_cell", () -> new EnergyCellBlock(512000, 32000));
+    public static final RegistryObject<Block> ELITE_ENERGY_CELL = BLOCKS.register("elite_energy_cell", () -> new EnergyCellBlock(512000, 32000, EnergyCellBlock.ELITE_SHAPE));
     public static final RegistryObject<BlockItem> ELITE_ENERGY_CELL_ITEM = ITEMS.register("elite_energy_cell", () -> new BlockItem(ELITE_ENERGY_CELL.get(), ModItems.PROPERTIES));
 
     //Rubbery stuff

@@ -45,6 +45,9 @@ public class EnergyCellBlockEntity extends BaseBlockEntity implements MenuProvid
     private final StrictEnergyStorage outputStorage;
     private final LazyOptional<StrictEnergyStorage> outputHandler;
 
+    private final StrictEnergyStorage displayStorage;
+    private final LazyOptional<StrictEnergyStorage> displayHandler;
+
     private int maxReceive;
     private int maxExtract;
 
@@ -63,6 +66,9 @@ public class EnergyCellBlockEntity extends BaseBlockEntity implements MenuProvid
         this.outputStorage = new StrictEnergyStorage(energyStorage, 0, energyCell.getMaxTransfer());
         this.outputHandler = LazyOptional.of(() -> outputStorage);
 
+        this.displayStorage = new StrictEnergyStorage(energyStorage, 0, 0);
+        this.displayHandler = LazyOptional.of(() -> displayStorage);
+
         this.maxExtract = energyCell.getMaxTransfer();
         this.maxReceive = energyCell.getMaxTransfer();
     }
@@ -76,7 +82,7 @@ public class EnergyCellBlockEntity extends BaseBlockEntity implements MenuProvid
 
         CompoundTag machineConfig = new CompoundTag();
         for (Direction direction : InventoryUtils.VALUES) {
-            MachineConfigType type = config.getOrDefault(direction, MachineConfigType.INPUT);
+            MachineConfigType type = config.getOrDefault(direction, MachineConfigType.NONE);
             machineConfig.putInt(direction.getSerializedName(), type.ordinal());
         }
 
@@ -111,7 +117,7 @@ public class EnergyCellBlockEntity extends BaseBlockEntity implements MenuProvid
         if (level == null) return;
 
         for (Direction direction : InventoryUtils.VALUES) {
-            if (canExtract(direction)) continue;
+            if (!canExtract(direction)) continue;
 
             BlockPos offset = getBlockPos().relative(direction);
             BlockEntity blockEntity = level.getBlockEntity(offset);
@@ -130,11 +136,13 @@ public class EnergyCellBlockEntity extends BaseBlockEntity implements MenuProvid
 
         MachineConfigType configType = getSideConfig(direction);
         switch (configType) {
+            case NONE -> config.put(direction, MachineConfigType.INPUT);
             case INPUT -> config.put(direction, MachineConfigType.EXTRACT);
             case EXTRACT -> config.put(direction, MachineConfigType.INPUT_EXTRACT);
-            case INPUT_EXTRACT -> config.put(direction, MachineConfigType.INPUT);
+            case INPUT_EXTRACT -> config.put(direction, MachineConfigType.NONE);
         }
 
+        setChanged();
         level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
         level.updateNeighborsAt(getBlockPos(), getBlockState().getBlock());
         requestModelDataUpdate();
@@ -151,7 +159,7 @@ public class EnergyCellBlockEntity extends BaseBlockEntity implements MenuProvid
     }
 
     public MachineConfigType getSideConfig(Direction direction) {
-        return config.getOrDefault(direction, MachineConfigType.INPUT);
+        return config.getOrDefault(direction, MachineConfigType.NONE);
     }
 
     public void addMaxReceive(int amount) {
@@ -200,6 +208,7 @@ public class EnergyCellBlockEntity extends BaseBlockEntity implements MenuProvid
         if (cap == CapabilityEnergy.ENERGY) {
             MachineConfigType configType = getSideConfig(side == null ? Direction.UP : side);
             return switch (configType) {
+                case NONE -> displayHandler.cast();
                 case INPUT -> inputHandler.cast();
                 case EXTRACT -> outputHandler.cast();
                 case INPUT_EXTRACT -> handler.cast();
