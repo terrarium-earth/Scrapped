@@ -4,8 +4,10 @@ import dev.terrarium.minefactoryrenewed.api.machine.IWrenchableMachine;
 import dev.terrarium.minefactoryrenewed.blockentity.power.EnergyCellBlockEntity;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
 import dev.terrarium.minefactoryrenewed.registry.ModItems;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.level.ServerPlayer;
@@ -35,6 +37,7 @@ import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -160,10 +163,18 @@ public class EnergyCellBlock extends BaseEntityBlock implements IWrenchableMachi
 
     @Override
     public void onWrenched(Level level, Player player, BlockPos pos) {
-        //TODO: Block block save energy to item
-        //TODO: Block wrench save energy to item
-        level.destroyBlock(pos, false, player);
-        Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(this));
+        if (level.getBlockEntity(pos) instanceof EnergyCellBlockEntity energyCell) {
+            ItemStack drop = new ItemStack(this);
+            CompoundTag dropTag = new CompoundTag();
+            CompoundTag blockEntityTag = new CompoundTag();
+
+            blockEntityTag.put("energy", energyCell.getEnergyStorage().serializeNBT());
+            dropTag.put("BlockEntityTag", blockEntityTag);
+            drop.setTag(dropTag);
+
+            level.destroyBlock(pos, false, player);
+            Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), drop);
+        }
     }
 
     @Override
@@ -177,6 +188,16 @@ public class EnergyCellBlock extends BaseEntityBlock implements IWrenchableMachi
                 Component text = new TextComponent(line);
                 tooltip.add(text);
             }
+        }
+
+        CompoundTag tag = stack.getOrCreateTagElement("BlockEntityTag");
+        if (tag.contains("energy")) {
+            CompoundTag energyTag = tag.getCompound("energy");
+            int energy = energyTag.getInt("energy");
+            int capacity = energyTag.getInt("capacity");
+
+            String percent = DecimalFormat.getPercentInstance().format(energy / (float) capacity);
+            tooltip.add(new TextComponent(percent + " Full").withStyle(ChatFormatting.AQUA));
         }
     }
 

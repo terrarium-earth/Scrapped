@@ -228,4 +228,8 @@ public class EnergyCellBlockEntity extends BaseBlockEntity implements MenuProvid
 
         return new ModelDataMap.Builder().withInitial(ModelDataTypes.MACHINE_CONFIG_PROPERTY, types).build();
     }
+
+    public MFREnergyStorage getEnergyStorage() {
+        return energyStorage;
+    }
 }

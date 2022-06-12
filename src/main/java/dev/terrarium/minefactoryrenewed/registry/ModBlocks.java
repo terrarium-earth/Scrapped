@@ -238,7 +238,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> ADVANCED_ENERGY_CELL = BLOCKS.register("advanced_energy_cell", () -> new EnergyCellBlock(256000, 16000, EnergyCellBlock.ADVANCED_SHAPE));
     public static final RegistryObject<BlockItem> ADVANCED_ENERGY_CELL_ITEM = ITEMS.register("advanced_energy_cell", () -> new BlockItem(ADVANCED_ENERGY_CELL.get(), ModItems.PROPERTIES));
 
-    public static final RegistryObject<Block> ELITE_ENERGY_CELL = BLOCKS.register("elite_energy_cell", () -> new EnergyCellBlock(512000, 32000, EnergyCellBlock.ELITE_SHAPE));
+    public static final RegistryObject<Block> ELITE_ENERGY_CELL = BLOCKS.register("elite_energy_cell", () -> new EnergyCellBlock(512000, 32000, EnergyCellBlock.BASIC_SHAPE));
     public static final RegistryObject<BlockItem> ELITE_ENERGY_CELL_ITEM = ITEMS.register("elite_energy_cell", () -> new BlockItem(ELITE_ENERGY_CELL.get(), ModItems.PROPERTIES));
 
     //Rubbery stuff
