@@ -1,13 +1,16 @@
 package dev.terrarium.minefactoryrenewed.block.transport;
 
+import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
 import dev.terrarium.minefactoryrenewed.api.machine.IRotatableMachine;
 import dev.terrarium.minefactoryrenewed.blockentity.transport.EjectorBlockEntity;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.Containers;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -91,13 +94,17 @@ public class EjectorBlock extends BaseEntityBlock implements IRotatableMachine {
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, level, tooltip, flag);
 
-        if (this.getRegistryName() != null) {
-            String tooltipText = I18n.get("tooltip.machine." + this.getRegistryName().getPath());
-            String[] lines = tooltipText.split("<br>");
-            for (String line : lines) {
-                Component text = new TextComponent(line);
-                tooltip.add(text);
+        if (Screen.hasShiftDown()) {
+            if (this.getRegistryName() != null) {
+                String tooltipText = I18n.get("tooltip." + MinefactoryRenewed.MODID + ".machine." + this.getRegistryName().getPath());
+                String[] lines = tooltipText.split("<br>");
+                for (String line : lines) {
+                    Component text = new TextComponent(line);
+                    tooltip.add(text);
+                }
             }
+        } else {
+            tooltip.add(new TranslatableComponent("tooltip." + MinefactoryRenewed.MODID + ".item.shift_info"));
         }
     }
 

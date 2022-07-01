@@ -1,8 +1,8 @@
 package dev.terrarium.minefactoryrenewed.api.item;
 
 public enum LauncherMode {
-    CAPTURE("tooltip.safari_net_launcher.capture"),
-    RELEASE("tooltip.safari_net_launcher.release");
+    CAPTURE("tooltip.minefactoryrenewed.safari_net_launcher.capture"),
+    RELEASE("tooltip.minefactoryrenewed.safari_net_launcher.release");
 
     private final String langKey;
 

@@ -110,10 +110,10 @@ public class PortaSpawnerItem extends BaseItem {
         if (tag.contains(ENTITY_KEY)) {
             Component entityName = new TranslatableComponent(tag.getString(ENTITY_KEY))
                     .setStyle(Style.EMPTY.applyFormat(ChatFormatting.GOLD));
-            tooltip.add(new TranslatableComponent("tooltip.portaspawner.captured_spawner", entityName)
+            tooltip.add(new TranslatableComponent("tooltip." + MinefactoryRenewed.MODID + ".portaspawner.captured_spawner", entityName)
                     .setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
         } else {
-            tooltip.add(new TranslatableComponent("tooltip.portaspawner.no_spawner")
+            tooltip.add(new TranslatableComponent("tooltip." + MinefactoryRenewed.MODID + ".portaspawner.no_spawner")
                     .setStyle(Style.EMPTY.applyFormat(ChatFormatting.GOLD)));
         }
     }

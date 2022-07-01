@@ -123,13 +123,13 @@ public class SafariNetItem extends BaseItem {
         super.appendHoverText(stack, level, tooltip, isAdvanced);
         CompoundTag tag = stack.getOrCreateTag();
 
-        TranslatableComponent text = new TranslatableComponent("tooltip.safari_net.no_entity");
+        TranslatableComponent text = new TranslatableComponent("tooltip.minefactoryrenewed.safari_net.no_entity");
         if (tag.contains(ENTITY_ID_KEY)) {
             ResourceLocation entityTypeId = new ResourceLocation(tag.getString(ENTITY_ID_KEY));
             String nameStr = I18n.get("entity." + entityTypeId.getNamespace() + "." + entityTypeId.getPath());
             Component entityName = new TextComponent(nameStr).setStyle(Style.EMPTY.applyFormat(ChatFormatting.GOLD));
 
-            text = new TranslatableComponent("tooltip.safari_net.captured_entity", entityName);
+            text = new TranslatableComponent("tooltip.minefactoryrenewed.safari_net.captured_entity", entityName);
         }
 
         text.setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY));

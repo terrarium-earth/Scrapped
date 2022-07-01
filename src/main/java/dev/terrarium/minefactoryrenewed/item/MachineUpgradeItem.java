@@ -32,7 +32,7 @@ public class MachineUpgradeItem extends BaseItem {
         super.appendHoverText(stack, level, tooltip, isAdvanced);
         Component radiusText = new TextComponent(String.valueOf(radiusIncrease))
                 .setStyle(Style.EMPTY.applyFormat(ChatFormatting.YELLOW));
-        Component hoverText = new TranslatableComponent("tooltip.machine.upgrade", radiusText)
+        Component hoverText = new TranslatableComponent("tooltip.minefactoryrenewed.machine.upgrade", radiusText)
                 .setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY));
 
         tooltip.add(hoverText);

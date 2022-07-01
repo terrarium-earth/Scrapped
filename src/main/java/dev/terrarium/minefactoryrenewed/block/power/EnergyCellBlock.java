@@ -1,5 +1,6 @@
 package dev.terrarium.minefactoryrenewed.block.power;
 
+import dev.terrarium.minefactoryrenewed.MinefactoryRenewed;
 import dev.terrarium.minefactoryrenewed.api.machine.IWrenchableMachine;
 import dev.terrarium.minefactoryrenewed.blockentity.power.EnergyCellBlockEntity;
 import dev.terrarium.minefactoryrenewed.registry.ModBlockEntities;
@@ -182,7 +183,7 @@ public class EnergyCellBlock extends BaseEntityBlock implements IWrenchableMachi
         super.appendHoverText(stack, level, tooltip, flag);
 
         if (this.getRegistryName() != null) {
-            String tooltipText = I18n.get("tooltip.machine." + this.getRegistryName().getPath());
+            String tooltipText = I18n.get("tooltip." + MinefactoryRenewed.MODID + ".machine." + this.getRegistryName().getPath());
             String[] lines = tooltipText.split("<br>");
             for (String line : lines) {
                 Component text = new TextComponent(line);

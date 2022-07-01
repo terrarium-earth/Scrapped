@@ -37,7 +37,7 @@ public class SafariNetLauncherItem extends BaseItem {
             tag.putInt("mode", mode.ordinal());
             stack.setTag(tag);
 
-            player.displayClientMessage(new TranslatableComponent("tooltip.safari_net_launcher.mode",
+            player.displayClientMessage(new TranslatableComponent("tooltip.minefactoryrenewed.safari_net_launcher.mode",
                     new TranslatableComponent(mode.getLangKey()).setStyle(Style.EMPTY.applyFormat(ChatFormatting.GOLD)))
                     .setStyle(Style.EMPTY.applyFormat(ChatFormatting.YELLOW)), true);
             return InteractionResultHolder.pass(stack);
@@ -46,7 +46,7 @@ public class SafariNetLauncherItem extends BaseItem {
         LauncherMode mode = LauncherMode.values()[tag.getInt("mode")];
         int slot = findSafariNet(player, mode == LauncherMode.CAPTURE);
         if (slot == -1) {
-            player.displayClientMessage(new TranslatableComponent("tooltip.safari_net_launcher.no_safari_net")
+            player.displayClientMessage(new TranslatableComponent("tooltip.minefactoryrenewed.safari_net_launcher.no_safari_net")
                     .setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_RED)), true);
             return InteractionResultHolder.fail(stack);
         }
@@ -85,7 +85,7 @@ public class SafariNetLauncherItem extends BaseItem {
         super.appendHoverText(stack, level, tooltip, isAdvanced);
         CompoundTag tag = stack.getOrCreateTag();
         LauncherMode mode = LauncherMode.values()[tag.getInt("mode")];
-        Component text = new TranslatableComponent("tooltip.safari_net_launcher.mode", new TranslatableComponent(mode.getLangKey())
+        Component text = new TranslatableComponent("tooltip.minefactoryrenewed.safari_net_launcher.mode", new TranslatableComponent(mode.getLangKey())
                 .setStyle(Style.EMPTY.applyFormat(ChatFormatting.YELLOW)))
                 .setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY));
 
