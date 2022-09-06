@@ -1,9 +1,0 @@
-{
-  "parent": "minecraft:block/orientable",
-  "textures": {
-    "top": "minefactoryrenewed:block/sludge_boiler_top",
-    "bottom": "minefactoryrenewed:block/machine_bottom",
-    "front": "minefactoryrenewed:block/sludge_boiler_side",
-    "side": "minefactoryrenewed:block/sludge_boiler_side"
-  }
-}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "minefactoryrenewed",
+  "version": "${version}",
+  "name": "Minefactory Renewed",
+  "description": "A new take on Minefactory for Forge and Fabric",
+  "authors": [
+    "abused_master",
+    "CodexAdrian",
+    "Kekie6"
+  ],
+  "contact": {
+    "website": "https://github.com/terrarium-earth/Minefactory-Renewed",
+    "repo": "https://github.com/terrarium-earth/Minefactory-Renewed",
+    "issues": "https://github.com/terrarium-earth/Minefactory-Renewed/issues"
+  },
+  "license": "All-Rights-Reserved",
+  "icon": "icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "earth.terrarium.minefactoryrenewed.fabric.MinefactoryRenewedFabric"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.14.9",
+    "minecraft": ">=1.19.2"
+  }
+}

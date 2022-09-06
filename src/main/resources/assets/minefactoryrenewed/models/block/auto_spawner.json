@@ -1,9 +1,0 @@
-{
-  "parent": "minecraft:block/orientable",
-  "textures": {
-    "top": "minefactoryrenewed:block/auto_spawner_top",
-    "bottom": "minefactoryrenewed:block/machine_bottom",
-    "front": "minefactoryrenewed:block/auto_spawner_side",
-    "side": "minefactoryrenewed:block/auto_spawner_side"
-  }
-}

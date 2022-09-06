@@ -1,9 +1,0 @@
-{
-  "parent": "minecraft:block/orientable",
-  "textures": {
-    "top": "minefactoryrenewed:block/deep_storage_top",
-    "bottom": "minefactoryrenewed:block/deep_storage_top",
-    "front": "minefactoryrenewed:block/deep_storage_side",
-    "side": "minefactoryrenewed:block/deep_storage_side"
-  }
-}

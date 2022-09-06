@@ -1,8 +1,0 @@
-{
-  "variants": {
-    "facing=north": { "model": "minefactoryrenewed:block/ejector" },
-    "facing=south": { "model": "minefactoryrenewed:block/ejector", "y": 180},
-    "facing=west":  { "model": "minefactoryrenewed:block/ejector", "y": 270 },
-    "facing=east":  { "model": "minefactoryrenewed:block/ejector", "y": 90 }
-  }
-}

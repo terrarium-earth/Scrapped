@@ -1,8 +1,0 @@
-{
-  "variants": {
-    "facing=north": { "model": "minefactoryrenewed:block/conveyor_belt" },
-    "facing=south": { "model": "minefactoryrenewed:block/conveyor_belt", "y": 180},
-    "facing=west":  { "model": "minefactoryrenewed:block/conveyor_belt", "y": 270 },
-    "facing=east":  { "model": "minefactoryrenewed:block/conveyor_belt", "y": 90 }
-  }
-}

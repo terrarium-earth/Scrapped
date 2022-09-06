@@ -1,9 +1,0 @@
-{
-  "parent": "minecraft:block/orientable",
-  "textures": {
-    "top": "minefactoryrenewed:block/weather_top",
-    "bottom": "minefactoryrenewed:block/machine_bottom",
-    "front": "minefactoryrenewed:block/weather_side",
-    "side": "minefactoryrenewed:block/weather_side"
-  }
-}

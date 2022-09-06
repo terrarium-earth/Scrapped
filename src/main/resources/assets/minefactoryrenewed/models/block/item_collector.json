@@ -1,9 +1,0 @@
-{
-  "parent": "minecraft:block/orientable",
-  "textures": {
-    "top": "minefactoryrenewed:block/item_collector_top",
-    "bottom": "minefactoryrenewed:block/item_collector_bottom",
-    "front": "minefactoryrenewed:block/item_collector",
-    "side": "minefactoryrenewed:block/item_collector"
-  }
-}

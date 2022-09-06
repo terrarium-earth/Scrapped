@@ -1,8 +1,0 @@
-{
-  "variants": {
-    "facing=north": { "model": "minefactoryrenewed:block/mob_router" },
-    "facing=south": { "model": "minefactoryrenewed:block/mob_router", "y": 180},
-    "facing=west":  { "model": "minefactoryrenewed:block/mob_router", "y": 270 },
-    "facing=east":  { "model": "minefactoryrenewed:block/mob_router", "y": 90 }
-  }
-}
