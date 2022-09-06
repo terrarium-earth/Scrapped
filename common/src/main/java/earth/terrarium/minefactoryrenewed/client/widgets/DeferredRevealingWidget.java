@@ -18,6 +18,7 @@ import java.util.function.Supplier;
 public class DeferredRevealingWidget extends AbstractWidget {
     private final ResourceLocation texture;
     private final Supplier<Float> percentage;
+    private final Supplier<Component> tooltip;
     private final int x;
     private final int y;
     private final int borderWidth;
@@ -34,6 +35,7 @@ public class DeferredRevealingWidget extends AbstractWidget {
         super(x, y, width, height, tooltip.get());
         this.texture = texture;
         this.percentage = percentage;
+        this.tooltip = tooltip;
         this.x = x;
         this.y = y;
         this.borderWidth = fgOffset;
@@ -47,7 +49,7 @@ public class DeferredRevealingWidget extends AbstractWidget {
         this.fgHeight = fgHeight;
     }
 
-    public DeferredRevealingWidget(ResourceLocation texture ,Supplier<Component> tooltip, Supplier<Float> percentage, int x, int y, int width, int height, int bgXStart, int fgXStart, int fgWidth, int fgHeight) {
+    public DeferredRevealingWidget(ResourceLocation texture, Supplier<Component> tooltip, Supplier<Float> percentage, int x, int y, int width, int height, int bgXStart, int fgXStart, int fgWidth, int fgHeight) {
         this(texture, tooltip, percentage, x, y, 3, width, height, bgXStart, 0, fgXStart, 0, fgWidth, fgHeight);
     }
 
@@ -68,7 +70,7 @@ public class DeferredRevealingWidget extends AbstractWidget {
     @Override
     public void renderToolTip(@NotNull PoseStack poseStack, int mouseX, int mouseY) {
         if(Minecraft.getInstance().screen != null && mouseX < this.x && mouseX < this.x + width && mouseY < this.y && mouseY < this.y + height) {
-            Minecraft.getInstance().screen.renderTooltip(poseStack, this.getMessage(), mouseX, mouseY);
+            Minecraft.getInstance().screen.renderTooltip(poseStack, tooltip.get(), mouseX, mouseY);
         }
     }
 }
